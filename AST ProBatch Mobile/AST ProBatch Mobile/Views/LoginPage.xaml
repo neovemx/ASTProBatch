@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AST_ProBatch_Mobile.Views.LoginPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="AUTENTICACIÓN"
+             BackgroundColor="#262626">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem BindingContext="{Binding Login}" Text="Settings"  Icon="settings" Command="{Binding SettingsCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Login}">
+            <ScrollView>
+                <StackLayout
+                    HorizontalOptions="Center">
+                    <StackLayout
+                        Padding="0,50,0,50">
+                        <Image
+                            Source="login">
+                        </Image>
+                        <Label
+                            Text="Aplicación bloqueada"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="Large"
+                            FontAttributes="Bold">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout
+                        WidthRequest="300">
+                        <Entry
+                            Text="{Binding Username, Mode=TwoWay}"
+                            PlaceholderColor="Gray"
+                            Placeholder="Usuario..."
+                            TextColor="Orange"
+                            HorizontalTextAlignment="Center">
+                        </Entry>
+                        <Entry
+                            Text="{Binding Password, Mode=TwoWay}"
+                            PlaceholderColor="Gray"
+                            IsPassword="True"
+                            Placeholder="Contraseña..."
+                            TextColor="Orange"
+                            HorizontalTextAlignment="Center">
+                        </Entry>
+                    </StackLayout>
+                    <StackLayout>
+                        <ActivityIndicator
+                            IsRunning="{Binding IsRunning, Mode=TwoWay}">
+                        </ActivityIndicator>
+                        <!--<ImageButton
+                            Command="{Binding LoginCommand}"
+                            BackgroundColor="Orange"
+                            CornerRadius="20"
+                            HorizontalOptions="Center"
+                            Source="btnlogin"/>-->
+                        <Button
+                            Command="{Binding LoginCommand}"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                            CornerRadius="23"
+                            HeightRequest="46"
+                            BackgroundColor="Orange"
+                            Text="Ingresar"
+                            TextColor="White"
+                            FontAttributes="Bold">
+                        </Button>
+                    </StackLayout>
+                    <!--<StackLayout VerticalOptions="EndAndExpand">
+                        <Label 
+                            Text="AST●ProBatch® Workload Automation 2020"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            TextColor="Gray"/>
+                    </StackLayout>-->
+                </StackLayout>
+            </ScrollView>
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Small"
+                    FontAttributes="Bold"
+                    TextColor="Gray"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
