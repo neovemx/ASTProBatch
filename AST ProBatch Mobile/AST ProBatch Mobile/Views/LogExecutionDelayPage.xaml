@@ -16,6 +16,7 @@
                 <StackLayout
                     VerticalOptions="Center">
                     <Label 
+                        TextColor="White"
                         HorizontalTextAlignment="Center"
                         FontAttributes="Bold"
                         FontSize="Large"

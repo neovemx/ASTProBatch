@@ -54,6 +54,19 @@ namespace AST_ProBatch_Mobile.ViewModels
             MainViewModel.GetInstance().Home = new HomeViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new RecurrenceMonitorPage());
         }
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new RelayCommand(Close);
+            }
+        }
+
+        private async void Close()
+        {
+            await Application.Current.MainPage.Navigation.PopModalAsync();
+        }
         #endregion
     }
 }

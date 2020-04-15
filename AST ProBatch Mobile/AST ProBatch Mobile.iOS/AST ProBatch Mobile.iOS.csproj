@@ -65,6 +65,8 @@
     <Compile Include="Implementations\Toast_IOS.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\CustomFrameRender.cs" />
+    <Compile Include="Renderers\CustomLabelRender.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />

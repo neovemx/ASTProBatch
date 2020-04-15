@@ -47,6 +47,19 @@ namespace AST_ProBatch_Mobile.ViewModels
             DependencyService.Get<Toast>().Show("Configuración guardada!");
             await Application.Current.MainPage.Navigation.PopModalAsync();
         }
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new RelayCommand(Close);
+            }
+        }
+
+        private async void Close()
+        {
+            await Application.Current.MainPage.Navigation.PopModalAsync();
+        }
         #endregion
     }
 }

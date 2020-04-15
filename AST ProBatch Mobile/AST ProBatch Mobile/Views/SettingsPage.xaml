@@ -8,67 +8,79 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor="LightGray">
     <ContentPage.Content>
-        <ScrollView
+        <StackLayout
             BindingContext="{Binding Settings}">
             <StackLayout
-                HorizontalOptions="Center">
-                <StackLayout
-                    Padding="0,50,0,50">
-                    <Image
-                        Source="setting">
-                    </Image>
-                    <Label
-                        Text="Configuración"
-                        HorizontalOptions="Center"
-                        TextColor="White"
-                        FontSize="Large"
-                        FontAttributes="Bold">
-                    </Label>
-                </StackLayout>
-                <StackLayout
-                    WidthRequest="250">
-                    <Entry
-                        Text="{Binding Apiurl, Mode=TwoWay}"
-                        PlaceholderColor="Gray"
-                        Placeholder="http://172.16.1.150:83/api/v1/..."
-                        TextColor="Orange">
-                    </Entry>
-                    <Label
-                        FontAttributes="None"
-                        FontSize="Small"
-                        HorizontalTextAlignment="Center"
-                        TextColor="Orange"
-                        Text="Ingrese la url de los APIs services">
-                    </Label>
-                    <ActivityIndicator
-                        IsRunning="{Binding IsRunning, Mode=TwoWay}">
-                    </ActivityIndicator>
-                    <!--<ImageButton
-                        Command="{Binding SaveCommand}"
-                        BackgroundColor="Orange"
-                        CornerRadius="20"
-                        HorizontalOptions="Center"
-                        Source="btnsave"/>-->
-                    <Button
-                        Command="{Binding SaveCommand}"
-                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                        CornerRadius="23"
-                        HeightRequest="46"
-                        BackgroundColor="Orange"
-                        Text="Guardar"
-                        TextColor="White"
-                        FontAttributes="Bold">
-                    </Button>
-                </StackLayout>
-                <StackLayout VerticalOptions="EndAndExpand">
-                    <Label 
-                        Text="AST●ProBatch® Workload Automation © 2020"
-                        HorizontalTextAlignment="Center"
-                        FontSize="Small"
-                        FontAttributes="Bold"
-                        TextColor="Gray"/>
-                </StackLayout>
+                    Padding="10"
+                    Orientation="Horizontal">
+                <ImageButton 
+                    HorizontalOptions="EndAndExpand"
+                    Command="{Binding CloseCommand}"
+                    BackgroundColor="Transparent"
+                    Source="close_page"/>
             </StackLayout>
-        </ScrollView>
+            <ScrollView>
+                <StackLayout
+                    HorizontalOptions="Center">
+                    <StackLayout
+                        Padding="0,50,0,50">
+                        <Image
+                            Source="setting">
+                        </Image>
+                        <Label
+                            Text="Configuración"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="Large"
+                            FontAttributes="Bold">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout
+                            WidthRequest="300">
+                        <Entry
+                            Text="{Binding Apiurl, Mode=TwoWay}"
+                            PlaceholderColor="Gray"
+                            Placeholder="http://172.16.1.150:83/api/v1/..."
+                            TextColor="Orange">
+                        </Entry>
+                        <Label
+                            FontAttributes="None"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            TextColor="Orange"
+                            Text="Ingrese la url de los APIs services">
+                        </Label>
+                        <ActivityIndicator
+                            IsRunning="{Binding IsRunning, Mode=TwoWay}">
+                        </ActivityIndicator>
+                        <!--<ImageButton
+                                Command="{Binding SaveCommand}"
+                                BackgroundColor="Orange"
+                                CornerRadius="20"
+                                HorizontalOptions="Center"
+                                Source="btnsave"/>-->
+                        <Button
+                            Command="{Binding SaveCommand}"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                            CornerRadius="23"
+                            HeightRequest="46"
+                            BackgroundColor="Orange"
+                            Text="Guardar"
+                            TextColor="White"
+                            FontAttributes="Bold">
+                        </Button>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout 
+                VerticalOptions="EndAndExpand">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Small"
+                    FontAttributes="Bold"
+                    TextColor="Gray"/>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
