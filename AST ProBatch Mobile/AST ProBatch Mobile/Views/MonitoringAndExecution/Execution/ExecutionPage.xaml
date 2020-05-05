@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
+             x:Class="AST_ProBatch_Mobile.Views.ExecutionPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Ejecutor"
+             BackgroundColor="#262626">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem BindingContext="{Binding Execution}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />
+        <ToolbarItem BindingContext="{Binding Execution}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />
+        <ToolbarItem BindingContext="{Binding Execution}" Text="Ver"  Icon="{Binding ViewIcon}" Command="{Binding ViewCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Execution}">
+            <controls:CustomFrame 
+                CornerRadius="0,0,20,20"
+                BackgroundColor="LightGray"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                IsVisible="{Binding ToolBarIsVisible}">
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <ImageButton
+                        CornerRadius="18"
+                        BackgroundColor="Orange"
+                        CommandParameter="{Binding}"
+                        Source="action_ej"
+                        Clicked="ImageButtonLogToolBarAction_1_Clicked"/>
+                    <ImageButton
+                        CornerRadius="18"
+                        BackgroundColor="Orange"
+                        CommandParameter="{Binding}"
+                        Source="action_dt"
+                        Clicked="ImageButtonLogToolBarAction_2_Clicked"/>
+                    <ImageButton
+                        CornerRadius="18"
+                        BackgroundColor="Orange"
+                        CommandParameter="{Binding}"
+                        Source="action_rl"
+                        Clicked="ImageButtonLogToolBarAction_3_Clicked"/>
+                    <ImageButton
+                        CornerRadius="18"
+                        BackgroundColor="Orange"
+                        CommandParameter="{Binding}"
+                        Source="action_rc"
+                        Clicked="ImageButtonLogToolBarAction_4_Clicked"/>
+                    <ImageButton
+                        CornerRadius="18"
+                        BackgroundColor="Orange"
+                        CommandParameter="{Binding}"
+                        Source="action_ob"
+                        Clicked="ImageButtonLogToolBarAction_5_Clicked"/>
+                    <ImageButton
+                        CornerRadius="18"
+                        BackgroundColor="Orange"
+                        CommandParameter="{Binding}"
+                        Source="action_nt"
+                        Clicked="ImageButtonLogToolBarAction_6_Clicked"/>
+                </StackLayout>
+            </controls:CustomFrame>
+            <StackLayout
+                IsVisible="{Binding FullViewIsVisible}"
+                Padding="20,0,20,0"
+                VerticalOptions="FillAndExpand">
+                <ListView
+                    x:Name="LogsItemsListView"
+                    ItemsSource="{Binding LogItems}"
+                    RowHeight="210"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    ItemSelected="LogsItemsListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout
+                                        Padding="10">
+                                        <controls:CustomFrame 
+                                            BorderColor="LightGray"
+                                            CornerRadius="5,20,20,5"
+                                            BackgroundColor="#222233"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="Center"
+                                            HeightRequest="150">
+                                            <StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <CheckBox
+                                                        IsChecked="{Binding IsChecked}"
+                                                        IsEnabled="{Binding IsEnabled}"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Title}" 
+                                                        FontAttributes="Bold"
+                                                        LineBreakMode="TailTruncation"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="CenterAndExpand"/>
+                                                    <StackLayout>
+                                                        <ImageButton 
+                                                            CornerRadius="18"
+                                                            BackgroundColor="Orange"
+                                                            Source="{Binding Notifications}"
+                                                            CommandParameter="{Binding}"
+                                                            Clicked="ImageButtonNotification_Clicked"/>
+                                                    </StackLayout>
+                                                    <StackLayout>
+                                                        <ImageButton
+                                                            BackgroundColor="Transparent"
+                                                            Source="{Binding State}"
+                                                            Clicked="ImageButtonState_Clicked"/>
+                                                    </StackLayout>
+
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Padding="0,10,0,0"
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        TextColor="Orange"
+                                                        Text="Ambiente:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Environment}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        TextColor="Orange"
+                                                        Text="Fecha de Ejecución:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Execution}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Padding="0,15,0,0"
+                                                    Orientation="Horizontal"
+                                                    HorizontalOptions="Center">
+                                                    <StackLayout>
+                                                        <ImageButton
+                                                            CornerRadius="18"
+                                                            BackgroundColor="Orange"
+                                                            IsEnabled="{Binding IsEnabled}"
+                                                            CommandParameter="{Binding}"
+                                                            Source="action_ej"
+                                                            Clicked="ImageButtonLogAction_1_Clicked"/>
+                                                    </StackLayout>
+
+                                                    <StackLayout>
+                                                        <ImageButton 
+                                                            CornerRadius="18"
+                                                            BackgroundColor="Orange"
+                                                            IsEnabled="{Binding IsEnabled}"
+                                                            CommandParameter="{Binding}"
+                                                            Source="action_dt"
+                                                            Clicked="ImageButtonLogAction_2_Clicked"/>
+                                                    </StackLayout>
+
+                                                    <StackLayout>
+                                                        <ImageButton 
+                                                            CornerRadius="18"
+                                                            BackgroundColor="Orange"
+                                                            IsEnabled="{Binding IsEnabled}"
+                                                            CommandParameter="{Binding}"
+                                                            Source="action_rl"
+                                                            Clicked="ImageButtonLogAction_3_Clicked"/>
+                                                    </StackLayout>
+
+                                                    <StackLayout>
+                                                        <ImageButton 
+                                                            CornerRadius="18"
+                                                            BackgroundColor="Orange"
+                                                            IsEnabled="{Binding IsEnabled}"
+                                                            CommandParameter="{Binding}"
+                                                            Source="action_rc"
+                                                            Clicked="ImageButtonLogAction_4_Clicked"/>
+                                                    </StackLayout>
+
+                                                    <StackLayout>
+                                                        <ImageButton 
+                                                            CornerRadius="18"
+                                                            BackgroundColor="Orange"
+                                                            IsEnabled="{Binding IsEnabled}"
+                                                            CommandParameter="{Binding}"
+                                                            Source="action_co"
+                                                            Clicked="ImageButtonLogAction_5_Clicked"/>
+                                                    </StackLayout>
+
+                                                    <StackLayout>
+                                                        <ImageButton 
+                                                            CornerRadius="18"
+                                                            BackgroundColor="Orange"
+                                                            IsEnabled="{Binding IsEnabled}"
+                                                            CommandParameter="{Binding}"
+                                                            Source="action_ob"
+                                                            Clicked="ImageButtonLogAction_6_Clicked"/>
+                                                    </StackLayout>
+
+                                                    <StackLayout>
+                                                        <ImageButton 
+                                                            CornerRadius="18"
+                                                            BackgroundColor="Orange"
+                                                            IsEnabled="{Binding IsEnabled}"
+                                                            CommandParameter="{Binding}"
+                                                            Source="action_he"
+                                                            Clicked="ImageButtonLogAction_7_Clicked"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </controls:CustomFrame>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout
+                IsVisible="{Binding CompactViewIsVisible}"
+                VerticalOptions="FillAndExpand"
+                Padding="10">
+                <ListView
+                    x:Name="CompactLogsItemsListView"
+                    ItemsSource="{Binding LogItems}"
+                    RowHeight="35"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    ItemSelected="CompactLogsItemsListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout>
+                                        <Frame
+                                            BorderColor="LightGray"
+                                            CornerRadius="30"
+                                            BackgroundColor="#222233"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="Center"
+                                            Padding="-1">
+                                            <StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <StackLayout
+                                                        Padding="4,0,0,0">
+                                                        <CheckBox
+                                                            IsChecked="{Binding IsChecked}"
+                                                            IsEnabled="{Binding IsEnabled}"/>
+                                                    </StackLayout>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Title}" 
+                                                        FontAttributes="Bold"
+                                                        LineBreakMode="TailTruncation"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="CenterAndExpand"/>
+                                                    <StackLayout
+                                                        VerticalOptions="Center"
+                                                        Padding="0,0,4,0">
+                                                        <ImageButton
+                                                            BackgroundColor="Transparent"
+                                                            Source="{Binding State}"
+                                                            Clicked="ImageButtonState_Clicked"
+                                                            WidthRequest="25"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <controls:CustomFrame 
+                CornerRadius="20,20,0,0"
+                BackgroundColor="LightGray"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                HeightRequest="100"
+                IsVisible="{Binding IsLoadingData}">
+                <controls:LoadingIndicator
+                    BackgroundColor="LightGray"
+                    IsLoading="True"
+                    LoadingIndicatorColor="Orange"
+                    Text="Cargando..."
+                    TextColor="Orange"
+                    TextFontSize="20" />
+            </controls:CustomFrame>
+            <StackLayout 
+                VerticalOptions="End">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Small"
+                    FontAttributes="Bold"
+                    TextColor="Gray"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
