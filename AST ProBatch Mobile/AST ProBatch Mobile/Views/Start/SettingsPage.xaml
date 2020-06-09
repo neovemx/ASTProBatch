@@ -38,9 +38,15 @@
                     <StackLayout
                             WidthRequest="300">
                         <Entry
-                            Text="{Binding Apiurl, Mode=TwoWay}"
+                            Text="{Binding UrlDomain, Mode=TwoWay}"
                             PlaceholderColor="Gray"
-                            Placeholder="http://172.16.1.150:83/api/v1/..."
+                            Placeholder="http://172.16.1.150:83"
+                            TextColor="Orange">
+                        </Entry>
+                        <Entry
+                            Text="{Binding UrlPrefix, Mode=TwoWay}"
+                            PlaceholderColor="Gray"
+                            Placeholder="/test/v1/api"
                             TextColor="Orange">
                         </Entry>
                         <Label
@@ -48,17 +54,11 @@
                             FontSize="Small"
                             HorizontalTextAlignment="Center"
                             TextColor="Orange"
-                            Text="Ingrese la url de los APIs services">
+                            Text="Ingrese el dominio y el prefijo de la API">
                         </Label>
                         <ActivityIndicator
                             IsRunning="{Binding IsRunning, Mode=TwoWay}">
                         </ActivityIndicator>
-                        <!--<ImageButton
-                                Command="{Binding SaveCommand}"
-                                BackgroundColor="Orange"
-                                CornerRadius="20"
-                                HorizontalOptions="Center"
-                                Source="btnsave"/>-->
                         <Button
                             Command="{Binding SaveCommand}"
                             IsEnabled="{Binding IsEnabled, Mode=TwoWay}"

@@ -1,13 +1,17 @@
-﻿using System;
+﻿using AST_ProBatch_Mobile.Services;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        #region Services
+        public ApiService apiService = new ApiService();
+        public DataHelper dbHelper = new DataHelper();
+        #endregion
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

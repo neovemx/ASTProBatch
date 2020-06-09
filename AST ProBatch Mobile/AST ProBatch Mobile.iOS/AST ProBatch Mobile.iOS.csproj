@@ -61,12 +61,16 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Implementations\Toast_IOS.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CustomFrameRender.cs" />
     <Compile Include="Renderers\CustomLabelRender.cs" />
+    <Compile Include="Services\iOSSQLitePlatform.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,6 +129,18 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs">
+      <Version>7.1.0.442</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.6.292</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Connectivity">
+      <Version>3.2.0</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
@@ -434,5 +450,341 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\state_pause%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\view_b%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\view_b%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\view_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\view_a%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\view_a%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\view_a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\uncheck%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\uncheck%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\uncheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ne%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_fe_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_fe_red%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_fe_red%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ne%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ec_orange%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ec_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ec_orange%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_a%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_a%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save_item%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save_item%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\new_item%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\new_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\new_item%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_item%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_item%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_page%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\btnsubmf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\btnsubmf%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\btnsubmf%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\btnsubmg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\btnsubmg%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\btnsubmg%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_page%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\btnfingerprint%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\btnfingerprint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\btnfingerprint%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rv%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ac.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ac%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ac%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ap%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ap%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_co.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_co%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_co%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dc%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dc%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dl%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dl%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dp%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dt%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_dt%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ej.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ej%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ej%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_fl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_fl%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_fl%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_he.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_he%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_he%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ic%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ic%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_kl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_kl%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_kl%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_nt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_nt%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_nt%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ob.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ob%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_ob%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_om.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_om%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_om%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_pr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_pr%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_pr%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rc%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rc%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rl%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rl%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rm%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rm%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rp%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rpl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rpl%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rpl%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_rv%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\about%402x.png" />
   </ItemGroup>
 </Project>

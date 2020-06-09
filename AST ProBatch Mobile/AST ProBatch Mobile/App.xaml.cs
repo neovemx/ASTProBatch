@@ -11,7 +11,8 @@ namespace AST_ProBatch_Mobile
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new LoginPage());
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

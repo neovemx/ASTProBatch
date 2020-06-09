@@ -1,4 +1,5 @@
-﻿using AST_ProBatch_Mobile.Models;
+﻿using Acr.UserDialogs;
+using AST_ProBatch_Mobile.Models;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
@@ -17,7 +18,6 @@ namespace AST_ProBatch_Mobile.ViewModels
         private string checkicon;
         private string viewicon;
         private bool isrefreshing;
-        private bool isloadingdata;
         private bool compactviewisvisible;
         private bool fullviewisvisible;
         #endregion
@@ -59,12 +59,6 @@ namespace AST_ProBatch_Mobile.ViewModels
             set { SetValue(ref isrefreshing, value); }
         }
 
-        public bool IsLoadingData
-        {
-            get { return isloadingdata; }
-            set { SetValue(ref isloadingdata, value); }
-        }
-
         public bool FullViewIsVisible
         {
             get { return fullviewisvisible; }
@@ -88,6 +82,177 @@ namespace AST_ProBatch_Mobile.ViewModels
             FullViewIsVisible = true;
             CompactViewIsVisible = false;
 
+            GetFakeData();
+        }
+        #endregion
+
+        #region Commands
+        public ICommand ActionsCommand
+        {
+            get
+            {
+                return new RelayCommand(Actions);
+            }
+        }
+
+        private async void Actions()
+        {
+            int countItems = 0;
+            foreach (InstanceItem item in InstanceItems)
+            {
+                if (item.IsChecked) { countItems += 1; }
+            }
+            if (countItems <= 1)
+            {
+                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más instancias", "Aceptar");
+                return;
+            }
+            if (ToolBarIsVisible)
+            {
+                ToolBarIsVisible = false;
+            }
+            else
+            {
+                ToolBarIsVisible = true;
+            }
+        }
+
+        public ICommand CheckCommand
+        {
+            get
+            {
+                return new RelayCommand(Check);
+            }
+        }
+
+        private async void Check()
+        {
+            try
+            {
+                if (string.CompareOrdinal(CheckIcon, "check") == 0)
+                {
+                    UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                    await Task.Delay(1000);
+
+                    await Task.Run(async () =>
+                    {
+                        var InstanceItemsTemp = InstanceItems;
+                        InstanceItems = new ObservableCollection<InstanceItem>();
+                        foreach (InstanceItem item in InstanceItemsTemp)
+                        {
+                            item.IsChecked = true;
+                            item.IsEnabled = false;
+                            InstanceItems.Add(item);
+                        }
+                        ToolBarIsVisible = true;
+                        CheckIcon = "uncheck";
+
+                        UserDialogs.Instance.HideLoading();
+                    });
+                }
+                else
+                {
+                    UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                    await Task.Delay(1000);
+
+                    await Task.Run(async () =>
+                    {
+                        var InstanceItemsTemp = InstanceItems;
+                        InstanceItems = new ObservableCollection<InstanceItem>();
+                        foreach (InstanceItem item in InstanceItemsTemp)
+                        {
+                            item.IsChecked = false;
+                            item.IsEnabled = true;
+                            InstanceItems.Add(item);
+                        }
+                        ToolBarIsVisible = false;
+                        CheckIcon = "check";
+
+                        UserDialogs.Instance.HideLoading();
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                UserDialogs.Instance.HideLoading();
+            }
+
+        }
+
+        public ICommand ViewCommand
+        {
+            get
+            {
+                return new RelayCommand(View);
+            }
+        }
+
+        private async void View()
+        {
+            try
+            {
+                if (FullViewIsVisible)
+                {
+                    UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                    await Task.Run(async () =>
+                    {
+                        var InstanceItemsTemp = InstanceItems;
+                        InstanceItems = new ObservableCollection<InstanceItem>();
+                        foreach (InstanceItem item in InstanceItemsTemp)
+                        {
+                            item.IsChecked = false;
+                            item.IsEnabled = true;
+                            InstanceItems.Add(item);
+                        }
+                        FullViewIsVisible = false;
+                        CompactViewIsVisible = true;
+                        ViewIcon = "view_a";
+                        ToolBarIsVisible = false;
+                        CheckIcon = "check";
+
+                        UserDialogs.Instance.HideLoading();
+                    });
+                }
+                else
+                {
+                    UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                    await Task.Run(async () =>
+                    {
+                        var InstanceItemsTemp = InstanceItems;
+                        InstanceItems = new ObservableCollection<InstanceItem>();
+                        foreach (InstanceItem item in InstanceItemsTemp)
+                        {
+                            item.IsChecked = false;
+                            item.IsEnabled = true;
+                            InstanceItems.Add(item);
+                        }
+                        FullViewIsVisible = true;
+                        CompactViewIsVisible = false;
+                        ViewIcon = "view_b";
+                        ToolBarIsVisible = false;
+                        CheckIcon = "check";
+
+                        UserDialogs.Instance.HideLoading();
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                UserDialogs.Instance.HideLoading();
+            }
+
+        }
+        #endregion
+
+        #region FakeData
+        private void GetFakeData()
+        {
             InstanceItems = new ObservableCollection<InstanceItem>();
             InstanceItem instanceItem;
 
@@ -140,144 +305,6 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.State = "state_om";
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             InstanceItems.Add(instanceItem);
-        }
-        #endregion
-
-        #region Commands
-        public ICommand ActionsCommand
-        {
-            get
-            {
-                return new RelayCommand(Actions);
-            }
-        }
-
-        private async void Actions()
-        {
-            int countItems = 0;
-            foreach (InstanceItem item in InstanceItems)
-            {
-                if (item.IsChecked) { countItems += 1; }
-            }
-            if (countItems <= 1)
-            {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más instancias", "Aceptar");
-                return;
-            }
-            if (ToolBarIsVisible)
-            {
-                ToolBarIsVisible = false;
-            }
-            else
-            {
-                ToolBarIsVisible = true;
-            }
-        }
-
-        public ICommand CheckCommand
-        {
-            get
-            {
-                return new RelayCommand(Check);
-            }
-        }
-
-        private async void Check()
-        {
-            if (string.CompareOrdinal(CheckIcon, "check") == 0)
-            {
-                IsLoadingData = true;
-                await Task.Delay(1000);
-                await Task.Run(async () =>
-                {
-                    var InstanceItemsTemp = InstanceItems;
-                    InstanceItems = new ObservableCollection<InstanceItem>();
-                    foreach (InstanceItem item in InstanceItemsTemp)
-                    {
-                        item.IsChecked = true;
-                        item.IsEnabled = false;
-                        InstanceItems.Add(item);
-                    }
-                    IsLoadingData = false;
-                    ToolBarIsVisible = true;
-                    CheckIcon = "uncheck";
-                });
-            }
-            else
-            {
-                IsLoadingData = true;
-                await Task.Delay(1000);
-                await Task.Run(async () =>
-                {
-                    var InstanceItemsTemp = InstanceItems;
-                    InstanceItems = new ObservableCollection<InstanceItem>();
-                    foreach (InstanceItem item in InstanceItemsTemp)
-                    {
-                        item.IsChecked = false;
-                        item.IsEnabled = true;
-                        InstanceItems.Add(item);
-                    }
-                    IsLoadingData = false;
-                    ToolBarIsVisible = false;
-                    CheckIcon = "check";
-                });
-            }
-        }
-
-        public ICommand ViewCommand
-        {
-            get
-            {
-                return new RelayCommand(View);
-            }
-        }
-
-        private async void View()
-        {
-            if (FullViewIsVisible)
-            {
-                IsLoadingData = true;
-                //await Task.Delay(1000);
-                await Task.Run(async () =>
-                {
-                    var InstanceItemsTemp = InstanceItems;
-                    InstanceItems = new ObservableCollection<InstanceItem>();
-                    foreach (InstanceItem item in InstanceItemsTemp)
-                    {
-                        item.IsChecked = false;
-                        item.IsEnabled = true;
-                        InstanceItems.Add(item);
-                    }
-                    FullViewIsVisible = false;
-                    CompactViewIsVisible = true;
-                    ViewIcon = "view_a";
-                    IsLoadingData = false;
-                    ToolBarIsVisible = false;
-                    CheckIcon = "check";
-                });
-            }
-            else
-            {
-                IsLoadingData = true;
-                //await Task.Delay(1000);
-                await Task.Run(async () =>
-                {
-                    var InstanceItemsTemp = InstanceItems;
-                    InstanceItems = new ObservableCollection<InstanceItem>();
-                    foreach (InstanceItem item in InstanceItemsTemp)
-                    {
-                        item.IsChecked = false;
-                        item.IsEnabled = true;
-                        InstanceItems.Add(item);
-                    }
-                    FullViewIsVisible = true;
-                    CompactViewIsVisible = false;
-                    ViewIcon = "view_b";
-                    IsLoadingData = false;
-                    ToolBarIsVisible = false;
-                    CheckIcon = "check";
-                });
-            }
         }
         #endregion
     }

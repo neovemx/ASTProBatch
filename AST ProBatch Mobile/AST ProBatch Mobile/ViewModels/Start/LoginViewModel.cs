@@ -1,9 +1,13 @@
-﻿using AST_ProBatch_Mobile.Interfaces;
+﻿using Acr.UserDialogs;
+using AST_ProBatch_Mobile.Interfaces;
+using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Views;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
+using Plugin.Fingerprint;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -14,9 +18,15 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Atributes
         private string username;
         private string password;
-        private bool isrunning;
-        private bool isenabled;
-        private string _passwordTemp;
+        private PbUser pbuser;
+        private string urldomain;
+        private string urlprefix;
+        private bool ischecked;
+        private bool isvisiblelogin;
+        private bool isvisiblefingerprint;
+        private bool isfingerprintavailable;
+        public bool uiisvisible;
+        public bool uierrorisvisible;
         #endregion
 
         #region Properties
@@ -30,25 +40,92 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return password; }
             set { SetValue(ref password, value); }
         }
-        public bool IsRunning
+        public PbUser PbUser
         {
-            get { return isrunning; }
-            set { SetValue(ref isrunning, value); }
+            get { return pbuser; }
+            set { SetValue(ref pbuser, value); }
         }
-        public bool IsEnabled
+        public bool UIIsVisible
         {
-            get { return isenabled; }
-            set { SetValue(ref isenabled, value); }
+            get { return uiisvisible; }
+            set { SetValue(ref uiisvisible, value); }
+        }
+        public bool UIErrorIsVisible
+        {
+            get { return uierrorisvisible; }
+            set { SetValue(ref uierrorisvisible, value); }
+        }
+        public string UrlDomain
+        {
+            get { return urldomain; }
+            set { SetValue(ref urldomain, value); }
+        }
+        public string UrlPrefix
+        {
+            get { return urlprefix; }
+            set { SetValue(ref urlprefix, value); }
+        }
+        public bool IsChecked
+        {
+            get { return ischecked; }
+            set { SetValue(ref ischecked, value); }
+        }
+
+        public bool IsVisibleLogin
+        {
+            get { return isvisiblelogin; }
+            set { SetValue(ref isvisiblelogin, value); }
+        }
+        public bool IsVisibleFingerPrint
+        {
+            get { return isvisiblefingerprint; }
+            set { SetValue(ref isvisiblefingerprint, value); }
+        }
+        public bool IsFingerPrintAvailable
+        {
+            get { return isfingerprintavailable; }
+            set { SetValue(ref isfingerprintavailable, value); }
         }
         #endregion
 
         #region Constructors
-        public LoginViewModel()
+        public LoginViewModel(InitialLoad initialLoad, Table_Config table_Config)
         {
-            this.IsEnabled = true;
-            this.Username = "ADMINISTRADOR";
-            this.Password = "accusys123*";
-            this._passwordTemp = "accusys123*";
+            GetFingerPrintAvailable();
+
+            if (initialLoad.IsSuccess)
+            {
+                if (initialLoad.HasConfigData)
+                {
+                    #region Set UI & Global Data
+                    this.UIIsVisible = true;
+                    this.UIErrorIsVisible = false;
+                    this.IsChecked = table_Config.FingerPrintAllow;
+                    this.UrlDomain = table_Config.UrlDomain;
+                    this.UrlPrefix = table_Config.UrlPrefix;
+                    #endregion
+
+                    if (IsChecked)
+                    {
+                        this.IsVisibleFingerPrint = true;
+                        this.IsVisibleLogin = false;
+                    }
+                    else
+                    {
+                        this.IsVisibleFingerPrint = false;
+                        this.IsVisibleLogin = true;
+                    }
+                }
+                else
+                {
+                    UserDialogs.Instance.Alert("Aplicación sin configuración!", "AST●ProBatch®");
+                }
+            }
+            else
+            {
+                this.UIIsVisible = false;
+                this.UIErrorIsVisible = true;
+            }
         }
         #endregion
 
@@ -63,7 +140,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Settings()
         {
-            MainViewModel.GetInstance().Login = new LoginViewModel();
+            MainViewModel.GetInstance().Settings = new SettingsViewModel(this.UrlDomain, this.UrlPrefix, this.IsChecked);
             await Application.Current.MainPage.Navigation.PushModalAsync(new SettingsPage());
         }
 
@@ -89,26 +166,307 @@ namespace AST_ProBatch_Mobile.ViewModels
                 return;
             }
 
-            this.IsRunning = true;
-            this.IsEnabled = false;
-
-            //TODO: Validacion de credenciales al web services va aquí
-            if (string.CompareOrdinal(this.Password, this._passwordTemp) != 0)
+            if (IsChecked)
             {
-                this.IsRunning = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Usuario y/o Password incorrectos", "Aceptar");
-                this.Username = string.Empty;
-                this.Password = string.Empty;
+                if (!IsFingerPrintAvailable)
+                {
+                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Sensor de huella no disponible o no configurado.", "Aceptar");
+                    IsChecked = false;
+                    return;
+                }
+                else
+                {
+                    var result = await CrossFingerprint.Current.AuthenticateAsync("Toque el sensor");
+                    if (!result.Authenticated)
+                    {
+                        this.Username = string.Empty;
+                        this.Password = string.Empty;
+                        IsChecked = false;
+                        return;
+                    }
+                }
+            }
+
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                if (!await RefreshAppConfig())
+                {
+                    UserDialogs.Instance.HideLoading();
+                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Error en configuración", "Aceptar");
+                    return;
+                }
+
+                Response resultInternet = await CheckConnection();
+
+                if (!resultInternet.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultInternet.Message, "Aceptar");
+                    return;
+                }
+
+                Response resultToken = await GetToken();
+
+                if (!resultToken.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultToken.Message, "Aceptar");
+                    return;
+                }
+                else
+                {
+                    Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                    LoginPb loginPb = new LoginPb { Username = this.Username, Password = this.Password };
+                    Response resultLoginProbatch = await AuthenticateProbath(token.Key, loginPb);
+                    if (!resultLoginProbatch.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultLoginProbatch.Message, "Aceptar");
+                        return;
+                    }
+                    else
+                    {
+                        PbUser = JsonConvert.DeserializeObject<PbUser>(Crypto.DecodeString(resultLoginProbatch.Data));
+                        if (!PbUser.IsValid)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Usuario y/o Password incorrectos", "Aceptar");
+                            return;
+                        }
+                        else
+                        {
+                            if (IsChecked)
+                            {
+                                Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = this.IsChecked };
+                                if (!await dbHelper.PullAsyncAppConfig(table_Config))
+                                {
+                                    UserDialogs.Instance.HideLoading();
+                                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                    return;
+                                }
+                                else
+                                {
+                                    Table_User table_User = new Table_User { Id = 1, Username = Crypto.EncryptString(this.Username), Password = Crypto.EncryptString(this.Password) };
+                                    if (!await dbHelper.PullAsyncProbatchCredentials(table_User))
+                                    {
+                                        UserDialogs.Instance.HideLoading();
+                                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        IsVisibleLogin = false;
+                                        IsVisibleFingerPrint = true;
+                                    }
+                                }
+                            }
+
+                            UserDialogs.Instance.HideLoading();
+                            DependencyService.Get<Toast>().Show("Bienvenido: " + PbUser.UserName + "!");
+                            this.Username = string.Empty;
+                            this.Password = string.Empty;
+                            MainViewModel.GetInstance().Home = new HomeViewModel();
+                            Application.Current.MainPage = new NavigationPage(new HomePage());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error.", "Aceptar");
                 return;
             }
-            this.IsRunning = false;
-            this.IsEnabled = true;
-            DependencyService.Get<Toast>().Show("Bienvenido: " + this.Username + "!");
-            this.Username = string.Empty;
-            this.Password = string.Empty;
-            MainViewModel.GetInstance().Login = new LoginViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
+        }
+
+        public ICommand FingerPrintCommand
+        {
+            get
+            {
+                return new RelayCommand(FingerPrint);
+            }
+        }
+
+        private async void FingerPrint()
+        {
+            try
+            {
+                var result = await CrossFingerprint.Current.AuthenticateAsync("Toque el sensor");
+                if (!result.Authenticated)
+                {
+                    return;
+                }
+
+                UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                if (!await RefreshAppConfig())
+                {
+                    UserDialogs.Instance.HideLoading();
+                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Error en configuración", "Aceptar");
+                    return;
+                }
+
+                Table_User tableUserFingerPrint = await dbHelper.GetAsyncProbatchCredentials();
+                if (tableUserFingerPrint == null)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo obtener las credenciales de ProBatch", "Aceptar");
+                    return;
+                }
+
+                try
+                {
+                    Response resultInternet = await CheckConnection();
+
+                    if (!resultInternet.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultInternet.Message, "Aceptar");
+                        return;
+                    }
+
+                    Response resultToken = await GetToken();
+
+                    if (!resultToken.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultToken.Message, "Aceptar");
+                        return;
+                    }
+                    else
+                    {
+                        Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                        LoginPb loginPb = new LoginPb { Username = Crypto.DecodeString(tableUserFingerPrint.Username), Password = Crypto.DecodeString(tableUserFingerPrint.Password) };
+                        Response resultLoginProbatch = await AuthenticateProbath(token.Key, loginPb);
+                        if (!resultLoginProbatch.IsSuccess)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultLoginProbatch.Message, "Aceptar");
+                            return;
+                        }
+                        else
+                        {
+                            PbUser = JsonConvert.DeserializeObject<PbUser>(Crypto.DecodeString(resultLoginProbatch.Data));
+                            if (!PbUser.IsValid)
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                bool deleteFingerPrintRegister = await UserDialogs.Instance.ConfirmAsync("Credenciales inválidas, deseas eliminar el registro biométrico?", "AST●ProBatch®", "Si", "No");
+                                if (deleteFingerPrintRegister)
+                                {
+                                    IsChecked = false;
+                                    Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = IsChecked };
+                                    if (!await dbHelper.PullAsyncAppConfig(table_Config))
+                                    {
+                                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        Table_User table_User = new Table_User { Id = 1, Username = string.Empty, Password = string.Empty };
+                                        if (!await dbHelper.PullAsyncProbatchCredentials(table_User))
+                                        {
+                                            await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                            return;
+                                        }
+                                        else
+                                        {
+                                            IsVisibleLogin = true;
+                                            IsVisibleFingerPrint = false;
+                                        }
+                                    }
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                if (!IsChecked)
+                                {
+                                    Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = this.IsChecked };
+                                    if (!await dbHelper.PullAsyncAppConfig(table_Config))
+                                    {
+                                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        Table_User table_User = new Table_User { Id = 1, Username = string.Empty, Password = string.Empty };
+                                        if (!await dbHelper.PullAsyncProbatchCredentials(table_User))
+                                        {
+                                            await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                            return;
+                                        }
+                                        else
+                                        {
+                                            IsVisibleLogin = true;
+                                            IsVisibleFingerPrint = false;
+                                        }
+                                    }
+                                }
+
+                                UserDialogs.Instance.HideLoading();
+                                DependencyService.Get<Toast>().Show("Bienvenido: " + PbUser.UserName + "!");
+                                this.Username = string.Empty;
+                                this.Password = string.Empty;
+                                MainViewModel.GetInstance().Home = new HomeViewModel();
+                                Application.Current.MainPage = new NavigationPage(new HomePage());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error.", "Aceptar");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialogs.Instance.Alert("Ocurrió un error datos locales.", "AST●ProBatch®");
+                return;
+            }
+        }
+        #endregion
+
+        #region Methods
+        private async Task<Response> CheckConnection()
+        {
+            return await this.apiService.CheckConnection();
+        }
+
+        private async Task<Response> GetToken()
+        {
+            return await this.apiService.GetToken(this.UrlDomain, this.UrlPrefix);
+        }
+
+        private async Task<Response> AuthenticateProbath(string accessToken, LoginPb loginPb)
+        {
+            return await this.apiService.AuthenticateProbath(accessToken, this.UrlDomain, this.UrlPrefix, loginPb);
+        }
+        #endregion
+
+        #region Helpers
+        private async Task<bool> RefreshAppConfig()
+        {
+            Table_Config table_Config = await dbHelper.GetAsyncAppConfig();
+            if (table_Config != null)
+            {
+                this.UrlDomain = table_Config.UrlDomain;
+                this.UrlPrefix = table_Config.UrlPrefix;
+                //this.IsChecked = table_Config.FingerPrintAllow;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private async void GetFingerPrintAvailable()
+        {
+            IsFingerPrintAvailable = await CrossFingerprint.Current.IsAvailableAsync();
         }
         #endregion
     }

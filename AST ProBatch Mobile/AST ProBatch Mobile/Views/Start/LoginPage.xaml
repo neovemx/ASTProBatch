@@ -6,19 +6,28 @@
              mc:Ignorable="d"
              x:Class="AST_ProBatch_Mobile.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="AUTENTICACIÓN"
              BackgroundColor="#262626">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem BindingContext="{Binding Login}" Text="Settings"  Icon="settings" Command="{Binding SettingsCommand}" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Login}">
-            <ScrollView>
+            <StackLayout
+                IsVisible="{Binding UIIsVisible}"
+                Padding="0,10,10,0"
+                Orientation="Horizontal">
+                <ImageButton 
+                    HorizontalOptions="EndAndExpand"
+                    Command="{Binding SettingsCommand}"
+                    BackgroundColor="Transparent"
+                    Source="settings"/>
+            </StackLayout>
+            <ScrollView
+                IsVisible="{Binding UIIsVisible}"
+                VerticalOptions="FillAndExpand">
                 <StackLayout
-                    HorizontalOptions="Center">
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
                     <StackLayout
-                        Padding="0,50,0,50">
+                        Padding="0,0,0,50">
                         <Image
                             Source="login">
                         </Image>
@@ -31,6 +40,7 @@
                         </Label>
                     </StackLayout>
                     <StackLayout
+                        IsVisible="{Binding IsVisibleLogin}"
                         WidthRequest="300">
                         <Entry
                             Text="{Binding Username, Mode=TwoWay}"
@@ -48,19 +58,32 @@
                             HorizontalTextAlignment="Center">
                         </Entry>
                     </StackLayout>
-                    <StackLayout>
-                        <ActivityIndicator
-                            IsRunning="{Binding IsRunning, Mode=TwoWay}">
-                        </ActivityIndicator>
-                        <!--<ImageButton
-                            Command="{Binding LoginCommand}"
+                    <AbsoluteLayout
+                        HorizontalOptions="Center"
+                        Padding="0,0,0,30"
+                        IsVisible="{Binding IsVisibleFingerPrint}">
+                        <ImageButton 
+                            CornerRadius="70"
                             BackgroundColor="Orange"
-                            CornerRadius="20"
-                            HorizontalOptions="Center"
-                            Source="btnlogin"/>-->
+                            Source="btnfingerprint"
+                            Command="{Binding FingerPrintCommand}"/>
+                    </AbsoluteLayout>
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center">
+                        <CheckBox 
+                            VerticalOptions="Center"
+                            IsChecked="{Binding IsChecked, Mode=TwoWay}"/>
+                        <Label 
+                            TextColor="Orange"
+                            VerticalOptions="Center"
+                            Text="Autenticación Biométrica"/>
+                    </StackLayout>
+                    <StackLayout
+                        IsVisible="{Binding IsVisibleLogin}"
+                        Padding="0,20,0,0">
                         <Button
                             Command="{Binding LoginCommand}"
-                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             CornerRadius="23"
                             HeightRequest="46"
                             BackgroundColor="Orange"
@@ -69,17 +92,19 @@
                             FontAttributes="Bold">
                         </Button>
                     </StackLayout>
-                    <!--<StackLayout VerticalOptions="EndAndExpand">
-                        <Label 
-                            Text="AST●ProBatch® Workload Automation 2020"
-                            HorizontalTextAlignment="Center"
-                            FontSize="Small"
-                            FontAttributes="Bold"
-                            TextColor="Gray"/>
-                    </StackLayout>-->
                 </StackLayout>
             </ScrollView>
-            <StackLayout VerticalOptions="EndAndExpand">
+            <StackLayout
+                IsVisible="{Binding UIErrorIsVisible}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center">
+                <Label 
+                    TextColor="White"
+                    FontSize="Large"
+                    Text="APPLICATION DATA ERROR!"/>
+            </StackLayout>
+            <StackLayout 
+                VerticalOptions="End">
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"

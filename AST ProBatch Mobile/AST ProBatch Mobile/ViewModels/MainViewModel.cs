@@ -1,7 +1,5 @@
 ﻿using AST_ProBatch_Mobile.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using AST_ProBatch_Mobile.Services;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
@@ -22,6 +20,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public ProcessMonitorViewModel ProcessMonitor { get; set; }
         public RecurrenceMonitorViewModel RecurrenceMonitor { get; set; }
         public StatusInfoViewModel StatusInfo { get; set; }
+        public StatusInfoPlannerViewModel StatusInfoPlanner { get; set; }
         public NotificationsViewModel Notifications { get; set; }
         public InstanceNotificationsViewModel InstanceNotifications { get; set; }
         public MonitoringViewModel Monitoring { get; set; }
@@ -30,15 +29,37 @@ namespace AST_ProBatch_Mobile.ViewModels
         public ExecutionStageThreeViewModel ExecutionStageThree { get; set; }
         public CommandNotificationsViewModel CommandNotifications { get; set; }
         public LogObservationsViewModel LogObservations { get; set; }
+        public OperatorChangeViewModel OperatorChange { get; set; }
         #endregion
 
         #region Constructors
         public MainViewModel()
         {
             instance = this;
-            this.Login = new LoginViewModel();
+            InitialLoad initialLoad = new InitialLoad();
+            DataHelper dbHelper = new DataHelper();
+            Table_Config table_Config = null;
+            if (!dbHelper.CreateTablesAndInitialData())
+            {
+                initialLoad.IsSuccess = false;
+            }
+            else
+            {
+                initialLoad.IsSuccess = true;
+                table_Config = dbHelper.GetAppConfig();
+                if (table_Config != null)
+                {
+                    initialLoad.HasConfigData = true;
+                }
+                else
+                {
+                    initialLoad.HasConfigData = false;
+                }
+            }
+
+            this.Login = new LoginViewModel(initialLoad, table_Config);
             this.Home = new HomeViewModel();
-            this.Settings = new SettingsViewModel();
+            this.Settings = new SettingsViewModel(string.Empty, string.Empty, false);
             this.StatisticalReportsMenu = new StatisticalReportsMenuViewModel();
             this.About = new AboutViewModel();
             this.CommandBatch = new CommandBatchViewModel();
@@ -50,6 +71,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.ProcessMonitor = new ProcessMonitorViewModel();
             this.RecurrenceMonitor = new RecurrenceMonitorViewModel();
             this.StatusInfo = new StatusInfoViewModel();
+            this.StatusInfoPlanner = new StatusInfoPlannerViewModel();
             this.Notifications = new NotificationsViewModel(new Models.LogItem());
             this.InstanceNotifications = new InstanceNotificationsViewModel(new Models.InstanceItem());
             this.Monitoring = new MonitoringViewModel();
@@ -58,6 +80,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.ExecutionStageThree = new ExecutionStageThreeViewModel(new Models.InstanceItem());
             this.CommandNotifications = new CommandNotificationsViewModel(new Models.CommandItem());
             this.LogObservations = new LogObservationsViewModel(new Models.LogItem());
+            this.OperatorChange = new OperatorChangeViewModel(new Models.LogItem());
         }
         #endregion
 

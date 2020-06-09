@@ -1,4 +1,5 @@
-﻿using AST_ProBatch_Mobile.Models;
+﻿using Acr.UserDialogs;
+using AST_ProBatch_Mobile.Models;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
@@ -16,8 +17,6 @@ namespace AST_ProBatch_Mobile.ViewModels
         private string actionicon;
         private string checkicon;
         private string viewicon;
-        private bool isrefreshing;
-        private bool isloadingdata;
         private bool compactviewisvisible;
         private bool fullviewisvisible;
         #endregion
@@ -53,18 +52,6 @@ namespace AST_ProBatch_Mobile.ViewModels
             set { SetValue(ref viewicon, value); }
         }
 
-        public bool IsRefreshing
-        {
-            get { return isrefreshing; }
-            set { SetValue(ref isrefreshing, value); }
-        }
-
-        public bool IsLoadingData
-        {
-            get { return isloadingdata; }
-            set { SetValue(ref isloadingdata, value); }
-        }
-
         public bool FullViewIsVisible
         {
             get { return fullviewisvisible; }
@@ -88,63 +75,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             FullViewIsVisible = true;
             CompactViewIsVisible = false;
 
-            LogItems = new ObservableCollection<LogItem>();
-            LogItem logItem;
-
-            logItem = new LogItem();
-            logItem.Id = 1;
-            logItem.IsChecked = false;
-            logItem.IsEnabled = true;
-            logItem.Title = "BITACORA 1";
-            logItem.Notifications = "notification";
-            logItem.State = "state_e_green";
-            logItem.Environment = "WINDOWS";
-            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            LogItems.Add(logItem);
-
-            logItem = new LogItem();
-            logItem.Id = 2;
-            logItem.IsChecked = false;
-            logItem.IsEnabled = true;
-            logItem.Title = "BITACORA 2";
-            logItem.Notifications = "notification";
-            logItem.State = "state_ed_orange";
-            logItem.Environment = "WINDOWS";
-            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            LogItems.Add(logItem);
-
-            logItem = new LogItem();
-            logItem.Id = 3;
-            logItem.IsChecked = false;
-            logItem.IsEnabled = true;
-            logItem.Title = "BITACORA 3";
-            logItem.Notifications = "notification_n";
-            logItem.State = "state_f";
-            logItem.Environment = "WINDOWS";
-            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            LogItems.Add(logItem);
-
-            logItem = new LogItem();
-            logItem.Id = 4;
-            logItem.IsChecked = false;
-            logItem.IsEnabled = true;
-            logItem.Title = "BITACORA 4";
-            logItem.Notifications = "notification_n";
-            logItem.State = "state_pause";
-            logItem.Environment = "WINDOWS";
-            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            LogItems.Add(logItem);
-
-            logItem = new LogItem();
-            logItem.Id = 5;
-            logItem.IsChecked = false;
-            logItem.IsEnabled = true;
-            logItem.Title = "BITACORA 5";
-            logItem.Notifications = "notification";
-            logItem.State = "state_om";
-            logItem.Environment = "WINDOWS";
-            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            LogItems.Add(logItem);
+            GetFakeData();
         }
         #endregion
 
@@ -189,44 +120,59 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Check()
         {
-            if (string.CompareOrdinal(CheckIcon, "check") == 0)
+            try
             {
-                IsLoadingData = true;
-                await Task.Delay(1000);
-                await Task.Run(async () =>
+                if (string.CompareOrdinal(CheckIcon, "check") == 0)
                 {
-                    var LogItemsTemp = LogItems;
-                    LogItems = new ObservableCollection<LogItem>();
-                    foreach (LogItem item in LogItemsTemp)
+                    UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                    await Task.Delay(1000);
+
+                    await Task.Run(async () =>
                     {
-                        item.IsChecked = true;
-                        item.IsEnabled = false;
-                        LogItems.Add(item);
-                    }
-                    IsLoadingData = false;
-                    ToolBarIsVisible = true;
-                    CheckIcon = "uncheck";
-                });
+                        var LogItemsTemp = LogItems;
+                        LogItems = new ObservableCollection<LogItem>();
+                        foreach (LogItem item in LogItemsTemp)
+                        {
+                            item.IsChecked = true;
+                            item.IsEnabled = false;
+                            LogItems.Add(item);
+                        }
+                        ToolBarIsVisible = true;
+                        CheckIcon = "uncheck";
+
+                        UserDialogs.Instance.HideLoading();
+                    });
+                }
+                else
+                {
+                    UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                    await Task.Delay(1000);
+
+                    await Task.Run(async () =>
+                    {
+                        var LogItemsTemp = LogItems;
+                        LogItems = new ObservableCollection<LogItem>();
+                        foreach (LogItem item in LogItemsTemp)
+                        {
+                            item.IsChecked = false;
+                            item.IsEnabled = true;
+                            LogItems.Add(item);
+                        }
+                        ToolBarIsVisible = false;
+                        CheckIcon = "check";
+
+                        UserDialogs.Instance.HideLoading();
+                    });
+                }
             }
-            else
+            catch (Exception ex)
             {
-                IsLoadingData = true;
-                await Task.Delay(1000);
-                await Task.Run(async () =>
-                {
-                    var LogItemsTemp = LogItems;
-                    LogItems = new ObservableCollection<LogItem>();
-                    foreach (LogItem item in LogItemsTemp)
-                    {
-                        item.IsChecked = false;
-                        item.IsEnabled = true;
-                        LogItems.Add(item);
-                    }
-                    IsLoadingData = false;
-                    ToolBarIsVisible = false;
-                    CheckIcon = "check";
-                });
+                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                UserDialogs.Instance.HideLoading();
             }
+
         }
 
         public ICommand ViewCommand
@@ -239,50 +185,129 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void View()
         {
-            if (FullViewIsVisible)
+            try
             {
-                IsLoadingData = true;
-                //await Task.Delay(1000);
-                await Task.Run(async () =>
+                if (FullViewIsVisible)
                 {
-                    var LogItemsTemp = LogItems;
-                    LogItems = new ObservableCollection<LogItem>();
-                    foreach (LogItem item in LogItemsTemp)
+                    UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                    await Task.Run(async () =>
                     {
-                        item.IsChecked = false;
-                        item.IsEnabled = true;
-                        LogItems.Add(item);
-                    }
-                    FullViewIsVisible = false;
-                    CompactViewIsVisible = true;
-                    ViewIcon = "view_a";
-                    IsLoadingData = false;
-                    ToolBarIsVisible = false;
-                    CheckIcon = "check";
-                });
+                        var LogItemsTemp = LogItems;
+                        LogItems = new ObservableCollection<LogItem>();
+                        foreach (LogItem item in LogItemsTemp)
+                        {
+                            item.IsChecked = false;
+                            item.IsEnabled = true;
+                            LogItems.Add(item);
+                        }
+                        FullViewIsVisible = false;
+                        CompactViewIsVisible = true;
+                        ViewIcon = "view_a";
+                        ToolBarIsVisible = false;
+                        CheckIcon = "check";
+
+                        UserDialogs.Instance.HideLoading();
+                    });
+                }
+                else
+                {
+                    UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+
+                    await Task.Run(async () =>
+                    {
+                        var LogItemsTemp = LogItems;
+                        LogItems = new ObservableCollection<LogItem>();
+                        foreach (LogItem item in LogItemsTemp)
+                        {
+                            item.IsChecked = false;
+                            item.IsEnabled = true;
+                            LogItems.Add(item);
+                        }
+                        FullViewIsVisible = true;
+                        CompactViewIsVisible = false;
+                        ViewIcon = "view_b";
+                        ToolBarIsVisible = false;
+                        CheckIcon = "check";
+
+                        UserDialogs.Instance.HideLoading();
+                    });
+                }
             }
-            else
+            catch (Exception ex)
             {
-                IsLoadingData = true;
-                //await Task.Delay(1000);
-                await Task.Run(async () =>
-                {
-                    var LogItemsTemp = LogItems;
-                    LogItems = new ObservableCollection<LogItem>();
-                    foreach (LogItem item in LogItemsTemp)
-                    {
-                        item.IsChecked = false;
-                        item.IsEnabled = true;
-                        LogItems.Add(item);
-                    }
-                    FullViewIsVisible = true;
-                    CompactViewIsVisible = false;
-                    ViewIcon = "view_b";
-                    IsLoadingData = false;
-                    ToolBarIsVisible = false;
-                    CheckIcon = "check";
-                });
+                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                UserDialogs.Instance.HideLoading();
             }
+
+        }
+        #endregion
+
+        #region FakeData
+        private void GetFakeData()
+        {
+            LogItems = new ObservableCollection<LogItem>();
+            LogItem logItem;
+
+            logItem = new LogItem();
+            logItem.Id = 1;
+            logItem.IsChecked = false;
+            logItem.IsEnabled = true;
+            logItem.Title = "BITACORA 1";
+            logItem.Notifications = "notification";
+            logItem.State = "state_e_green";
+            logItem.Environment = "WINDOWS";
+            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            LogItems.Add(logItem);
+
+            logItem = new LogItem();
+            logItem.Id = 2;
+            logItem.IsChecked = false;
+            logItem.IsEnabled = true;
+            logItem.Title = "BITACORA 2";
+            logItem.Notifications = "notification";
+            logItem.State = "state_ed_orange";
+            logItem.Environment = "WINDOWS";
+            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            LogItems.Add(logItem);
+
+            logItem = new LogItem();
+            logItem.Id = 3;
+            logItem.IsChecked = false;
+            logItem.IsEnabled = true;
+            logItem.Title = "BITACORA 3";
+            logItem.Notifications = "notification_n";
+            logItem.State = "state_f";
+            logItem.Environment = "WINDOWS";
+            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            LogItems.Add(logItem);
+
+            logItem = new LogItem();
+            logItem.Id = 4;
+            logItem.IsChecked = false;
+            logItem.IsEnabled = true;
+            logItem.Title = "BITACORA 4";
+            logItem.Notifications = "notification_n";
+            logItem.State = "state_pause";
+            logItem.Environment = "WINDOWS";
+            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            LogItems.Add(logItem);
+
+            logItem = new LogItem();
+            logItem.Id = 5;
+            logItem.IsChecked = false;
+            logItem.IsEnabled = true;
+            logItem.Title = "BITACORA 5";
+            logItem.Notifications = "notification";
+            logItem.State = "state_om";
+            logItem.Environment = "WINDOWS";
+            logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            LogItems.Add(logItem);
         }
         #endregion
     }

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AST_ProBatch_Mobile.Views.StatusInfoPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundColor="LightGray">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding StatusInfo}">
+            <StackLayout
+                BackgroundColor="Orange"
+                Padding="10,10,10,10"
+                Orientation="Horizontal">
+                <Label 
+                    FontSize="Large"
+                    TextColor="White"
+                    Text="Referencias"
+                    HorizontalOptions="FillAndExpand"
+                    LineBreakMode="TailTruncation" />
+                <ImageButton 
+                    HorizontalOptions="End"
+                    Command="{Binding CloseCommand}"
+                    BackgroundColor="Transparent"
+                    Source="close_page"/>
+            </StackLayout>
+            <StackLayout
+                Padding="30,0,30,30">
+                <ListView
+                    VerticalOptions="FillAndExpand"
+                    SelectionMode="None"
+                    ItemsSource="{Binding StateItems}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label 
+                                            FontSize="Medium"
+                                            Text="{Binding Title}"
+                                            TextColor="Black"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <Image 
+                                            Source="{Binding State}"/>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout 
+                VerticalOptions="End">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Small"
+                    FontAttributes="Bold"
+                    TextColor="Gray"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

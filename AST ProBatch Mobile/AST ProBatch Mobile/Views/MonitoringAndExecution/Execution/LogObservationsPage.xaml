@@ -58,7 +58,8 @@
                             TextColor="White"
                             MaxLength="250"
                             IsSpellCheckEnabled="False"
-                            HorizontalOptions="FillAndExpand" />
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="Black"/>
                     </StackLayout>
                     <StackLayout>
                         <Label 
@@ -75,7 +76,8 @@
                             MaxLength="800"
                             Keyboard="Plain"
                             IsSpellCheckEnabled="False"
-                            HeightRequest="180"/>
+                            HeightRequest="180"
+                            BackgroundColor="Black"/>
                     </StackLayout>
                     <StackLayout
                         Orientation="Horizontal">
@@ -110,7 +112,8 @@
                             x:Name="lvObservationItems"
                             HeightRequest="235"
                             ItemsSource="{Binding ObservationItems}"
-                            SelectedItem="{Binding SelectedObservation, Mode=TwoWay}">
+                            SelectedItem="{Binding SelectedObservation, Mode=TwoWay}"
+                            BackgroundColor="DarkGray">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -121,7 +124,7 @@
                                                     VerticalOptions="Center"
                                                     WidthRequest="75">
                                                     <Label 
-                                                        TextColor="White"
+                                                        TextColor="Black"
                                                         Text="{Binding Date}"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -130,7 +133,7 @@
                                                     WidthRequest="120">
                                                     <Label 
                                                         LineBreakMode="TailTruncation"
-                                                        TextColor="White"
+                                                        TextColor="Black"
                                                         Text="{Binding Name}"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -139,7 +142,7 @@
                                                     <Label 
                                                         WidthRequest="110"
                                                         LineBreakMode="TailTruncation"
-                                                        TextColor="White"
+                                                        TextColor="Black"
                                                         Text="{Binding Operator}"/>
                                                 </StackLayout>
                                             </StackLayout>

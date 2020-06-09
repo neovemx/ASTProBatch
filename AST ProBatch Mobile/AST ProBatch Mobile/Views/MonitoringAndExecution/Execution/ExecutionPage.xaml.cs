@@ -55,7 +55,6 @@ namespace AST_ProBatch_Mobile.Views
                     var result = await this.DisplayAlert("AST●ProBatch®", "Deseas detener la: " + logItem.Title + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Deteniendo...");
                 });
-                //Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Detener: " + logItem.Title, "Aceptar");
             }
         }
 
@@ -69,7 +68,6 @@ namespace AST_ProBatch_Mobile.Views
                     var result = await this.DisplayAlert("AST●ProBatch®", "Deseas reliberar la bitácora: " + logItem.Title + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Reliberando...");
                 });
-                //Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Reliberar bitácora: " + logItem.Title, "Aceptar");
             }
         }
 
@@ -83,7 +81,6 @@ namespace AST_ProBatch_Mobile.Views
                     var result = await this.DisplayAlert("AST●ProBatch®", "Deseas reconectar la bitácora: " + logItem.Title + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Reconectando...");
                 });
-                //Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Reconectar: " + logItem.Title, "Aceptar");
             }
         }
 
@@ -93,11 +90,12 @@ namespace AST_ProBatch_Mobile.Views
             var logItem = imageButton.CommandParameter as LogItem;
             if (logItem != null)
             {
-                Device.BeginInvokeOnMainThread(async () => {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas cambiar el operador para la bitácora: " + logItem.Title + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Cambiando operador...");
-                });
-                //Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Cambio de operador para: " + logItem.Title, "Aceptar");
+                MainViewModel.GetInstance().OperatorChange = new  OperatorChangeViewModel(logItem);
+                Application.Current.MainPage.Navigation.PushAsync(new OperatorChangePage());
+                //Device.BeginInvokeOnMainThread(async () => {
+                //    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas cambiar el operador para la bitácora: " + logItem.Title + "?", "Sí", "No");
+                //    if (result) DependencyService.Get<Toast>().Show("Cambiando operador...");
+                //});
             }
         }
 
@@ -108,10 +106,7 @@ namespace AST_ProBatch_Mobile.Views
             if (logItem != null)
             {
                 MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(logItem);
-                //LogObservationsPage logObservationsPage = new LogObservationsPage();
-                //logObservationsPage.Title = logItem.Title;
                 Application.Current.MainPage.Navigation.PushAsync(new LogObservationsPage());
-                //Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Observaciones para: " + logItem.Title, "Aceptar");
             }
         }
 
@@ -145,7 +140,6 @@ namespace AST_ProBatch_Mobile.Views
                     var result = await this.DisplayAlert("AST●ProBatch®", "Deseas ejecutar las: " + logitemcount + " bitácoras seleccionadas?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Ejecutando...");
                 });
-                //Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ejecutar para: " + logitemcount + " Bitacoras seleccionadas.", "Aceptar");
             }
         }
 
@@ -169,7 +163,6 @@ namespace AST_ProBatch_Mobile.Views
                     var result = await this.DisplayAlert("AST●ProBatch®", "Deseas detener las: " + logitemcount + " bitácoras seleccionadas?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Deteniendo...");
                 });
-                //Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Detener para: " + logitemcount + " Bitacoras seleccionadas.", "Aceptar");
             }
         }
 
@@ -193,7 +186,6 @@ namespace AST_ProBatch_Mobile.Views
                     var result = await this.DisplayAlert("AST●ProBatch®", "Deseas reliberar las: " + logitemcount + " bitácoras seleccionadas?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Reliberando...");
                 });
-                //Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Reliberar para: " + logitemcount + " Bitacoras seleccionadas.", "Aceptar");
             }
         }
 
@@ -217,7 +209,6 @@ namespace AST_ProBatch_Mobile.Views
                     var result = await this.DisplayAlert("AST●ProBatch®", "Deseas reconectar las: " + logitemcount + " bitácoras seleccionadas?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Reconectando...");
                 });
-                //Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Reconectar para: " + logitemcount + " Bitacoras seleccionadas.", "Aceptar");
             }
         }
 

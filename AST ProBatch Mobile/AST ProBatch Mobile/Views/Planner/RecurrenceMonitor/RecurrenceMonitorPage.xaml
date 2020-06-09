@@ -4,25 +4,249 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.RecurrenceMonitorPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Monitor de Recurrencias"
              BackgroundColor="#262626">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem BindingContext="{Binding RecurrenceMonitor}" Text="Acciones"  Icon="actions" Command="{Binding ActionsCommand}" />
+        <ToolbarItem BindingContext="{Binding RecurrenceMonitor}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <ScrollView
-                VerticalOptions="FillAndExpand"
-                BindingContext="{Binding RecurrenceMonitor}">
+        <StackLayout
+            BindingContext="{Binding RecurrenceMonitor}">
+            <controls:CustomFrame 
+                CornerRadius="0,0,20,20"
+                BackgroundColor="LightGray"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                IsVisible="{Binding ToolBarIsVisible}">
                 <StackLayout
-                    VerticalOptions="Center">
-                    <Label 
-                        TextColor="White"
-                        HorizontalTextAlignment="Center"
-                        FontAttributes="Bold"
-                        FontSize="Large"
-                        Text="MONITOR DE RECURRENCIAS"/>
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <ImageButton
+                        CornerRadius="18"
+                        BackgroundColor="Orange"
+                        CommandParameter="{Binding}"
+                        Source="action_kl"
+                        Clicked="toolbar_action_1_Clicked"/>
+                    <ImageButton
+                        CornerRadius="18"
+                        BackgroundColor="Orange"
+                        CommandParameter="{Binding}"
+                        Source="action_ap"
+                        Clicked="toolbar_action_2_Clicked"/>
+                    <ImageButton
+                        CornerRadius="18"
+                        BackgroundColor="Orange"
+                        CommandParameter="{Binding}"
+                        Source="action_rpl"
+                        Clicked="toolbar_action_3_Clicked"/>
                 </StackLayout>
-            </ScrollView>
+            </controls:CustomFrame>
+            <StackLayout
+                Padding="20,0,20,0"
+                VerticalOptions="FillAndExpand">
+                <ListView
+                    x:Name="ProcessItemsListView"
+                    ItemsSource="{Binding RecurrenceItems}"
+                    RowHeight="320"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout
+                                        Padding="10">
+                                        <controls:CustomFrame 
+                                            Padding="6"
+                                            BorderColor="LightGray"
+                                            CornerRadius="5,20,0,0"
+                                            BackgroundColor="#222233"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="Center"
+                                            HeightRequest="30">
+                                            <StackLayout
+                                                Padding="0,-4,-3,0"
+                                                Orientation="Horizontal">
+                                                <StackLayout
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="FillAndExpand">
+                                                    <CheckBox 
+                                                        IsChecked="{Binding IsChecked}"
+                                                        IsEnabled="{Binding IsEnabled}"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <ImageButton
+                                                        BackgroundColor="Transparent"
+                                                        Source="{Binding State}"
+                                                        Clicked="btnState_Clicked"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </controls:CustomFrame>
+                                        <controls:CustomFrame 
+                                            Margin="0,-7,0,0"
+                                            BorderColor="LightGray"
+                                            CornerRadius="0,0,20,5"
+                                            BackgroundColor="#222233"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="Center"
+                                            HeightRequest="220">
+                                            <StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        FontAttributes="Bold"
+                                                        TextColor="Orange"
+                                                        Text="PID:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding PID}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        FontAttributes="Bold"
+                                                        TextColor="Orange"
+                                                        Text="Lote:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Lot}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        FontAttributes="Bold"
+                                                        TextColor="Orange"
+                                                        Text="Comando:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Command}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        FontAttributes="Bold"
+                                                        TextColor="Orange"
+                                                        Text="Ambiente:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Environment}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        FontAttributes="Bold"
+                                                        TextColor="Orange"
+                                                        Text="Servicio:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Service}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        FontAttributes="Bold"
+                                                        TextColor="Orange"
+                                                        Text="Recurrencia:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Recurrence}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        FontAttributes="Bold"
+                                                        TextColor="Orange"
+                                                        Text="Hora Inicio:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding StartTime}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        FontAttributes="Bold"
+                                                        TextColor="Orange"
+                                                        Text="Hora Fin:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding EndTime}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label 
+                                                        FontAttributes="Bold"
+                                                        TextColor="Orange"
+                                                        Text="Fecha de Ejecución:" 
+                                                        WidthRequest="150"
+                                                        LineBreakMode="TailTruncation"/>
+                                                    <Label 
+                                                        TextColor="White"
+                                                        Text="{Binding Execution}" 
+                                                        LineBreakMode="TailTruncation"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </controls:CustomFrame>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout
+                BackgroundColor="#262626"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <ImageButton
+                    Margin="0,0,40,0"
+                    CornerRadius="18"
+                    BackgroundColor="Blue"
+                    CommandParameter="{Binding}"
+                    Source="action_rl"
+                    Clicked="toolbarmodule_action_1_Clicked"/>
+                <ImageButton
+                    Margin="0,0,40,0"
+                    CornerRadius="18"
+                    BackgroundColor="Green"
+                    CommandParameter="{Binding}"
+                    Source="action_ej"
+                    Clicked="toolbarmodule_action_2_Clicked"/>
+                <ImageButton
+                    CornerRadius="18"
+                    BackgroundColor="Red"
+                    CommandParameter="{Binding}"
+                    Source="action_dt"
+                    Clicked="toolbarmodule_action_3_Clicked"/>
+            </StackLayout>
             <StackLayout 
                 VerticalOptions="End">
                 <Label 

@@ -6,13 +6,6 @@ namespace AST_ProBatch_Mobile.Models
 {
     public class LogItem
     {
-        #region Constructor
-        //public LogItem()
-        //{
-        //    TargetType = typeof(LogItem);
-        //}
-        #endregion
-
         #region Atributes
         public int Id { get; set; }
         public bool IsChecked { get; set; }
@@ -22,7 +15,7 @@ namespace AST_ProBatch_Mobile.Models
         public string State { get; set; }
         public string Environment { get; set; }
         public string Execution { get; set; }
-        //public Type TargetType { get; set; } 
+        public string Operator { get; set; }
         #endregion
     }
 }

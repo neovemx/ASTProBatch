@@ -246,21 +246,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <controls:CustomFrame 
-                CornerRadius="20,20,0,0"
-                BackgroundColor="LightGray"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="Center"
-                HeightRequest="100"
-                IsVisible="{Binding IsLoadingData}">
-                <controls:LoadingIndicator
-                    BackgroundColor="LightGray"
-                    IsLoading="True"
-                    LoadingIndicatorColor="Orange"
-                    Text="Cargando..."
-                    TextColor="Orange"
-                    TextFontSize="20" />
-            </controls:CustomFrame>
             <StackLayout 
                 VerticalOptions="End">
                 <Label 
