@@ -60,6 +60,8 @@
                             IsRunning="{Binding IsRunning, Mode=TwoWay}">
                         </ActivityIndicator>
                         <Button
+                            BorderColor="White"
+                            BorderWidth="2"
                             Command="{Binding SaveCommand}"
                             IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             CornerRadius="23"

@@ -63,7 +63,8 @@
                         Padding="0,0,0,30"
                         IsVisible="{Binding IsVisibleFingerPrint}">
                         <ImageButton 
-                            CornerRadius="85"
+                            BorderColor="White"
+                            BorderWidth="2"
                             BackgroundColor="Orange"
                             Source="btnfingerprint"
                             Command="{Binding FingerPrintCommand}"/>

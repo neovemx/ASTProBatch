@@ -22,9 +22,10 @@
                     VerticalOptions="Center">
                     <StackLayout>
                         <ImageButton
+                            BorderColor="White"
+                            BorderWidth="2"
                             Command="{Binding BtnmppalaCommand}"
                             BackgroundColor="#13913E"
-                            
                             HorizontalOptions="Center"
                             Source="btnmppala"/>
                     </StackLayout>
