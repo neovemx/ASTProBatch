@@ -67,7 +67,7 @@
                             CornerRadius="23"
                             HeightRequest="46"
                             BackgroundColor="Orange"
-                            Text="Guardar"
+                            Text="GUARDAR"
                             TextColor="White"
                             FontAttributes="Bold">
                         </Button>

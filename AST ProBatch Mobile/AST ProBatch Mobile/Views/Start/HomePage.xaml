@@ -32,27 +32,30 @@
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
+                            BorderColor="White"
+                            BorderWidth="2"
                             Command="{Binding BtnmppalbCommand}"
                             BackgroundColor="#D58A34"
-                            CornerRadius="45"
                             HorizontalOptions="Center"
                             Source="btnmppalb"/>
                     </StackLayout>
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
+                            BorderColor="White"
+                            BorderWidth="2"
                             Command="{Binding BtnmppalcCommand}"
                             BackgroundColor="#358FCE"
-                            CornerRadius="45"
                             HorizontalOptions="Center"
                             Source="btnmppalc"/>
                     </StackLayout>
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
+                            BorderColor="White"
+                            BorderWidth="2"
                             Command="{Binding BtnmppaldCommand}"
                             BackgroundColor="#DDC03E"
-                            CornerRadius="45"
                             HorizontalOptions="Center"
                             Source="btnmppald"/>
                     </StackLayout>

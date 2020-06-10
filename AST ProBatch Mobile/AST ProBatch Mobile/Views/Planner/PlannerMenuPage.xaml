@@ -31,18 +31,20 @@
                 <StackLayout VerticalOptions="Center">
                     <StackLayout>
                         <ImageButton
+                            BorderColor="White"
+                            BorderWidth="2"
                             Command="{Binding BtnsubmdCommand}"
                             BackgroundColor="#DDC03E"
-                            CornerRadius="40"
                             HorizontalOptions="Center"
                             Source="btnsubmd"/>
                     </StackLayout>
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
+                            BorderColor="White"
+                            BorderWidth="2"
                             Command="{Binding BtnsubmeCommand}"
                             BackgroundColor="#DDC03E"
-                            CornerRadius="40"
                             HorizontalOptions="Center"
                             Source="btnsubme"/>
                     </StackLayout>
