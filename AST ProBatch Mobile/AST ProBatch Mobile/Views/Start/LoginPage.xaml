@@ -12,7 +12,7 @@
             BindingContext="{Binding Login}">
             <StackLayout
                 IsVisible="{Binding UIIsVisible}"
-                Padding="0,10,10,0"
+                Padding="5"
                 Orientation="Horizontal">
                 <ImageButton 
                     HorizontalOptions="EndAndExpand"

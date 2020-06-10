@@ -11,10 +11,18 @@
         <StackLayout
             BindingContext="{Binding Settings}">
             <StackLayout
-                    Padding="10"
-                    Orientation="Horizontal">
+                BackgroundColor="LightGray"
+                Padding="5"
+                Orientation="Horizontal">
+                <Label 
+                    FontSize="Large"
+                    TextColor="White"
+                    Text=""
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    LineBreakMode="TailTruncation" />
                 <ImageButton 
-                    HorizontalOptions="EndAndExpand"
+                    HorizontalOptions="End"
                     Command="{Binding CloseCommand}"
                     BackgroundColor="Transparent"
                     Source="close_page"/>

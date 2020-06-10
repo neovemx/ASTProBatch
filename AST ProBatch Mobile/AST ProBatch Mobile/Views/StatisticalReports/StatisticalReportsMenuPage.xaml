@@ -12,12 +12,12 @@
             BindingContext="{Binding StatisticalReportsMenu}">
             <StackLayout
                 BackgroundColor="#13913E"
-                Padding="10,10,10,10"
+                Padding="5"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Small"
+                    FontSize="Large"
                     TextColor="White"
-                    Text="Reportes Estadísticos"
+                    Text="REPORTES ESTADÍSTICOS"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />
