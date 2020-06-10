@@ -19,6 +19,7 @@
                     TextColor="White"
                     Text="Monitoreo y Ejecución"
                     HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />
                 <ImageButton 
                     HorizontalOptions="End"

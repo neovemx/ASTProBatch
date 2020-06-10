@@ -15,10 +15,11 @@
                 Padding="10,10,10,10"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="Small"
                     TextColor="White"
                     Text="Reportes Estadísticos"
                     HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />
                 <ImageButton 
                     HorizontalOptions="End"

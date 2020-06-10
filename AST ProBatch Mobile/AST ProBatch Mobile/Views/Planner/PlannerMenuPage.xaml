@@ -19,6 +19,7 @@
                     TextColor="White"
                     Text="Planificador"
                     HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />
                 <ImageButton 
                     HorizontalOptions="End"
