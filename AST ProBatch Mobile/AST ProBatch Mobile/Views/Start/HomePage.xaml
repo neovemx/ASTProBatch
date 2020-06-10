@@ -17,12 +17,14 @@
             <ScrollView
                 VerticalOptions="FillAndExpand"
                 BindingContext="{Binding Home}">
-                <StackLayout VerticalOptions="Center">
+                <StackLayout
+                    Padding="10"
+                    VerticalOptions="Center">
                     <StackLayout>
                         <ImageButton
                             Command="{Binding BtnmppalaCommand}"
                             BackgroundColor="#13913E"
-                            CornerRadius="40"
+                            
                             HorizontalOptions="Center"
                             Source="btnmppala"/>
                     </StackLayout>
@@ -31,7 +33,7 @@
                         <ImageButton
                             Command="{Binding BtnmppalbCommand}"
                             BackgroundColor="#D58A34"
-                            CornerRadius="40"
+                            CornerRadius="45"
                             HorizontalOptions="Center"
                             Source="btnmppalb"/>
                     </StackLayout>
@@ -40,7 +42,7 @@
                         <ImageButton
                             Command="{Binding BtnmppalcCommand}"
                             BackgroundColor="#358FCE"
-                            CornerRadius="40"
+                            CornerRadius="45"
                             HorizontalOptions="Center"
                             Source="btnmppalc"/>
                     </StackLayout>
@@ -49,7 +51,7 @@
                         <ImageButton
                             Command="{Binding BtnmppaldCommand}"
                             BackgroundColor="#DDC03E"
-                            CornerRadius="40"
+                            CornerRadius="45"
                             HorizontalOptions="Center"
                             Source="btnmppald"/>
                     </StackLayout>

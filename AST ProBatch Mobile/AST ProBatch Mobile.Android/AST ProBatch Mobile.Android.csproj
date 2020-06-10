@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -108,7 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AST ProBatch Mobile\AST ProBatch Mobile.csproj">
-      <Project>{A57AD9DC-8D83-40D6-A687-A6752370F61E}</Project>
+      <Project>{58F16BD5-ADB1-430E-85C2-CC68CCC1C9DB}</Project>
       <Name>AST ProBatch Mobile</Name>
     </ProjectReference>
   </ItemGroup>

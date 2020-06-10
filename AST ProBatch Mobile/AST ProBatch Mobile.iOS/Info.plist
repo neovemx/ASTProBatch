@@ -22,8 +22,6 @@
 	</array>
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
-	<key>CFBundleDisplayName</key>
-	<string>AST ProBatch Mobile</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.mgiaccusys.AST_ProBatch_Mobile</string>
 	<key>CFBundleVersion</key>
@@ -34,5 +32,11 @@
 	<string>AST_ProBatch_Mobile</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleDisplayName</key>
+	<string>AST●ProBatch®</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>

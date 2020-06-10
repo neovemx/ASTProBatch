@@ -43,7 +43,7 @@ namespace AST_ProBatch_Mobile.Services
                 };
             }
 
-            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("http://google.com");
             if (!isReachable)
             {
                 return new Response

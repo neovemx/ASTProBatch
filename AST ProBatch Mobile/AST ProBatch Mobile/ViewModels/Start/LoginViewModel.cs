@@ -1,8 +1,8 @@
 ﻿using Acr.UserDialogs;
-using AST_ProBatch_Mobile.Interfaces;
 using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Views;
+using ASTProBatchMobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Plugin.Fingerprint;
@@ -118,7 +118,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 }
                 else
                 {
-                    UserDialogs.Instance.Alert("Aplicación sin configuración!", "AST●ProBatch®");
+                    Alert.Show("Aplicación sin configuración!");
                 }
             }
             else
@@ -156,13 +156,13 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             if (string.IsNullOrEmpty(this.Username))
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe ingresar un usuario", "Aceptar");
+                Alert.Show("Debe ingresar un usuario");
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Password))
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe ingresar una contraseña", "Aceptar");
+                Alert.Show("Debe ingresar una contraseña");
                 return;
             }
 
@@ -170,7 +170,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             {
                 if (!IsFingerPrintAvailable)
                 {
-                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Sensor de huella no disponible o no configurado.", "Aceptar");
+                    Alert.Show("Sensor de huella no disponible o no configurado.");
                     IsChecked = false;
                     return;
                 }
@@ -194,7 +194,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 if (!await RefreshAppConfig())
                 {
                     UserDialogs.Instance.HideLoading();
-                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Error en configuración", "Aceptar");
+                    Alert.Show("Error en configuración");
                     return;
                 }
 
@@ -203,7 +203,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 if (!resultInternet.IsSuccess)
                 {
                     UserDialogs.Instance.HideLoading();
-                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultInternet.Message, "Aceptar");
+                    Toast.ShowError(resultInternet.Message);
                     return;
                 }
 
@@ -212,7 +212,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 if (!resultToken.IsSuccess)
                 {
                     UserDialogs.Instance.HideLoading();
-                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultToken.Message, "Aceptar");
+                    Toast.ShowError(resultToken.Message);
                     return;
                 }
                 else
@@ -223,7 +223,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     if (!resultLoginProbatch.IsSuccess)
                     {
                         UserDialogs.Instance.HideLoading();
-                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultLoginProbatch.Message, "Aceptar");
+                        Alert.Show(resultLoginProbatch.Message);
                         return;
                     }
                     else
@@ -232,7 +232,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                         if (!PbUser.IsValid)
                         {
                             UserDialogs.Instance.HideLoading();
-                            await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Usuario y/o Password incorrectos", "Aceptar");
+                            Alert.Show("Usuario y/o Password incorrectos");
                             return;
                         }
                         else
@@ -243,7 +243,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 if (!await dbHelper.PullAsyncAppConfig(table_Config))
                                 {
                                     UserDialogs.Instance.HideLoading();
-                                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                    Alert.Show("No se pudo actualizar la configuración.");
                                     return;
                                 }
                                 else
@@ -252,7 +252,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     if (!await dbHelper.PullAsyncProbatchCredentials(table_User))
                                     {
                                         UserDialogs.Instance.HideLoading();
-                                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                        Alert.Show("No se pudo actualizar la configuración.");
                                         return;
                                     }
                                     else
@@ -264,11 +264,11 @@ namespace AST_ProBatch_Mobile.ViewModels
                             }
 
                             UserDialogs.Instance.HideLoading();
-                            DependencyService.Get<Toast>().Show("Bienvenido: " + PbUser.UserName + "!");
                             this.Username = string.Empty;
                             this.Password = string.Empty;
                             MainViewModel.GetInstance().Home = new HomeViewModel();
                             Application.Current.MainPage = new NavigationPage(new HomePage());
+                            Toast.ShowMessage("Bienvenido: " + this.PbUser.UserName + "!");
                         }
                     }
                 }
@@ -276,7 +276,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             catch (Exception ex)
             {
                 UserDialogs.Instance.HideLoading();
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error.", "Aceptar");
+                Toast.ShowError("Ocurrió un error.");
                 return;
             }
         }
@@ -304,7 +304,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 if (!await RefreshAppConfig())
                 {
                     UserDialogs.Instance.HideLoading();
-                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Error en configuración", "Aceptar");
+                    Alert.Show("Error en configuración");
                     return;
                 }
 
@@ -312,7 +312,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 if (tableUserFingerPrint == null)
                 {
                     UserDialogs.Instance.HideLoading();
-                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo obtener las credenciales de ProBatch", "Aceptar");
+                    Alert.Show("No se pudo obtener las credenciales de ProBatch");
                     return;
                 }
 
@@ -323,7 +323,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     if (!resultInternet.IsSuccess)
                     {
                         UserDialogs.Instance.HideLoading();
-                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultInternet.Message, "Aceptar");
+                        Toast.ShowError(resultInternet.Message);
                         return;
                     }
 
@@ -332,7 +332,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     if (!resultToken.IsSuccess)
                     {
                         UserDialogs.Instance.HideLoading();
-                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultToken.Message, "Aceptar");
+                        Toast.ShowError(resultToken.Message);
                         return;
                     }
                     else
@@ -343,7 +343,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                         if (!resultLoginProbatch.IsSuccess)
                         {
                             UserDialogs.Instance.HideLoading();
-                            await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", resultLoginProbatch.Message, "Aceptar");
+                            Alert.Show(resultLoginProbatch.Message);
                             return;
                         }
                         else
@@ -359,7 +359,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = IsChecked };
                                     if (!await dbHelper.PullAsyncAppConfig(table_Config))
                                     {
-                                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                        Alert.Show("No se pudo actualizar la configuración.");
                                         return;
                                     }
                                     else
@@ -367,7 +367,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                         Table_User table_User = new Table_User { Id = 1, Username = string.Empty, Password = string.Empty };
                                         if (!await dbHelper.PullAsyncProbatchCredentials(table_User))
                                         {
-                                            await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                            Alert.Show("No se pudo actualizar la configuración.");
                                             return;
                                         }
                                         else
@@ -386,7 +386,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = this.IsChecked };
                                     if (!await dbHelper.PullAsyncAppConfig(table_Config))
                                     {
-                                        await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                        Alert.Show("No se pudo actualizar la configuración.");
                                         return;
                                     }
                                     else
@@ -394,7 +394,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                         Table_User table_User = new Table_User { Id = 1, Username = string.Empty, Password = string.Empty };
                                         if (!await dbHelper.PullAsyncProbatchCredentials(table_User))
                                         {
-                                            await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "No se pudo actualizar la configuración.", "Aceptar");
+                                            Alert.Show("No se pudo actualizar la configuración.");
                                             return;
                                         }
                                         else
@@ -406,11 +406,11 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 }
 
                                 UserDialogs.Instance.HideLoading();
-                                DependencyService.Get<Toast>().Show("Bienvenido: " + PbUser.UserName + "!");
                                 this.Username = string.Empty;
                                 this.Password = string.Empty;
                                 MainViewModel.GetInstance().Home = new HomeViewModel();
                                 Application.Current.MainPage = new NavigationPage(new HomePage());
+                                Toast.ShowMessage("Bienvenido: " + this.PbUser.UserName + "!");
                             }
                         }
                     }
@@ -418,13 +418,13 @@ namespace AST_ProBatch_Mobile.ViewModels
                 catch (Exception ex)
                 {
                     UserDialogs.Instance.HideLoading();
-                    await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error.", "Aceptar");
+                    Toast.ShowError("Ocurrió un error.");
                     return;
                 }
             }
             catch (Exception ex)
             {
-                UserDialogs.Instance.Alert("Ocurrió un error datos locales.", "AST●ProBatch®");
+                Toast.ShowError("Ocurrió un error datos locales.");
                 return;
             }
         }
