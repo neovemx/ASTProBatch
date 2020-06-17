@@ -26,37 +26,49 @@
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
                     <ImageButton
-                        CornerRadius="18"
+                        CornerRadius="5"
+                        BorderColor="White"
+                        BorderWidth="1"
                         BackgroundColor="Orange"
                         CommandParameter="{Binding}"
                         Source="action_kl"
                         Clicked="toolbar_action_1_Clicked"/>
                     <ImageButton
-                        CornerRadius="18"
+                        CornerRadius="5"
+                        BorderColor="White"
+                        BorderWidth="1"
                         BackgroundColor="Orange"
                         CommandParameter="{Binding}"
                         Source="action_ap"
                         Clicked="toolbar_action_2_Clicked"/>
                     <ImageButton
-                        CornerRadius="18"
+                        CornerRadius="5"
+                        BorderColor="White"
+                        BorderWidth="1"
                         BackgroundColor="Orange"
                         CommandParameter="{Binding}"
                         Source="action_om"
                         Clicked="toolbar_action_3_Clicked"/>
                     <ImageButton
-                        CornerRadius="18"
+                        CornerRadius="5"
+                        BorderColor="White"
+                        BorderWidth="1"
                         BackgroundColor="Orange"
                         CommandParameter="{Binding}"
                         Source="action_rm"
                         Clicked="toolbar_action_4_Clicked"/>
                     <ImageButton
-                        CornerRadius="18"
+                        CornerRadius="5"
+                        BorderColor="White"
+                        BorderWidth="1"
                         BackgroundColor="Orange"
                         CommandParameter="{Binding}"
                         Source="action_rp"
                         Clicked="toolbar_action_5_Clicked"/>
                     <ImageButton
-                        CornerRadius="18"
+                        CornerRadius="5"
+                        BorderColor="White"
+                        BorderWidth="1"
                         BackgroundColor="Orange"
                         CommandParameter="{Binding}"
                         Source="action_rpl"
@@ -71,7 +83,8 @@
                     ItemsSource="{Binding ProcessItems}"
                     RowHeight="270"
                     IsRefreshing="{Binding IsRefreshing}"
-                    SelectionMode="None">
+                    SelectionMode="None"
+                    BackgroundColor="Transparent">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -81,7 +94,7 @@
                                         <controls:CustomFrame 
                                             Padding="6"
                                             BorderColor="LightGray"
-                                            CornerRadius="5,20,0,0"
+                                            CornerRadius="5,5,0,0"
                                             BackgroundColor="#222233"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
@@ -98,7 +111,10 @@
                                                 </StackLayout>
                                                 <StackLayout>
                                                     <ImageButton
-                                                        BackgroundColor="Transparent"
+                                                        CornerRadius="5"
+                                                        BorderColor="White"
+                                                        BorderWidth="1"
+                                                        BackgroundColor="{Binding StateColor}"
                                                         Source="{Binding State}"
                                                         Clicked="btnState_Clicked"/>
                                                 </StackLayout>
@@ -107,7 +123,7 @@
                                         <controls:CustomFrame 
                                             Margin="0,-7,0,0"
                                             BorderColor="LightGray"
-                                            CornerRadius="0,0,20,5"
+                                            CornerRadius="0,0,5,5"
                                             BackgroundColor="#222233"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
@@ -214,30 +230,40 @@
                 </ListView>
             </StackLayout>
             <StackLayout
-                BackgroundColor="#262626"
+                Padding="5"
+                BackgroundColor="LightGray"
                 VerticalOptions="End"
-                HorizontalOptions="Center"
-                Orientation="Horizontal">
-                <ImageButton
-                    Margin="0,0,40,0"
-                    CornerRadius="18"
-                    BackgroundColor="Blue"
-                    CommandParameter="{Binding}"
-                    Source="action_rl"
-                    Clicked="toolbarmodule_action_1_Clicked"/>
-                <ImageButton
-                    Margin="0,0,40,0"
-                    CornerRadius="18"
-                    BackgroundColor="Green"
-                    CommandParameter="{Binding}"
-                    Source="action_ej"
-                    Clicked="toolbarmodule_action_2_Clicked"/>
-                <ImageButton
-                    CornerRadius="18"
-                    BackgroundColor="Red"
-                    CommandParameter="{Binding}"
-                    Source="action_dt"
-                    Clicked="toolbarmodule_action_3_Clicked"/>
+                HorizontalOptions="FillAndExpand">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    <ImageButton
+                        CornerRadius="5"
+                        Margin="0,0,40,0"
+                        BorderColor="White"
+                        BorderWidth="1"
+                        BackgroundColor="Blue"
+                        CommandParameter="{Binding}"
+                        Source="action_rl"
+                        Clicked="toolbarmodule_action_1_Clicked"/>
+                    <ImageButton
+                        CornerRadius="5"
+                        Margin="0,0,40,0"
+                        BorderColor="White"
+                        BorderWidth="1"
+                        BackgroundColor="Green"
+                        CommandParameter="{Binding}"
+                        Source="action_ej"
+                        Clicked="toolbarmodule_action_2_Clicked"/>
+                    <ImageButton
+                        CornerRadius="5"
+                        BorderColor="White"
+                        BorderWidth="1"
+                        BackgroundColor="Red"
+                        CommandParameter="{Binding}"
+                        Source="action_dt"
+                        Clicked="toolbarmodule_action_3_Clicked"/>
+                </StackLayout>
             </StackLayout>
             <StackLayout 
                 VerticalOptions="End">

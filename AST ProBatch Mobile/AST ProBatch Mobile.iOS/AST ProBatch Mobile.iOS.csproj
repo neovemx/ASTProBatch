@@ -317,141 +317,6 @@
     <BundleResource Include="Resources\notification_n%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\state_ab.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ab%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ab%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_e_green.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_e_green%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_e_green%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_e_red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_e_red%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_e_red%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ed_orange.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ed_orange%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ed_orange%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ed_yellow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ed_yellow%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ed_yellow%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ei.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ei%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ei%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ei_red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ei_red%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ei_red%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ep_red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ep_red%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ep_red%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ep_yellow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ep_yellow%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ep_yellow%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_er_red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_er_red%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_er_red%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_er_yellow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_er_yellow%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_er_yellow%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_f.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_f%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_f%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_om.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_om%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_om%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_p.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_p%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_p%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_pause.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_pause%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_pause%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\view_b%403x.png" />
   </ItemGroup>
   <ItemGroup>
@@ -477,42 +342,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\uncheck.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ne%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_fe_red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_fe_red%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_fe_red%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ne.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ne%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ec_orange%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ec_orange.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_ec_orange%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_a%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_a.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\state_a%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\save_item%403x.png" />
@@ -786,5 +615,131 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\about%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_a%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_a%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ab%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ab%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_e.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_e%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_e%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ec%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ec%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ed%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ed%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ei.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ei%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ei%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ep%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ep%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_er.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_er%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_er%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_f%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_f%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_fe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_fe%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_fe%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ne%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_ne%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_om.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_om%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_om%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_p.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_p%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_p%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_pause%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_pause%403x.png" />
   </ItemGroup>
 </Project>

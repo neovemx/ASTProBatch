@@ -1,4 +1,5 @@
 ﻿using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -49,42 +50,50 @@ namespace AST_ProBatch_Mobile.ViewModels
 
             stateItem = new StateItem();
             stateItem.Title = "Ejecutando";
-            stateItem.State = "state_e_green";
+            stateItem.State = "state_e";
+            stateItem.StateColor = StatusColor.Green;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
             stateItem.Title = "Finalizado";
             stateItem.State = "state_f";
+            stateItem.StateColor = StatusColor.Blue;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
             stateItem.Title = "No Ejecutado";
             stateItem.State = "state_ne";
+            stateItem.StateColor = StatusColor.White;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
             stateItem.Title = "Esperando Dependencia";
-            stateItem.State = "state_ed_yellow";
+            stateItem.State = "state_ed";
+            stateItem.StateColor = StatusColor.Yellow;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
             stateItem.Title = "Esperando Conexión";
-            stateItem.State = "state_ec_orange";
+            stateItem.State = "state_ec";
+            stateItem.StateColor = StatusColor.Orange;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
             stateItem.Title = "Error Dependencia";
-            stateItem.State = "state_ed_orange";
+            stateItem.State = "state_ed";
+            stateItem.StateColor = StatusColor.Orange;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
             stateItem.Title = "Finalizado con Errores";
-            stateItem.State = "state_fe_red";
+            stateItem.State = "state_fe";
+            stateItem.StateColor = StatusColor.Red;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
             stateItem.Title = "Abortado por el Usuario";
             stateItem.State = "state_a";
+            stateItem.StateColor = StatusColor.Purple;
             StateItems.Add(stateItem);
         }
     }

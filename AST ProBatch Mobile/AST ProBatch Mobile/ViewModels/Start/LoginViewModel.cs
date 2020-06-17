@@ -268,7 +268,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                             this.Password = string.Empty;
                             MainViewModel.GetInstance().Home = new HomeViewModel();
                             Application.Current.MainPage = new NavigationPage(new HomePage());
-                            Toast.ShowMessage("Bienvenido: " + this.PbUser.UserName + "!");
+                            Toast.ShowSuccess("Bienvenido: " + this.PbUser.UserName + "!");
                         }
                     }
                 }
@@ -410,7 +410,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 this.Password = string.Empty;
                                 MainViewModel.GetInstance().Home = new HomeViewModel();
                                 Application.Current.MainPage = new NavigationPage(new HomePage());
-                                Toast.ShowMessage("Bienvenido: " + this.PbUser.UserName + "!");
+                                Toast.ShowSuccess("Bienvenido: " + this.PbUser.UserName + "!");
                             }
                         }
                     }

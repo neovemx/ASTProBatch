@@ -69,7 +69,7 @@
                         </ActivityIndicator>
                         <Button
                             BorderColor="White"
-                            BorderWidth="2"
+                            BorderWidth="1"
                             Command="{Binding SaveCommand}"
                             IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             CornerRadius="23"

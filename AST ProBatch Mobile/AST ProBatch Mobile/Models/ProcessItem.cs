@@ -16,6 +16,7 @@ namespace AST_ProBatch_Mobile.Models
         public string Environment { get; set; }
         public string Service { get; set; }
         public string State { get; set; }
+        public string StateColor { get; set; }
         public string StartHour { get; set; }
         public string Execution { get; set; }
         #endregion

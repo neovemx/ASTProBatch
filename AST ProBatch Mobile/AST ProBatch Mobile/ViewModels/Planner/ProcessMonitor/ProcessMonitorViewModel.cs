@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
@@ -156,7 +157,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.Command = "8-Prueba BAT";
             processItem.Environment = "WKS0396";
             processItem.Service = "Windows";
-            processItem.State = "state_e_green";
+            processItem.State = "state_e";
+            processItem.StateColor = StatusColor.Green;
             processItem.StartHour = "10:45";
             processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             ProcessItems.Add(processItem);
@@ -171,6 +173,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.Environment = "WKS0396";
             processItem.Service = "Windows";
             processItem.State = "state_pause";
+            processItem.StateColor = StatusColor.White;
             processItem.StartHour = "10:45";
             processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             ProcessItems.Add(processItem);
@@ -184,7 +187,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.Command = "8-Prueba BAT";
             processItem.Environment = "WKS0396";
             processItem.Service = "Windows";
-            processItem.State = "state_ed_orange";
+            processItem.State = "state_ed";
+            processItem.StateColor = StatusColor.Orange;
             processItem.StartHour = "10:45";
             processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             ProcessItems.Add(processItem);
@@ -199,6 +203,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.Environment = "WKS0396";
             processItem.Service = "Windows";
             processItem.State = "state_om";
+            processItem.StateColor = StatusColor.Green;
             processItem.StartHour = "10:45";
             processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             ProcessItems.Add(processItem);
@@ -213,6 +218,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.Environment = "WKS0396";
             processItem.Service = "Windows";
             processItem.State = "state_f";
+            processItem.StateColor = StatusColor.Blue;
             processItem.StartHour = "10:45";
             processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             ProcessItems.Add(processItem);

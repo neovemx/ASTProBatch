@@ -22,8 +22,9 @@
                     VerticalOptions="Center">
                     <StackLayout>
                         <ImageButton
-                            BorderColor="White"
-                            BorderWidth="2"
+                            CornerRadius="5"
+                            BorderColor="#13733E"
+                            BorderWidth="1"
                             Command="{Binding BtnmppalaCommand}"
                             BackgroundColor="#13913E"
                             HorizontalOptions="Center"
@@ -32,8 +33,9 @@
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
-                            BorderColor="White"
-                            BorderWidth="2"
+                            CornerRadius="5"
+                            BorderColor="#D57334"
+                            BorderWidth="1"
                             Command="{Binding BtnmppalbCommand}"
                             BackgroundColor="#D58A34"
                             HorizontalOptions="Center"
@@ -42,8 +44,9 @@
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
-                            BorderColor="White"
-                            BorderWidth="2"
+                            CornerRadius="5"
+                            BorderColor="#3576CE"
+                            BorderWidth="1"
                             Command="{Binding BtnmppalcCommand}"
                             BackgroundColor="#358FCE"
                             HorizontalOptions="Center"
@@ -52,8 +55,9 @@
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
-                            BorderColor="White"
-                            BorderWidth="2"
+                            CornerRadius="5"
+                            BorderColor="#DDA73E"
+                            BorderWidth="1"
                             Command="{Binding BtnmppaldCommand}"
                             BackgroundColor="#DDC03E"
                             HorizontalOptions="Center"

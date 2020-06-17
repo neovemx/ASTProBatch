@@ -45,6 +45,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="CenterAndExpand"/>
                                         <Image 
+                                            BackgroundColor="{Binding StateColor}"
                                             Source="{Binding State}"/>
                                     </StackLayout>
                                 </ViewCell.View>
