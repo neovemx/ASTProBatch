@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GalaSoft.MvvmLight.Command;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
@@ -21,7 +21,18 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Commands
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new RelayCommand(Close);
+            }
+        }
 
+        private async void Close()
+        {
+            await Application.Current.MainPage.Navigation.PopModalAsync();
+        }
         #endregion
     }
 }

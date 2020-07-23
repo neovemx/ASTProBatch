@@ -43,6 +43,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         }
         #endregion
 
+        #region Helpers
         private void GetStates()
         {
             StateItems = new ObservableCollection<StateItem>();
@@ -137,6 +138,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             stateItem.State = "state_pause";
             stateItem.StateColor = StatusColor.White;
             StateItems.Add(stateItem);
-        }
+        } 
+        #endregion
     }
 }

@@ -11,10 +11,11 @@
         <StackLayout
             BindingContext="{Binding StatusInfoPlanner}">
             <StackLayout
-                BackgroundColor="Orange"
+                BackgroundColor="#2255AA"
                 Padding="10,10,10,10"
                 Orientation="Horizontal">
                 <Label 
+                    VerticalOptions="Center"
                     FontSize="Large"
                     TextColor="White"
                     Text="Referencias"
@@ -31,7 +32,9 @@
                 <ListView
                     VerticalOptions="FillAndExpand"
                     SelectionMode="None"
-                    ItemsSource="{Binding StateItems}">
+                    ItemsSource="{Binding StateItems}"
+                    SeparatorVisibility="None"
+                    BackgroundColor="Transparent">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

@@ -11,6 +11,7 @@ namespace AST_ProBatch_Mobile.Models
         public bool IsChecked { get; set; }
         public bool IsEnabled { get; set; }
         public int PID { get; set; }
+        public string Title { get; set; }
         public string Lot { get; set; }
         public string Command { get; set; }
         public string Environment { get; set; }

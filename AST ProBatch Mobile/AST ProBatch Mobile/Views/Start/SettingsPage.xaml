@@ -6,12 +6,12 @@
              mc:Ignorable="d"
              x:Class="AST_ProBatch_Mobile.Views.SettingsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor="LightGray">
+             BackgroundColor="#DDDDDD">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Settings}">
             <StackLayout
-                BackgroundColor="LightGray"
+                BackgroundColor="#DDDDDD"
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
@@ -49,19 +49,19 @@
                             Text="{Binding UrlDomain, Mode=TwoWay}"
                             PlaceholderColor="Gray"
                             Placeholder="http://172.16.1.150:83"
-                            TextColor="Orange">
+                            TextColor="White">
                         </Entry>
                         <Entry
                             Text="{Binding UrlPrefix, Mode=TwoWay}"
                             PlaceholderColor="Gray"
                             Placeholder="/test/v1/api"
-                            TextColor="Orange">
+                            TextColor="White">
                         </Entry>
                         <Label
                             FontAttributes="None"
                             FontSize="Small"
                             HorizontalTextAlignment="Center"
-                            TextColor="Orange"
+                            TextColor="White"
                             Text="Ingrese el dominio y el prefijo de la API">
                         </Label>
                         <ActivityIndicator
@@ -72,9 +72,9 @@
                             BorderWidth="1"
                             Command="{Binding SaveCommand}"
                             IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                            CornerRadius="23"
+                            CornerRadius="5"
                             HeightRequest="46"
-                            BackgroundColor="Orange"
+                            BackgroundColor="#2255AA"
                             Text="GUARDAR"
                             TextColor="White"
                             FontAttributes="Bold">

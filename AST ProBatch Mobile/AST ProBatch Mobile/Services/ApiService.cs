@@ -30,6 +30,41 @@ namespace AST_ProBatch_Mobile.Services
         }
         #endregion
 
+        public async Task<Response> ApiIsAvailable(string urlApi)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.Timeout = TimeSpan.FromSeconds(5);
+                var response = await client.GetAsync(urlApi);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = "Api no disponible.",
+                        Data = string.Empty,
+                    };
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Api Online",
+                    Data = string.Empty,
+                };
+            }
+            catch
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Api no disponible.",
+                    Data = string.Empty,
+                };
+            }
+        }
 
         public async Task<Response> CheckConnection()
         {

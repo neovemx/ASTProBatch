@@ -6,12 +6,12 @@
              mc:Ignorable="d"
              x:Class="AST_ProBatch_Mobile.Views.MonitoringAndExecutionMenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor="LightGray">
+             BackgroundColor="#DDDDDD">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding MonitoringAndExecutionMenu}">
             <StackLayout
-                BackgroundColor="#D58A34"
+                BackgroundColor="#DD8833"
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
@@ -33,10 +33,10 @@
                     <StackLayout>
                         <ImageButton
                             CornerRadius="5"
-                            BorderColor="#D57334"
+                            BorderColor="#DD8833"
                             BorderWidth="1"
                             Command="{Binding BtnsubmfCommand}"
-                            BackgroundColor="#D58A34"
+                            BackgroundColor="#DD8833"
                             HorizontalOptions="Center"
                             Source="btnsubmf"/>
                     </StackLayout>
@@ -44,10 +44,10 @@
                         Padding="0,30,0,0">
                         <ImageButton
                             CornerRadius="5"
-                            BorderColor="#D57334"
+                            BorderColor="#DD8833"
                             BorderWidth="1"
                             Command="{Binding BtnsubmgCommand}"
-                            BackgroundColor="#D58A34"
+                            BackgroundColor="#DD8833"
                             HorizontalOptions="Center"
                             Source="btnsubmg"/>
                     </StackLayout>

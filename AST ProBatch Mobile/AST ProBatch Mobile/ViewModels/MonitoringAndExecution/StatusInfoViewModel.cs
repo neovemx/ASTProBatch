@@ -43,6 +43,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         }
         #endregion
 
+        #region Helpers
         private void GetStates()
         {
             StateItems = new ObservableCollection<StateItem>();
@@ -61,9 +62,9 @@ namespace AST_ProBatch_Mobile.ViewModels
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
-            stateItem.Title = "No Ejecutado";
-            stateItem.State = "state_ne";
-            stateItem.StateColor = StatusColor.White;
+            stateItem.Title = "Finalizado con error";
+            stateItem.State = "state_f";
+            stateItem.StateColor = StatusColor.Red;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
@@ -73,28 +74,77 @@ namespace AST_ProBatch_Mobile.ViewModels
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
-            stateItem.Title = "Esperando Conexión";
-            stateItem.State = "state_ec";
-            stateItem.StateColor = StatusColor.Orange;
+            stateItem.Title = "Esperando Interfaz de Entrada";
+            stateItem.State = "state_ei";
+            stateItem.StateColor = StatusColor.Yellow;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
-            stateItem.Title = "Error Dependencia";
+            stateItem.Title = "Esperando Recurso";
+            stateItem.State = "state_er";
+            stateItem.StateColor = StatusColor.Yellow;
+            StateItems.Add(stateItem);
+
+            stateItem = new StateItem();
+            stateItem.Title = "Esperando Puerto";
+            stateItem.State = "state_ep";
+            stateItem.StateColor = StatusColor.Yellow;
+            StateItems.Add(stateItem);
+
+            stateItem = new StateItem();
+            stateItem.Title = "Error de Recurso";
+            stateItem.State = "state_er";
+            stateItem.StateColor = StatusColor.Red;
+            StateItems.Add(stateItem);
+
+            stateItem = new StateItem();
+            stateItem.Title = "Error";
+            stateItem.State = "state_e";
+            stateItem.StateColor = StatusColor.Red;
+            StateItems.Add(stateItem);
+
+            stateItem = new StateItem();
+            stateItem.Title = "Error de Dependencia";
             stateItem.State = "state_ed";
             stateItem.StateColor = StatusColor.Orange;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
-            stateItem.Title = "Finalizado con Errores";
-            stateItem.State = "state_fe";
+            stateItem.Title = "Error de Interfaz de Entrada";
+            stateItem.State = "state_ei";
             stateItem.StateColor = StatusColor.Red;
             StateItems.Add(stateItem);
 
             stateItem = new StateItem();
-            stateItem.Title = "Abortado por el Usuario";
-            stateItem.State = "state_a";
+            stateItem.Title = "Error de Puerto";
+            stateItem.State = "state_ep";
+            stateItem.StateColor = StatusColor.Red;
+            StateItems.Add(stateItem);
+
+            stateItem = new StateItem();
+            stateItem.Title = "Planificado";
+            stateItem.State = "state_p";
+            stateItem.StateColor = StatusColor.Grey;
+            StateItems.Add(stateItem);
+
+            stateItem = new StateItem();
+            stateItem.Title = "Detenido";
+            stateItem.State = "state_d";
+            stateItem.StateColor = StatusColor.Red;
+            StateItems.Add(stateItem);
+
+            stateItem = new StateItem();
+            stateItem.Title = "Abortado";
+            stateItem.State = "state_ab";
             stateItem.StateColor = StatusColor.Purple;
             StateItems.Add(stateItem);
+
+            stateItem = new StateItem();
+            stateItem.Title = "Omitido";
+            stateItem.State = "state_om";
+            stateItem.StateColor = StatusColor.White;
+            StateItems.Add(stateItem);
         }
+        #endregion
     }
 }

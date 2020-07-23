@@ -8,8 +8,8 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#262626</Color>
+            <Color x:Key="Primary">#2255AA</Color>
+            <Color x:Key="Accent">#3388CC</Color>
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -63,18 +63,16 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <!--<Button Margin="0,10,0,0" Text="Saber más"
-                        Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />-->
                     <Button
+                        BorderColor="#2255AA"
+                        BorderWidth="1"
                         BindingContext="{Binding About}"
                         VerticalOptions="EndAndExpand"
-                        Command="{Binding KnowMoreCommand}"
-                        CornerRadius="23"
+                        Command="{Binding CloseCommand}"
+                        CornerRadius="5"
                         HeightRequest="46"
-                        BackgroundColor="Orange"
-                        Text="Saber más"
+                        BackgroundColor="#2255AA"
+                        Text="CERRAR"
                         TextColor="White"
                         FontAttributes="Bold">
                     </Button>

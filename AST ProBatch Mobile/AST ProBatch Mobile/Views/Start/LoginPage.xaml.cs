@@ -4,11 +4,11 @@ using Xamarin.Forms.Xaml;
 namespace AST_ProBatch_Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class LoginPage : ContentPage
-{
-    public LoginPage()
+    public partial class LoginPage : ContentPage
     {
-        InitializeComponent();
+        public LoginPage()
+        {
+            InitializeComponent();
+        }
     }
-}
 }

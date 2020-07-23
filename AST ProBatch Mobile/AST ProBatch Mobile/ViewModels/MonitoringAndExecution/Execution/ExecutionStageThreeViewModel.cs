@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
@@ -20,6 +21,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool isrefreshing;
         private bool compactviewisvisible;
         private bool fullviewisvisible;
+        private bool iseventual;
+        private bool isnoteventual;
         #endregion
 
         #region Properties
@@ -70,6 +73,18 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return compactviewisvisible; }
             set { SetValue(ref compactviewisvisible, value); }
         }
+
+        public bool IsEventual
+        {
+            get { return iseventual; }
+            set { SetValue(ref iseventual, value); }
+        }
+
+        public bool IsNotEventual
+        {
+            get { return isnoteventual; }
+            set { SetValue(ref isnoteventual, value); }
+        }
         #endregion
 
         #region Constructors
@@ -81,7 +96,15 @@ namespace AST_ProBatch_Mobile.ViewModels
             ViewIcon = "view_b";
             FullViewIsVisible = true;
             CompactViewIsVisible = false;
-
+            this.IsEventual = instanceitem.Eventual;
+            if (this.IsEventual)
+            { 
+                this.IsNotEventual = false; 
+            }
+            else
+            {
+                this.IsNotEventual = true;
+            }
             if (instanceitem == null) { return; }
             GetFakeData();
         }
@@ -263,9 +286,13 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.IsEnabled = true;
             commandItem.Title = "LOTE 1 - COMANDO 1";
             commandItem.Notifications = "notification";
-            commandItem.State = "state_e_green";
+            commandItem.State = "state_e";
+            commandItem.StateColor = StatusColor.Green;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            commandItem.Duration = "1 hora 45 minutos";
+            commandItem.IsEventual = this.IsEventual;
+            commandItem.IsNotEventual = this.IsNotEventual;
             CommandItems.Add(commandItem);
 
             commandItem = new CommandItem();
@@ -274,9 +301,13 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.IsEnabled = true;
             commandItem.Title = "LOTE 1 - COMANDO 2";
             commandItem.Notifications = "notification";
-            commandItem.State = "state_ed_orange";
+            commandItem.State = "state_ed";
+            commandItem.StateColor = StatusColor.Orange;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            commandItem.Duration = "1 hora 45 minutos";
+            commandItem.IsEventual = this.IsEventual;
+            commandItem.IsNotEventual = this.IsNotEventual;
             CommandItems.Add(commandItem);
 
             commandItem = new CommandItem();
@@ -286,8 +317,12 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.Title = "LOTE 1 - COMANDO 3";
             commandItem.Notifications = "notification_n";
             commandItem.State = "state_f";
+            commandItem.StateColor = StatusColor.Green;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            commandItem.Duration = "1 hora 45 minutos";
+            commandItem.IsEventual = this.IsEventual;
+            commandItem.IsNotEventual = this.IsNotEventual;
             CommandItems.Add(commandItem);
 
             commandItem = new CommandItem();
@@ -297,8 +332,12 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.Title = "LOTE 1 - COMANDO 4";
             commandItem.Notifications = "notification_n";
             commandItem.State = "state_pause";
+            commandItem.StateColor = StatusColor.White;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            commandItem.Duration = "1 hora 45 minutos";
+            commandItem.IsEventual = this.IsEventual;
+            commandItem.IsNotEventual = this.IsNotEventual;
             CommandItems.Add(commandItem);
 
             commandItem = new CommandItem();
@@ -308,8 +347,12 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.Title = "LOTE 1 - COMANDO 5";
             commandItem.Notifications = "notification";
             commandItem.State = "state_om";
+            commandItem.StateColor = StatusColor.White;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            commandItem.Duration = "1 hora 45 minutos";
+            commandItem.IsEventual = this.IsEventual;
+            commandItem.IsNotEventual = this.IsNotEventual;
             CommandItems.Add(commandItem);
         }
         #endregion

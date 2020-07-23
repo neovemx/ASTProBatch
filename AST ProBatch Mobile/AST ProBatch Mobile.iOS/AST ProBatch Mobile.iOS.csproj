@@ -742,4 +742,31 @@
   <ItemGroup>
     <BundleResource Include="Resources\state_pause%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_cn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_cn%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_cn%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_d%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\state_d%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_vr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_vr%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\action_vr%403x.png" />
+  </ItemGroup>
 </Project>

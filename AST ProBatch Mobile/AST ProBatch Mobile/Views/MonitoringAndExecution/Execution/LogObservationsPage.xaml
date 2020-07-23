@@ -8,7 +8,7 @@
              x:Class="AST_ProBatch_Mobile.Views.LogObservationsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Observaciones"
-             BackgroundColor="#222233">
+             BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding LogObservations}" Text="Nuevo"  Icon="new_item" Command="{Binding NewCommand}" />
         <ToolbarItem BindingContext="{Binding LogObservations}" Text="Guardar"  Icon="save_item" Command="{Binding SaveCommand}" />
@@ -25,7 +25,7 @@
                         Orientation="Horizontal">
                         <Label 
                             WidthRequest="75"
-                            TextColor="Orange"
+                            TextColor="#2EABBD"
                             FontAttributes="Bold"
                             FontSize="Medium"
                             Text="Bitácora:"
@@ -33,7 +33,7 @@
                             HorizontalOptions="Center"/>
                         <Label 
                             WidthRequest="120"
-                            TextColor="LightGray"
+                            TextColor="DarkGray"
                             FontSize="Medium"
                             Text="{Binding LogTitle}"
                             LineBreakMode="TailTruncation"
@@ -45,7 +45,7 @@
                         <Label 
                             WidthRequest="70"
                             HorizontalOptions="Center"
-                            TextColor="Orange"
+                            TextColor="#2EABBD"
                             FontAttributes="Bold"
                             FontSize="Medium"
                             Text="Nombre:"
@@ -53,31 +53,29 @@
                         <Entry
                             x:Name="edtName"
                             Text="{Binding Name, Mode=TwoWay}"
-                            PlaceholderColor="Gray"
+                            PlaceholderColor="LightGray"
                             Placeholder="Nombre observación..."
-                            TextColor="White"
+                            TextColor="DarkGray"
                             MaxLength="250"
                             IsSpellCheckEnabled="False"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="Black"/>
+                            HorizontalOptions="FillAndExpand" />
                     </StackLayout>
                     <StackLayout>
                         <Label 
-                            TextColor="Orange"
+                            TextColor="#2EABBD"
                             FontAttributes="Bold"
                             FontSize="Medium"
                             Text="Detalle:" />
                         <Editor
                             x:Name="edtDetails"
                             Text="{Binding Details, Mode=TwoWay}"
-                            PlaceholderColor="Gray"
+                            PlaceholderColor="LightGray"
                             Placeholder="Detalle observación..."
-                            TextColor="White"
+                            TextColor="DarkGray"
                             MaxLength="800"
                             Keyboard="Plain"
                             IsSpellCheckEnabled="False"
-                            HeightRequest="180"
-                            BackgroundColor="Black"/>
+                            HeightRequest="180" />
                     </StackLayout>
                     <StackLayout
                         Orientation="Horizontal">
@@ -86,7 +84,7 @@
                             WidthRequest="75">
                             <Label 
                                 FontAttributes="Bold"
-                                TextColor="Orange"
+                                TextColor="#2EABBD"
                                 Text="FECHA"/>
                         </StackLayout>
                         <StackLayout
@@ -94,7 +92,7 @@
                             VerticalOptions="Center">
                             <Label 
                                 FontAttributes="Bold"
-                                TextColor="Orange"
+                                TextColor="#2EABBD"
                                 Text="TITULO"/>
                         </StackLayout>
                         <StackLayout
@@ -103,7 +101,7 @@
                             <Label 
                                 FontAttributes="Bold"
                                 WidthRequest="110"
-                                TextColor="Orange"
+                                TextColor="#2EABBD"
                                 Text="OPERADOR"/>
                         </StackLayout>
                     </StackLayout>
@@ -113,7 +111,7 @@
                             HeightRequest="235"
                             ItemsSource="{Binding ObservationItems}"
                             SelectedItem="{Binding SelectedObservation, Mode=TwoWay}"
-                            BackgroundColor="DarkGray">
+                            BackgroundColor="Transparent">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>

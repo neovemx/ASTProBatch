@@ -8,9 +8,10 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              NavigationPage.HasBackButton="False"
              Title="INICIO"
-             BackgroundColor="#262626">
+             BackgroundColor="#DDDDDD">
     <ContentPage.ToolbarItems>
-        <ToolbarItem BindingContext="{Binding Home}" Text="Acerca" Icon="about" Command="{Binding AboutCommand}" />
+        <ToolbarItem BindingContext="{Binding Home}" Text="Acerca" Icon="about" Command="{Binding AboutCommand}" Order="Secondary" />
+        <ToolbarItem BindingContext="{Binding Home}" Text="Salir" Command="{Binding ExitCommand}" Order="Secondary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
@@ -23,10 +24,10 @@
                     <StackLayout>
                         <ImageButton
                             CornerRadius="5"
-                            BorderColor="#13733E"
+                            BorderColor="#53BA53"
                             BorderWidth="1"
                             Command="{Binding BtnmppalaCommand}"
-                            BackgroundColor="#13913E"
+                            BackgroundColor="#53BA53"
                             HorizontalOptions="Center"
                             Source="btnmppala"/>
                     </StackLayout>
@@ -34,10 +35,10 @@
                         Padding="0,30,0,0">
                         <ImageButton
                             CornerRadius="5"
-                            BorderColor="#D57334"
+                            BorderColor="#DD8833"
                             BorderWidth="1"
                             Command="{Binding BtnmppalbCommand}"
-                            BackgroundColor="#D58A34"
+                            BackgroundColor="#DD8833"
                             HorizontalOptions="Center"
                             Source="btnmppalb"/>
                     </StackLayout>
@@ -45,7 +46,7 @@
                         Padding="0,30,0,0">
                         <ImageButton
                             CornerRadius="5"
-                            BorderColor="#3576CE"
+                            BorderColor="#358FCE"
                             BorderWidth="1"
                             Command="{Binding BtnmppalcCommand}"
                             BackgroundColor="#358FCE"
@@ -56,10 +57,10 @@
                         Padding="0,30,0,0">
                         <ImageButton
                             CornerRadius="5"
-                            BorderColor="#DDA73E"
+                            BorderColor="#DDCC33"
                             BorderWidth="1"
                             Command="{Binding BtnmppaldCommand}"
-                            BackgroundColor="#DDC03E"
+                            BackgroundColor="#DDCC33"
                             HorizontalOptions="Center"
                             Source="btnmppald"/>
                     </StackLayout>

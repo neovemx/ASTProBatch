@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
@@ -20,6 +21,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool isrefreshing;
         private bool compactviewisvisible;
         private bool fullviewisvisible;
+        private bool eventual;
         #endregion
 
         #region Properties
@@ -70,6 +72,12 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return compactviewisvisible; }
             set { SetValue(ref compactviewisvisible, value); }
         }
+
+        public bool Eventual
+        {
+            get { return eventual; }
+            set { SetValue(ref eventual, value); }
+        }
         #endregion
 
         #region Constructors
@@ -81,6 +89,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             ViewIcon = "view_b";
             FullViewIsVisible = true;
             CompactViewIsVisible = false;
+            this.Eventual = logitem.Eventual;
 
             GetFakeData();
         }
@@ -262,8 +271,17 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 1";
             instanceItem.Notifications = "notification";
-            instanceItem.State = "state_e_green";
+            instanceItem.State = "state_e";
+            instanceItem.StateColor = StatusColor.Green;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            instanceItem.StatusLastProcess = "F";
+            instanceItem.StatusLastProcessColor = StatusColor.Green;
+            instanceItem.CommandsTotal = 500;
+            instanceItem.CommandsPending = 100;
+            instanceItem.CommandsOk = 200;
+            instanceItem.CommandsError = 50;
+            instanceItem.CommandsOmitted = 150;
+            instanceItem.Eventual = this.Eventual;
             InstanceItems.Add(instanceItem);
 
             instanceItem = new InstanceItem();
@@ -272,8 +290,17 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 2";
             instanceItem.Notifications = "notification";
-            instanceItem.State = "state_ed_orange";
+            instanceItem.State = "state_ed";
+            instanceItem.StateColor = StatusColor.Orange;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            instanceItem.StatusLastProcess = "E";
+            instanceItem.StatusLastProcessColor = StatusColor.Red;
+            instanceItem.CommandsTotal = 500;
+            instanceItem.CommandsPending = 100;
+            instanceItem.CommandsOk = 200;
+            instanceItem.CommandsError = 50;
+            instanceItem.CommandsOmitted = 150;
+            instanceItem.Eventual = this.Eventual;
             InstanceItems.Add(instanceItem);
 
             instanceItem = new InstanceItem();
@@ -283,7 +310,16 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.Title = "INSTANCIA 3";
             instanceItem.Notifications = "notification_n";
             instanceItem.State = "state_f";
+            instanceItem.StateColor = StatusColor.Green;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            instanceItem.StatusLastProcess = "P";
+            instanceItem.StatusLastProcessColor = StatusColor.White;
+            instanceItem.CommandsTotal = 500;
+            instanceItem.CommandsPending = 100;
+            instanceItem.CommandsOk = 200;
+            instanceItem.CommandsError = 50;
+            instanceItem.CommandsOmitted = 150;
+            instanceItem.Eventual = this.Eventual;
             InstanceItems.Add(instanceItem);
 
             instanceItem = new InstanceItem();
@@ -293,7 +329,16 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.Title = "INSTANCIA 4";
             instanceItem.Notifications = "notification_n";
             instanceItem.State = "state_pause";
+            instanceItem.StateColor = StatusColor.White;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            instanceItem.StatusLastProcess = "D";
+            instanceItem.StatusLastProcessColor = StatusColor.Orange;
+            instanceItem.CommandsTotal = 500;
+            instanceItem.CommandsPending = 100;
+            instanceItem.CommandsOk = 200;
+            instanceItem.CommandsError = 50;
+            instanceItem.CommandsOmitted = 150;
+            instanceItem.Eventual = this.Eventual;
             InstanceItems.Add(instanceItem);
 
             instanceItem = new InstanceItem();
@@ -303,7 +348,16 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.Title = "INSTANCIA 5";
             instanceItem.Notifications = "notification";
             instanceItem.State = "state_om";
+            instanceItem.StateColor = StatusColor.White;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            instanceItem.StatusLastProcess = "F";
+            instanceItem.StatusLastProcessColor = StatusColor.Green;
+            instanceItem.CommandsTotal = 500;
+            instanceItem.CommandsPending = 100;
+            instanceItem.CommandsOk = 200;
+            instanceItem.CommandsError = 50;
+            instanceItem.CommandsOmitted = 150;
+            instanceItem.Eventual = this.Eventual;
             InstanceItems.Add(instanceItem);
         }
         #endregion

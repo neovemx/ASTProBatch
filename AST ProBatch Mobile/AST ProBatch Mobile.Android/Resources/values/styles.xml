@@ -7,22 +7,27 @@
     <item name="windowNoTitle">true</item>
     <item name="android:windowFullscreen">true</item>
     <item name="windowActionBar">false</item>
-    <item name="colorPrimary">#000000</item>
-    <item name="colorPrimaryDark">#000000</item>
-    <item name="colorAccent">#FFFFA500</item>
+    <item name="colorPrimary">#2255AA</item>
+    <item name="colorPrimaryDark">#2EABBD</item>
+    <item name="colorAccent">#2EABBD</item>
     <item name="windowActionModeOverlay">true</item>
+    <item name="actionOverflowMenuStyle">@style/CMOptionsMenu</item>
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
 
+  <style name="CMOptionsMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+    <item name="android:popupBackground">#2EABBD</item>
+  </style>
+
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-    <item name="colorAccent">#FFFFA500</item>
+    <item name="colorAccent">#2EABBD</item>
   </style>
 
   <style name="Theme.Splash" parent="Theme.AppCompat.NoActionBar">
     <item name="windowNoTitle">true</item>
     <item name="android:windowFullscreen">true</item>
-    <item name="colorPrimary">#000000</item>
-    <item name="colorPrimaryDark">#000000</item>
+    <item name="colorPrimary">#2255AA</item>
+    <item name="colorPrimaryDark">#2EABBD</item>
     <item name="android:windowBackground">@drawable/splash_screen</item>
   </style>
 </resources>

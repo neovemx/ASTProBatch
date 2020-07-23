@@ -12,7 +12,11 @@ namespace AST_ProBatch_Mobile.Models
         public string Title { get; set; }
         public string Notifications { get; set; }
         public string State { get; set; }
+        public string StateColor { get; set; }
         public string ExecutionStart { get; set; }
         public string ExecutionEnd { get; set; }
+        public string Duration { get; set; }
+        public bool IsEventual { get; set; }
+        public bool IsNotEventual { get; set; }
     }
 }

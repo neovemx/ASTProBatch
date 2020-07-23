@@ -27,6 +27,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool isfingerprintavailable;
         public bool uiisvisible;
         public bool uierrorisvisible;
+        public bool isenabled;
         #endregion
 
         #region Properties
@@ -86,6 +87,12 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return isfingerprintavailable; }
             set { SetValue(ref isfingerprintavailable, value); }
         }
+
+        public bool IsEnabled
+        {
+            get { return isenabled; }
+            set { SetValue(ref isenabled, value); }
+        }
         #endregion
 
         #region Constructors
@@ -103,6 +110,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     this.IsChecked = table_Config.FingerPrintAllow;
                     this.UrlDomain = table_Config.UrlDomain;
                     this.UrlPrefix = table_Config.UrlPrefix;
+                    this.IsEnabled = true;
                     #endregion
 
                     if (IsChecked)
@@ -198,12 +206,12 @@ namespace AST_ProBatch_Mobile.ViewModels
                     return;
                 }
 
-                Response resultInternet = await CheckConnection();
+                Response resultApiIsAvailable = await ApiIsAvailable(this.UrlDomain + this.UrlPrefix + "/auth");
 
-                if (!resultInternet.IsSuccess)
+                if (!resultApiIsAvailable.IsSuccess)
                 {
                     UserDialogs.Instance.HideLoading();
-                    Toast.ShowError(resultInternet.Message);
+                    Toast.ShowError(resultApiIsAvailable.Message);
                     return;
                 }
 
@@ -232,7 +240,9 @@ namespace AST_ProBatch_Mobile.ViewModels
                         if (!PbUser.IsValid)
                         {
                             UserDialogs.Instance.HideLoading();
-                            Alert.Show("Usuario y/o Password incorrectos");
+                            //Alert.Show("Usuario y/o Password incorrectos");
+                            this.IsEnabled = false;
+                            this.IsEnabled = true;
                             return;
                         }
                         else
@@ -268,7 +278,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                             this.Password = string.Empty;
                             MainViewModel.GetInstance().Home = new HomeViewModel();
                             Application.Current.MainPage = new NavigationPage(new HomePage());
-                            Toast.ShowSuccess("Bienvenido: " + this.PbUser.UserName + "!");
+                            Alert.Show("Bienvenido: " + this.PbUser.UserName + "!", "Continuar");
                         }
                     }
                 }
@@ -318,12 +328,12 @@ namespace AST_ProBatch_Mobile.ViewModels
 
                 try
                 {
-                    Response resultInternet = await CheckConnection();
+                    Response resultApiIsAvailable = await ApiIsAvailable(this.UrlDomain + this.UrlPrefix + "/auth");
 
-                    if (!resultInternet.IsSuccess)
+                    if (!resultApiIsAvailable.IsSuccess)
                     {
                         UserDialogs.Instance.HideLoading();
-                        Toast.ShowError(resultInternet.Message);
+                        Toast.ShowError(resultApiIsAvailable.Message);
                         return;
                     }
 
@@ -410,7 +420,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 this.Password = string.Empty;
                                 MainViewModel.GetInstance().Home = new HomeViewModel();
                                 Application.Current.MainPage = new NavigationPage(new HomePage());
-                                Toast.ShowSuccess("Bienvenido: " + this.PbUser.UserName + "!");
+                                Alert.Show("Bienvenido: " + this.PbUser.UserName + "!", "Continuar");
                             }
                         }
                     }
@@ -434,6 +444,11 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async Task<Response> CheckConnection()
         {
             return await this.apiService.CheckConnection();
+        }
+
+        private async Task<Response> ApiIsAvailable(string apiUrl)
+        {
+            return await this.apiService.ApiIsAvailable(apiUrl);
         }
 
         private async Task<Response> GetToken()

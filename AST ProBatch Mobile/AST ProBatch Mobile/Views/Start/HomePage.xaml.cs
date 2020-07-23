@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using ASTProBatchMobile.Utilities;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -51,12 +52,10 @@ namespace AST_ProBatch_Mobile.Views
                         switch (BackPressCount)
                         {
                             case 1:
-                                //UserDialogs.Instance.Toast("Presiona dos veces más para salir de la aplicación!!");
-                                ShowToast("Presiona dos veces más para salir de la aplicación!!");
+                                Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
                                 break;
                             case 2:
-                                //UserDialogs.Instance.Toast("Presiona una vez más para salir de la aplicación!!");
-                                ShowToast("Presiona una vez más para salir de la aplicación!!");
+                                Toast.ShowSuccess("Presiona una vez más para salir de la aplicación!!");
                                 break;
                         }
                     }
@@ -65,8 +64,7 @@ namespace AST_ProBatch_Mobile.Views
                         ValidTimeMinute = DateTime.Now;
                         ValidTimeSeconds = DateTime.Now.Second;
                         backPressCount = 1;
-                        //UserDialogs.Instance.Toast("Presiona dos veces más para salir de la aplicación!!");
-                        ShowToast("Presiona dos veces más para salir de la aplicación!!");
+                        Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
                     }
                 }
                 else
@@ -74,8 +72,7 @@ namespace AST_ProBatch_Mobile.Views
                     ValidTimeMinute = DateTime.Now;
                     ValidTimeSeconds = DateTime.Now.Second;
                     backPressCount = 1;
-                    //UserDialogs.Instance.Toast("Presiona dos veces más para salir de la aplicación!!");
-                    ShowToast("Presiona dos veces más para salir de la aplicación!!");
+                    Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
                 }
             }
             else
@@ -93,8 +90,7 @@ namespace AST_ProBatch_Mobile.Views
                             ValidTimeMinute = DateTime.Now;
                             ValidTimeSeconds = DateTime.Now.Second;
                             backPressCount = 1;
-                            //UserDialogs.Instance.Toast("Presiona dos veces más para salir de la aplicación!!");
-                            ShowToast("Presiona dos veces más para salir de la aplicación!!");
+                            Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
                         }
                     }
                     else
@@ -102,8 +98,7 @@ namespace AST_ProBatch_Mobile.Views
                         ValidTimeMinute = DateTime.Now;
                         ValidTimeSeconds = DateTime.Now.Second;
                         backPressCount = 1;
-                        //UserDialogs.Instance.Toast("Presiona dos veces más para salir de la aplicación!!");
-                        ShowToast("Presiona dos veces más para salir de la aplicación!!");
+                        Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
                     }
                 }
             }
@@ -117,14 +112,6 @@ namespace AST_ProBatch_Mobile.Views
             //});
 
             //return true;
-        }
-
-        void ShowToast(string message)
-        {
-            ToastConfig toastConfig = new ToastConfig(message);
-            toastConfig.BackgroundColor = System.Drawing.Color.LightGray;
-            toastConfig.MessageTextColor = System.Drawing.Color.Black;
-            UserDialogs.Instance.Toast(toastConfig);
         }
     }
 }

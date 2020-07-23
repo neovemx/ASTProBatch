@@ -6,12 +6,12 @@
              mc:Ignorable="d"
              x:Class="AST_ProBatch_Mobile.Views.PlannerMenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor="LightGray">
+             BackgroundColor="#DDDDDD">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding PlannerMenu}">
             <StackLayout
-                BackgroundColor="#DDC03E"
+                BackgroundColor="#DDCC33"
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
@@ -33,10 +33,10 @@
                     <StackLayout>
                         <ImageButton
                             CornerRadius="5"
-                            BorderColor="#DDA73E"
+                            BorderColor="#DDCC33"
                             BorderWidth="1"
                             Command="{Binding BtnsubmdCommand}"
-                            BackgroundColor="#DDC03E"
+                            BackgroundColor="#DDCC33"
                             HorizontalOptions="Center"
                             Source="btnsubmd"/>
                     </StackLayout>
@@ -44,10 +44,10 @@
                         Padding="0,30,0,0">
                         <ImageButton
                             CornerRadius="5"
-                            BorderColor="#DDA73E"
+                            BorderColor="#DDCC33"
                             BorderWidth="1"
                             Command="{Binding BtnsubmeCommand}"
-                            BackgroundColor="#DDC03E"
+                            BackgroundColor="#DDCC33"
                             HorizontalOptions="Center"
                             Source="btnsubme"/>
                     </StackLayout>

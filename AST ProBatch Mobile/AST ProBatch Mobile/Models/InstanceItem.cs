@@ -13,7 +13,16 @@ namespace AST_ProBatch_Mobile.Models
         public string Title { get; set; }
         public string Notifications { get; set; }
         public string State { get; set; }
+        public string StateColor { get; set; }
         public string Execution { get; set; }
+        public string StatusLastProcess { get; set; }
+        public string StatusLastProcessColor { get; set; }
+        public int CommandsTotal { get; set; }
+        public int CommandsPending { get; set; }
+        public int CommandsOk { get; set; }
+        public int CommandsError { get; set; }
+        public int CommandsOmitted { get; set; }
+        public bool Eventual { get; set; }
         #endregion
     }
 }

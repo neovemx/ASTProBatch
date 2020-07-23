@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
@@ -255,10 +256,15 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 1";
             logItem.Notifications = "notification";
-            logItem.State = "state_e_green";
+            logItem.State = "state_e";
+            logItem.StateColor = StatusColor.Green;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            logItem.CommandsNumber = "400";
+            logItem.CommandsFail = "4";
+            logItem.Eventual = true;
             LogItems.Add(logItem);
 
             logItem = new LogItem();
@@ -267,10 +273,15 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 2";
             logItem.Notifications = "notification";
-            logItem.State = "state_ed_orange";
+            logItem.State = "state_ed";
+            logItem.StateColor = StatusColor.Orange;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            logItem.CommandsNumber = "400";
+            logItem.CommandsFail = "4";
+            logItem.Eventual = false;
             LogItems.Add(logItem);
 
             logItem = new LogItem();
@@ -280,9 +291,14 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.Title = "BITACORA 3";
             logItem.Notifications = "notification_n";
             logItem.State = "state_f";
+            logItem.StateColor = StatusColor.Green;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            logItem.CommandsNumber = "400";
+            logItem.CommandsFail = "4";
+            logItem.Eventual = true;
             LogItems.Add(logItem);
 
             logItem = new LogItem();
@@ -292,9 +308,14 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.Title = "BITACORA 4";
             logItem.Notifications = "notification_n";
             logItem.State = "state_pause";
+            logItem.StateColor = StatusColor.White;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            logItem.CommandsNumber = "400";
+            logItem.CommandsFail = "4";
+            logItem.Eventual = true;
             LogItems.Add(logItem);
 
             logItem = new LogItem();
@@ -304,9 +325,14 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.Title = "BITACORA 5";
             logItem.Notifications = "notification";
             logItem.State = "state_om";
+            logItem.StateColor = StatusColor.White;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
+            logItem.CommandsNumber = "400";
+            logItem.CommandsFail = "4";
+            logItem.Eventual = false;
             LogItems.Add(logItem);
         }
         #endregion

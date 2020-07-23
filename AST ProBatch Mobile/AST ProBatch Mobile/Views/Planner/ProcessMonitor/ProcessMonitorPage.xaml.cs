@@ -1,6 +1,8 @@
-﻿using AST_ProBatch_Mobile.Interfaces;
+﻿using Acr.UserDialogs;
+using AST_ProBatch_Mobile.Interfaces;
 using AST_ProBatch_Mobile.ViewModels;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

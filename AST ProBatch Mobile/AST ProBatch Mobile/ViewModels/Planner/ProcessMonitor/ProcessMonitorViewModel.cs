@@ -153,6 +153,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.IsChecked = false;
             processItem.IsEnabled = true;
             processItem.PID = 2756321;
+            processItem.Title = "8-PRUEBA BAT";
             processItem.Lot = "-";
             processItem.Command = "8-Prueba BAT";
             processItem.Environment = "WKS0396";
@@ -160,7 +161,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.State = "state_e";
             processItem.StateColor = StatusColor.Green;
             processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
             ProcessItems.Add(processItem);
 
             processItem = new ProcessItem();
@@ -168,6 +169,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.IsChecked = false;
             processItem.IsEnabled = true;
             processItem.PID = 2756322;
+            processItem.Title = "8-PRUEBA BAT";
             processItem.Lot = "-";
             processItem.Command = "8-Prueba BAT";
             processItem.Environment = "WKS0396";
@@ -175,7 +177,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.State = "state_pause";
             processItem.StateColor = StatusColor.White;
             processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
             ProcessItems.Add(processItem);
 
             processItem = new ProcessItem();
@@ -183,6 +185,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.IsChecked = false;
             processItem.IsEnabled = true;
             processItem.PID = 2756323;
+            processItem.Title = "8-PRUEBA BAT";
             processItem.Lot = "-";
             processItem.Command = "8-Prueba BAT";
             processItem.Environment = "WKS0396";
@@ -190,7 +193,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.State = "state_ed";
             processItem.StateColor = StatusColor.Orange;
             processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
             ProcessItems.Add(processItem);
 
             processItem = new ProcessItem();
@@ -198,14 +201,15 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.IsChecked = false;
             processItem.IsEnabled = true;
             processItem.PID = 2756324;
+            processItem.Title = "8-PRUEBA BAT";
             processItem.Lot = "-";
             processItem.Command = "8-Prueba BAT";
             processItem.Environment = "WKS0396";
             processItem.Service = "Windows";
             processItem.State = "state_om";
-            processItem.StateColor = StatusColor.Green;
+            processItem.StateColor = StatusColor.White;
             processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
             ProcessItems.Add(processItem);
 
             processItem = new ProcessItem();
@@ -213,6 +217,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.IsChecked = false;
             processItem.IsEnabled = true;
             processItem.PID = 2756325;
+            processItem.Title = "8-PRUEBA BAT";
             processItem.Lot = "-";
             processItem.Command = "8-Prueba BAT";
             processItem.Environment = "WKS0396";
@@ -220,7 +225,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             processItem.State = "state_f";
             processItem.StateColor = StatusColor.Blue;
             processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
             ProcessItems.Add(processItem);
         }
         #endregion

@@ -120,6 +120,16 @@ namespace AST_ProBatch_Mobile.Views
             }
         }
 
+        private void ImageButtonLogAction_8_Clicked(object sender, EventArgs e)
+        {
+            var imageButton = (ImageButton)sender;
+            var logItem = imageButton.CommandParameter as LogItem;
+            if (logItem != null)
+            {
+                Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Consultas para: " + logItem.Title, "Aceptar");
+            }
+        }
+
         private void ImageButtonLogToolBarAction_1_Clicked(object sender, EventArgs e)
         {
             var imageButton = (ImageButton)sender;
@@ -212,45 +222,45 @@ namespace AST_ProBatch_Mobile.Views
             }
         }
 
-        private void ImageButtonLogToolBarAction_5_Clicked(object sender, EventArgs e)
-        {
-            var imageButton = (ImageButton)sender;
-            var logItem = imageButton.CommandParameter as ExecutionViewModel;
-            int logitemcount = 0;
-            if (logItem != null)
-            {
-                foreach (LogItem item in logItem.LogItems)
-                {
-                    if (item.IsChecked) { logitemcount += 1; }
-                }
-                if (logitemcount <= 1)
-                {
-                    Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
-                    return;
-                }
-                Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Obervaciones para: " + logitemcount + " Bitacoras seleccionadas.", "Aceptar");
-            }
-        }
+        //private void ImageButtonLogToolBarAction_5_Clicked(object sender, EventArgs e)
+        //{
+        //    var imageButton = (ImageButton)sender;
+        //    var logItem = imageButton.CommandParameter as ExecutionViewModel;
+        //    int logitemcount = 0;
+        //    if (logItem != null)
+        //    {
+        //        foreach (LogItem item in logItem.LogItems)
+        //        {
+        //            if (item.IsChecked) { logitemcount += 1; }
+        //        }
+        //        if (logitemcount <= 1)
+        //        {
+        //            Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
+        //            return;
+        //        }
+        //        Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Obervaciones para: " + logitemcount + " Bitacoras seleccionadas.", "Aceptar");
+        //    }
+        //}
 
-        private void ImageButtonLogToolBarAction_6_Clicked(object sender, EventArgs e)
-        {
-            var imageButton = (ImageButton)sender;
-            var logItem = imageButton.CommandParameter as ExecutionViewModel;
-            int logitemcount = 0;
-            if (logItem != null)
-            {
-                foreach (LogItem item in logItem.LogItems)
-                {
-                    if (item.IsChecked) { logitemcount += 1; }
-                }
-                if (logitemcount <= 1)
-                {
-                    Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
-                    return;
-                }
-                Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Notificaciones para: " + logitemcount + " Bitacoras seleccionadas.", "Aceptar");
-            }
-        }
+        //private void ImageButtonLogToolBarAction_6_Clicked(object sender, EventArgs e)
+        //{
+        //    var imageButton = (ImageButton)sender;
+        //    var logItem = imageButton.CommandParameter as ExecutionViewModel;
+        //    int logitemcount = 0;
+        //    if (logItem != null)
+        //    {
+        //        foreach (LogItem item in logItem.LogItems)
+        //        {
+        //            if (item.IsChecked) { logitemcount += 1; }
+        //        }
+        //        if (logitemcount <= 1)
+        //        {
+        //            Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
+        //            return;
+        //        }
+        //        Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Notificaciones para: " + logitemcount + " Bitacoras seleccionadas.", "Aceptar");
+        //    }
+        //}
 
         private void LogsItemsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

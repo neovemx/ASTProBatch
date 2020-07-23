@@ -8,7 +8,7 @@
              x:Class="AST_ProBatch_Mobile.Views.OperatorChangePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Cambio de Operador"
-             BackgroundColor="#222233">
+             BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding OperatorChange}" Text="Nuevo"  Icon="new_item" Command="{Binding NewCommand}" />
         <ToolbarItem BindingContext="{Binding OperatorChange}" Text="Guardar"  Icon="save_item" Command="{Binding SaveCommand}" />
@@ -24,7 +24,7 @@
                         Orientation="Horizontal">
                         <Label 
                             WidthRequest="85"
-                            TextColor="Orange"
+                            TextColor="#2EABBD"
                             FontAttributes="Bold"
                             FontSize="Medium"
                             Text="Bitácora:"
@@ -32,7 +32,7 @@
                             HorizontalOptions="Center"/>
                         <Label 
                             WidthRequest="120"
-                            TextColor="LightGray"
+                            TextColor="DarkGray"
                             FontSize="Medium"
                             Text="{Binding LogTitle}"
                             LineBreakMode="TailTruncation"
@@ -43,7 +43,7 @@
                         Orientation="Horizontal">
                         <Label 
                             WidthRequest="85"
-                            TextColor="Orange"
+                            TextColor="#2EABBD"
                             FontAttributes="Bold"
                             FontSize="Medium"
                             Text="Operador:"
@@ -51,7 +51,7 @@
                             HorizontalOptions="Center"/>
                         <Label 
                             WidthRequest="120"
-                            TextColor="LightGray"
+                            TextColor="DarkGray"
                             FontSize="Medium"
                             Text="{Binding LogOperator}"
                             LineBreakMode="TailTruncation"
@@ -62,7 +62,7 @@
                         Margin="0,20,0,20"
                         HorizontalOptions="Center">
                         <Label 
-                            TextColor="Orange"
+                            TextColor="#2EABBD"
                             FontAttributes="Bold"
                             FontSize="Medium"
                             Text="Instancias Asociadas al Operador" />
@@ -75,7 +75,7 @@
                             <Label 
                                 Margin="20,0,0,0"
                                 FontAttributes="Bold"
-                                TextColor="Orange"
+                                TextColor="#2EABBD"
                                 Text="INSTANCIA"/>
                         </StackLayout>
                         <StackLayout
@@ -83,7 +83,7 @@
                             VerticalOptions="Center">
                             <Label 
                                 FontAttributes="Bold"
-                                TextColor="Orange"
+                                TextColor="#2EABBD"
                                 Text="EJECUTANDO"
                                 WidthRequest="100"/>
                         </StackLayout>
@@ -92,7 +92,7 @@
                         <ListView
                             HeightRequest="235"
                             ItemsSource="{Binding InstanceRunningItems}"
-                            BackgroundColor="DarkGray"
+                            BackgroundColor="Transparent"
                             SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -131,7 +131,7 @@
                         <Label 
                             WidthRequest="85"
                             HorizontalOptions="Center"
-                            TextColor="Orange"
+                            TextColor="#2EABBD"
                             FontAttributes="Bold"
                             FontSize="Medium"
                             Text="Operador:"
@@ -141,28 +141,25 @@
                             ItemDisplayBinding="{Binding OperatorName}"
                             SelectedItem="{Binding SelectedOperator}"
                             HorizontalOptions="FillAndExpand"
-                            BackgroundColor="Black"
-                            TextColor="White"/>
+                            TextColor="DarkGray"/>
                     </StackLayout>
                     <StackLayout
                         Orientation="Horizontal">
                         <Label 
                             WidthRequest="85"
                             HorizontalOptions="Center"
-                            TextColor="Orange"
+                            TextColor="#2EABBD"
                             FontAttributes="Bold"
                             FontSize="Medium"
                             Text="Clave:"
                             VerticalOptions="Center"/>
                         <Entry
-                            x:Name="edtName"
                             Text="{Binding OperatorPassword, Mode=TwoWay}"
                             PlaceholderColor="Gray"
-                            TextColor="White"
+                            TextColor="DarkGray"
                             MaxLength="250"
                             IsSpellCheckEnabled="False"
                             HorizontalOptions="FillAndExpand"
-                            BackgroundColor="Black"
                             IsPassword="True"/>
                     </StackLayout>
                 </StackLayout>
