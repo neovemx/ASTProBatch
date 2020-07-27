@@ -21,7 +21,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool isrefreshing;
         private bool compactviewisvisible;
         private bool fullviewisvisible;
-        private bool eventual;
+        private bool iseventual;
+        private bool isnoteventual;
         #endregion
 
         #region Properties
@@ -30,53 +31,50 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return instanceitems; }
             set { SetValue(ref instanceitems, value); }
         }
-
         public bool ToolBarIsVisible
         {
             get { return toolbarisvisible; }
             set { SetValue(ref toolbarisvisible, value); }
         }
-
         public string ActionIcon
         {
             get { return actionicon; }
             set { SetValue(ref actionicon, value); }
         }
-
         public string CheckIcon
         {
             get { return checkicon; }
             set { SetValue(ref checkicon, value); }
         }
-
         public string ViewIcon
         {
             get { return viewicon; }
             set { SetValue(ref viewicon, value); }
         }
-
         public bool IsRefreshing
         {
             get { return isrefreshing; }
             set { SetValue(ref isrefreshing, value); }
         }
-
         public bool FullViewIsVisible
         {
             get { return fullviewisvisible; }
             set { SetValue(ref fullviewisvisible, value); }
         }
-
         public bool CompactViewIsVisible
         {
             get { return compactviewisvisible; }
             set { SetValue(ref compactviewisvisible, value); }
         }
-
-        public bool Eventual
+        public bool IsEventual
         {
-            get { return eventual; }
-            set { SetValue(ref eventual, value); }
+            get { return iseventual; }
+            set { SetValue(ref iseventual, value); }
+        }
+        public bool IsNotEventual
+        {
+            get { return isnoteventual; }
+            set { SetValue(ref isnoteventual, value); }
         }
         #endregion
 
@@ -89,7 +87,15 @@ namespace AST_ProBatch_Mobile.ViewModels
             ViewIcon = "view_b";
             FullViewIsVisible = true;
             CompactViewIsVisible = false;
-            this.Eventual = logitem.Eventual;
+            this.IsEventual = logitem.Eventual;
+            if (this.IsEventual)
+            {
+                this.IsNotEventual = false;
+            }
+            else
+            {
+                this.IsNotEventual = true;
+            }
 
             GetFakeData();
         }
@@ -281,7 +287,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.CommandsOk = 200;
             instanceItem.CommandsError = 50;
             instanceItem.CommandsOmitted = 150;
-            instanceItem.Eventual = this.Eventual;
+            instanceItem.IsEventual = this.IsEventual;
+            instanceItem.IsNotEventual = this.IsNotEventual;
             InstanceItems.Add(instanceItem);
 
             instanceItem = new InstanceItem();
@@ -300,7 +307,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.CommandsOk = 200;
             instanceItem.CommandsError = 50;
             instanceItem.CommandsOmitted = 150;
-            instanceItem.Eventual = this.Eventual;
+            instanceItem.IsEventual = this.IsEventual;
+            instanceItem.IsNotEventual = this.IsNotEventual;
             InstanceItems.Add(instanceItem);
 
             instanceItem = new InstanceItem();
@@ -319,7 +327,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.CommandsOk = 200;
             instanceItem.CommandsError = 50;
             instanceItem.CommandsOmitted = 150;
-            instanceItem.Eventual = this.Eventual;
+            instanceItem.IsEventual = this.IsEventual;
+            instanceItem.IsNotEventual = this.IsNotEventual;
             InstanceItems.Add(instanceItem);
 
             instanceItem = new InstanceItem();
@@ -338,7 +347,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.CommandsOk = 200;
             instanceItem.CommandsError = 50;
             instanceItem.CommandsOmitted = 150;
-            instanceItem.Eventual = this.Eventual;
+            instanceItem.IsEventual = this.IsEventual;
+            instanceItem.IsNotEventual = this.IsNotEventual;
             InstanceItems.Add(instanceItem);
 
             instanceItem = new InstanceItem();
@@ -357,7 +367,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.CommandsOk = 200;
             instanceItem.CommandsError = 50;
             instanceItem.CommandsOmitted = 150;
-            instanceItem.Eventual = this.Eventual;
+            instanceItem.IsEventual = this.IsEventual;
+            instanceItem.IsNotEventual = this.IsNotEventual;
             InstanceItems.Add(instanceItem);
         }
         #endregion

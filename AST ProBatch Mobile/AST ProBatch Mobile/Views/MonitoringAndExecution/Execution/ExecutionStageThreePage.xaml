@@ -44,6 +44,7 @@
                                 Clicked="ImageButtonToolBarAction_2_Clicked"/>
                         </StackLayout>
                         <StackLayout
+                            IsVisible="{Binding IsEventual}"
                             Orientation="Horizontal">
                             <ImageButton
                                 CornerRadius="5"
@@ -238,7 +239,8 @@
                                                                 Source="action_rc"
                                                                 Clicked="ImageButtonAction_7_Clicked"/>
                                                         </StackLayout>
-                                                        <StackLayout>
+                                                        <StackLayout
+                                                            IsVisible="{Binding IsEventual}">
                                                             <ImageButton 
                                                                 CornerRadius="5"
                                                                 BackgroundColor="#2EABBD"

@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AST_ProBatch_Mobile.Views.ControlSchedulesExecutionPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Control Horarios de Ejecución"
+             BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem BindingContext="{Binding ControlSchedulesExecution}" Text="Referencias"  Icon="about" Command="{Binding StatusInfoCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding ControlSchedulesExecution}">
+            <StackLayout>
+                <ListView
+                    ItemsSource="{Binding CommandsToControlItems}"
+                    BackgroundColor="Transparent"
+                    SelectionMode="None"
+                    VerticalOptions="FillAndExpand">
+                    <ListView.Header>
+                        <Grid
+                            Padding="5"
+                            VerticalOptions="Center"
+                            ColumnSpacing="0"
+                            RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25" />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="25" />
+                            </Grid.ColumnDefinitions>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.Column="0"/>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="EE"/>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.Column="1"/>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="Instancia"
+                                LineBreakMode="TailTruncation"/>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.Column="2"/>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Lote"
+                                LineBreakMode="TailTruncation"/>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.Column="3"/>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Comando"
+                                LineBreakMode="TailTruncation"/>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.Column="4"/>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="4"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="Inicio"
+                                LineBreakMode="TailTruncation"/>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.Column="5"/>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="5"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="Fin"
+                                LineBreakMode="TailTruncation"/>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.Column="6"/>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="6"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="C. Inicio"
+                                LineBreakMode="TailTruncation"/>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.Column="7"/>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="7"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="C. Fin"
+                                LineBreakMode="TailTruncation"/>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.Column="8"/>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="8"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="EC"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid
+                                        Padding="5"
+                                        VerticalOptions="Center"
+                                        ColumnSpacing="0"
+                                        RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="25" />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="60"/>
+                                            <ColumnDefinition Width="60"/>
+                                            <ColumnDefinition Width="25" />
+                                        </Grid.ColumnDefinitions>
+                                        <BoxView 
+                                            Grid.Row="0"
+                                            Grid.Column="0"/>
+                                        <Frame 
+                                            CornerRadius="5"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            BackgroundColor="{Binding StatusColorEE}"/>
+                                        <BoxView 
+                                            Grid.Row="0"
+                                            Grid.Column="1"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            TextColor="Black"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Instance}"
+                                            LineBreakMode="TailTruncation"/>
+                                        <BoxView 
+                                            Grid.Row="0"
+                                            Grid.Column="2"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            TextColor="Black"
+                                            Text="{Binding LotName}"
+                                            LineBreakMode="TailTruncation"/>
+                                        <BoxView 
+                                            Grid.Row="0"
+                                            Grid.Column="3"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="3"
+                                            TextColor="Black"
+                                            Text="{Binding CommandName}"
+                                            LineBreakMode="TailTruncation"/>
+                                        <BoxView 
+                                            Grid.Row="0"
+                                            Grid.Column="4"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="4"
+                                            TextColor="Black"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Start}"
+                                            LineBreakMode="TailTruncation"/>
+                                        <BoxView 
+                                            Grid.Row="0"
+                                            Grid.Column="5"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="5"
+                                            TextColor="Black"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding End}"
+                                            LineBreakMode="TailTruncation"/>
+                                        <BoxView 
+                                            Grid.Row="0"
+                                            Grid.Column="6"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="6"
+                                            TextColor="Black"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding ControlStart}"
+                                            LineBreakMode="TailTruncation"/>
+                                        <BoxView 
+                                            Grid.Row="0"
+                                            Grid.Column="7"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="7"
+                                            TextColor="Black"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding ControlEnd}"
+                                            LineBreakMode="TailTruncation"/>
+                                        <BoxView 
+                                            Grid.Row="0"
+                                            Grid.Column="8"/>
+                                        <Frame 
+                                            CornerRadius="5"
+                                            Grid.Row="0"
+                                            Grid.Column="8"
+                                            BackgroundColor="{Binding StatusColorEC}"/>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout 
+                VerticalOptions="End">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Small"
+                    FontAttributes="Bold"
+                    TextColor="Gray"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

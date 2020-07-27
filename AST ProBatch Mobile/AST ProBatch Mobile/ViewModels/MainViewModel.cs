@@ -30,6 +30,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         public CommandNotificationsViewModel CommandNotifications { get; set; }
         public LogObservationsViewModel LogObservations { get; set; }
         public OperatorChangeViewModel OperatorChange { get; set; }
+        public ControlSchedulesExecutionViewModel ControlSchedulesExecution { get; set; }
+        public StatusInfoControlSchedulesExecutionViewModel StatusInfoControlSchedulesExecution { get; set; }
         #endregion
 
         #region Constructors
@@ -81,6 +83,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.CommandNotifications = new CommandNotificationsViewModel(new Models.CommandItem());
             this.LogObservations = new LogObservationsViewModel(new Models.LogItem());
             this.OperatorChange = new OperatorChangeViewModel(new Models.LogItem());
+            this.ControlSchedulesExecution = new ControlSchedulesExecutionViewModel(new Models.LogItem());
+            this.StatusInfoControlSchedulesExecution = new StatusInfoControlSchedulesExecutionViewModel();
         }
         #endregion
 

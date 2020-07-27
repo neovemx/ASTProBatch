@@ -22,7 +22,8 @@ namespace AST_ProBatch_Mobile.Models
         public int CommandsOk { get; set; }
         public int CommandsError { get; set; }
         public int CommandsOmitted { get; set; }
-        public bool Eventual { get; set; }
+        public bool IsEventual { get; set; }
+        public bool IsNotEventual { get; set; }
         #endregion
     }
 }

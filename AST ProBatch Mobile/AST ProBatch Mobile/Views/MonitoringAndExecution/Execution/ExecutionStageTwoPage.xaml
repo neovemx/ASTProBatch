@@ -26,18 +26,22 @@
                 <StackLayout
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
-                    <ImageButton
-                        CornerRadius="5"
-                        BackgroundColor="#2EABBD"
-                        CommandParameter="{Binding}"
-                        Source="action_ej"
-                        Clicked="ImageButtonLogToolBarAction_1_Clicked"/>
-                    <ImageButton
-                        CornerRadius="5"
-                        BackgroundColor="#2EABBD"
-                        CommandParameter="{Binding}"
-                        Source="action_dt"
-                        Clicked="ImageButtonLogToolBarAction_2_Clicked"/>
+                    <StackLayout
+                        Orientation="Horizontal"
+                        IsVisible="{Binding IsNotEventual}">
+                            <ImageButton
+                            CornerRadius="5"
+                            BackgroundColor="#2EABBD"
+                            CommandParameter="{Binding}"
+                            Source="action_ej"
+                            Clicked="ImageButtonLogToolBarAction_1_Clicked"/>
+                        <ImageButton
+                            CornerRadius="5"
+                            BackgroundColor="#2EABBD"
+                            CommandParameter="{Binding}"
+                            Source="action_dt"
+                            Clicked="ImageButtonLogToolBarAction_2_Clicked"/>
+                    </StackLayout>
                     <ImageButton
                         CornerRadius="5"
                         BackgroundColor="#2EABBD"
@@ -267,7 +271,8 @@
                                                     <StackLayout
                                                         Orientation="Horizontal"
                                                         HorizontalOptions="Center">
-                                                        <StackLayout>
+                                                        <StackLayout
+                                                            IsVisible="{Binding IsNotEventual}">
                                                             <ImageButton
                                                                 CornerRadius="5"
                                                                 BackgroundColor="#2EABBD"
@@ -276,7 +281,8 @@
                                                                 Source="action_ej"
                                                                 Clicked="ImageButtonLogAction_1_Clicked"/>
                                                         </StackLayout>
-                                                        <StackLayout>
+                                                        <StackLayout
+                                                            IsVisible="{Binding IsNotEventual}">
                                                             <ImageButton 
                                                                 CornerRadius="5"
                                                                 BackgroundColor="#2EABBD"

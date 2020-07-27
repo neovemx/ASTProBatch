@@ -116,7 +116,8 @@ namespace AST_ProBatch_Mobile.Views
             var logItem = imageButton.CommandParameter as LogItem;
             if (logItem != null)
             {
-                Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Horarios de ejecución: " + logItem.Title, "Aceptar");
+                MainViewModel.GetInstance().ControlSchedulesExecution = new ControlSchedulesExecutionViewModel(logItem);
+                Application.Current.MainPage.Navigation.PushAsync(new ControlSchedulesExecutionPage());
             }
         }
 

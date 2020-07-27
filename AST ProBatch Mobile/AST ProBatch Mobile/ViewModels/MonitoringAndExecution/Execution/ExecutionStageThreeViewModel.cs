@@ -96,7 +96,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             ViewIcon = "view_b";
             FullViewIsVisible = true;
             CompactViewIsVisible = false;
-            this.IsEventual = instanceitem.Eventual;
+            this.IsEventual = instanceitem.IsEventual;
             if (this.IsEventual)
             { 
                 this.IsNotEventual = false; 
