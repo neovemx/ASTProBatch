@@ -70,7 +70,10 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CustomFrameRender.cs" />
     <Compile Include="Renderers\CustomLabelRender.cs" />
+    <Compile Include="Renderers\StandardEntryRenderer.cs" />
+    <Compile Include="Renderers\UITextFieldPadding.cs" />
     <Compile Include="Services\iOSSQLitePlatform.cs" />
+    <Compile Include="Renderers\StandardPickerRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
