@@ -110,8 +110,8 @@
                                                     VerticalOptions="Center">
                                                     <ImageButton
                                                         CornerRadius="5"
-                                                        BackgroundColor="{Binding StateColor}"
-                                                        Source="{Binding State}"
+                                                        BackgroundColor="{Binding StatusColor}"
+                                                        Source="{Binding Status}"
                                                         Clicked="ImageButtonState_Clicked"/>
                                                 </StackLayout>
                                             </StackLayout>
@@ -301,8 +301,8 @@
                                                         VerticalOptions="Center"
                                                         Padding="0,0,4,0">
                                                         <ImageButton
-                                                            BackgroundColor="{Binding StateColor}"
-                                                            Source="{Binding State}"
+                                                            BackgroundColor="{Binding StatusColor}"
+                                                            Source="{Binding Status}"
                                                             Clicked="ImageButtonState_Clicked"
                                                             WidthRequest="25"/>
                                                     </StackLayout>

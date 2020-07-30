@@ -10,14 +10,14 @@ namespace AST_ProBatch_Mobile.ViewModels
     public class StatusInfoViewModel : BaseViewModel
     {
         #region Atributes
-        private ObservableCollection<StateItem> stateitems;
+        private ObservableCollection<StatusItem> statusitems;
         #endregion
 
         #region Properties
-        public ObservableCollection<StateItem> StateItems
+        public ObservableCollection<StatusItem> StatusItems
         {
-            get { return stateitems; }
-            set { SetValue(ref stateitems, value); }
+            get { return statusitems; }
+            set { SetValue(ref statusitems, value); }
         }
         #endregion
 
@@ -46,104 +46,104 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Helpers
         private void GetStates()
         {
-            StateItems = new ObservableCollection<StateItem>();
-            StateItem stateItem;
+            StatusItems = new ObservableCollection<StatusItem>();
+            StatusItem statusItem;
 
-            stateItem = new StateItem();
-            stateItem.Title = "Ejecutando";
-            stateItem.State = "state_e";
-            stateItem.StateColor = StatusColor.Green;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Ejecutando";
+            statusItem.State = "state_e";
+            statusItem.StateColor = StatusColor.Green;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Finalizado";
-            stateItem.State = "state_f";
-            stateItem.StateColor = StatusColor.Blue;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Finalizado";
+            statusItem.State = "state_f";
+            statusItem.StateColor = StatusColor.Blue;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Finalizado con error";
-            stateItem.State = "state_f";
-            stateItem.StateColor = StatusColor.Red;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Finalizado con error";
+            statusItem.State = "state_f";
+            statusItem.StateColor = StatusColor.Red;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Esperando Dependencia";
-            stateItem.State = "state_ed";
-            stateItem.StateColor = StatusColor.Yellow;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Esperando Dependencia";
+            statusItem.State = "state_ed";
+            statusItem.StateColor = StatusColor.Yellow;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Esperando Interfaz de Entrada";
-            stateItem.State = "state_ei";
-            stateItem.StateColor = StatusColor.Yellow;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Esperando Interfaz de Entrada";
+            statusItem.State = "state_ei";
+            statusItem.StateColor = StatusColor.Yellow;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Esperando Recurso";
-            stateItem.State = "state_er";
-            stateItem.StateColor = StatusColor.Yellow;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Esperando Recurso";
+            statusItem.State = "state_er";
+            statusItem.StateColor = StatusColor.Yellow;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Esperando Puerto";
-            stateItem.State = "state_ep";
-            stateItem.StateColor = StatusColor.Yellow;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Esperando Puerto";
+            statusItem.State = "state_ep";
+            statusItem.StateColor = StatusColor.Yellow;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Error de Recurso";
-            stateItem.State = "state_er";
-            stateItem.StateColor = StatusColor.Red;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Error de Recurso";
+            statusItem.State = "state_er";
+            statusItem.StateColor = StatusColor.Red;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Error";
-            stateItem.State = "state_e";
-            stateItem.StateColor = StatusColor.Red;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Error";
+            statusItem.State = "state_e";
+            statusItem.StateColor = StatusColor.Red;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Error de Dependencia";
-            stateItem.State = "state_ed";
-            stateItem.StateColor = StatusColor.Orange;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Error de Dependencia";
+            statusItem.State = "state_ed";
+            statusItem.StateColor = StatusColor.Orange;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Error de Interfaz de Entrada";
-            stateItem.State = "state_ei";
-            stateItem.StateColor = StatusColor.Red;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Error de Interfaz de Entrada";
+            statusItem.State = "state_ei";
+            statusItem.StateColor = StatusColor.Red;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Error de Puerto";
-            stateItem.State = "state_ep";
-            stateItem.StateColor = StatusColor.Red;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Error de Puerto";
+            statusItem.State = "state_ep";
+            statusItem.StateColor = StatusColor.Red;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Planificado";
-            stateItem.State = "state_p";
-            stateItem.StateColor = StatusColor.Grey;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Planificado";
+            statusItem.State = "state_p";
+            statusItem.StateColor = StatusColor.Grey;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Detenido";
-            stateItem.State = "state_d";
-            stateItem.StateColor = StatusColor.Red;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Detenido";
+            statusItem.State = "state_d";
+            statusItem.StateColor = StatusColor.Red;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Abortado";
-            stateItem.State = "state_ab";
-            stateItem.StateColor = StatusColor.Purple;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Abortado";
+            statusItem.State = "state_ab";
+            statusItem.StateColor = StatusColor.Purple;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Omitido";
-            stateItem.State = "state_om";
-            stateItem.StateColor = StatusColor.White;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Omitido";
+            statusItem.State = "state_om";
+            statusItem.StateColor = StatusColor.White;
+            StatusItems.Add(statusItem);
         }
         #endregion
     }

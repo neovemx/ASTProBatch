@@ -32,7 +32,7 @@
                 <ListView
                     VerticalOptions="FillAndExpand"
                     SelectionMode="None"
-                    ItemsSource="{Binding StateItems}"
+                    ItemsSource="{Binding StatusItems}"
                     SeparatorVisibility="None"
                     BackgroundColor="Transparent">
                     <ListView.ItemTemplate>

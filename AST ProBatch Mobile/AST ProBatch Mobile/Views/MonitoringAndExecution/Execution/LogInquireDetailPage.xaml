@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AST_ProBatch_Mobile.Views.LogInquireDetailPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundColor="#DDDDDD">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding LogInquirieDetail}">
+            <StackLayout
+                BackgroundColor="{Binding ResultLogInquirieItem.StatusColor}"
+                Padding="5"
+                Orientation="Horizontal">
+                <Label 
+                    FontSize="Large"
+                    TextColor="White"
+                    Text="{Binding LogTitle}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    LineBreakMode="TailTruncation" />
+                <ImageButton 
+                    HorizontalOptions="End"
+                    Command="{Binding CloseCommand}"
+                    BackgroundColor="Transparent"
+                    Source="close_page"/>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout
+                    Padding="10"
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            HorizontalOptions="FillAndExpand">
+                            <Label 
+                                WidthRequest="70"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Instancia:"/>
+                            <Label 
+                                TextColor="DarkGray"
+                                Text="{Binding ResultLogInquirieItem.NameInstance}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label 
+                                WidthRequest="70"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Inicio:"/>
+                            <Label 
+                                TextColor="DarkGray"
+                                Text="{Binding ResultLogInquirieItem.Start}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label 
+                                WidthRequest="70"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Pausa:"/>
+                            <Label 
+                                TextColor="DarkGray"
+                                Text="{Binding ResultLogInquirieItem.Pause}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label 
+                                WidthRequest="70"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Lote:"/>
+                            <Label 
+                                TextColor="DarkGray"
+                                Text="{Binding ResultLogInquirieItem.NameLot}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label 
+                                WidthRequest="70"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Comando:"/>
+                            <Label 
+                                TextColor="DarkGray"
+                                Text="{Binding ResultLogInquirieItem.NameCommand}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label 
+                                WidthRequest="70"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Estado:"/>
+                            <Label 
+                                TextColor="DarkGray"
+                                Text="{Binding ResultLogInquirieItem.Status}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label 
+                                WidthRequest="70"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Resultado:"/>
+                            <Label 
+                                TextColor="DarkGray"
+                                Text="{Binding ResultLogInquirieItem.StatusResult}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <StackLayout
+                            Orientation="Horizontal">
+                                <Label 
+                                WidthRequest="70"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Inicio:"/>
+                                <Label 
+                                TextColor="DarkGray"
+                                Text="{Binding ResultLogInquirieItem.StartDateTime}"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout>
+                            <StackLayout
+                            Orientation="Horizontal">
+                                <Label 
+                                WidthRequest="70"
+                                TextColor="#2EABBD"
+                                FontAttributes="Bold"
+                                Text="Fin:"/>
+                                <Label 
+                                TextColor="DarkGray"
+                                Text="{Binding ResultLogInquirieItem.EndDateTime}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout 
+                VerticalOptions="EndAndExpand">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Small"
+                    FontAttributes="Bold"
+                    TextColor="Gray"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

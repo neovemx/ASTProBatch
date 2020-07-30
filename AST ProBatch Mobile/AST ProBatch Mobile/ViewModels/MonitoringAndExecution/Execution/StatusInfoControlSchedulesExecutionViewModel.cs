@@ -10,11 +10,11 @@ namespace AST_ProBatch_Mobile.ViewModels
     public class StatusInfoControlSchedulesExecutionViewModel : BaseViewModel
     {
         #region Atributes
-        private ObservableCollection<StateItem> stateitems;
+        private ObservableCollection<StatusItem> stateitems;
         #endregion
 
         #region Properties
-        public ObservableCollection<StateItem> StateItems
+        public ObservableCollection<StatusItem> StatusItems
         {
             get { return stateitems; }
             set { SetValue(ref stateitems, value); }
@@ -46,38 +46,38 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Helpers
         private void GetStates()
         {
-            StateItems = new ObservableCollection<StateItem>();
-            StateItem stateItem;
+            StatusItems = new ObservableCollection<StatusItem>();
+            StatusItem statusItem;
 
-            stateItem = new StateItem();
-            stateItem.Title = "No iniciado";
-            stateItem.State = "EE";
-            stateItem.StateColor = StatusColor.White;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "No iniciado";
+            statusItem.State = "EE";
+            statusItem.StateColor = StatusColor.White;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "En ejecución";
-            stateItem.State = "EE";
-            stateItem.StateColor = StatusColor.Green;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "En ejecución";
+            statusItem.State = "EE";
+            statusItem.StateColor = StatusColor.Green;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Finalizado";
-            stateItem.State = "EE";
-            stateItem.StateColor = StatusColor.Blue;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Finalizado";
+            statusItem.State = "EE";
+            statusItem.StateColor = StatusColor.Blue;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "En horario";
-            stateItem.State = "EC";
-            stateItem.StateColor = StatusColor.White;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "En horario";
+            statusItem.State = "EC";
+            statusItem.StateColor = StatusColor.White;
+            StatusItems.Add(statusItem);
 
-            stateItem = new StateItem();
-            stateItem.Title = "Fuera de horario";
-            stateItem.State = "EC";
-            stateItem.StateColor = StatusColor.Red;
-            StateItems.Add(stateItem);
+            statusItem = new StatusItem();
+            statusItem.Title = "Fuera de horario";
+            statusItem.State = "EC";
+            statusItem.StateColor = StatusColor.Red;
+            StatusItems.Add(statusItem);
         }
         #endregion
     }

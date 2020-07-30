@@ -136,11 +136,16 @@
                             FontSize="Medium"
                             Text="Operador:"
                             VerticalOptions="Center"/>
-                        <Picker 
+                        <controls:StandardPicker 
                             ItemsSource="{Binding OperatorsItems}"
                             ItemDisplayBinding="{Binding OperatorName}"
                             SelectedItem="{Binding SelectedOperator}"
                             HorizontalOptions="FillAndExpand"
+                            Padding="7,13,7,13"
+                            BackgroundColor="#F4F4F4"
+                            BorderColor="LightGray"
+                            BorderThickness="1"
+                            CornerRadius="5"
                             TextColor="DarkGray"/>
                     </StackLayout>
                     <StackLayout
@@ -153,14 +158,21 @@
                             FontSize="Medium"
                             Text="Clave:"
                             VerticalOptions="Center"/>
-                        <Entry
+                        <controls:StandardEntry
                             Text="{Binding OperatorPassword, Mode=TwoWay}"
                             PlaceholderColor="Gray"
+                            Placeholder="Contraseña..."
+                            Padding="7,13,7,13"
+                            BackgroundColor="#F4F4F4"
+                            BorderColor="LightGray"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            IsPassword="True"
+                            WidthRequest="55"
                             TextColor="DarkGray"
                             MaxLength="250"
-                            IsSpellCheckEnabled="False"
                             HorizontalOptions="FillAndExpand"
-                            IsPassword="True"/>
+                            IsSpellCheckEnabled="False"/>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

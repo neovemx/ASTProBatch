@@ -286,8 +286,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.IsEnabled = true;
             commandItem.Title = "LOTE 1 - COMANDO 1";
             commandItem.Notifications = "notification";
-            commandItem.State = "state_e";
-            commandItem.StateColor = StatusColor.Green;
+            commandItem.Status = "state_e";
+            commandItem.StatusColor = StatusColor.Green;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.Duration = "1 hora 45 minutos";
@@ -301,8 +301,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.IsEnabled = true;
             commandItem.Title = "LOTE 1 - COMANDO 2";
             commandItem.Notifications = "notification";
-            commandItem.State = "state_ed";
-            commandItem.StateColor = StatusColor.Orange;
+            commandItem.Status = "state_ed";
+            commandItem.StatusColor = StatusColor.Orange;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.Duration = "1 hora 45 minutos";
@@ -316,8 +316,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.IsEnabled = true;
             commandItem.Title = "LOTE 1 - COMANDO 3";
             commandItem.Notifications = "notification_n";
-            commandItem.State = "state_f";
-            commandItem.StateColor = StatusColor.Green;
+            commandItem.Status = "state_f";
+            commandItem.StatusColor = StatusColor.Green;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.Duration = "1 hora 45 minutos";
@@ -331,8 +331,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.IsEnabled = true;
             commandItem.Title = "LOTE 1 - COMANDO 4";
             commandItem.Notifications = "notification_n";
-            commandItem.State = "state_pause";
-            commandItem.StateColor = StatusColor.White;
+            commandItem.Status = "state_pause";
+            commandItem.StatusColor = StatusColor.White;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.Duration = "1 hora 45 minutos";
@@ -346,8 +346,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             commandItem.IsEnabled = true;
             commandItem.Title = "LOTE 1 - COMANDO 5";
             commandItem.Notifications = "notification";
-            commandItem.State = "state_om";
-            commandItem.StateColor = StatusColor.White;
+            commandItem.Status = "state_om";
+            commandItem.StatusColor = StatusColor.White;
             commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             commandItem.Duration = "1 hora 45 minutos";

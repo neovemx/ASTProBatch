@@ -12,8 +12,8 @@ namespace AST_ProBatch_Mobile.Models
         public bool IsEnabled { get; set; }
         public string Title { get; set; }
         public string Notifications { get; set; }
-        public string State { get; set; }
-        public string StateColor { get; set; }
+        public string Status { get; set; }
+        public string StatusColor { get; set; }
         public string Execution { get; set; }
         public string StatusLastProcess { get; set; }
         public string StatusLastProcessColor { get; set; }

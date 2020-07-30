@@ -256,8 +256,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 1";
             logItem.Notifications = "notification";
-            logItem.State = "state_e";
-            logItem.StateColor = StatusColor.Green;
+            logItem.Status = "state_e";
+            logItem.StatusColor = StatusColor.Green;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -273,8 +273,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 2";
             logItem.Notifications = "notification";
-            logItem.State = "state_ed";
-            logItem.StateColor = StatusColor.Orange;
+            logItem.Status = "state_ed";
+            logItem.StatusColor = StatusColor.Orange;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -290,8 +290,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 3";
             logItem.Notifications = "notification_n";
-            logItem.State = "state_f";
-            logItem.StateColor = StatusColor.Green;
+            logItem.Status = "state_f";
+            logItem.StatusColor = StatusColor.Green;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -307,8 +307,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 4";
             logItem.Notifications = "notification_n";
-            logItem.State = "state_pause";
-            logItem.StateColor = StatusColor.White;
+            logItem.Status = "state_pause";
+            logItem.StatusColor = StatusColor.White;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -324,8 +324,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 5";
             logItem.Notifications = "notification";
-            logItem.State = "state_om";
-            logItem.StateColor = StatusColor.White;
+            logItem.Status = "state_om";
+            logItem.StatusColor = StatusColor.White;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");

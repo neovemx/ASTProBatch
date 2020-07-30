@@ -12,16 +12,16 @@ namespace AST_ProBatch_Mobile.ViewModels
     {
         #region Atributes
         private ObservableCollection<InstanceRunningItem> instancerunningitems;
-        private ObservableCollection<OperatorItem> operatorstems;
+        private ObservableCollection<PickerOperatorItem> operatorsitems;
         private string logtitle;
         private string logoperator;
-        private OperatorItem selectedoperator;
+        private PickerOperatorItem selectedoperator;
         private bool isloadingdata;
         public string operatorpassword;
         #endregion
 
         #region Properties
-        public OperatorItem SelectedOperator
+        public PickerOperatorItem SelectedOperator
         {
             get { return selectedoperator; }
             set
@@ -34,10 +34,10 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return instancerunningitems; }
             set { SetValue(ref instancerunningitems, value); }
         }
-        public ObservableCollection<OperatorItem> OperatorsItems
+        public ObservableCollection<PickerOperatorItem> OperatorsItems
         {
-            get { return operatorstems; }
-            set { SetValue(ref operatorstems, value); }
+            get { return operatorsitems; }
+            set { SetValue(ref operatorsitems, value); }
         }
 
         public string LogTitle
@@ -191,40 +191,40 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceRunningItem.IsRunning = "SI";
             InstanceRunningItems.Add(instanceRunningItem);
 
-            OperatorsItems = new ObservableCollection<OperatorItem>();
-            OperatorItem operatorItem;
+            OperatorsItems = new ObservableCollection<PickerOperatorItem>();
+            PickerOperatorItem operatorItem;
 
-            operatorItem = new OperatorItem();
+            operatorItem = new PickerOperatorItem();
             operatorItem.Id = 1;
             operatorItem.OperatorName = "ADMINISTRADOR WEB";
             OperatorsItems.Add(operatorItem);
 
-            operatorItem = new OperatorItem();
+            operatorItem = new PickerOperatorItem();
             operatorItem.Id = 2;
             operatorItem.OperatorName = "PLANIFICADOR";
             OperatorsItems.Add(operatorItem);
 
-            operatorItem = new OperatorItem();
+            operatorItem = new PickerOperatorItem();
             operatorItem.Id = 3;
             operatorItem.OperatorName = "SUPERVISOR";
             OperatorsItems.Add(operatorItem);
 
-            operatorItem = new OperatorItem();
+            operatorItem = new PickerOperatorItem();
             operatorItem.Id = 4;
             operatorItem.OperatorName = "TESTER";
             OperatorsItems.Add(operatorItem);
 
-            operatorItem = new OperatorItem();
+            operatorItem = new PickerOperatorItem();
             operatorItem.Id = 5;
             operatorItem.OperatorName = "ADMINISTRADOR";
             OperatorsItems.Add(operatorItem);
 
-            operatorItem = new OperatorItem();
+            operatorItem = new PickerOperatorItem();
             operatorItem.Id = 6;
             operatorItem.OperatorName = "USUARIO DE SEGURIDAD";
             OperatorsItems.Add(operatorItem);
 
-            operatorItem = new OperatorItem();
+            operatorItem = new PickerOperatorItem();
             operatorItem.Id = 7;
             operatorItem.OperatorName = "USUARIO ANONIMO";
             OperatorsItems.Add(operatorItem);

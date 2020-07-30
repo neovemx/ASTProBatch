@@ -769,4 +769,49 @@
   <ItemGroup>
     <BundleResource Include="Resources\action_vr%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_lotcommand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_lotcommand%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_lotcommand%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_operators.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_operators%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_operators%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clean.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clean%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clean%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\select%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\select%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search%402x.png" />
+  </ItemGroup>
 </Project>

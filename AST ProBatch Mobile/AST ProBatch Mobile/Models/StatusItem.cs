@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AST_ProBatch_Mobile.Models
+﻿namespace AST_ProBatch_Mobile.Models
 {
-    public class StateItem
+    public class StatusItem
     {
         public string Title { get; set; }
         public string State { get; set; }

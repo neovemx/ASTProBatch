@@ -277,8 +277,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 1";
             instanceItem.Notifications = "notification";
-            instanceItem.State = "state_e";
-            instanceItem.StateColor = StatusColor.Green;
+            instanceItem.Status = "state_e";
+            instanceItem.StatusColor = StatusColor.Green;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "F";
             instanceItem.StatusLastProcessColor = StatusColor.Green;
@@ -297,8 +297,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 2";
             instanceItem.Notifications = "notification";
-            instanceItem.State = "state_ed";
-            instanceItem.StateColor = StatusColor.Orange;
+            instanceItem.Status = "state_ed";
+            instanceItem.StatusColor = StatusColor.Orange;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "E";
             instanceItem.StatusLastProcessColor = StatusColor.Red;
@@ -317,8 +317,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 3";
             instanceItem.Notifications = "notification_n";
-            instanceItem.State = "state_f";
-            instanceItem.StateColor = StatusColor.Green;
+            instanceItem.Status = "state_f";
+            instanceItem.StatusColor = StatusColor.Green;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "P";
             instanceItem.StatusLastProcessColor = StatusColor.White;
@@ -337,8 +337,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 4";
             instanceItem.Notifications = "notification_n";
-            instanceItem.State = "state_pause";
-            instanceItem.StateColor = StatusColor.White;
+            instanceItem.Status = "state_pause";
+            instanceItem.StatusColor = StatusColor.White;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "D";
             instanceItem.StatusLastProcessColor = StatusColor.Orange;
@@ -357,8 +357,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 5";
             instanceItem.Notifications = "notification";
-            instanceItem.State = "state_om";
-            instanceItem.StateColor = StatusColor.White;
+            instanceItem.Status = "state_om";
+            instanceItem.StatusColor = StatusColor.White;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "F";
             instanceItem.StatusLastProcessColor = StatusColor.Green;

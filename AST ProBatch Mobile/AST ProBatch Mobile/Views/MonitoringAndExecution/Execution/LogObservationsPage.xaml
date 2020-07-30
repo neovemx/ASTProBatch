@@ -50,15 +50,19 @@
                             FontSize="Medium"
                             Text="Nombre:"
                             VerticalOptions="Center"/>
-                        <Entry
-                            x:Name="edtName"
+                        <controls:StandardEntry
                             Text="{Binding Name, Mode=TwoWay}"
+                            Padding="7,13,7,13"
+                            BackgroundColor="#F4F4F4"
+                            BorderColor="LightGray"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            TextColor="DarkGray"
                             PlaceholderColor="LightGray"
                             Placeholder="Nombre observación..."
-                            TextColor="DarkGray"
                             MaxLength="250"
                             IsSpellCheckEnabled="False"
-                            HorizontalOptions="FillAndExpand" />
+                            HorizontalOptions="FillAndExpand"/>
                     </StackLayout>
                     <StackLayout>
                         <Label 
@@ -66,16 +70,20 @@
                             FontAttributes="Bold"
                             FontSize="Medium"
                             Text="Detalle:" />
-                        <Editor
-                            x:Name="edtDetails"
+                        <controls:StandardEditor
                             Text="{Binding Details, Mode=TwoWay}"
+                            Padding="7,13,7,13"
+                            BackgroundColor="#F4F4F4"
+                            BorderColor="LightGray"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            TextColor="DarkGray"
                             PlaceholderColor="LightGray"
                             Placeholder="Detalle observación..."
-                            TextColor="DarkGray"
                             MaxLength="800"
                             Keyboard="Plain"
                             IsSpellCheckEnabled="False"
-                            HeightRequest="180" />
+                            HeightRequest="180"/>
                     </StackLayout>
                     <StackLayout
                         Orientation="Horizontal">
