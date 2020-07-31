@@ -58,10 +58,22 @@
                 <ListView
                     x:Name="LogsItemsListView"
                     ItemsSource="{Binding LogItems}"
-                    RowHeight="265"
+                    RowHeight="226"
                     IsRefreshing="{Binding IsRefreshing}"
                     ItemSelected="LogsItemsListView_ItemSelected"
                     BackgroundColor="Transparent">
+                    <ListView.SeparatorVisibility >
+                        <OnPlatform x:TypeArguments="SeparatorVisibility">
+                            <On Platform="iOS" Value="None" />
+                            <On Platform="Android" Value="Default" />
+                        </OnPlatform>
+                    </ListView.SeparatorVisibility>
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="226" />
+                            <On Platform="Android" Value="248" />
+                        </OnPlatform>
+                    </ListView.RowHeight>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -70,18 +82,24 @@
                                         Padding="10">
                                         <controls:CustomFrame 
                                             Padding="6"
-                                            BorderColor="#D7D7D7"
+                                            CornerRadius="10,10,0,0"
                                             BackgroundColor="#D7D7D7"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
-                                            HeightRequest="45">
+                                            HeightRequest="35">
                                             <StackLayout
                                                 Orientation="Horizontal">
-                                                <StackLayout
-                                                    VerticalOptions="Center">
-                                                    <CheckBox 
+                                                <StackLayout>
+                                                    <CheckBox
                                                         IsChecked="{Binding IsChecked}"
-                                                        IsEnabled="{Binding IsEnabled}"/>
+                                                        IsEnabled="{Binding IsEnabled}">
+                                                        <CheckBox.Margin>
+                                                            <OnPlatform x:TypeArguments="Thickness">
+                                                                <On Platform="iOS" Value="0,-5,0,0" />
+                                                                <On Platform="Android" Value="0,1,0,0" />
+                                                            </OnPlatform>
+                                                        </CheckBox.Margin>
+                                                    </CheckBox>
                                                 </StackLayout>
                                                 <StackLayout
                                                     VerticalOptions="Center"
@@ -100,7 +118,9 @@
                                                         BackgroundColor="#2EABBD"
                                                         Source="{Binding Notifications}"
                                                         CommandParameter="{Binding}"
-                                                        Clicked="ImageButtonNotification_Clicked"/>
+                                                        Clicked="ImageButtonNotification_Clicked"
+                                                        WidthRequest="35"
+                                                        HeightRequest="35"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     VerticalOptions="Center">
@@ -108,18 +128,27 @@
                                                         CornerRadius="5"
                                                         BackgroundColor="{Binding StatusColor}"
                                                         Source="{Binding Status}"
-                                                        Clicked="ImageButtonState_Clicked"/>
+                                                        Clicked="ImageButtonState_Clicked"
+                                                        WidthRequest="35"
+                                                        HeightRequest="35"/>
                                                 </StackLayout>
                                             </StackLayout>
                                         </controls:CustomFrame>
-                                        <controls:CustomFrame 
-                                            Margin="0,-7,0,0"
-                                            BorderColor="LightGray"
+                                        <controls:CustomFrame
+                                            CornerRadius="0,0,10,10"
+                                            Margin="0,-6,0,0"
                                             BackgroundColor="#F4F4F4"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
-                                            HeightRequest="150">
-                                            <StackLayout>
+                                            HeightRequest="120">
+                                            <controls:CustomFrame.HeightRequest>
+                                                <OnPlatform x:TypeArguments="x:Double">
+                                                    <On Platform="iOS" Value="120" />
+                                                    <On Platform="Android" Value="140" />
+                                                </OnPlatform>
+                                            </controls:CustomFrame.HeightRequest>
+                                            <StackLayout
+                                                Margin="0,-5,0,0">
                                                 <StackLayout
                                                     Orientation="Horizontal">
                                                     <Label 
@@ -127,10 +156,12 @@
                                                         TextColor="#2EABBD"
                                                         Text="Ambiente:" 
                                                         WidthRequest="150"
+                                                        FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
                                                         TextColor="DarkGray"
-                                                        Text="{Binding Environment}" 
+                                                        Text="{Binding Environment}"
+                                                        FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -140,10 +171,12 @@
                                                         TextColor="#2EABBD"
                                                         Text="Fecha Ejecución:" 
                                                         WidthRequest="150"
+                                                        FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
                                                         TextColor="DarkGray"
-                                                        Text="{Binding Execution}" 
+                                                        Text="{Binding Execution}"
+                                                        FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -153,34 +186,40 @@
                                                         TextColor="#2EABBD"
                                                         Text="Fecha Finalización:" 
                                                         WidthRequest="150"
+                                                        FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
                                                         TextColor="DarkGray"
-                                                        Text="{Binding End}" 
+                                                        Text="{Binding End}"
+                                                        FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
-                                                    Padding="0,0,0,12"
+                                                    Padding="0,0,0,5"
                                                     Orientation="Horizontal">
                                                     <Label 
                                                         FontAttributes="Bold"
                                                         TextColor="#2EABBD"
                                                         Text="Comandos:" 
                                                         WidthRequest="150"
+                                                        FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                     <StackLayout
                                                         Orientation="Horizontal">
                                                         <Label 
                                                             TextColor="DarkGray"
-                                                            Text="{Binding CommandsNumber}" 
+                                                            Text="{Binding CommandsNumber}"
+                                                            FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                         <Label 
                                                             TextColor="DarkGray"
-                                                            Text="/" 
+                                                            Text="/"
+                                                            FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                         <Label 
                                                             TextColor="Red"
-                                                            Text="{Binding CommandsFail}" 
+                                                            Text="{Binding CommandsFail}"
+                                                            FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                     </StackLayout>
                                                 </StackLayout>
@@ -197,7 +236,9 @@
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_ej"
-                                                                Clicked="ImageButtonLogAction_1_Clicked"/>
+                                                                Clicked="ImageButtonLogAction_1_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35"/>
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
@@ -206,7 +247,9 @@
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_dt"
-                                                                Clicked="ImageButtonLogAction_2_Clicked"/>
+                                                                Clicked="ImageButtonLogAction_2_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35"/>
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
@@ -215,7 +258,9 @@
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_rl"
-                                                                Clicked="ImageButtonLogAction_3_Clicked"/>
+                                                                Clicked="ImageButtonLogAction_3_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35"/>
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
@@ -224,7 +269,9 @@
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_rc"
-                                                                Clicked="ImageButtonLogAction_4_Clicked"/>
+                                                                Clicked="ImageButtonLogAction_4_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35"/>
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
@@ -233,7 +280,9 @@
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_co"
-                                                                Clicked="ImageButtonLogAction_5_Clicked"/>
+                                                                Clicked="ImageButtonLogAction_5_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35"/>
                                                         </StackLayout>
                                                         <StackLayout
                                                             IsVisible="{Binding Eventual}">
@@ -243,7 +292,9 @@
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_ob"
-                                                                Clicked="ImageButtonLogAction_6_Clicked"/>
+                                                                Clicked="ImageButtonLogAction_6_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35"/>
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
@@ -252,7 +303,9 @@
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_he"
-                                                                Clicked="ImageButtonLogAction_7_Clicked"/>
+                                                                Clicked="ImageButtonLogAction_7_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35"/>
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
@@ -261,7 +314,9 @@
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_cn"
-                                                                Clicked="ImageButtonLogAction_8_Clicked"/>
+                                                                Clicked="ImageButtonLogAction_8_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35"/>
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </ScrollView>

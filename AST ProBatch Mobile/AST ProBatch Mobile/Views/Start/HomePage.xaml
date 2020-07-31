@@ -10,8 +10,7 @@
              Title="INICIO"
              BackgroundColor="#DDDDDD">
     <ContentPage.ToolbarItems>
-        <ToolbarItem BindingContext="{Binding Home}" Text="Acerca" Icon="about" Command="{Binding AboutCommand}" Order="Secondary" />
-        <ToolbarItem BindingContext="{Binding Home}" Text="Salir" Command="{Binding ExitCommand}" Order="Secondary" />
+        <ToolbarItem BindingContext="{Binding Home}" Text="Acerca" Icon="about" Command="{Binding AboutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
