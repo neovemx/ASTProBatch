@@ -7,12 +7,12 @@
              mc:Ignorable="d"
              x:Class="AST_ProBatch_Mobile.Views.SettingsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor="#DDDDDD">
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Settings}">
             <StackLayout
-                BackgroundColor="#DDDDDD"
+                BackgroundColor="White"
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
@@ -22,14 +22,27 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />
-                <ImageButton 
+                <ImageButton
+                    BorderColor="#2255AA"
+                    BorderWidth="1"
+                    BackgroundColor="White"
                     HorizontalOptions="End"
                     Command="{Binding CloseCommand}"
-                    BackgroundColor="Transparent"
-                    Source="close_page"/>
+                    Source="close_page"
+                    HeightRequest="30"
+                    WidthRequest="30">
+                    <ImageButton.CornerRadius>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="15" />
+                            <On Platform="Android" Value="50" />
+                        </OnPlatform>
+                    </ImageButton.CornerRadius>
+                </ImageButton>
             </StackLayout>
-            <ScrollView>
+            <ScrollView
+                VerticalOptions="FillAndExpand">
                 <StackLayout
+                    VerticalOptions="Center"
                     HorizontalOptions="Center">
                     <StackLayout
                         Padding="0,50,0,50">
@@ -39,7 +52,7 @@
                         <Label
                             Text="Configuración"
                             HorizontalOptions="Center"
-                            TextColor="White"
+                            TextColor="#2255AA"
                             FontSize="Large"
                             FontAttributes="Bold">
                         </Label>
@@ -47,25 +60,29 @@
                     <StackLayout
                         WidthRequest="300">
                         <controls:StandardEntry
+                            FontSize="Small"
                             Text="{Binding UrlDomain, Mode=TwoWay}"
-                            Padding="7,13,7,13"
-                            BackgroundColor="#F4F4F4"
-                            BorderColor="LightGray"
+                            Padding="5"
+                            BackgroundColor="White"
+                            BorderColor="#2255AA"
                             BorderThickness="1"
-                            CornerRadius="5"
+                            CornerRadius="7"
                             TextColor="#2255AA"
                             PlaceholderColor="DarkGray"
-                            Placeholder="http://172.16.1.150:83..."/>
+                            Placeholder="http://172.16.1.150:83..."
+                            HeightRequest="30"/>
                         <controls:StandardEntry
+                            FontSize="Small"
                             Text="{Binding UrlPrefix, Mode=TwoWay}"
-                            Padding="7,13,7,13"
-                            BackgroundColor="#F4F4F4"
-                            BorderColor="LightGray"
+                            Padding="5"
+                            BackgroundColor="White"
+                            BorderColor="#2255AA"
                             BorderThickness="1"
-                            CornerRadius="5"
+                            CornerRadius="7"
                             TextColor="#2255AA"
                             PlaceholderColor="DarkGray"
-                            Placeholder="/test/v1/api..."/>
+                            Placeholder="/test/v1/api..."
+                            HeightRequest="30"/>
                         <Label
                             FontAttributes="None"
                             FontSize="Small"
@@ -76,18 +93,21 @@
                         <ActivityIndicator
                             IsRunning="{Binding IsRunning, Mode=TwoWay}">
                         </ActivityIndicator>
-                        <Button
-                            BorderColor="White"
-                            BorderWidth="1"
-                            Command="{Binding SaveCommand}"
-                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                            CornerRadius="5"
-                            HeightRequest="46"
-                            BackgroundColor="#2255AA"
-                            Text="GUARDAR"
-                            TextColor="White"
-                            FontAttributes="Bold">
+                        <RelativeLayout
+                            HorizontalOptions="Center">
+                            <Button
+                                FontSize="Small"
+                                Command="{Binding SaveCommand}"
+                                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                                CornerRadius="23"
+                                HeightRequest="46"
+                                BackgroundColor="#2255AA"
+                                Text="GUARDAR"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                WidthRequest="150">
                         </Button>
+                        </RelativeLayout>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
@@ -96,9 +116,8 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    FontSize="Micro"
+                    TextColor="#2255AA"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

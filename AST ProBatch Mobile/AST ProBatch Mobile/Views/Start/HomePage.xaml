@@ -8,7 +8,7 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              NavigationPage.HasBackButton="False"
              Title="INICIO"
-             BackgroundColor="#DDDDDD">
+             BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding Home}" Text="Acerca" Icon="about" Command="{Binding AboutCommand}" />
     </ContentPage.ToolbarItems>
@@ -22,7 +22,8 @@
                     VerticalOptions="Center">
                     <StackLayout>
                         <ImageButton
-                            CornerRadius="5"
+                            Padding="10,0,0,4"
+                            CornerRadius="38"
                             BorderColor="#53BA53"
                             BorderWidth="1"
                             Command="{Binding BtnmppalaCommand}"
@@ -33,7 +34,8 @@
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
-                            CornerRadius="5"
+                            Padding="10,0,0,4"
+                            CornerRadius="38"
                             BorderColor="#DD8833"
                             BorderWidth="1"
                             Command="{Binding BtnmppalbCommand}"
@@ -44,7 +46,8 @@
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
-                            CornerRadius="5"
+                            Padding="10,0,0,4"
+                            CornerRadius="38"
                             BorderColor="#358FCE"
                             BorderWidth="1"
                             Command="{Binding BtnmppalcCommand}"
@@ -55,7 +58,8 @@
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
-                            CornerRadius="5"
+                            Padding="10,0,0,4"
+                            CornerRadius="38"
                             BorderColor="#DDCC33"
                             BorderWidth="1"
                             Command="{Binding BtnmppaldCommand}"
@@ -70,9 +74,8 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    FontSize="Micro"
+                    TextColor="#2255AA"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

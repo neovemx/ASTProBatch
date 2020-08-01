@@ -12,8 +12,13 @@
             BindingContext="{Binding MonitoringAndExecutionMenu}">
             <StackLayout
                 BackgroundColor="#DD8833"
-                Padding="5"
                 Orientation="Horizontal">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="5,-5,5,-5" />
+                        <On Platform="Android" Value="5,5,5,5" />
+                    </OnPlatform>
+                </StackLayout.Padding>
                 <Label 
                     FontSize="Large"
                     TextColor="White"

@@ -15,11 +15,22 @@
                 IsVisible="{Binding UIIsVisible}"
                 Padding="5"
                 Orientation="Horizontal">
-                <ImageButton 
+                <ImageButton
+                    BorderColor="White"
+                    BorderWidth="1"
                     HorizontalOptions="EndAndExpand"
                     Command="{Binding SettingsCommand}"
-                    BackgroundColor="Transparent"
-                    Source="settings"/>
+                    BackgroundColor="#2255AA"
+                    Source="settings"
+                    HeightRequest="30"
+                    WidthRequest="30">
+                    <ImageButton.CornerRadius>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="15" />
+                            <On Platform="Android" Value="50" />
+                        </OnPlatform>
+                    </ImageButton.CornerRadius>
+                </ImageButton>
             </StackLayout>
             <ScrollView
                 IsVisible="{Binding UIIsVisible}"
@@ -44,35 +55,37 @@
                         IsVisible="{Binding IsVisibleLogin}"
                         WidthRequest="300">
                         <controls:StandardEntry
+                            FontSize="Small"
                             Text="{Binding Username, Mode=TwoWay}"
-                            Padding="7,13,7,13"
-                            BackgroundColor="#F4F4F4"
-                            BorderColor="LightGray"
+                            Padding="5"
+                            BackgroundColor="#2255AA"
+                            BorderColor="White"
                             BorderThickness="1"
-                            CornerRadius="5"
-                            TextColor="#2255AA"
-                            PlaceholderColor="DarkGray"
+                            CornerRadius="7"
+                            TextColor="White"
+                            PlaceholderColor="LightGray"
                             Placeholder="Usuario..."
-                            HorizontalTextAlignment="Center"/>
+                            HeightRequest="30"/>
                         <controls:StandardEntry
+                            FontSize="Small"
                             Text="{Binding Password, Mode=TwoWay}"
-                            Padding="7,13,7,13"
-                            BackgroundColor="#F4F4F4"
-                            BorderColor="LightGray"
+                            Padding="5"
+                            BackgroundColor="#2255AA"
+                            BorderColor="White"
                             BorderThickness="1"
-                            CornerRadius="5"
-                            TextColor="#2255AA"
-                            PlaceholderColor="DarkGray"
+                            CornerRadius="7"
+                            TextColor="White"
+                            PlaceholderColor="LightGray"
                             Placeholder="Contraseña..."
-                            HorizontalTextAlignment="Center"
-                            IsPassword="True"/>
+                            IsPassword="True"
+                            HeightRequest="30"/>
                     </StackLayout>
                     <AbsoluteLayout
                         HorizontalOptions="Center"
                         Padding="0,0,0,30"
                         IsVisible="{Binding IsVisibleFingerPrint}">
                         <ImageButton 
-                            CornerRadius="5"
+                            CornerRadius="64"
                             BorderColor="White"
                             BorderWidth="1"
                             BackgroundColor="#2255AA"
@@ -82,28 +95,32 @@
                     <StackLayout
                         Orientation="Horizontal"
                         HorizontalOptions="Center">
-                        <CheckBox 
+                        <CheckBox
+                            Color="White"
                             VerticalOptions="Center"
                             IsChecked="{Binding IsChecked, Mode=TwoWay}"/>
-                        <Label 
+                        <Label
+                            FontSize="Medium"
                             TextColor="White"
                             VerticalOptions="Center"
                             Text="Autenticación Biométrica"/>
                     </StackLayout>
-                    <StackLayout
+                    <RelativeLayout
                         IsVisible="{Binding IsVisibleLogin}"
-                        Padding="0,20,0,0">
+                        HorizontalOptions="Center">
                         <Button
                             BorderColor="White"
                             BorderWidth="1"
+                            FontSize="Small"
                             Command="{Binding LoginCommand}"
-                            CornerRadius="5"
+                            CornerRadius="23"
                             HeightRequest="46"
-                            BackgroundColor="#2255AA"
-                            Text="Ingresar"
-                            TextColor="White"
+                            BackgroundColor="White"
+                            Text="INGRESAR"
+                            TextColor="#2255AA"
                             FontAttributes="Bold"
-                            IsEnabled="{Binding IsEnabled}">
+                            IsEnabled="{Binding IsEnabled}"
+                            WidthRequest="150">
                             <Button.Triggers>
                                 <Trigger
                                     TargetType="Button"
@@ -115,7 +132,7 @@
                                 </Trigger>
                             </Button.Triggers>
                         </Button>
-                    </StackLayout>
+                    </RelativeLayout>
                 </StackLayout>
             </ScrollView>
             <StackLayout
@@ -132,9 +149,8 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="LightGray"/>
+                    FontSize="Micro"
+                    TextColor="White"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
