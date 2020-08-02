@@ -23,9 +23,7 @@
                     VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />
                 <ImageButton
-                    BorderColor="#2255AA"
-                    BorderWidth="1"
-                    BackgroundColor="White"
+                    BackgroundColor="#F1F2F6"
                     HorizontalOptions="End"
                     Command="{Binding CloseCommand}"
                     Source="close_page"
@@ -116,8 +114,14 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Micro"
-                    TextColor="#2255AA"/>
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

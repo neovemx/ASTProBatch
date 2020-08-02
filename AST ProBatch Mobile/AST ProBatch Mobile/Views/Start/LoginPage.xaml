@@ -16,8 +16,6 @@
                 Padding="5"
                 Orientation="Horizontal">
                 <ImageButton
-                    BorderColor="White"
-                    BorderWidth="1"
                     HorizontalOptions="EndAndExpand"
                     Command="{Binding SettingsCommand}"
                     BackgroundColor="#2255AA"
@@ -109,13 +107,11 @@
                         IsVisible="{Binding IsVisibleLogin}"
                         HorizontalOptions="Center">
                         <Button
-                            BorderColor="White"
-                            BorderWidth="1"
                             FontSize="Small"
                             Command="{Binding LoginCommand}"
                             CornerRadius="23"
                             HeightRequest="46"
-                            BackgroundColor="White"
+                            BackgroundColor="#F1F2F6"
                             Text="INGRESAR"
                             TextColor="#2255AA"
                             FontAttributes="Bold"
@@ -149,8 +145,14 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Micro"
-                    TextColor="White"/>
+                    TextColor="White">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -19,7 +19,7 @@
             BindingContext="{Binding Execution}">
             <controls:CustomFrame 
                 CornerRadius="0,0,20,20"
-                BackgroundColor="LightGray"
+                BackgroundColor="DarkGray"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Center"
                 IsVisible="{Binding ToolBarIsVisible}"
@@ -30,7 +30,7 @@
                     <ImageButton
                         WidthRequest="35"
                         HeightRequest="35"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_ej"
                         Clicked="ImageButtonLogToolBarAction_1_Clicked">
@@ -44,7 +44,7 @@
                     <ImageButton
                         WidthRequest="35"
                         HeightRequest="35"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_dt"
                         Clicked="ImageButtonLogToolBarAction_2_Clicked">
@@ -58,7 +58,7 @@
                     <ImageButton
                         WidthRequest="35"
                         HeightRequest="35"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_rl"
                         Clicked="ImageButtonLogToolBarAction_3_Clicked">
@@ -72,7 +72,7 @@
                     <ImageButton
                         WidthRequest="35"
                         HeightRequest="35"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_rc"
                         Clicked="ImageButtonLogToolBarAction_4_Clicked">
@@ -125,7 +125,8 @@
                                                 <StackLayout>
                                                     <CheckBox
                                                         IsChecked="{Binding IsChecked}"
-                                                        IsEnabled="{Binding IsEnabled}">
+                                                        IsEnabled="{Binding IsEnabled}"
+                                                        Color="#2255AA">
                                                         <CheckBox.Margin>
                                                             <OnPlatform x:TypeArguments="Thickness">
                                                                 <On Platform="iOS" Value="0,-5,0,0" />
@@ -146,14 +147,14 @@
                                                     <Label 
                                                         FontAttributes="Bold"
                                                         FontSize="Medium"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="{Binding Title}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton 
-                                                        BackgroundColor="#2EABBD"
+                                                        BackgroundColor="#F1F2F6"
                                                         Source="{Binding Notifications}"
                                                         CommandParameter="{Binding}"
                                                         Clicked="ImageButtonNotification_Clicked"
@@ -188,7 +189,7 @@
                                         <controls:CustomFrame
                                             CornerRadius="0,0,10,10"
                                             Margin="0,-6,0,0"
-                                            BackgroundColor="#F4F4F4"
+                                            BackgroundColor="DarkGray"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
                                             HeightRequest="120">
@@ -204,13 +205,13 @@
                                                     Orientation="Horizontal">
                                                     <Label 
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Ambiente:" 
                                                         WidthRequest="150"
                                                         FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
-                                                        TextColor="DarkGray"
+                                                        TextColor="White"
                                                         Text="{Binding Environment}"
                                                         FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
@@ -219,13 +220,13 @@
                                                     Orientation="Horizontal">
                                                     <Label 
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Fecha Ejecución:" 
                                                         WidthRequest="150"
                                                         FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
-                                                        TextColor="DarkGray"
+                                                        TextColor="White"
                                                         Text="{Binding Execution}"
                                                         FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
@@ -234,13 +235,13 @@
                                                     Orientation="Horizontal">
                                                     <Label 
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Fecha Finalización:" 
                                                         WidthRequest="150"
                                                         FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
-                                                        TextColor="DarkGray"
+                                                        TextColor="White"
                                                         Text="{Binding End}"
                                                         FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
@@ -250,7 +251,7 @@
                                                     Orientation="Horizontal">
                                                     <Label 
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Comandos:" 
                                                         WidthRequest="150"
                                                         FontSize="Small"
@@ -258,12 +259,12 @@
                                                     <StackLayout
                                                         Orientation="Horizontal">
                                                         <Label 
-                                                            TextColor="DarkGray"
+                                                            TextColor="White"
                                                             Text="{Binding CommandsNumber}"
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                         <Label 
-                                                            TextColor="DarkGray"
+                                                            TextColor="LightGray"
                                                             Text="/"
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
@@ -282,7 +283,7 @@
                                                         HorizontalOptions="Center">
                                                         <StackLayout>
                                                             <ImageButton
-                                                                BackgroundColor="#2EABBD"
+                                                                BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_ej"
@@ -299,7 +300,7 @@
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
-                                                                BackgroundColor="#2EABBD"
+                                                                BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_dt"
@@ -316,7 +317,7 @@
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
-                                                                BackgroundColor="#2EABBD"
+                                                                BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_rl"
@@ -333,7 +334,7 @@
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
-                                                                BackgroundColor="#2EABBD"
+                                                                BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_rc"
@@ -350,7 +351,7 @@
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
-                                                                BackgroundColor="#2EABBD"
+                                                                BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_co"
@@ -368,7 +369,7 @@
                                                         <StackLayout
                                                             IsVisible="{Binding Eventual}">
                                                             <ImageButton 
-                                                                BackgroundColor="#2EABBD"
+                                                                BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_ob"
@@ -385,7 +386,7 @@
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
-                                                                BackgroundColor="#2EABBD"
+                                                                BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_he"
@@ -402,7 +403,7 @@
                                                         </StackLayout>
                                                         <StackLayout>
                                                             <ImageButton 
-                                                                BackgroundColor="#2EABBD"
+                                                                BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_cn"
@@ -434,7 +435,6 @@
                 <ListView
                     x:Name="CompactLogsItemsListView"
                     ItemsSource="{Binding LogItems}"
-                    RowHeight="53"
                     IsRefreshing="{Binding IsRefreshing}"
                     ItemSelected="CompactLogsItemsListView_ItemSelected"
                     BackgroundColor="Transparent">
@@ -444,6 +444,12 @@
                             <On Platform="Android" Value="Default" />
                         </OnPlatform>
                     </ListView.SeparatorVisibility>
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="48" />
+                            <On Platform="Android" Value="43" />
+                        </OnPlatform>
+                    </ListView.RowHeight>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -452,11 +458,16 @@
                                         Padding="10,5,10,5">
                                         <controls:CustomFrame
                                             CornerRadius="10"
-                                            BorderColor="#D7D7D7"
                                             BackgroundColor="#D7D7D7"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
-                                            Padding="0">
+                                            Padding="-3">
+                                            <controls:CustomFrame.Padding>
+                                                <OnPlatform x:TypeArguments="Thickness">
+                                                    <On Platform="iOS" Value="-3" />
+                                                    <On Platform="Android" Value="0" />
+                                                </OnPlatform>
+                                            </controls:CustomFrame.Padding>
                                             <StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
@@ -464,10 +475,11 @@
                                                         Padding="4,0,0,0">
                                                         <CheckBox
                                                             IsChecked="{Binding IsChecked}"
-                                                            IsEnabled="{Binding IsEnabled}"/>
+                                                            IsEnabled="{Binding IsEnabled}"
+                                                            Color="#2255AA"/>
                                                     </StackLayout>
                                                     <Label 
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="{Binding Title}" 
                                                         FontAttributes="Bold"
                                                         LineBreakMode="TailTruncation"
@@ -476,13 +488,30 @@
                                                     <StackLayout
                                                         VerticalOptions="Center"
                                                         Padding="0,0,4,0">
+                                                        <StackLayout.Padding>
+                                                            <OnPlatform x:TypeArguments="Thickness">
+                                                                <On Platform="iOS" Value="0,0,7,0" />
+                                                                <On Platform="Android" Value="0,0,4,0" />
+                                                            </OnPlatform>
+                                                        </StackLayout.Padding>
                                                         <ImageButton
                                                             CornerRadius="15"
                                                             BackgroundColor="{Binding StatusColor}"
                                                             Source="{Binding Status}"
-                                                            Clicked="ImageButtonState_Clicked"
-                                                            HeightRequest="30"
-                                                            WidthRequest="30"/>
+                                                            Clicked="ImageButtonState_Clicked">
+                                                            <ImageButton.HeightRequest>
+                                                                <OnPlatform x:TypeArguments="x:Double">
+                                                                    <On Platform="iOS" Value="30" />
+                                                                    <On Platform="Android" Value="25" />
+                                                                </OnPlatform>
+                                                            </ImageButton.HeightRequest>
+                                                            <ImageButton.WidthRequest>
+                                                                <OnPlatform x:TypeArguments="x:Double">
+                                                                    <On Platform="iOS" Value="30" />
+                                                                    <On Platform="Android" Value="25" />
+                                                                </OnPlatform>
+                                                            </ImageButton.WidthRequest>
+                                                        </ImageButton>
                                                     </StackLayout>
                                                 </StackLayout>
                                             </StackLayout>
@@ -499,9 +528,14 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
