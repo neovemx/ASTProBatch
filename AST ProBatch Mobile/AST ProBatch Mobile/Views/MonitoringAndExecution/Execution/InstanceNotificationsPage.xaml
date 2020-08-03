@@ -7,25 +7,35 @@
              xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.InstanceNotificationsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor="LightGray">
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding InstanceNotifications}">
             <StackLayout
                 BackgroundColor="#2255AA"
-                Padding="10,10,10,10"
+                Padding="5"
                 Orientation="Horizontal">
                 <Label 
                     FontSize="Large"
                     TextColor="White"
                     Text="{Binding InstanceTitle}"
                     HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />
                 <ImageButton 
                     HorizontalOptions="End"
                     Command="{Binding CloseCommand}"
-                    BackgroundColor="Transparent"
-                    Source="close_page"/>
+                    BackgroundColor="#F1F2F6"
+                    Source="close_page"
+                    HeightRequest="30"
+                    WidthRequest="30">
+                    <ImageButton.CornerRadius>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="15" />
+                            <On Platform="Android" Value="50" />
+                        </OnPlatform>
+                    </ImageButton.CornerRadius>
+                </ImageButton>
             </StackLayout>
             <ScrollView
                 VerticalOptions="FillAndExpand">
@@ -33,7 +43,20 @@
                     <ListView
                         SelectionMode="None"
                         ItemsSource="{Binding NotificationItems}"
-                        RowHeight="210">
+                        RowHeight="210"
+                        BackgroundColor="Transparent">
+                        <ListView.SeparatorVisibility>
+                            <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                <On Platform="iOS" Value="None" />
+                                <On Platform="Android" Value="Default" />
+                            </OnPlatform>
+                        </ListView.SeparatorVisibility>
+                        <ListView.RowHeight>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="210" />
+                                <On Platform="Android" Value="43" />
+                            </OnPlatform>
+                        </ListView.RowHeight>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -50,18 +73,29 @@
                                                         FontSize="Medium"
                                                         FontAttributes="Bold"
                                                         Text="{Binding NotificationTitle}"
-                                                        TextColor="White"
+                                                        TextColor="#2255AA"
                                                         VerticalOptions="Center"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
                                                         FontSize="Small"
                                                         Text="{Binding DateTime}"
-                                                        TextColor="Black"
+                                                        TextColor="White"
                                                         VerticalOptions="Center"
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
-                                                <Image 
-                                                    Source="{Binding State}"/>
+                                                <RelativeLayout
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="End">
+                                                    <controls:CustomFrame
+                                                        BackgroundColor="#F1F2F6"
+                                                        CornerRadius="17"
+                                                        Padding="0"
+                                                        HeightRequest="35"
+                                                        WidthRequest="35">
+                                                        <Image 
+                                                            Source="{Binding State}"/>
+                                                    </controls:CustomFrame>
+                                                </RelativeLayout>
                                             </StackLayout>
                                             <StackLayout
                                                 Padding="5">
@@ -69,7 +103,7 @@
                                                     <controls:CustomLabel 
                                                         FontSize="Small"
                                                         Text="{Binding NotificationText}"
-                                                        TextColor="Black"
+                                                        TextColor="DarkGray"
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="CenterAndExpand"/>
                                                 </ScrollView>
@@ -83,13 +117,18 @@
                 </StackLayout>
             </ScrollView>
             <StackLayout 
-                VerticalOptions="End">
+                VerticalOptions="EndAndExpand">
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

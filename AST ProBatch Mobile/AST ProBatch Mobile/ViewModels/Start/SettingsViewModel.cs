@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using AST_ProBatch_Mobile.Models;
-using ASTProBatchMobile.Utilities;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using Xamarin.Forms;
 

@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.OperatorChangePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Cambio de Operador"
+             Title="CAMBIO DE OPERADOR"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding OperatorChange}" Text="Nuevo"  Icon="new_item" Command="{Binding NewCommand}" />
@@ -24,16 +24,16 @@
                         Orientation="Horizontal">
                         <Label 
                             WidthRequest="85"
-                            TextColor="#2EABBD"
+                            TextColor="#2255AA"
                             FontAttributes="Bold"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Text="Bitácora:"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label 
                             WidthRequest="120"
                             TextColor="DarkGray"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Text="{Binding LogTitle}"
                             LineBreakMode="TailTruncation"
                             VerticalOptions="Center"
@@ -43,16 +43,16 @@
                         Orientation="Horizontal">
                         <Label 
                             WidthRequest="85"
-                            TextColor="#2EABBD"
+                            TextColor="#2255AA"
                             FontAttributes="Bold"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Text="Operador:"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label 
                             WidthRequest="120"
                             TextColor="DarkGray"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Text="{Binding LogOperator}"
                             LineBreakMode="TailTruncation"
                             VerticalOptions="Center"
@@ -62,78 +62,95 @@
                         Margin="0,20,0,20"
                         HorizontalOptions="Center">
                         <Label 
-                            TextColor="#2EABBD"
+                            TextColor="#2255AA"
                             FontAttributes="Bold"
-                            FontSize="Medium"
-                            Text="Instancias Asociadas al Operador" />
+                            FontSize="Small"
+                            Text="INSTANCIAS ASOCIADAS AL OPERADOR" />
                     </StackLayout>
-                    <StackLayout
-                        Orientation="Horizontal">
-                        <StackLayout
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="Center">
-                            <Label 
-                                Margin="20,0,0,0"
-                                FontAttributes="Bold"
-                                TextColor="#2EABBD"
-                                Text="INSTANCIA"/>
+                    <controls:CustomFrame
+                        Padding="0"
+                        CornerRadius="5"
+                        BackgroundColor="LightGray">
+                        <StackLayout>
+                            <StackLayout
+                                Padding="5,10,0,0"
+                                Orientation="Horizontal">
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        TextColor="#2255AA"
+                                        Text="INSTANCIA"/>
+                                </StackLayout>
+                                <StackLayout
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        TextColor="#2255AA"
+                                        Text="EJECUTANDO"
+                                        WidthRequest="100"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout
+                                Padding="5,0,0,10">
+                                <ListView
+                                    HeightRequest="235"
+                                    ItemsSource="{Binding InstanceRunningItems}"
+                                    BackgroundColor="Transparent"
+                                    SelectionMode="None">
+                                    <ListView.SeparatorVisibility>
+                                        <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                            <On Platform="iOS" Value="None" />
+                                            <On Platform="Android" Value="Default" />
+                                        </OnPlatform>
+                                    </ListView.SeparatorVisibility>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <ViewCell.View>
+                                                    <StackLayout
+                                                        Orientation="Horizontal">
+                                                        <StackLayout
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="Center">
+                                                            <Label
+                                                                FontSize="Small"
+                                                                TextColor="Black"
+                                                                Text="{Binding Title}"
+                                                                LineBreakMode="TailTruncation"/>
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            HorizontalOptions="End"
+                                                            VerticalOptions="Center">
+                                                            <Label
+                                                                FontSize="Small"
+                                                                WidthRequest="65"
+                                                                LineBreakMode="TailTruncation"
+                                                                TextColor="Black"
+                                                                Text="{Binding IsRunning}"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </ViewCell.View>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
                         </StackLayout>
-                        <StackLayout
-                            HorizontalOptions="End"
-                            VerticalOptions="Center">
-                            <Label 
-                                FontAttributes="Bold"
-                                TextColor="#2EABBD"
-                                Text="EJECUTANDO"
-                                WidthRequest="100"/>
-                        </StackLayout>
-                    </StackLayout>
-                    <StackLayout>
-                        <ListView
-                            HeightRequest="235"
-                            ItemsSource="{Binding InstanceRunningItems}"
-                            BackgroundColor="Transparent"
-                            SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <ViewCell.View>
-                                            <StackLayout
-                                                Orientation="Horizontal">
-                                                <StackLayout
-                                                    HorizontalOptions="FillAndExpand"
-                                                    VerticalOptions="Center">
-                                                    <Label 
-                                                        Margin="20,0,0,0"
-                                                        TextColor="Black"
-                                                        Text="{Binding Title}"
-                                                        LineBreakMode="TailTruncation"/>
-                                                </StackLayout>
-                                                <StackLayout
-                                                    HorizontalOptions="End"
-                                                    VerticalOptions="Center">
-                                                    <Label 
-                                                        WidthRequest="65"
-                                                        LineBreakMode="TailTruncation"
-                                                        TextColor="Black"
-                                                        Text="{Binding IsRunning}"/>
-                                                </StackLayout>
-                                            </StackLayout>
-                                        </ViewCell.View>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
+                    </controls:CustomFrame>
                     <StackLayout
                         Margin="0,20,0,0"
                         Orientation="Horizontal">
                         <Label 
                             WidthRequest="85"
                             HorizontalOptions="Center"
-                            TextColor="#2EABBD"
+                            TextColor="#2255AA"
                             FontAttributes="Bold"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Text="Operador:"
                             VerticalOptions="Center"/>
                         <controls:StandardPicker 
@@ -141,38 +158,42 @@
                             ItemDisplayBinding="{Binding OperatorName}"
                             SelectedItem="{Binding SelectedOperator}"
                             HorizontalOptions="FillAndExpand"
-                            Padding="7,13,7,13"
-                            BackgroundColor="#F4F4F4"
-                            BorderColor="LightGray"
+                            Padding="5"
+                            BackgroundColor="White"
+                            BorderColor="#2255AA"
                             BorderThickness="1"
-                            CornerRadius="5"
-                            TextColor="DarkGray"/>
+                            CornerRadius="7"
+                            TextColor="#2255AA"
+                            HeightRequest="30"
+                            FontSize="Small"/>
                     </StackLayout>
                     <StackLayout
                         Orientation="Horizontal">
                         <Label 
                             WidthRequest="85"
                             HorizontalOptions="Center"
-                            TextColor="#2EABBD"
+                            TextColor="#2255AA"
                             FontAttributes="Bold"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Text="Clave:"
                             VerticalOptions="Center"/>
                         <controls:StandardEntry
                             Text="{Binding OperatorPassword, Mode=TwoWay}"
-                            PlaceholderColor="Gray"
+                            PlaceholderColor="DarkGray"
                             Placeholder="Contraseña..."
-                            Padding="7,13,7,13"
-                            BackgroundColor="#F4F4F4"
-                            BorderColor="LightGray"
+                            Padding="5"
+                            BackgroundColor="White"
+                            BorderColor="#2255AA"
                             BorderThickness="1"
                             CornerRadius="5"
                             IsPassword="True"
                             WidthRequest="55"
-                            TextColor="DarkGray"
+                            TextColor="#2255AA"
                             MaxLength="250"
                             HorizontalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="False"/>
+                            IsSpellCheckEnabled="False"
+                            HeightRequest="30"
+                            FontSize="Small"/>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
@@ -181,9 +202,14 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

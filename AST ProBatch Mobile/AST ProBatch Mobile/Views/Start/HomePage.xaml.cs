@@ -1,5 +1,5 @@
 ﻿using Acr.UserDialogs;
-using ASTProBatchMobile.Utilities;
+using AST_ProBatch_Mobile.Utilities;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -41,77 +41,70 @@ namespace AST_ProBatch_Mobile.Views
 
         protected override bool OnBackButtonPressed()
         {
-            bool resultExit = true;
-            BackPressCount += 1;
-            if (BackPressCount < 3)
-            {
-                if ((DateTime.Now.Minute - ValidTimeMinute.Minute) == 0)
-                {
-                    if ((DateTime.Now.Second - ValidTimeSeconds) < 5)
-                    {
-                        switch (BackPressCount)
-                        {
-                            case 1:
-                                Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
-                                break;
-                            case 2:
-                                Toast.ShowSuccess("Presiona una vez más para salir de la aplicación!!");
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        ValidTimeMinute = DateTime.Now;
-                        ValidTimeSeconds = DateTime.Now.Second;
-                        backPressCount = 1;
-                        Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
-                    }
-                }
-                else
-                {
-                    ValidTimeMinute = DateTime.Now;
-                    ValidTimeSeconds = DateTime.Now.Second;
-                    backPressCount = 1;
-                    Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
-                }
-            }
-            else
-            {
-                if (backPressCount == 3)
-                {
-                    if ((DateTime.Now.Minute - ValidTimeMinute.Minute) == 0)
-                    {
-                        if ((DateTime.Now.Second - ValidTimeSeconds) < 5)
-                        {
-                            resultExit = false;
-                        }
-                        else
-                        {
-                            ValidTimeMinute = DateTime.Now;
-                            ValidTimeSeconds = DateTime.Now.Second;
-                            backPressCount = 1;
-                            Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
-                        }
-                    }
-                    else
-                    {
-                        ValidTimeMinute = DateTime.Now;
-                        ValidTimeSeconds = DateTime.Now.Second;
-                        backPressCount = 1;
-                        Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
-                    }
-                }
-            }
-
-            return resultExit;
-
-            //Device.BeginInvokeOnMainThread(async () =>
+            //bool resultExit = true;
+            //BackPressCount += 1;
+            //if (BackPressCount < 3)
             //{
-            //    var result = await this.DisplayAlert("AST●ProBatch®", "Desea salir de la aplicación?", "Sí", "No");
-            //    if (result) await this.Navigation.PopAsync();
-            //});
+            //    if ((DateTime.Now.Minute - ValidTimeMinute.Minute) == 0)
+            //    {
+            //        if ((DateTime.Now.Second - ValidTimeSeconds) < 5)
+            //        {
+            //            switch (BackPressCount)
+            //            {
+            //                case 1:
+            //                    Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
+            //                    break;
+            //                case 2:
+            //                    Toast.ShowSuccess("Presiona una vez más para salir de la aplicación!!");
+            //                    break;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            ValidTimeMinute = DateTime.Now;
+            //            ValidTimeSeconds = DateTime.Now.Second;
+            //            backPressCount = 1;
+            //            Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        ValidTimeMinute = DateTime.Now;
+            //        ValidTimeSeconds = DateTime.Now.Second;
+            //        backPressCount = 1;
+            //        Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
+            //    }
+            //}
+            //else
+            //{
+            //    if (backPressCount == 3)
+            //    {
+            //        if ((DateTime.Now.Minute - ValidTimeMinute.Minute) == 0)
+            //        {
+            //            if ((DateTime.Now.Second - ValidTimeSeconds) < 5)
+            //            {
+            //                resultExit = false;
+            //            }
+            //            else
+            //            {
+            //                ValidTimeMinute = DateTime.Now;
+            //                ValidTimeSeconds = DateTime.Now.Second;
+            //                backPressCount = 1;
+            //                Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
+            //            }
+            //        }
+            //        else
+            //        {
+            //            ValidTimeMinute = DateTime.Now;
+            //            ValidTimeSeconds = DateTime.Now.Second;
+            //            backPressCount = 1;
+            //            Toast.ShowSuccess("Presiona dos veces más para salir de la aplicación!!");
+            //        }
+            //    }
+            //}
 
-            //return true;
+            //return resultExit;
+            return true;
         }
     }
 }

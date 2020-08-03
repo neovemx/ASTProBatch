@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.ExecutionPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Ejecutor"
+             Title="EJECUCIÓN"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding Execution}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />
@@ -91,8 +91,6 @@
                 <ListView
                     x:Name="LogsItemsListView"
                     ItemsSource="{Binding LogItems}"
-                    RowHeight="226"
-                    IsRefreshing="{Binding IsRefreshing}"
                     ItemSelected="LogsItemsListView_ItemSelected"
                     BackgroundColor="Transparent">
                     <ListView.SeparatorVisibility>
@@ -191,8 +189,7 @@
                                             Margin="0,-6,0,0"
                                             BackgroundColor="DarkGray"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="Center"
-                                            HeightRequest="120">
+                                            VerticalOptions="Center">
                                             <controls:CustomFrame.HeightRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
                                                     <On Platform="iOS" Value="120" />
@@ -269,7 +266,7 @@
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                         <Label 
-                                                            TextColor="Red"
+                                                            TextColor="#FE6347"
                                                             Text="{Binding CommandsFail}"
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
@@ -486,8 +483,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="CenterAndExpand"/>
                                                     <StackLayout
-                                                        VerticalOptions="Center"
-                                                        Padding="0,0,4,0">
+                                                        VerticalOptions="Center">
                                                         <StackLayout.Padding>
                                                             <OnPlatform x:TypeArguments="Thickness">
                                                                 <On Platform="iOS" Value="0,0,7,0" />

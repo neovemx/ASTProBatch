@@ -1,6 +1,6 @@
 ﻿using AST_ProBatch_Mobile.Models;
-using AST_ProBatch_Mobile.Utilities;
 using AST_ProBatch_Mobile.Views;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;

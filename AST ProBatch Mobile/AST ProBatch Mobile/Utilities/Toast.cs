@@ -1,6 +1,6 @@
 ﻿using Acr.UserDialogs;
 
-namespace ASTProBatchMobile.Utilities
+namespace AST_ProBatch_Mobile.Utilities
 {
     public class Toast
     {

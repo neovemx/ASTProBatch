@@ -4,9 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.ControlSchedulesExecutionPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Control Horarios de Ejecución"
+             Title="HORARIOS DE EJECUCIÓN"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding ControlSchedulesExecution}" Text="Referencias"  Icon="about" Command="{Binding StatusInfoCommand}" />
@@ -20,6 +21,12 @@
                     BackgroundColor="Transparent"
                     SelectionMode="None"
                     VerticalOptions="FillAndExpand">
+                    <ListView.SeparatorVisibility>
+                        <OnPlatform x:TypeArguments="SeparatorVisibility">
+                            <On Platform="iOS" Value="None" />
+                            <On Platform="Android" Value="Default" />
+                        </OnPlatform>
+                    </ListView.SeparatorVisibility>
                     <ListView.Header>
                         <Grid
                             Padding="5"
@@ -46,95 +53,104 @@
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
-                                TextColor="#2EABBD"
+                                TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 HorizontalOptions="Center"
-                                Text="EE"/>
+                                Text="EE"
+                                FontSize="Small"/>
                             <BoxView 
                                 Grid.Row="0"
                                 Grid.Column="1"/>
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                TextColor="#2EABBD"
+                                TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 HorizontalOptions="Center"
                                 Text="Instancia"
-                                LineBreakMode="TailTruncation"/>
+                                LineBreakMode="TailTruncation"
+                                FontSize="Small"/>
                             <BoxView 
                                 Grid.Row="0"
                                 Grid.Column="2"/>
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="2"
-                                TextColor="#2EABBD"
+                                TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Lote"
-                                LineBreakMode="TailTruncation"/>
+                                LineBreakMode="TailTruncation"
+                                FontSize="Small"/>
                             <BoxView 
                                 Grid.Row="0"
                                 Grid.Column="3"/>
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="3"
-                                TextColor="#2EABBD"
+                                TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Comando"
-                                LineBreakMode="TailTruncation"/>
+                                LineBreakMode="TailTruncation"
+                                FontSize="Small"/>
                             <BoxView 
                                 Grid.Row="0"
                                 Grid.Column="4"/>
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="4"
-                                TextColor="#2EABBD"
+                                TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 HorizontalOptions="Center"
                                 Text="Inicio"
-                                LineBreakMode="TailTruncation"/>
+                                LineBreakMode="TailTruncation"
+                                FontSize="Small"/>
                             <BoxView 
                                 Grid.Row="0"
                                 Grid.Column="5"/>
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="5"
-                                TextColor="#2EABBD"
+                                TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 HorizontalOptions="Center"
                                 Text="Fin"
-                                LineBreakMode="TailTruncation"/>
+                                LineBreakMode="TailTruncation"
+                                FontSize="Small"/>
                             <BoxView 
                                 Grid.Row="0"
                                 Grid.Column="6"/>
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="6"
-                                TextColor="#2EABBD"
+                                TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 HorizontalOptions="Center"
                                 Text="C. Inicio"
-                                LineBreakMode="TailTruncation"/>
+                                LineBreakMode="TailTruncation"
+                                FontSize="Small"/>
                             <BoxView 
                                 Grid.Row="0"
                                 Grid.Column="7"/>
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="7"
-                                TextColor="#2EABBD"
+                                TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 HorizontalOptions="Center"
                                 Text="C. Fin"
-                                LineBreakMode="TailTruncation"/>
+                                LineBreakMode="TailTruncation"
+                                FontSize="Small"/>
                             <BoxView 
                                 Grid.Row="0"
                                 Grid.Column="8"/>
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="8"
-                                TextColor="#2EABBD"
+                                TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 HorizontalOptions="Center"
-                                Text="EC"/>
+                                Text="EC"
+                                FontSize="Small"/>
                         </Grid>
                     </ListView.Header>
                     <ListView.ItemTemplate>
@@ -163,11 +179,13 @@
                                         <BoxView 
                                             Grid.Row="0"
                                             Grid.Column="0"/>
-                                        <Frame 
-                                            CornerRadius="5"
+                                        <controls:CustomFrame
                                             Grid.Row="0"
                                             Grid.Column="0"
-                                            BackgroundColor="{Binding StatusColorEE}"/>
+                                            Padding="0"
+                                            CornerRadius="17"
+                                            BackgroundColor="{Binding StatusColorEE}">
+                                        </controls:CustomFrame>
                                         <BoxView 
                                             Grid.Row="0"
                                             Grid.Column="1"/>
@@ -176,8 +194,10 @@
                                             Grid.Column="1"
                                             TextColor="Black"
                                             HorizontalOptions="Center"
+                                            VerticalOptions="Center"
                                             Text="{Binding Instance}"
-                                            LineBreakMode="TailTruncation"/>
+                                            LineBreakMode="TailTruncation"
+                                            FontSize="Small"/>
                                         <BoxView 
                                             Grid.Row="0"
                                             Grid.Column="2"/>
@@ -185,8 +205,10 @@
                                             Grid.Row="0"
                                             Grid.Column="2"
                                             TextColor="Black"
+                                            VerticalOptions="Center"
                                             Text="{Binding LotName}"
-                                            LineBreakMode="TailTruncation"/>
+                                            LineBreakMode="TailTruncation"
+                                            FontSize="Small"/>
                                         <BoxView 
                                             Grid.Row="0"
                                             Grid.Column="3"/>
@@ -194,8 +216,10 @@
                                             Grid.Row="0"
                                             Grid.Column="3"
                                             TextColor="Black"
+                                            VerticalOptions="Center"
                                             Text="{Binding CommandName}"
-                                            LineBreakMode="TailTruncation"/>
+                                            LineBreakMode="TailTruncation"
+                                            FontSize="Small"/>
                                         <BoxView 
                                             Grid.Row="0"
                                             Grid.Column="4"/>
@@ -203,9 +227,11 @@
                                             Grid.Row="0"
                                             Grid.Column="4"
                                             TextColor="Black"
+                                            VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             Text="{Binding Start}"
-                                            LineBreakMode="TailTruncation"/>
+                                            LineBreakMode="TailTruncation"
+                                            FontSize="Small"/>
                                         <BoxView 
                                             Grid.Row="0"
                                             Grid.Column="5"/>
@@ -213,9 +239,11 @@
                                             Grid.Row="0"
                                             Grid.Column="5"
                                             TextColor="Black"
+                                            VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             Text="{Binding End}"
-                                            LineBreakMode="TailTruncation"/>
+                                            LineBreakMode="TailTruncation"
+                                            FontSize="Small"/>
                                         <BoxView 
                                             Grid.Row="0"
                                             Grid.Column="6"/>
@@ -223,9 +251,11 @@
                                             Grid.Row="0"
                                             Grid.Column="6"
                                             TextColor="Black"
+                                            VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             Text="{Binding ControlStart}"
-                                            LineBreakMode="TailTruncation"/>
+                                            LineBreakMode="TailTruncation"
+                                            FontSize="Small"/>
                                         <BoxView 
                                             Grid.Row="0"
                                             Grid.Column="7"/>
@@ -233,17 +263,21 @@
                                             Grid.Row="0"
                                             Grid.Column="7"
                                             TextColor="Black"
+                                            VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             Text="{Binding ControlEnd}"
-                                            LineBreakMode="TailTruncation"/>
+                                            LineBreakMode="TailTruncation"
+                                            FontSize="Small"/>
                                         <BoxView 
                                             Grid.Row="0"
                                             Grid.Column="8"/>
-                                        <Frame 
-                                            CornerRadius="5"
+                                        <controls:CustomFrame
                                             Grid.Row="0"
                                             Grid.Column="8"
-                                            BackgroundColor="{Binding StatusColorEC}"/>
+                                            Padding="0"
+                                            CornerRadius="17"
+                                            BackgroundColor="{Binding StatusColorEC}">
+                                        </controls:CustomFrame>
                                     </Grid>
                                 </ViewCell.View>
                             </ViewCell>
@@ -256,9 +290,14 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

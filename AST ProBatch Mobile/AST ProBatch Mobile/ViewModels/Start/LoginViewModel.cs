@@ -2,7 +2,7 @@
 using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Views;
-using ASTProBatchMobile.Utilities;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Plugin.Fingerprint;

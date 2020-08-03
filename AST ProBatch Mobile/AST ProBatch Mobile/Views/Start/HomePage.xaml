@@ -7,7 +7,7 @@
              x:Class="AST_ProBatch_Mobile.Views.HomePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              NavigationPage.HasBackButton="False"
-             Title="INICIO"
+             Title="AST●ProBatch®"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding Home}" Text="Acerca" Icon="about" Command="{Binding AboutCommand}" />

@@ -1,9 +1,8 @@
-﻿using AST_ProBatch_Mobile.Views;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Diagnostics;
 using System.Windows.Input;
+using AST_ProBatch_Mobile.Views;
+using AST_ProBatch_Mobile.Utilities;
+using GalaSoft.MvvmLight.Command;
 using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
@@ -38,6 +37,22 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             await Application.Current.MainPage.Navigation.PushModalAsync(new AboutPage());
+        }
+
+        public ICommand LogoutCommand
+        {
+            get
+            {
+                return new RelayCommand(Logout);
+            }
+        }
+
+        private async void Logout()
+        {
+            if (await Confirm.Show("Deseas salir?"))
+            {
+                Process.GetCurrentProcess().Kill();
+            }
         }
 
         public ICommand BtnmppalaCommand
