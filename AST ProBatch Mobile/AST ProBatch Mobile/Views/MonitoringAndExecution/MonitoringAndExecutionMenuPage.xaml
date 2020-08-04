@@ -11,7 +11,7 @@
         <StackLayout
             BindingContext="{Binding MonitoringAndExecutionMenu}">
             <StackLayout
-                BackgroundColor="#2255AA"
+                BackgroundColor="#DD8833"
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 

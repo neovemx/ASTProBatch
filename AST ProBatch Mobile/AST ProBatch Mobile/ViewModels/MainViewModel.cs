@@ -34,6 +34,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public StatusInfoControlSchedulesExecutionViewModel StatusInfoControlSchedulesExecution { get; set; }
         public LogInquiriesViewModel LogInquiries { get; set; }
         public LogInquirieDetailViewModel LogInquirieDetail { get; set; }
+        public ControlSchedulesExecutionDetailViewModel ControlSchedulesExecutionDetail { get; set; }
         #endregion
 
         #region Constructors
@@ -88,7 +89,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.ControlSchedulesExecution = new ControlSchedulesExecutionViewModel(new Models.LogItem());
             this.StatusInfoControlSchedulesExecution = new StatusInfoControlSchedulesExecutionViewModel();
             this.LogInquiries = new LogInquiriesViewModel(new Models.LogItem());
-            this.LogInquirieDetail = new LogInquirieDetailViewModel(string.Empty, new Models.ResultLogInquirieItem());
+            this.LogInquirieDetail = new LogInquirieDetailViewModel(new Models.ResultLogInquirieItem());
+            this.ControlSchedulesExecutionDetail = new ControlSchedulesExecutionDetailViewModel(new Models.CommandsToControl());
         }
         #endregion
 

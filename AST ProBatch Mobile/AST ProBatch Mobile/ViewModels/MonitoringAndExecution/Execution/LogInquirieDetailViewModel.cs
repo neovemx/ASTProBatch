@@ -29,10 +29,9 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public LogInquirieDetailViewModel(string logTitle, ResultLogInquirieItem resultLogInquirieItem)
+        public LogInquirieDetailViewModel(ResultLogInquirieItem resultLogInquirieItem)
         {
             this.ResultLogInquirieItem = resultLogInquirieItem;
-            this.LogTitle = logTitle;
         }
         #endregion
 

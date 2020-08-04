@@ -1,12 +1,9 @@
-﻿using AST_ProBatch_Mobile.Models;
-using AST_ProBatch_Mobile.Views;
-using AST_ProBatch_Mobile.Utilities;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Utilities;
+using AST_ProBatch_Mobile.Views;
+using GalaSoft.MvvmLight.Command;
 using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
@@ -15,6 +12,7 @@ namespace AST_ProBatch_Mobile.ViewModels
     {
         #region Atributes
         private ObservableCollection<CommandsToControl> commandstocontrolitems;
+        private string logtitle;
         #endregion
 
         #region Properties
@@ -23,11 +21,18 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return commandstocontrolitems; }
             set { SetValue(ref commandstocontrolitems, value); }
         }
+
+        public string LogTitle
+        {
+            get { return logtitle; }
+            set { SetValue(ref logtitle, value); }
+        }
         #endregion
 
         #region Constructors
         public ControlSchedulesExecutionViewModel(LogItem logItem)
         {
+            this.LogTitle = logItem.Title;
             GetFakeData();
         }
         #endregion
@@ -55,6 +60,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             CommandsToControl commandsToControl;
 
             commandsToControl = new CommandsToControl();
+            commandsToControl.LogTitle = this.LogTitle;
             commandsToControl.Id = 1;
             commandsToControl.Instance = 1;
             commandsToControl.InstanceName = "Instancia 1";
@@ -71,6 +77,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             CommandsToControlItems.Add(commandsToControl);
 
             commandsToControl = new CommandsToControl();
+            commandsToControl.LogTitle = this.LogTitle;
             commandsToControl.Id = 2;
             commandsToControl.Instance = 2;
             commandsToControl.InstanceName = "Instancia 2";
@@ -87,6 +94,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             CommandsToControlItems.Add(commandsToControl);
 
             commandsToControl = new CommandsToControl();
+            commandsToControl.LogTitle = this.LogTitle;
             commandsToControl.Id = 3;
             commandsToControl.Instance = 3;
             commandsToControl.InstanceName = "Instancia 2";

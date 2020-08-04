@@ -127,10 +127,12 @@ namespace AST_ProBatch_Mobile.Views
             var logItem = imageButton.CommandParameter as LogItem;
             if (logItem != null)
             {
+                //MainViewModel.GetInstance().LogInquiries = new LogInquiriesViewModel(logItem);
+                //LogInquiriesPage logInquiriesPage = new LogInquiriesPage();
+                //logInquiriesPage.Title = logItem.Title;
+                //Application.Current.MainPage.Navigation.PushAsync(logInquiriesPage);
                 MainViewModel.GetInstance().LogInquiries = new LogInquiriesViewModel(logItem);
-                LogInquiriesPage logInquiriesPage = new LogInquiriesPage();
-                logInquiriesPage.Title = logItem.Title;
-                Application.Current.MainPage.Navigation.PushAsync(logInquiriesPage);
+                Application.Current.MainPage.Navigation.PushAsync(new LogInquiriesPage());
             }
         }
 

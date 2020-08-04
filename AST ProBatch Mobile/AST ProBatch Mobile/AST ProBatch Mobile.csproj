@@ -76,9 +76,6 @@
     <EmbeddedResource Update="Views\Start\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MonitoringAndExecution\MonitoringAndExecutionMenuPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\MonitoringAndExecution\Monitoring\MonitoringPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -103,5 +100,8 @@
     <EmbeddedResource Update="Views\MonitoringAndExecution\StatusInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\MonitoringAndExecution\MonitoringAndExecutionMenuPage.xaml.cs" />
   </ItemGroup>
 </Project>

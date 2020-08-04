@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.ProcessMonitorPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Monitor de Procesos"
+             Title="MONITOR DE PROCESOS"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding ProcessMonitor}" Text="Acciones"  Icon="actions" Command="{Binding ActionsCommand}" />
@@ -18,49 +18,98 @@
             BindingContext="{Binding ProcessMonitor}">
             <controls:CustomFrame 
                 CornerRadius="0,0,20,20"
-                BackgroundColor="LightGray"
+                BackgroundColor="DarkGray"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Center"
-                IsVisible="{Binding ToolBarIsVisible}">
+                IsVisible="{Binding ToolBarIsVisible}"
+                Padding="8">
                 <StackLayout
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
                     <ImageButton
-                        CornerRadius="5"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_kl"
-                        Clicked="toolbar_action_1_Clicked"/>
+                        Clicked="toolbar_action_1_Clicked"
+                        WidthRequest="35"
+                        HeightRequest="35">
+                        <ImageButton.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="17" />
+                                <On Platform="Android" Value="50" />
+                            </OnPlatform>
+                        </ImageButton.CornerRadius>
+                    </ImageButton>
                     <ImageButton
-                        CornerRadius="5"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_ap"
-                        Clicked="toolbar_action_2_Clicked"/>
+                        Clicked="toolbar_action_2_Clicked"
+                        WidthRequest="35"
+                        HeightRequest="35">
+                        <ImageButton.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="17" />
+                                <On Platform="Android" Value="50" />
+                            </OnPlatform>
+                        </ImageButton.CornerRadius>
+                    </ImageButton>
                     <ImageButton
-                        CornerRadius="5"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_om"
-                        Clicked="toolbar_action_3_Clicked"/>
+                        Clicked="toolbar_action_3_Clicked"
+                        WidthRequest="35"
+                        HeightRequest="35">
+                        <ImageButton.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="17" />
+                                <On Platform="Android" Value="50" />
+                            </OnPlatform>
+                        </ImageButton.CornerRadius>
+                    </ImageButton>
                     <ImageButton
-                        CornerRadius="5"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_rm"
-                        Clicked="toolbar_action_4_Clicked"/>
+                        Clicked="toolbar_action_4_Clicked"
+                        WidthRequest="35"
+                        HeightRequest="35">
+                        <ImageButton.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="17" />
+                                <On Platform="Android" Value="50" />
+                            </OnPlatform>
+                        </ImageButton.CornerRadius>
+                    </ImageButton>
                     <ImageButton
-                        CornerRadius="5"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_rp"
-                        Clicked="toolbar_action_5_Clicked"/>
+                        Clicked="toolbar_action_5_Clicked"
+                        WidthRequest="35"
+                        HeightRequest="35">
+                        <ImageButton.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="17" />
+                                <On Platform="Android" Value="50" />
+                            </OnPlatform>
+                        </ImageButton.CornerRadius>
+                    </ImageButton>
                     <ImageButton
-                        CornerRadius="5"
-                        BackgroundColor="#2EABBD"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_rpl"
-                        Clicked="toolbar_action_6_Clicked"/>
+                        Clicked="toolbar_action_6_Clicked"
+                        WidthRequest="35"
+                        HeightRequest="35">
+                        <ImageButton.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="17" />
+                                <On Platform="Android" Value="50" />
+                            </OnPlatform>
+                        </ImageButton.CornerRadius>
+                    </ImageButton>
                 </StackLayout>
             </controls:CustomFrame>
             <StackLayout
@@ -68,10 +117,21 @@
                 <ListView
                     x:Name="ProcessItemsListView"
                     ItemsSource="{Binding ProcessItems}"
-                    RowHeight="280"
                     IsRefreshing="{Binding IsRefreshing}"
                     SelectionMode="None"
                     BackgroundColor="Transparent">
+                    <ListView.SeparatorVisibility>
+                        <OnPlatform x:TypeArguments="SeparatorVisibility">
+                            <On Platform="iOS" Value="None" />
+                            <On Platform="Android" Value="Default" />
+                        </OnPlatform>
+                    </ListView.SeparatorVisibility>
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="247" />
+                            <On Platform="Android" Value="248" />
+                        </OnPlatform>
+                    </ListView.RowHeight>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -80,18 +140,26 @@
                                         Padding="10">
                                         <controls:CustomFrame 
                                             Padding="6"
-                                            BorderColor="#D7D7D7"
+                                            CornerRadius="10,10,0,0"
                                             BackgroundColor="#D7D7D7"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
-                                            HeightRequest="45">
+                                            HeightRequest="35">
                                             <StackLayout
                                                 Orientation="Horizontal">
                                                 <StackLayout
                                                     VerticalOptions="Center">
                                                     <CheckBox 
                                                         IsChecked="{Binding IsChecked}"
-                                                        IsEnabled="{Binding IsEnabled}"/>
+                                                        IsEnabled="{Binding IsEnabled}"
+                                                        Color="#2255AA">
+                                                        <CheckBox.Margin>
+                                                            <OnPlatform x:TypeArguments="Thickness">
+                                                                <On Platform="iOS" Value="0,-5,0,0" />
+                                                                <On Platform="Android" Value="0,1,0,0" />
+                                                            </OnPlatform>
+                                                        </CheckBox.Margin>
+                                                    </CheckBox>
                                                 </StackLayout>
                                                 <StackLayout
                                                     VerticalOptions="Center"
@@ -99,7 +167,7 @@
                                                     <Label 
                                                         FontAttributes="Bold"
                                                         FontSize="Medium"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="{Binding Title}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
@@ -109,106 +177,135 @@
                                                         CornerRadius="5"
                                                         BackgroundColor="{Binding StateColor}"
                                                         Source="{Binding State}"
-                                                        Clicked="btnState_Clicked"/>
+                                                        Clicked="btnState_Clicked"
+                                                        WidthRequest="35"
+                                                        HeightRequest="35">
+                                                        <ImageButton.CornerRadius>
+                                                            <OnPlatform x:TypeArguments="x:Int32">
+                                                                <On Platform="iOS" Value="17" />
+                                                                <On Platform="Android" Value="50" />
+                                                            </OnPlatform>
+                                                        </ImageButton.CornerRadius>
+                                                    </ImageButton>
                                                 </StackLayout>
                                             </StackLayout>
                                         </controls:CustomFrame>
                                         <controls:CustomFrame 
+                                            CornerRadius="0,0,10,10"
                                             Margin="0,-7,0,0"
-                                            BorderColor="LightGray"
-                                            BackgroundColor="#F4F4F4"
+                                            BackgroundColor="DarkGray"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="Center"
-                                            HeightRequest="165">
+                                            VerticalOptions="Center">
+                                            <controls:CustomFrame.HeightRequest>
+                                                <OnPlatform x:TypeArguments="x:Double">
+                                                    <On Platform="iOS" Value="165" />
+                                                    <On Platform="Android" Value="140" />
+                                                </OnPlatform>
+                                            </controls:CustomFrame.HeightRequest>
                                             <StackLayout>
                                                 <StackLayout
+                                                    Margin="0,-5,0,0"
                                                     Orientation="Horizontal">
-                                                    <Label 
+                                                    <Label
+                                                        FontSize="Small"
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="PID:" 
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
-                                                    <Label 
-                                                        TextColor="DarkGray"
+                                                    <Label
+                                                        FontSize="Small"
+                                                        TextColor="White"
                                                         Text="{Binding PID}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
-                                                    <Label 
+                                                    <Label
+                                                        FontSize="Small"
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Lote:" 
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
-                                                    <Label 
-                                                        TextColor="DarkGray"
+                                                    <Label
+                                                        FontSize="Small"
+                                                        TextColor="White"
                                                         Text="{Binding Lot}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
-                                                    <Label 
+                                                    <Label
+                                                        FontSize="Small"
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Comando:" 
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
-                                                    <Label 
-                                                        TextColor="DarkGray"
+                                                    <Label
+                                                        FontSize="Small"
+                                                        TextColor="White"
                                                         Text="{Binding Command}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
-                                                    <Label 
+                                                    <Label
+                                                        FontSize="Small"
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Ambiente:" 
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
-                                                    <Label 
-                                                        TextColor="DarkGray"
+                                                    <Label
+                                                        FontSize="Small"
+                                                        TextColor="White"
                                                         Text="{Binding Environment}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
-                                                    <Label 
+                                                    <Label
+                                                        FontSize="Small"
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Servicio:" 
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
-                                                    <Label 
-                                                        TextColor="DarkGray"
+                                                    <Label
+                                                        FontSize="Small"
+                                                        TextColor="White"
                                                         Text="{Binding Service}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
-                                                    <Label 
+                                                    <Label
+                                                        FontSize="Small"
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Hora Inicio:" 
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
-                                                    <Label 
-                                                        TextColor="DarkGray"
+                                                    <Label
+                                                        FontSize="Small"
+                                                        TextColor="White"
                                                         Text="{Binding StartHour}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
-                                                    <Label 
+                                                    <Label
+                                                        FontSize="Small"
                                                         FontAttributes="Bold"
-                                                        TextColor="#2EABBD"
+                                                        TextColor="#2255AA"
                                                         Text="Fecha Ejecución:" 
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
-                                                    <Label 
-                                                        TextColor="DarkGray"
+                                                    <Label
+                                                        FontSize="Small"
+                                                        TextColor="White"
                                                         Text="{Binding Execution}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
@@ -223,7 +320,7 @@
             </StackLayout>
             <StackLayout
                 Padding="5"
-                BackgroundColor="LightGray"
+                BackgroundColor="DarkGray"
                 VerticalOptions="End"
                 HorizontalOptions="FillAndExpand">
                 <StackLayout
@@ -231,25 +328,54 @@
                     Orientation="Horizontal"
                     Padding="10">
                     <ImageButton
-                        CornerRadius="5"
-                        Margin="0,0,40,0"
-                        BackgroundColor="Blue"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_rl"
-                        Clicked="toolbarmodule_action_1_Clicked"/>
+                        Clicked="toolbarmodule_action_1_Clicked"
+                        BorderColor="Blue"
+                        BorderWidth="2"
+                        WidthRequest="35"
+                        HeightRequest="35">
+                        <ImageButton.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="17" />
+                                <On Platform="Android" Value="50" />
+                            </OnPlatform>
+                        </ImageButton.CornerRadius>
+                    </ImageButton>
                     <ImageButton
-                        CornerRadius="5"
-                        Margin="0,0,40,0"
-                        BackgroundColor="Green"
+                        Margin="30,0,30,0"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_ej"
-                        Clicked="toolbarmodule_action_2_Clicked"/>
+                        Clicked="toolbarmodule_action_2_Clicked"
+                        BorderColor="Green"
+                        BorderWidth="2"
+                        WidthRequest="35"
+                        HeightRequest="35">
+                        <ImageButton.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="17" />
+                                <On Platform="Android" Value="50" />
+                            </OnPlatform>
+                        </ImageButton.CornerRadius>
+                    </ImageButton>
                     <ImageButton
-                        CornerRadius="5"
-                        BackgroundColor="Red"
+                        BackgroundColor="#F1F2F6"
                         CommandParameter="{Binding}"
                         Source="action_dt"
-                        Clicked="toolbarmodule_action_3_Clicked"/>
+                        Clicked="toolbarmodule_action_3_Clicked"
+                        BorderColor="Red"
+                        BorderWidth="2"
+                        WidthRequest="35"
+                        HeightRequest="35">
+                        <ImageButton.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="iOS" Value="17" />
+                                <On Platform="Android" Value="50" />
+                            </OnPlatform>
+                        </ImageButton.CornerRadius>
+                    </ImageButton>
                 </StackLayout>
             </StackLayout>
             <StackLayout 
@@ -257,9 +383,14 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

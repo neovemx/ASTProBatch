@@ -24,15 +24,25 @@
                 <ImageButton 
                     HorizontalOptions="End"
                     Command="{Binding CloseCommand}"
-                    BackgroundColor="Transparent"
-                    Source="close_page"/>
+                    BackgroundColor="#F1F2F6"
+                    Source="close_page"
+                    HeightRequest="30"
+                    WidthRequest="30">
+                    <ImageButton.CornerRadius>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="15" />
+                            <On Platform="Android" Value="50" />
+                        </OnPlatform>
+                    </ImageButton.CornerRadius>
+                </ImageButton>
             </StackLayout>
             <ScrollView
                 VerticalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="Center">
                     <StackLayout>
                         <ImageButton
-                            CornerRadius="5"
+                            Padding="10,0,0,4"
+                            CornerRadius="38"
                             BorderColor="#DDCC33"
                             BorderWidth="1"
                             Command="{Binding BtnsubmdCommand}"
@@ -43,7 +53,8 @@
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
-                            CornerRadius="5"
+                            Padding="10,0,0,4"
+                            CornerRadius="38"
                             BorderColor="#DDCC33"
                             BorderWidth="1"
                             Command="{Binding BtnsubmeCommand}"
@@ -58,9 +69,14 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

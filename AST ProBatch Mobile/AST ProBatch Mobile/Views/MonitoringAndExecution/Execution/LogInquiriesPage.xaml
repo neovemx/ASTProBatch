@@ -7,7 +7,7 @@
             xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
             x:Class="AST_ProBatch_Mobile.Views.LogInquiriesPage"
             BindingContext="{Binding Main, Source={StaticResource Locator}}"
-            Title=""
+            Title="CONSULTAS BITÁCORAS"
             BackgroundColor="White"
             SelectedTabColor="#2255AA"
             UnselectedTabColor="DarkGray"
@@ -20,148 +20,387 @@
         <ContentPage.Content>
             <StackLayout
                 BindingContext="{Binding LogInquiries}">
-                <BoxView 
+                <BoxView
                     HeightRequest="1" 
                     BackgroundColor="DarkGray" 
-                    HorizontalOptions="FillAndExpand" />
-                <ScrollView
+                    HorizontalOptions="FillAndExpand">
+                    <BoxView.IsVisible>
+                         <OnPlatform x:TypeArguments="x:Boolean">
+                             <On Platform="iOS" Value="False" />
+                             <On Platform="Android" Value="True" />
+                         </OnPlatform>
+                    </BoxView.IsVisible>
+                </BoxView>
+                <StackLayout
+                    Padding="5"
                     VerticalOptions="FillAndExpand">
-                    <StackLayout
-                        VerticalOptions="FillAndExpand"
-                        Padding="10">
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="{Binding LogTitle}"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                         Margin="0,-7,0,0"
+                         CornerRadius="0,0,10,10"
+                         BackgroundColor="DarkGray"
+                         Padding="0">
+                         <ScrollView>
+                             <StackLayout
+                                 VerticalOptions="FillAndExpand"
+                                 Padding="10">
+                                 <StackLayout>
+                                     <StackLayout>
+                                         <Label
+                                             WidthRequest="85"
+                                             TextColor="#2255AA"
+                                             FontAttributes="Bold"
+                                             FontSize="Small"
+                                             Text="Lote:"
+                                             VerticalOptions="Center"/>
+                                     </StackLayout>
+                                     <StackLayout>
+                                         <StackLayout
+                                             Orientation="Horizontal">
+                                             <controls:StandardEntry
+                                                 Text="{Binding LotId, Mode=TwoWay}"
+                                                 Padding="5"
+                                                 BackgroundColor="White"
+                                                 BorderColor="#2255AA"
+                                                 BorderThickness="1"
+                                                 CornerRadius="7"
+                                                 Keyboard="Numeric"
+                                                 HeightRequest="30"
+                                                 WidthRequest="55"
+                                                 TextColor="#2255AA"
+                                                 FontSize="Small"/>
+                                             <ImageButton
+                                                 Command="{Binding LotSelectCommand}"
+                                                 CornerRadius="5"
+                                                 BackgroundColor="#F1F2F6"
+                                                 Source="select"
+                                                 HeightRequest="30"
+                                                 WidthRequest="30">
+                                                 <ImageButton.CornerRadius>
+                                                     <OnPlatform x:TypeArguments="x:Int32">
+                                                         <On Platform="iOS" Value="15" />
+                                                         <On Platform="Android" Value="50" />
+                                                     </OnPlatform>
+                                                 </ImageButton.CornerRadius>
+                                             </ImageButton>
+                                             <controls:StandardPicker 
+                                                 ItemsSource="{Binding LotItems}"
+                                                 ItemDisplayBinding="{Binding LotName}"
+                                                 SelectedItem="{Binding LotSelected}"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 Padding="5"
+                                                 BackgroundColor="White"
+                                                 BorderColor="#2255AA"
+                                                 BorderThickness="1"
+                                                 CornerRadius="7"
+                                                 TextColor="#2255AA"
+                                                 FontSize="Small"
+                                                 HeightRequest="30"/>
+                                             <ImageButton 
+                                                 Command="{Binding LotCleanCommand}"
+                                                 CornerRadius="5"
+                                                 BackgroundColor="White"
+                                                 Source="clean"
+                                                 HeightRequest="30"
+                                                 WidthRequest="30">
+                                                 <ImageButton.CornerRadius>
+                                                     <OnPlatform x:TypeArguments="x:Int32">
+                                                         <On Platform="iOS" Value="15" />
+                                                         <On Platform="Android" Value="50" />
+                                                     </OnPlatform>
+                                                 </ImageButton.CornerRadius>
+                                             </ImageButton>
+                                         </StackLayout>
+                                         <StackLayout>
+                                             <Label
+                                                 WidthRequest="85"
+                                                 TextColor="#2255AA"
+                                                 FontAttributes="Bold"
+                                                 FontSize="Small"
+                                                 Text="Comando:"
+                                                 VerticalOptions="Center"/>
+                                         </StackLayout>
+                                         <StackLayout
+                                             Orientation="Horizontal">
+                                             <controls:StandardEntry
+                                                 Text="{Binding CommandId, Mode=TwoWay}"
+                                                 Padding="5"
+                                                 BackgroundColor="White"
+                                                 BorderColor="#2255AA"
+                                                 BorderThickness="1"
+                                                 CornerRadius="7"
+                                                 Keyboard="Numeric"
+                                                 WidthRequest="55"
+                                                 TextColor="#2255AA"
+                                                 FontSize="Small"
+                                                 HeightRequest="30"/>
+                                             <ImageButton 
+                                                 Command="{Binding CommandSelectCommand}"
+                                                 CornerRadius="5"
+                                                 BackgroundColor="White"
+                                                 Source="select"
+                                                 HeightRequest="30"
+                                                 WidthRequest="30">
+                                                 <ImageButton.CornerRadius>
+                                                     <OnPlatform x:TypeArguments="x:Int32">
+                                                         <On Platform="iOS" Value="15" />
+                                                         <On Platform="Android" Value="50" />
+                                                     </OnPlatform>
+                                                 </ImageButton.CornerRadius>
+                                             </ImageButton>
+                                             <controls:StandardPicker 
+                                                 ItemsSource="{Binding CommandItems}"
+                                                 ItemDisplayBinding="{Binding CommandName}"
+                                                 SelectedItem="{Binding CommandSelected}"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 Padding="5"
+                                                 BackgroundColor="White"
+                                                 BorderColor="#2255AA"
+                                                 BorderThickness="1"
+                                                 CornerRadius="5"
+                                                 TextColor="#2255AA"
+                                                 FontSize="Small"
+                                                 HeightRequest="30"/>
+                                             <ImageButton 
+                                                 Command="{Binding CommandCleanCommand}"
+                                                 CornerRadius="5"
+                                                 BackgroundColor="White"
+                                                 Source="clean"
+                                                 HeightRequest="30"
+                                                 WidthRequest="30">
+                                                 <ImageButton.CornerRadius>
+                                                     <OnPlatform x:TypeArguments="x:Int32">
+                                                         <On Platform="iOS" Value="15" />
+                                                         <On Platform="Android" Value="50" />
+                                                     </OnPlatform>
+                                                 </ImageButton.CornerRadius>
+                                             </ImageButton>
+                                         </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                             </StackLayout>
+                         </ScrollView>
+                    </controls:CustomFrame>
+
+                    <controls:CustomFrame
+                        CornerRadius="10"
+                        Padding="0"
+                        BackgroundColor="DarkGray"
+                        IsVisible="{Binding ResultIsVisible}"
+                        VerticalOptions="FillAndExpand">
                         <StackLayout>
-                            <StackLayout>
-                                <Label 
-                                    WidthRequest="85"
-                                    TextColor="#2EABBD"
-                                    FontAttributes="Bold"
-                                    FontSize="Medium"
-                                    Text="Lote:"
-                                    VerticalOptions="Center"/>
-                            </StackLayout>
-                            <StackLayout>
+                            <StackLayout
+                                Margin="5,15,0,0"
+                                Orientation="Horizontal">
                                 <StackLayout
-                                    Orientation="Horizontal">
-                                    <controls:StandardEntry
-                                        Text="{Binding LotId, Mode=TwoWay}"
-                                        Padding="7,13,7,13"
-                                        BackgroundColor="#F4F4F4"
-                                        BorderColor="LightGray"
-                                        BorderThickness="1"
-                                        CornerRadius="5"
-                                        Keyboard="Numeric"
-                                        WidthRequest="55"
-                                        TextColor="DarkGray"/>
-                                    <ImageButton 
-                                        Command="{Binding LotSelectCommand}"
-                                        CornerRadius="5"
-                                        BackgroundColor="White"
-                                        Source="select"
-                                        WidthRequest="45"/>
-                                    <controls:StandardPicker 
-                                        ItemsSource="{Binding LotItems}"
-                                        ItemDisplayBinding="{Binding LotName}"
-                                        SelectedItem="{Binding LotSelected}"
-                                        HorizontalOptions="FillAndExpand"
-                                        Padding="7,13,7,13"
-                                        BackgroundColor="#F4F4F4"
-                                        BorderColor="LightGray"
-                                        BorderThickness="1"
-                                        CornerRadius="5"
-                                        TextColor="DarkGray"/>
-                                    <ImageButton 
-                                        Command="{Binding LotCleanCommand}"
-                                        CornerRadius="5"
-                                        BackgroundColor="White"
-                                        Source="clean"
-                                        WidthRequest="45"/>
+                                    WidthRequest="80">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        Text="INSTANCIA"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>
+                                <StackLayout
+                                    WidthRequest="110">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        Text="INICIO"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>
+                                <StackLayout
+                                    WidthRequest="110">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        Text="FIN"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout
+                                IsVisible="{Binding ResultIsVisible}">
+                                <ListView
+                                    x:Name="LVLogInquiriesResult"
+                                    HeightRequest="240"
+                                    ItemsSource="{Binding ResultLogInquirieItems}"
+                                    BackgroundColor="Transparent"
+                                    ItemSelected="LVLogInquiriesResult_ItemSelected">
+                                    <ListView.SeparatorVisibility>
+                                        <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                            <On Platform="iOS" Value="None" />
+                                            <On Platform="Android" Value="Default" />
+                                        </OnPlatform>
+                                    </ListView.SeparatorVisibility>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <ViewCell.View>
+                                                    <Grid
+                                                        Padding="5"
+                                                        ColumnSpacing="0"
+                                                        RowSpacing="0"
+                                                        VerticalOptions="Center">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="25" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="85" />
+                                                            <ColumnDefinition Width="120" />
+                                                            <ColumnDefinition Width="120" />
+                                                            <ColumnDefinition />
+                                                            <ColumnDefinition Width="25" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <BoxView 
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"/>
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            TextColor="Black"
+                                                            FontSize="Small"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Text="{Binding NameInstance}"
+                                                            LineBreakMode="TailTruncation"/>
+                                                        <BoxView 
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"/>
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            TextColor="Black"
+                                                            FontSize="Small"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Text="{Binding StartDateTime}"
+                                                            LineBreakMode="TailTruncation"/>
+                                                        <BoxView 
+                                                            Grid.Row="0"
+                                                            Grid.Column="2"/>
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="2"
+                                                            TextColor="Black"
+                                                            FontSize="Small"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Text="{Binding StartDateTime}"
+                                                            LineBreakMode="TailTruncation"/>
+                                                        <BoxView 
+                                                            Grid.Row="0"
+                                                            Grid.Column="4"/>
+                                                        <controls:CustomFrame 
+                                                            CornerRadius="17"
+                                                            Grid.Row="0"
+                                                            Grid.Column="4"
+                                                            BackgroundColor="{Binding StatusColor}"/>
+                                                    </Grid>
+                                                </ViewCell.View>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                </StackLayout>
+                <StackLayout 
+                    VerticalOptions="End">
+                    <Label 
+                        Text="AST●ProBatch® Workload Automation © 2020"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#2255AA">
+                        <Label.FontSize>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="iOS" Value="11" />
+                                <On Platform="Android" Value="12" />
+                            </OnPlatform>
+                        </Label.FontSize>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Operador" IconImageSource="tab_operators">
+        <ContentPage.Content>
+            <StackLayout
+                BindingContext="{Binding LogInquiries}">
+                <BoxView
+                    HeightRequest="1" 
+                    BackgroundColor="DarkGray" 
+                    HorizontalOptions="FillAndExpand">
+                    <BoxView.IsVisible>
+                         <OnPlatform x:TypeArguments="x:Boolean">
+                             <On Platform="iOS" Value="False" />
+                             <On Platform="Android" Value="True" />
+                         </OnPlatform>
+                    </BoxView.IsVisible>
+                </BoxView>
+                <StackLayout
+                    Padding="5"
+                    VerticalOptions="FillAndExpand">
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="{Binding LogTitle}"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        Padding="0"
+                        BackgroundColor="DarkGray"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout
+                                Margin="5,15,0,0"
+                                Orientation="Horizontal">
+                                <StackLayout
+                                    WidthRequest="80">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        TextColor="#2255AA"
+                                        Text="INSTANCIA"
+                                        FontSize="Small"
+                                        LineBreakMode="TailTruncation"/>
                                 </StackLayout>
                                 <StackLayout>
-                                    <Label 
-                                        WidthRequest="85"
-                                        TextColor="#2EABBD"
+                                    <Label
                                         FontAttributes="Bold"
-                                        FontSize="Medium"
-                                        Text="Comando:"
-                                        VerticalOptions="Center"/>
-                                </StackLayout>
-                                <StackLayout
-                                    Orientation="Horizontal">
-                                    <controls:StandardEntry
-                                        Text="{Binding CommandId, Mode=TwoWay}"
-                                        Padding="7,13,7,13"
-                                        BackgroundColor="#F4F4F4"
-                                        BorderColor="LightGray"
-                                        BorderThickness="1"
-                                        CornerRadius="5"
-                                        Keyboard="Numeric"
-                                        WidthRequest="55"
-                                        TextColor="DarkGray"/>
-                                    <ImageButton 
-                                        Command="{Binding CommandSelectCommand}"
-                                        CornerRadius="5"
-                                        BackgroundColor="White"
-                                        Source="select"
-                                        WidthRequest="45"/>
-                                    <controls:StandardPicker 
-                                        ItemsSource="{Binding CommandItems}"
-                                        ItemDisplayBinding="{Binding CommandName}"
-                                        SelectedItem="{Binding CommandSelected}"
-                                        HorizontalOptions="FillAndExpand"
-                                        Padding="7,13,7,13"
-                                        BackgroundColor="#F4F4F4"
-                                        BorderColor="LightGray"
-                                        BorderThickness="1"
-                                        CornerRadius="5"
-                                        TextColor="DarkGray"/>
-                                    <ImageButton 
-                                        Command="{Binding CommandCleanCommand}"
-                                        CornerRadius="5"
-                                        BackgroundColor="White"
-                                        Source="clean"
-                                        WidthRequest="45"/>
+                                        TextColor="#2255AA"
+                                        Text="OPERADOR"
+                                        FontSize="Small"
+                                        LineBreakMode="TailTruncation"/>
                                 </StackLayout>
                             </StackLayout>
-                        </StackLayout>
-                        <StackLayout
-                            Margin="0,15,0,0"
-                            IsVisible="{Binding ResultIsVisible}"
-                            Padding="5"
-                            Orientation="Horizontal">
-                            <StackLayout
-                                WidthRequest="80">
-                                <Label
-                                    FontAttributes="Bold"
-                                    TextColor="#2EABBD"
-                                    Text="INSTANCIA"
-                                    LineBreakMode="TailTruncation"/>
-                            </StackLayout>
-                            <StackLayout
-                                WidthRequest="110">
-                                <Label
-                                    FontAttributes="Bold"
-                                    TextColor="#2EABBD"
-                                    Text="INICIO"
-                                    LineBreakMode="TailTruncation"/>
-                            </StackLayout>
-                            <StackLayout
-                                WidthRequest="80">
-                                <Label
-                                    FontAttributes="Bold"
-                                    TextColor="#2EABBD"
-                                    Text="FIN"
-                                    LineBreakMode="TailTruncation"/>
-                            </StackLayout>
-                        </StackLayout>
-                        <StackLayout
-                            IsVisible="{Binding ResultIsVisible}">
                             <ListView
-                                x:Name="LVLogInquiriesResult"
-                                HeightRequest="240"
-                                ItemsSource="{Binding ResultLogInquirieItems}"
+                                Margin="5,5,0,0"
                                 BackgroundColor="Transparent"
-                                ItemSelected="LVLogInquiriesResult_ItemSelected"
-                                Header="{Binding LogTitle}">
+                                SelectionMode="None"
+                                VerticalOptions="FillAndExpand"
+                                HeightRequest="240"
+                                ItemsSource="{Binding LogInquirieOperatorItems}">
+                                <ListView.SeparatorVisibility>
+                                    <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                        <On Platform="iOS" Value="None" />
+                                        <On Platform="Android" Value="Default" />
+                                    </OnPlatform>
+                                </ListView.SeparatorVisibility>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -176,10 +415,7 @@
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="85" />
-                                                        <ColumnDefinition Width="120" />
-                                                        <ColumnDefinition Width="120" />
                                                         <ColumnDefinition />
-                                                        <ColumnDefinition Width="25" />
                                                     </Grid.ColumnDefinitions>
                                                     <BoxView 
                                                         Grid.Row="0"
@@ -188,6 +424,7 @@
                                                         Grid.Row="0"
                                                         Grid.Column="0"
                                                         TextColor="Black"
+                                                        FontSize="Small"
                                                         VerticalOptions="CenterAndExpand"
                                                         Text="{Binding NameInstance}"
                                                         LineBreakMode="TailTruncation"/>
@@ -198,27 +435,10 @@
                                                         Grid.Row="0"
                                                         Grid.Column="1"
                                                         TextColor="Black"
+                                                        FontSize="Small"
                                                         VerticalOptions="CenterAndExpand"
-                                                        Text="{Binding StartDateTime}"
+                                                        Text="{Binding NameOperator}"
                                                         LineBreakMode="TailTruncation"/>
-                                                    <BoxView 
-                                                        Grid.Row="0"
-                                                        Grid.Column="2"/>
-                                                    <Label
-                                                        Grid.Row="0"
-                                                        Grid.Column="2"
-                                                        TextColor="Black"
-                                                        VerticalOptions="CenterAndExpand"
-                                                        Text="{Binding StartDateTime}"
-                                                        LineBreakMode="TailTruncation"/>
-                                                    <BoxView 
-                                                        Grid.Row="0"
-                                                        Grid.Column="4"/>
-                                                    <Frame 
-                                                        CornerRadius="5"
-                                                        Grid.Row="0"
-                                                        Grid.Column="4"
-                                                        BackgroundColor="{Binding StatusColor}"/>
                                                 </Grid>
                                             </ViewCell.View>
                                         </ViewCell>
@@ -226,104 +446,21 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </StackLayout>
-                    </StackLayout>
-                </ScrollView>
+                    </controls:CustomFrame>
+                </StackLayout>
                 <StackLayout 
                     VerticalOptions="End">
                     <Label 
                         Text="AST●ProBatch® Workload Automation © 2020"
                         HorizontalTextAlignment="Center"
-                        FontSize="Small"
-                        FontAttributes="Bold"
-                        TextColor="Gray"/>
-                </StackLayout>
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
-    <ContentPage Title="Operador" IconImageSource="tab_operators">
-        <ContentPage.Content>
-            <StackLayout
-                BindingContext="{Binding LogInquiries}">
-                <BoxView 
-                    HeightRequest="1" 
-                    BackgroundColor="DarkGray" 
-                    HorizontalOptions="FillAndExpand" />
-                <StackLayout
-                    Margin="0,15,0,0"
-                    Padding="5"
-                    Orientation="Horizontal">
-                    <StackLayout
-                        WidthRequest="80">
-                        <Label
-                            FontAttributes="Bold"
-                            TextColor="#2EABBD"
-                            Text="INSTANCIA"
-                            LineBreakMode="TailTruncation"/>
-                    </StackLayout>
-                    <StackLayout>
-                        <Label
-                            FontAttributes="Bold"
-                            TextColor="#2EABBD"
-                            Text="OPERADOR"
-                            LineBreakMode="TailTruncation"/>
-                    </StackLayout>
-                </StackLayout>
-                <ListView
-                    BackgroundColor="Transparent"
-                    SelectionMode="None"
-                    VerticalOptions="FillAndExpand"
-                    HeightRequest="240"
-                    ItemsSource="{Binding LogInquirieOperatorItems}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <Grid
-                                        Padding="5"
-                                        ColumnSpacing="0"
-                                        RowSpacing="0"
-                                        VerticalOptions="Center">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="25" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="85" />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <BoxView 
-                                            Grid.Row="0"
-                                            Grid.Column="0"/>
-                                        <Label
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            TextColor="Black"
-                                            VerticalOptions="CenterAndExpand"
-                                            Text="{Binding NameInstance}"
-                                            LineBreakMode="TailTruncation"/>
-                                        <BoxView 
-                                            Grid.Row="0"
-                                            Grid.Column="1"/>
-                                        <Label
-                                            Grid.Row="0"
-                                            Grid.Column="1"
-                                            TextColor="Black"
-                                            VerticalOptions="CenterAndExpand"
-                                            Text="{Binding NameOperator}"
-                                            LineBreakMode="TailTruncation"/>
-                                    </Grid>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <StackLayout 
-                    VerticalOptions="End">
-                    <Label 
-                        Text="AST●ProBatch® Workload Automation © 2020"
-                        HorizontalTextAlignment="Center"
-                        FontSize="Small"
-                        FontAttributes="Bold"
-                        TextColor="Gray"/>
+                        TextColor="#2255AA">
+                        <Label.FontSize>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="iOS" Value="11" />
+                                <On Platform="Android" Value="12" />
+                            </OnPlatform>
+                        </Label.FontSize>
+                    </Label>
                 </StackLayout>
             </StackLayout>
         </ContentPage.Content>

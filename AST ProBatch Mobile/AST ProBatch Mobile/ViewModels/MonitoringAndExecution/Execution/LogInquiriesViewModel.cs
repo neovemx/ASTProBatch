@@ -131,6 +131,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             ResultLogInquirieItem resultLogInquirieItem;
 
             resultLogInquirieItem = new ResultLogInquirieItem();
+            resultLogInquirieItem.LogTitle = this.LogTitle;
             resultLogInquirieItem.IdLog = this.LogId;
             resultLogInquirieItem.IdInstance = 1;
             resultLogInquirieItem.Pause = "";
@@ -148,6 +149,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             ResultLogInquirieItems.Add(resultLogInquirieItem);
 
             resultLogInquirieItem = new ResultLogInquirieItem();
+            resultLogInquirieItem.LogTitle = this.LogTitle;
             resultLogInquirieItem.IdLog = this.LogId;
             resultLogInquirieItem.IdInstance = 1;
             resultLogInquirieItem.Pause = "";
@@ -165,6 +167,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             ResultLogInquirieItems.Add(resultLogInquirieItem);
 
             resultLogInquirieItem = new ResultLogInquirieItem();
+            resultLogInquirieItem.LogTitle = this.LogTitle;
             resultLogInquirieItem.IdLog = this.LogId;
             resultLogInquirieItem.IdInstance = 1;
             resultLogInquirieItem.Pause = "";
@@ -182,6 +185,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             ResultLogInquirieItems.Add(resultLogInquirieItem);
 
             resultLogInquirieItem = new ResultLogInquirieItem();
+            resultLogInquirieItem.LogTitle = this.LogTitle;
             resultLogInquirieItem.IdLog = this.LogId;
             resultLogInquirieItem.IdInstance = 1;
             resultLogInquirieItem.Pause = "";
@@ -199,6 +203,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             ResultLogInquirieItems.Add(resultLogInquirieItem);
 
             resultLogInquirieItem = new ResultLogInquirieItem();
+            resultLogInquirieItem.LogTitle = this.LogTitle;
             resultLogInquirieItem.IdLog = this.LogId;
             resultLogInquirieItem.IdInstance = 1;
             resultLogInquirieItem.Pause = "";

@@ -37,9 +37,9 @@
                 </ImageButton>
             </StackLayout>
             <StackLayout
+                VerticalOptions="FillAndExpand"
                 Padding="30,0,30,30">
                 <ListView
-                    VerticalOptions="FillAndExpand"
                     SelectionMode="None"
                     ItemsSource="{Binding StatusItems}"
                     BackgroundColor="Transparent">

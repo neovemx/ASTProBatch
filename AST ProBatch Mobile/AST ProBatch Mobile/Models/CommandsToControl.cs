@@ -7,6 +7,7 @@ namespace AST_ProBatch_Mobile.Models
     public class CommandsToControl
     {
         #region Atributes
+        public string LogTitle { get; set; }
         public int Id { get; set; }
         public int Instance { get; set; }
         public string InstanceName { get; set; }
