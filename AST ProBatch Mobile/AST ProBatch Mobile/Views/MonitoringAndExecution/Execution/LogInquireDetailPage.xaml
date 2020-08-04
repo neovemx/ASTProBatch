@@ -36,10 +36,10 @@
                     </ImageButton.CornerRadius>
                 </ImageButton>
             </StackLayout>
-            <ScrollView>
+            <ScrollView
+                VerticalOptions="FillAndExpand">
                 <StackLayout
-                    Padding="10"
-                    VerticalOptions="FillAndExpand">
+                    Padding="10">
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal"
@@ -187,19 +187,41 @@
                                 FontSize="Small"/>
                             <controls:CustomFrame
                                 CornerRadius="17"
-                                BackgroundColor="{Binding ResultLogInquirieItem.StatusColor}" />
+                                BackgroundColor="{Binding ResultLogInquirieItem.StatusColor}" >
+                                <controls:CustomFrame.IsVisible>
+                                    <OnPlatform x:TypeArguments="x:Boolean">
+                                        <On Platform="iOS" Value="True" />
+                                        <On Platform="Android" Value="False" />
+                                    </OnPlatform>
+                                </controls:CustomFrame.IsVisible>
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                CornerRadius="20"
+                                BackgroundColor="{Binding ResultLogInquirieItem.StatusColor}" >
+                                <controls:CustomFrame.IsVisible>
+                                    <OnPlatform x:TypeArguments="x:Boolean">
+                                        <On Platform="iOS" Value="False" />
+                                        <On Platform="Android" Value="True" />
+                                    </OnPlatform>
+                                </controls:CustomFrame.IsVisible>
+                            </controls:CustomFrame>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
             <StackLayout 
-                VerticalOptions="EndAndExpand">
+                VerticalOptions="End">
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

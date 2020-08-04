@@ -96,7 +96,7 @@
                     <ListView.RowHeight>
                         <OnPlatform x:TypeArguments="x:Int32">
                             <On Platform="iOS" Value="253" />
-                            <On Platform="Android" Value="248" />
+                            <On Platform="Android" Value="260" />
                         </OnPlatform>
                     </ListView.RowHeight>
                     <ListView.ItemTemplate>
@@ -190,7 +190,7 @@
                                             <controls:CustomFrame.HeightRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
                                                     <On Platform="iOS" Value="145" />
-                                                    <On Platform="Android" Value="140" />
+                                                    <On Platform="Android" Value="155" />
                                                 </OnPlatform>
                                             </controls:CustomFrame.HeightRequest>
                                             <StackLayout

@@ -9,7 +9,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#2255AA</Color>
-            <Color x:Key="Accent">#3388CC</Color>
+            <Color x:Key="Accent">#000000</Color>
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -19,7 +19,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout BackgroundColor="{StaticResource Primary}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                     <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
                         <Image Source="logo_splash" VerticalOptions="Center" />
@@ -32,7 +32,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
-                                    <Span Text="AST●ProBatch® Mobile" FontAttributes="Bold" FontSize="22" />
+                                    <Span Text="AST●ProBatch® Mobile" ForegroundColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="22" />
                                     <Span Text=" " />
                                     <Span Text="2.0" ForegroundColor="{StaticResource LightTextColor}" />
                                 </FormattedString.Spans>
@@ -43,9 +43,9 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
-                                    <Span Text="Aplicación desarrollada por: " />
+                                    <Span Text="Aplicación desarrollada por: " ForegroundColor="{StaticResource Accent}" />
                                     <Span Text=" " />
-                                    <Span Text="MGI Accusys" FontAttributes="Bold" />
+                                    <Span Text="MGI Accusys" ForegroundColor="{StaticResource Accent}" FontAttributes="Bold" />
                                     <Span Text="." />
                                 </FormattedString.Spans>
                             </FormattedString>
@@ -55,27 +55,33 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
-                                    <Span Text="Todos los derechos reservados" />
+                                    <Span Text="Todos los derechos reservados" ForegroundColor="{StaticResource Accent}" />
                                     <Span Text=" " />
-                                    <Span Text="© 2020" FontAttributes="Bold" />
+                                    <Span Text="© 2020" ForegroundColor="{StaticResource Accent}" FontAttributes="Bold" />
                                     <Span Text="." />
                                 </FormattedString.Spans>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Button
-                        BorderColor="#2255AA"
-                        BorderWidth="1"
-                        BindingContext="{Binding About}"
+                    <RelativeLayout
                         VerticalOptions="EndAndExpand"
-                        Command="{Binding CloseCommand}"
-                        CornerRadius="5"
-                        HeightRequest="46"
-                        BackgroundColor="#2255AA"
-                        Text="CERRAR"
-                        TextColor="White"
-                        FontAttributes="Bold">
-                    </Button>
+                        HorizontalOptions="Center">
+                        <Button
+                            BorderColor="#2255AA"
+                            BorderWidth="1"
+                            BindingContext="{Binding About}"
+                            VerticalOptions="EndAndExpand"
+                            Command="{Binding CloseCommand}"
+                            CornerRadius="23"
+                            HeightRequest="46"
+                            BackgroundColor="#2255AA"
+                            Text="CERRAR"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            WidthRequest="150">
+                        </Button>
+                    </RelativeLayout>
                 </StackLayout>
             </ScrollView>
         </Grid>

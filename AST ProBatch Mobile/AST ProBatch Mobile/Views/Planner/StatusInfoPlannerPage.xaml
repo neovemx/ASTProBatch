@@ -12,20 +12,29 @@
             BindingContext="{Binding StatusInfoPlanner}">
             <StackLayout
                 BackgroundColor="#2255AA"
-                Padding="10,10,10,10"
+                Padding="5"
                 Orientation="Horizontal">
                 <Label 
                     VerticalOptions="Center"
                     FontSize="Large"
                     TextColor="White"
-                    Text="Referencias"
+                    Text="REFERENCIAS"
                     HorizontalOptions="FillAndExpand"
                     LineBreakMode="TailTruncation" />
                 <ImageButton 
                     HorizontalOptions="End"
                     Command="{Binding CloseCommand}"
-                    BackgroundColor="Transparent"
-                    Source="close_page"/>
+                    BackgroundColor="#F1F2F6"
+                    Source="close_page"
+                    HeightRequest="30"
+                    WidthRequest="30">
+                    <ImageButton.CornerRadius>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="15" />
+                            <On Platform="Android" Value="50" />
+                        </OnPlatform>
+                    </ImageButton.CornerRadius>
+                </ImageButton>
             </StackLayout>
             <StackLayout
                 Padding="30,0,30,30">
@@ -58,13 +67,18 @@
                 </ListView>
             </StackLayout>
             <StackLayout 
-                VerticalOptions="End">
+                VerticalOptions="EndAndExpand">
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
-                    FontAttributes="Bold"
-                    TextColor="Gray"/>
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

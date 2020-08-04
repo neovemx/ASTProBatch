@@ -101,7 +101,4 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Views\MonitoringAndExecution\MonitoringAndExecutionMenuPage.xaml.cs" />
-  </ItemGroup>
 </Project>

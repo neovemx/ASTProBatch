@@ -43,7 +43,6 @@
                     <ListView
                         SelectionMode="None"
                         ItemsSource="{Binding NotificationItems}"
-                        RowHeight="210"
                         BackgroundColor="Transparent">
                         <ListView.SeparatorVisibility>
                             <OnPlatform x:TypeArguments="SeparatorVisibility">
@@ -54,7 +53,7 @@
                         <ListView.RowHeight>
                             <OnPlatform x:TypeArguments="x:Int32">
                                 <On Platform="iOS" Value="210" />
-                                <On Platform="Android" Value="43" />
+                                <On Platform="Android" Value="210" />
                             </OnPlatform>
                         </ListView.RowHeight>
                         <ListView.ItemTemplate>

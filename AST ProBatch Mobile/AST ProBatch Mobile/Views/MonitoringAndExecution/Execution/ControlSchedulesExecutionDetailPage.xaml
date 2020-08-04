@@ -54,7 +54,24 @@
                                 Text="Estado Ejecución:"/>
                             <controls:CustomFrame
                                 CornerRadius="17"
-                                BackgroundColor="{Binding CommandToControl.StatusColorEE}" />
+                                BackgroundColor="{Binding CommandToControl.StatusColorEE}" >
+                                <controls:CustomFrame.IsVisible>
+                                    <OnPlatform x:TypeArguments="x:Boolean">
+                                        <On Platform="iOS" Value="True" />
+                                        <On Platform="Android" Value="False" />
+                                    </OnPlatform>
+                                </controls:CustomFrame.IsVisible>
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                CornerRadius="20"
+                                BackgroundColor="{Binding CommandToControl.StatusColorEE}" >
+                                <controls:CustomFrame.IsVisible>
+                                    <OnPlatform x:TypeArguments="x:Boolean">
+                                        <On Platform="iOS" Value="False" />
+                                        <On Platform="Android" Value="True" />
+                                    </OnPlatform>
+                                </controls:CustomFrame.IsVisible>
+                            </controls:CustomFrame>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
@@ -172,8 +189,25 @@
                                     FontAttributes="Bold"
                                     Text="Estado Control:"/>
                                 <controls:CustomFrame
-                                    CornerRadius="17"
-                                    BackgroundColor="{Binding CommandToControl.StatusColorEC}"/>
+                                CornerRadius="17"
+                                BackgroundColor="{Binding CommandToControl.StatusColorEC}" >
+                                <controls:CustomFrame.IsVisible>
+                                    <OnPlatform x:TypeArguments="x:Boolean">
+                                        <On Platform="iOS" Value="True" />
+                                        <On Platform="Android" Value="False" />
+                                    </OnPlatform>
+                                </controls:CustomFrame.IsVisible>
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                CornerRadius="20"
+                                BackgroundColor="{Binding CommandToControl.StatusColorEC}" >
+                                <controls:CustomFrame.IsVisible>
+                                    <OnPlatform x:TypeArguments="x:Boolean">
+                                        <On Platform="iOS" Value="False" />
+                                        <On Platform="Android" Value="True" />
+                                    </OnPlatform>
+                                </controls:CustomFrame.IsVisible>
+                            </controls:CustomFrame>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>

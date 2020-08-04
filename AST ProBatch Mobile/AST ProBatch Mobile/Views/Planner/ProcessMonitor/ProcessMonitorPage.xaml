@@ -129,7 +129,7 @@
                     <ListView.RowHeight>
                         <OnPlatform x:TypeArguments="x:Int32">
                             <On Platform="iOS" Value="247" />
-                            <On Platform="Android" Value="248" />
+                            <On Platform="Android" Value="270" />
                         </OnPlatform>
                     </ListView.RowHeight>
                     <ListView.ItemTemplate>
@@ -199,7 +199,7 @@
                                             <controls:CustomFrame.HeightRequest>
                                                 <OnPlatform x:TypeArguments="x:Double">
                                                     <On Platform="iOS" Value="165" />
-                                                    <On Platform="Android" Value="140" />
+                                                    <On Platform="Android" Value="165" />
                                                 </OnPlatform>
                                             </controls:CustomFrame.HeightRequest>
                                             <StackLayout>
@@ -332,8 +332,8 @@
                         CommandParameter="{Binding}"
                         Source="action_rl"
                         Clicked="toolbarmodule_action_1_Clicked"
-                        BorderColor="Blue"
-                        BorderWidth="2"
+                        BorderColor="#87CEFA"
+                        BorderWidth="4"
                         WidthRequest="35"
                         HeightRequest="35">
                         <ImageButton.CornerRadius>
@@ -349,8 +349,8 @@
                         CommandParameter="{Binding}"
                         Source="action_ej"
                         Clicked="toolbarmodule_action_2_Clicked"
-                        BorderColor="Green"
-                        BorderWidth="2"
+                        BorderColor="#33CC33"
+                        BorderWidth="4"
                         WidthRequest="35"
                         HeightRequest="35">
                         <ImageButton.CornerRadius>
@@ -365,8 +365,8 @@
                         CommandParameter="{Binding}"
                         Source="action_dt"
                         Clicked="toolbarmodule_action_3_Clicked"
-                        BorderColor="Red"
-                        BorderWidth="2"
+                        BorderColor="#FE6347"
+                        BorderWidth="4"
                         WidthRequest="35"
                         HeightRequest="35">
                         <ImageButton.CornerRadius>

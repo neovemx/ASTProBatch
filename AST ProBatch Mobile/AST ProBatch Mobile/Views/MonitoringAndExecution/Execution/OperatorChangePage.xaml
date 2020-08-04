@@ -20,7 +20,102 @@
                 VerticalOptions="FillAndExpand">
                 <StackLayout
                     Padding="10">
-                    <StackLayout
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="{Binding LogTitle}"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout
+                            Padding="10">
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label 
+                                    WidthRequest="85"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Operador:"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"/>
+                                <Label 
+                                    WidthRequest="120"
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding LogOperator}"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label 
+                                    WidthRequest="85"
+                                    HorizontalOptions="Center"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Operador:"
+                                    VerticalOptions="Center"/>
+                                <controls:StandardPicker 
+                                    ItemsSource="{Binding OperatorsItems}"
+                                    ItemDisplayBinding="{Binding OperatorName}"
+                                    SelectedItem="{Binding SelectedOperator}"
+                                    HorizontalOptions="FillAndExpand"
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    BorderColor="#2255AA"
+                                    BorderThickness="1"
+                                    CornerRadius="7"
+                                    TextColor="#2255AA"
+                                    HeightRequest="30"
+                                    FontSize="Small"/>
+                            </StackLayout>
+                            <StackLayout
+                                Margin="0,0,0,5"
+                                Orientation="Horizontal">
+                                <Label 
+                                    WidthRequest="85"
+                                    HorizontalOptions="Center"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Clave:"
+                                    VerticalOptions="Center"/>
+                                <controls:StandardEntry
+                                    Text="{Binding OperatorPassword, Mode=TwoWay}"
+                                    PlaceholderColor="DarkGray"
+                                    Placeholder="Contraseña..."
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    BorderColor="#2255AA"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    IsPassword="True"
+                                    WidthRequest="55"
+                                    TextColor="#2255AA"
+                                    MaxLength="250"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsSpellCheckEnabled="False"
+                                    HeightRequest="30"
+                                    FontSize="Small"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </controls:CustomFrame>
+
+                        
+
+                    <!--<StackLayout
                         Orientation="Horizontal">
                         <Label 
                             WidthRequest="85"
@@ -38,27 +133,9 @@
                             LineBreakMode="TailTruncation"
                             VerticalOptions="Center"
                             HorizontalOptions="FillAndExpand"/>
-                    </StackLayout>
-                    <StackLayout
-                        Orientation="Horizontal">
-                        <Label 
-                            WidthRequest="85"
-                            TextColor="#2255AA"
-                            FontAttributes="Bold"
-                            FontSize="Small"
-                            Text="Operador:"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"/>
-                        <Label 
-                            WidthRequest="120"
-                            TextColor="DarkGray"
-                            FontSize="Small"
-                            Text="{Binding LogOperator}"
-                            LineBreakMode="TailTruncation"
-                            VerticalOptions="Center"
-                            HorizontalOptions="FillAndExpand"/>
-                    </StackLayout>
-                    <StackLayout
+                    </StackLayout>-->
+                    
+                    <!--<StackLayout
                         Margin="0,20,0,20"
                         HorizontalOptions="Center">
                         <Label 
@@ -66,12 +143,26 @@
                             FontAttributes="Bold"
                             FontSize="Small"
                             Text="INSTANCIAS ASOCIADAS AL OPERADOR" />
-                    </StackLayout>
+                    </StackLayout>-->
                     <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="INSTANCIAS ASOCIADAS AL OPERADOR"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
                         Padding="0"
-                        CornerRadius="5"
-                        BackgroundColor="LightGray">
-                        <StackLayout>
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout
+                            Padding="10">
                             <StackLayout
                                 Padding="5,10,0,0"
                                 Orientation="Horizontal">
@@ -142,59 +233,7 @@
                             </StackLayout>
                         </StackLayout>
                     </controls:CustomFrame>
-                    <StackLayout
-                        Margin="0,20,0,0"
-                        Orientation="Horizontal">
-                        <Label 
-                            WidthRequest="85"
-                            HorizontalOptions="Center"
-                            TextColor="#2255AA"
-                            FontAttributes="Bold"
-                            FontSize="Small"
-                            Text="Operador:"
-                            VerticalOptions="Center"/>
-                        <controls:StandardPicker 
-                            ItemsSource="{Binding OperatorsItems}"
-                            ItemDisplayBinding="{Binding OperatorName}"
-                            SelectedItem="{Binding SelectedOperator}"
-                            HorizontalOptions="FillAndExpand"
-                            Padding="5"
-                            BackgroundColor="White"
-                            BorderColor="#2255AA"
-                            BorderThickness="1"
-                            CornerRadius="7"
-                            TextColor="#2255AA"
-                            HeightRequest="30"
-                            FontSize="Small"/>
-                    </StackLayout>
-                    <StackLayout
-                        Orientation="Horizontal">
-                        <Label 
-                            WidthRequest="85"
-                            HorizontalOptions="Center"
-                            TextColor="#2255AA"
-                            FontAttributes="Bold"
-                            FontSize="Small"
-                            Text="Clave:"
-                            VerticalOptions="Center"/>
-                        <controls:StandardEntry
-                            Text="{Binding OperatorPassword, Mode=TwoWay}"
-                            PlaceholderColor="DarkGray"
-                            Placeholder="Contraseña..."
-                            Padding="5"
-                            BackgroundColor="White"
-                            BorderColor="#2255AA"
-                            BorderThickness="1"
-                            CornerRadius="5"
-                            IsPassword="True"
-                            WidthRequest="55"
-                            TextColor="#2255AA"
-                            MaxLength="250"
-                            HorizontalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="False"
-                            HeightRequest="30"
-                            FontSize="Small"/>
-                    </StackLayout>
+                    
                 </StackLayout>
             </ScrollView>
             <StackLayout 
