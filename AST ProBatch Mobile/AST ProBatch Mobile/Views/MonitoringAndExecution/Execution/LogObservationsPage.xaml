@@ -21,77 +21,78 @@
                 VerticalOptions="FillAndExpand">
                 <StackLayout
                     Padding="10">
-                    <StackLayout
-                        Orientation="Horizontal">
-                        <Label 
-                            WidthRequest="75"
-                            TextColor="#2255AA"
-                            FontAttributes="Bold"
-                            FontSize="Small"
-                            Text="Bitácora:"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"/>
-                        <Label 
-                            WidthRequest="120"
-                            TextColor="DarkGray"
-                            FontSize="Small"
-                            Text="{Binding LogTitle}"
-                            LineBreakMode="TailTruncation"
-                            VerticalOptions="Center"
-                            HorizontalOptions="FillAndExpand"/>
-                    </StackLayout>
-                    <StackLayout
-                        Orientation="Horizontal">
-                        <Label 
-                            WidthRequest="70"
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
                             HorizontalOptions="Center"
-                            TextColor="#2255AA"
-                            FontAttributes="Bold"
-                            FontSize="Small"
-                            Text="Nombre:"
-                            VerticalOptions="Center"/>
-                        <controls:StandardEntry
-                            Text="{Binding Name, Mode=TwoWay}"
                             Padding="5"
-                            BackgroundColor="White"
-                            BorderColor="#2255AA"
-                            BorderThickness="1"
-                            CornerRadius="5"
+                            Text="{Binding LogTitle}"
                             TextColor="#2255AA"
-                            PlaceholderColor="DarkGray"
-                            Placeholder="Nombre observación..."
-                            MaxLength="250"
-                            IsSpellCheckEnabled="False"
-                            HorizontalOptions="FillAndExpand"
-                            HeightRequest="30"
-                            FontSize="Small"/>
-                    </StackLayout>
-                    <StackLayout>
-                        <Label 
-                            TextColor="#2255AA"
-                            FontAttributes="Bold"
-                            FontSize="Small"
-                            Text="Detalle:" />
-                        <controls:StandardEditor
-                            Text="{Binding Details, Mode=TwoWay}"
-                            Padding="5"
-                            BackgroundColor="White"
-                            BorderColor="#2255AA"
-                            BorderThickness="1"
-                            CornerRadius="5"
-                            TextColor="#2255AA"
-                            PlaceholderColor="LightGray"
-                            Placeholder="Detalle observación..."
-                            MaxLength="800"
-                            Keyboard="Plain"
-                            IsSpellCheckEnabled="False"
-                            HeightRequest="180"
-                            FontSize="Small"/>
-                    </StackLayout>
+                            FontAttributes="Bold"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout
+                            Padding="10">
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label 
+                                    WidthRequest="70"
+                                    HorizontalOptions="Center"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Nombre:"
+                                    VerticalOptions="Center"/>
+                                <controls:StandardEntry
+                                    Text="{Binding Name, Mode=TwoWay}"
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    BorderColor="#2255AA"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    TextColor="#2255AA"
+                                    PlaceholderColor="DarkGray"
+                                    Placeholder="Nombre observación..."
+                                    MaxLength="250"
+                                    IsSpellCheckEnabled="False"
+                                    HorizontalOptions="FillAndExpand"
+                                    HeightRequest="30"
+                                    FontSize="Small"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label 
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Detalle:" />
+                                <controls:StandardEditor
+                                    Text="{Binding Details, Mode=TwoWay}"
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    BorderThickness="1"
+                                    TextColor="#2255AA"
+                                    PlaceholderColor="LightGray"
+                                    Placeholder="Detalle observación..."
+                                    MaxLength="800"
+                                    Keyboard="Plain"
+                                    IsSpellCheckEnabled="False"
+                                    HeightRequest="180"
+                                    FontSize="Small"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </controls:CustomFrame>
                     <controls:CustomFrame
                         Padding="0"
-                        CornerRadius="5"
-                        BackgroundColor="LightGray">
+                        CornerRadius="10"
+                        BackgroundColor="DarkGray"
+                        VerticalOptions="FillAndExpand">
                         <StackLayout>
                             <StackLayout
                                 Orientation="Horizontal"

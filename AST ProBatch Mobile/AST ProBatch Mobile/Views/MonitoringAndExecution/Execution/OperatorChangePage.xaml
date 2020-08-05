@@ -112,38 +112,6 @@
                             </StackLayout>
                         </StackLayout>
                     </controls:CustomFrame>
-
-                        
-
-                    <!--<StackLayout
-                        Orientation="Horizontal">
-                        <Label 
-                            WidthRequest="85"
-                            TextColor="#2255AA"
-                            FontAttributes="Bold"
-                            FontSize="Small"
-                            Text="Bitácora:"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"/>
-                        <Label 
-                            WidthRequest="120"
-                            TextColor="DarkGray"
-                            FontSize="Small"
-                            Text="{Binding LogTitle}"
-                            LineBreakMode="TailTruncation"
-                            VerticalOptions="Center"
-                            HorizontalOptions="FillAndExpand"/>
-                    </StackLayout>-->
-                    
-                    <!--<StackLayout
-                        Margin="0,20,0,20"
-                        HorizontalOptions="Center">
-                        <Label 
-                            TextColor="#2255AA"
-                            FontAttributes="Bold"
-                            FontSize="Small"
-                            Text="INSTANCIAS ASOCIADAS AL OPERADOR" />
-                    </StackLayout>-->
                     <controls:CustomFrame
                         CornerRadius="10,10,0,0"
                         BackgroundColor="#D7D7D7"
