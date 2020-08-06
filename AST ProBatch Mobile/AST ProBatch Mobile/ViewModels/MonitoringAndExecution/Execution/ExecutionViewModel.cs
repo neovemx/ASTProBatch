@@ -256,7 +256,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 1";
             logItem.Notifications = "notification";
-            logItem.Status = "state_e";
+            logItem.Status = "";
             logItem.StatusColor = StatusColor.Green;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -273,7 +273,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 2";
             logItem.Notifications = "notification";
-            logItem.Status = "state_ed";
+            logItem.Status = "";
             logItem.StatusColor = StatusColor.Orange;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -290,7 +290,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 3";
             logItem.Notifications = "notification_n";
-            logItem.Status = "state_f";
+            logItem.Status = "";
             logItem.StatusColor = StatusColor.Green;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -307,7 +307,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 4";
             logItem.Notifications = "notification_n";
-            logItem.Status = "state_pause";
+            logItem.Status = "";
             logItem.StatusColor = StatusColor.White;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -324,7 +324,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             logItem.IsEnabled = true;
             logItem.Title = "BITACORA 5";
             logItem.Notifications = "notification";
-            logItem.Status = "state_om";
+            logItem.Status = "";
             logItem.StatusColor = StatusColor.White;
             logItem.Environment = "WINDOWS";
             logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");

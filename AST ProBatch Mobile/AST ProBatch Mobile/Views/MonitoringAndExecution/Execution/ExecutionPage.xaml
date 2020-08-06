@@ -166,7 +166,7 @@
                                                         </ImageButton.CornerRadius>
                                                     </ImageButton>
                                                 </StackLayout>
-                                                <StackLayout
+                                                <!--<StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton
                                                         BackgroundColor="{Binding StatusColor}"
@@ -181,7 +181,7 @@
                                                             </OnPlatform>
                                                         </ImageButton.CornerRadius>
                                                     </ImageButton>
-                                                </StackLayout>
+                                                </StackLayout>-->
                                             </StackLayout>
                                         </controls:CustomFrame>
                                         <controls:CustomFrame
@@ -363,8 +363,7 @@
                                                                 </ImageButton.CornerRadius>
                                                             </ImageButton>
                                                         </StackLayout>
-                                                        <StackLayout
-                                                            IsVisible="{Binding Eventual}">
+                                                        <StackLayout>
                                                             <ImageButton 
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"

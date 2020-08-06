@@ -277,7 +277,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 1";
             instanceItem.Notifications = "notification";
-            instanceItem.Status = "state_e";
+            instanceItem.Status = "";
             instanceItem.StatusColor = StatusColor.Green;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "F";
@@ -297,7 +297,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 2";
             instanceItem.Notifications = "notification";
-            instanceItem.Status = "state_ed";
+            instanceItem.Status = "";
             instanceItem.StatusColor = StatusColor.Orange;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "E";
@@ -317,7 +317,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 3";
             instanceItem.Notifications = "notification_n";
-            instanceItem.Status = "state_f";
+            instanceItem.Status = "";
             instanceItem.StatusColor = StatusColor.Green;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "P";
@@ -337,7 +337,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 4";
             instanceItem.Notifications = "notification_n";
-            instanceItem.Status = "state_pause";
+            instanceItem.Status = "";
             instanceItem.StatusColor = StatusColor.White;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "D";
@@ -357,7 +357,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             instanceItem.IsEnabled = true;
             instanceItem.Title = "INSTANCIA 5";
             instanceItem.Notifications = "notification";
-            instanceItem.Status = "state_om";
+            instanceItem.Status = "";
             instanceItem.StatusColor = StatusColor.White;
             instanceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             instanceItem.StatusLastProcess = "F";

@@ -62,6 +62,12 @@ namespace AST_ProBatch_Mobile.ViewModels
             StatusItems.Add(statusItem);
 
             statusItem = new StatusItem();
+            statusItem.Title = "Finalizado con error";
+            statusItem.State = "state_f";
+            statusItem.StateColor = StatusColor.Red;
+            StatusItems.Add(statusItem);
+
+            statusItem = new StatusItem();
             statusItem.Title = "Esperando Dependencia";
             statusItem.State = "state_ed";
             statusItem.StateColor = StatusColor.Yellow;
@@ -122,6 +128,12 @@ namespace AST_ProBatch_Mobile.ViewModels
             StatusItems.Add(statusItem);
 
             statusItem = new StatusItem();
+            statusItem.Title = "Detenido";
+            statusItem.State = "state_d";
+            statusItem.StateColor = StatusColor.Red;
+            StatusItems.Add(statusItem);
+
+            statusItem = new StatusItem();
             statusItem.Title = "Abortado";
             statusItem.State = "state_ab";
             statusItem.StateColor = StatusColor.Purple;
@@ -130,12 +142,6 @@ namespace AST_ProBatch_Mobile.ViewModels
             statusItem = new StatusItem();
             statusItem.Title = "Omitido";
             statusItem.State = "state_om";
-            statusItem.StateColor = StatusColor.White;
-            StatusItems.Add(statusItem);
-
-            statusItem = new StatusItem();
-            statusItem.Title = "Pausado";
-            statusItem.State = "state_pause";
             statusItem.StateColor = StatusColor.White;
             StatusItems.Add(statusItem);
         } 

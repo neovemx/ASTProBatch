@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              mc:Ignorable="d"
              x:Class="AST_ProBatch_Mobile.Views.StatusInfoPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -37,11 +37,21 @@
                 </ImageButton>
             </StackLayout>
             <StackLayout
-                VerticalOptions="FillAndExpand"
-                Padding="30,0,30,30">
+                Padding="30,0,30,0">
+                <controls:CustomFrame
+                    Padding="0"
+                    BackgroundColor="DarkGray"
+                    CornerRadius="10">
+                    <Label
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="#2255AA"
+                        Text="INSTANCIA"/>
+                </controls:CustomFrame>
                 <ListView
+                    VerticalScrollBarVisibility="Never"
                     SelectionMode="None"
-                    ItemsSource="{Binding StatusItems}"
+                    ItemsSource="{Binding StatusItemsInstance}"
                     BackgroundColor="Transparent">
                     <ListView.SeparatorVisibility>
                         <OnPlatform x:TypeArguments="SeparatorVisibility">
@@ -51,7 +61,7 @@
                     </ListView.SeparatorVisibility>
                     <ListView.RowHeight>
                         <OnPlatform x:TypeArguments="x:Int32">
-                            <On Platform="iOS" Value="35" />
+                            <On Platform="iOS" Value="40" />
                             <On Platform="Android" Value="43" />
                         </OnPlatform>
                     </ListView.RowHeight>
@@ -67,10 +77,81 @@
                                             TextColor="Black"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="CenterAndExpand"/>
-                                        <Image 
+                                        <ImageButton
+                                            VerticalOptions="Center"
                                             BackgroundColor="{Binding StateColor}"
                                             Source="{Binding State}"
-                                            WidthRequest="35"/>
+                                            HeightRequest="35"
+                                            WidthRequest="35">
+                                            <ImageButton.CornerRadius>
+                                                <OnPlatform x:TypeArguments="x:Int32">
+                                                    <On Platform="iOS" Value="17" />
+                                                    <On Platform="Android" Value="50" />
+                                                </OnPlatform>
+                                            </ImageButton.CornerRadius>
+                                        </ImageButton>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout
+                VerticalOptions="FillAndExpand"
+                Padding="30,0,30,0">
+                <controls:CustomFrame
+                    Padding="0"
+                    BackgroundColor="DarkGray"
+                    CornerRadius="10">
+                    <Label
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="#2255AA"
+                        Text="ÚLTIMO PROCESO"/>
+                </controls:CustomFrame>
+                <ListView
+                    VerticalScrollBarVisibility="Never"
+                    SelectionMode="None"
+                    ItemsSource="{Binding StatusItemsProcess}"
+                    BackgroundColor="Transparent">
+                    <ListView.SeparatorVisibility>
+                        <OnPlatform x:TypeArguments="SeparatorVisibility">
+                            <On Platform="iOS" Value="None" />
+                            <On Platform="Android" Value="Default" />
+                        </OnPlatform>
+                    </ListView.SeparatorVisibility>
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="40" />
+                            <On Platform="Android" Value="43" />
+                        </OnPlatform>
+                    </ListView.RowHeight>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label 
+                                            FontSize="Medium"
+                                            Text="{Binding Title}"
+                                            TextColor="Black"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton
+                                            VerticalOptions="Center"
+                                            BackgroundColor="{Binding StateColor}"
+                                            Source="{Binding State}"
+                                            HeightRequest="35"
+                                            WidthRequest="35">
+                                            <ImageButton.CornerRadius>
+                                                <OnPlatform x:TypeArguments="x:Int32">
+                                                    <On Platform="iOS" Value="17" />
+                                                    <On Platform="Android" Value="50" />
+                                                </OnPlatform>
+                                            </ImageButton.CornerRadius>
+                                        </ImageButton>
                                     </StackLayout>
                                 </ViewCell.View>
                             </ViewCell>

@@ -62,7 +62,6 @@
                             </ImageButton>
                         </StackLayout>
                         <StackLayout
-                            IsVisible="{Binding IsEventual}"
                             Orientation="Horizontal">
                             <ImageButton
                                 WidthRequest="35"

@@ -205,10 +205,18 @@
                                                         WidthRequest="150"
                                                         FontSize="Small"
                                                         LineBreakMode="TailTruncation"/>
-                                                    <Image 
+                                                    <ImageButton
                                                         BackgroundColor="{Binding StatusLastProcessColor}"
                                                         HeightRequest="20"
-                                                        WidthRequest="20"/>
+                                                        WidthRequest="20"
+                                                        Clicked="ImageButtonState_Clicked">
+                                                        <ImageButton.CornerRadius>
+                                                            <OnPlatform x:TypeArguments="x:Int32">
+                                                                <On Platform="iOS" Value="10" />
+                                                                <On Platform="Android" Value="50" />
+                                                            </OnPlatform>
+                                                        </ImageButton.CornerRadius>
+                                                    </ImageButton>
                                                 </StackLayout>
                                                 <StackLayout>
                                                     <Label 
