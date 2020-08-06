@@ -41,12 +41,12 @@
                             Padding="10">
                             <StackLayout
                                 Orientation="Horizontal">
-                                <Label
-                                    FontSize="Small"
+                                <Label 
                                     WidthRequest="70"
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
+                                    FontSize="Small"
                                     Text="Nombre:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardEntry
@@ -66,10 +66,10 @@
                                     FontSize="Small"/>
                             </StackLayout>
                             <StackLayout>
-                                <Label
-                                    FontSize="Small"
+                                <Label 
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
+                                    FontSize="Small"
                                     Text="Detalle:" />
                                 <controls:StandardEditor
                                     Text="{Binding Details, Mode=TwoWay}"

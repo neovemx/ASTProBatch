@@ -25,8 +25,8 @@
                         BackgroundColor="#D7D7D7"
                         Padding="0">
                         <Label
-                            HorizontalOptions="Center"
                             Padding="5"
+                            HorizontalOptions="Center"
                             Text="{Binding LogTitle}"
                             TextColor="#2255AA"
                             FontAttributes="Bold"/>
