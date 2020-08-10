@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="AST_ProBatch_Mobile.Views.StatisticalReportsMenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor="#DDDDDD">
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding StatisticalReportsMenu}">
