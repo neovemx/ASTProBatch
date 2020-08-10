@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:control="clr-namespace:AST_ProBatch_Mobile.Controls"
              mc:Ignorable="d"
              x:Class="AST_ProBatch_Mobile.Views.StatusInfoControlSchedulesExecutionPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -51,7 +51,7 @@
                     </ListView.SeparatorVisibility>
                     <ListView.RowHeight>
                         <OnPlatform x:TypeArguments="x:Int32">
-                            <On Platform="iOS" Value="35" />
+                            <On Platform="iOS" Value="40" />
                             <On Platform="Android" Value="43" />
                         </OnPlatform>
                     </ListView.RowHeight>
@@ -66,20 +66,24 @@
                                             Text="{Binding Title}"
                                             TextColor="Black"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="CenterAndExpand"/>
+                                            VerticalOptions="Center"/>
                                         <StackLayout
-                                            HeightRequest="40"
-                                            WidthRequest="35"
-                                            BackgroundColor="{Binding StateColor}">
-                                            <Label 
-                                                TextColor="Black"
-                                                FontSize="18"
-                                                FontAttributes="Bold"
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="CenterAndExpand"
-                                                Text="{Binding State}"/>
+                                            VerticalOptions="Center">
+                                            <control:CustomFrame
+                                                Padding="0"
+                                                CornerRadius="17"
+                                                HeightRequest="35"
+                                                WidthRequest="35"
+                                                BackgroundColor="{Binding StateColor}">
+                                                <Label 
+                                                    TextColor="Black"
+                                                    FontSize="18"
+                                                    FontAttributes="Bold"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    Text="{Binding State}"/>
+                                            </control:CustomFrame>
                                         </StackLayout>
-                                        
                                     </StackLayout>
                                 </ViewCell.View>
                             </ViewCell>
