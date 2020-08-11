@@ -67,7 +67,8 @@
                                     FontSize="Small"
                                     Text="Operador:"
                                     VerticalOptions="Center"/>
-                                <controls:StandardPicker 
+                                <controls:StandardPicker
+                                    Title="Seleccione..."
                                     ItemsSource="{Binding OperatorsItems}"
                                     ItemDisplayBinding="{Binding OperatorName}"
                                     SelectedItem="{Binding SelectedOperator}"

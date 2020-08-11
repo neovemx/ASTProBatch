@@ -108,11 +108,13 @@ namespace AST_ProBatch_Mobile.Views
             var instanceItem = imageButton.CommandParameter as InstanceItem;
             if (instanceItem != null)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas buscar lote comando para: " + instanceItem.Title + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
-                });
+                MainViewModel.GetInstance().BatchQuery = new BatchQueryViewModel(instanceItem);
+                Application.Current.MainPage.Navigation.PushAsync(new BatchQueryPage());
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas buscar lote comando para: " + instanceItem.Title + "?", "Sí", "No");
+                //    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                //});
             }
         }
 

@@ -159,6 +159,15 @@
     <BundleResource Include="Resources\logout.png" />
     <BundleResource Include="Resources\logout%402x.png" />
     <BundleResource Include="Resources\logout%403x.png" />
+    <BundleResource Include="Resources\tab_calendar.png" />
+    <BundleResource Include="Resources\tab_calendar%402x.png" />
+    <BundleResource Include="Resources\tab_calendar%403x.png" />
+    <BundleResource Include="Resources\tab_command.png" />
+    <BundleResource Include="Resources\tab_command%402x.png" />
+    <BundleResource Include="Resources\tab_command%403x.png" />
+    <BundleResource Include="Resources\tab_lot.png" />
+    <BundleResource Include="Resources\tab_lot%402x.png" />
+    <BundleResource Include="Resources\tab_lot%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\settings%402x.png" />

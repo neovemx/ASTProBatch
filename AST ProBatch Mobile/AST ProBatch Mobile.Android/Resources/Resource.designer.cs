@@ -8648,25 +8648,34 @@ namespace AST_ProBatch_Mobile.Droid
 			public const int state_pause = 2131165373;
 			
 			// aapt resource value: 0x7F0700BE
-			public const int tab_lotcommand = 2131165374;
+			public const int tab_calendar = 2131165374;
 			
 			// aapt resource value: 0x7F0700BF
-			public const int tab_operators = 2131165375;
+			public const int tab_command = 2131165375;
 			
 			// aapt resource value: 0x7F0700C0
-			public const int tooltip_frame_dark = 2131165376;
+			public const int tab_lot = 2131165376;
 			
 			// aapt resource value: 0x7F0700C1
-			public const int tooltip_frame_light = 2131165377;
+			public const int tab_lotcommand = 2131165377;
 			
 			// aapt resource value: 0x7F0700C2
-			public const int uncheck = 2131165378;
+			public const int tab_operators = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int view_a = 2131165379;
+			public const int tooltip_frame_dark = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int view_b = 2131165380;
+			public const int tooltip_frame_light = 2131165380;
+			
+			// aapt resource value: 0x7F0700C5
+			public const int uncheck = 2131165381;
+			
+			// aapt resource value: 0x7F0700C6
+			public const int view_a = 2131165382;
+			
+			// aapt resource value: 0x7F0700C7
+			public const int view_b = 2131165383;
 			
 			static Drawable()
 			{

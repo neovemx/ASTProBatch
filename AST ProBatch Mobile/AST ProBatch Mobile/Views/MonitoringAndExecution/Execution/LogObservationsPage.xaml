@@ -183,9 +183,7 @@
                                 </ListView>
                             </StackLayout>
                         </StackLayout>
-                    </controls:CustomFrame>
-                    
-                    
+                    </controls:CustomFrame>   
                 </StackLayout>
             </ScrollView>
             <controls:CustomFrame 
