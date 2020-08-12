@@ -1,8 +1,8 @@
 ﻿namespace AST_ProBatch_Mobile.Models
 {
-    public class PickerCommandItem
+    public class PickerEveryMonthItem
     {
         public int Id { get; set; }
-        public string CommandName { get; set; }
+        public string EveryMonthName { get; set; }
     }
 }

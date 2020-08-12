@@ -18,5 +18,6 @@ namespace AST_ProBatch_Mobile.Models
         public string Duration { get; set; }
         public bool IsEventual { get; set; }
         public bool IsNotEventual { get; set; }
+        public bool Critical { get; set; }
     }
 }
