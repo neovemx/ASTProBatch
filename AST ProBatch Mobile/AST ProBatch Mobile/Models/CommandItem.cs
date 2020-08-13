@@ -7,6 +7,10 @@ namespace AST_ProBatch_Mobile.Models
     public class CommandItem
     {
         public int Id { get; set; }
+        public int IdLot { get; set; }
+        public string TitleLot { get; set; }
+        public int IdEnvironment { get; set; }
+        public string TitleEnvironment { get; set; }
         public bool IsChecked { get; set; }
         public bool IsEnabled { get; set; }
         public string Title { get; set; }

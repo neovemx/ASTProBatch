@@ -94,11 +94,8 @@ namespace AST_ProBatch_Mobile.Views
             var commandItem = imageButton.CommandParameter as CommandItem;
             if (commandItem != null)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Modificar parámetros para: " + commandItem.Title + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
-                });
+                MainViewModel.GetInstance().EditParameters = new EditParametersViewModel(commandItem);
+                Application.Current.MainPage.Navigation.PushAsync(new EditParametersPage());
             }
         }
 

@@ -282,9 +282,13 @@ namespace AST_ProBatch_Mobile.ViewModels
 
             commandItem = new CommandItem();
             commandItem.Id = 1;
+            commandItem.IdLot = 1;
+            commandItem.TitleLot = "LOTE - 1";
+            commandItem.IdEnvironment = 1;
+            commandItem.TitleEnvironment = "Windows";
             commandItem.IsChecked = false;
             commandItem.IsEnabled = true;
-            commandItem.Title = "LOTE 1 - COMANDO 1";
+            commandItem.Title = "COMANDO 1";
             commandItem.Notifications = "notification";
             commandItem.Status = "";
             commandItem.StatusColor = StatusColor.Green;
@@ -297,9 +301,13 @@ namespace AST_ProBatch_Mobile.ViewModels
 
             commandItem = new CommandItem();
             commandItem.Id = 2;
+            commandItem.IdLot = 1;
+            commandItem.TitleLot = "LOTE - 1";
+            commandItem.IdEnvironment = 1;
+            commandItem.TitleEnvironment = "Windows";
             commandItem.IsChecked = false;
             commandItem.IsEnabled = true;
-            commandItem.Title = "LOTE 1 - COMANDO 2";
+            commandItem.Title = "COMANDO 2";
             commandItem.Notifications = "notification";
             commandItem.Status = "";
             commandItem.StatusColor = StatusColor.Orange;
@@ -312,9 +320,13 @@ namespace AST_ProBatch_Mobile.ViewModels
 
             commandItem = new CommandItem();
             commandItem.Id = 3;
+            commandItem.IdLot = 1;
+            commandItem.TitleLot = "LOTE - 1";
+            commandItem.IdEnvironment = 1;
+            commandItem.TitleEnvironment = "Windows";
             commandItem.IsChecked = false;
             commandItem.IsEnabled = true;
-            commandItem.Title = "LOTE 1 - COMANDO 3";
+            commandItem.Title = "COMANDO 3";
             commandItem.Notifications = "notification_n";
             commandItem.Status = "";
             commandItem.StatusColor = StatusColor.Green;
@@ -327,9 +339,13 @@ namespace AST_ProBatch_Mobile.ViewModels
 
             commandItem = new CommandItem();
             commandItem.Id = 4;
+            commandItem.IdLot = 1;
+            commandItem.TitleLot = "LOTE - 1";
+            commandItem.IdEnvironment = 1;
+            commandItem.TitleEnvironment = "Windows";
             commandItem.IsChecked = false;
             commandItem.IsEnabled = true;
-            commandItem.Title = "LOTE 1 - COMANDO 4";
+            commandItem.Title = "COMANDO 4";
             commandItem.Notifications = "notification_n";
             commandItem.Status = "";
             commandItem.StatusColor = StatusColor.White;
@@ -342,9 +358,13 @@ namespace AST_ProBatch_Mobile.ViewModels
 
             commandItem = new CommandItem();
             commandItem.Id = 5;
+            commandItem.IdLot = 1;
+            commandItem.TitleLot = "LOTE - 1";
+            commandItem.IdEnvironment = 1;
+            commandItem.TitleEnvironment = "Windows";
             commandItem.IsChecked = false;
             commandItem.IsEnabled = true;
-            commandItem.Title = "LOTE 1 - COMANDO 5";
+            commandItem.Title = "COMANDO 5";
             commandItem.Notifications = "notification";
             commandItem.Status = "";
             commandItem.StatusColor = StatusColor.White;

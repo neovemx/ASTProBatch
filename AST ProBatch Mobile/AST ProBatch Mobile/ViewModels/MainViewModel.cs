@@ -36,6 +36,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public LogInquirieDetailViewModel LogInquirieDetail { get; set; }
         public ControlSchedulesExecutionDetailViewModel ControlSchedulesExecutionDetail { get; set; }
         public BatchQueryViewModel BatchQuery { get; set; }
+        public EditParametersViewModel EditParameters { get; set; }
         #endregion
 
         #region Constructors
@@ -93,6 +94,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.LogInquirieDetail = new LogInquirieDetailViewModel(new Models.ResultLogInquirieItem());
             this.ControlSchedulesExecutionDetail = new ControlSchedulesExecutionDetailViewModel(new Models.CommandsToControl());
             this.BatchQuery = new BatchQueryViewModel(new Models.InstanceItem());
+            this.EditParameters = new EditParametersViewModel(new Models.CommandItem());
         }
         #endregion
 

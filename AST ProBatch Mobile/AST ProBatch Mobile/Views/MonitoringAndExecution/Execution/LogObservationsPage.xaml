@@ -28,7 +28,7 @@
                         <Label
                             HorizontalOptions="Center"
                             Padding="5"
-                            Text="{Binding LogTitle}"
+                            Text="{Binding CommandItem.Title}"
                             TextColor="#2255AA"
                             FontAttributes="Bold"/>
                     </controls:CustomFrame>
