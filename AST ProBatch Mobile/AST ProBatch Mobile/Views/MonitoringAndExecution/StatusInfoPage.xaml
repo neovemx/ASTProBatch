@@ -78,6 +78,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="CenterAndExpand"/>
                                         <ImageButton
+                                            Margin="0,0,3,0"
                                             VerticalOptions="Center"
                                             BackgroundColor="{Binding StateColor}"
                                             Source="{Binding State}"
@@ -140,6 +141,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="CenterAndExpand"/>
                                         <ImageButton
+                                            Margin="0,0,3,0"
                                             VerticalOptions="Center"
                                             BackgroundColor="{Binding StateColor}"
                                             Source="{Binding State}"

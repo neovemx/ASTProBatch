@@ -942,6 +942,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
             #region Lot
             this.LotItem = new LotItem();
+            this.LotItem.Id = 1;
             this.LotItem.Code = 51;
             this.LotItem.Title = "51 - Prueba";
             this.LotItem.Description = "Prueba";

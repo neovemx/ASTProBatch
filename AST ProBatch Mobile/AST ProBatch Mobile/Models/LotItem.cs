@@ -1,4 +1,6 @@
-﻿namespace AST_ProBatch_Mobile.Models
+﻿using System.Collections.ObjectModel;
+
+namespace AST_ProBatch_Mobile.Models
 {
     public class LotItem
     {
@@ -11,6 +13,7 @@
         public string InPath { get; set; }
         public string OutPath { get; set; }
         public PickerStatusItem StatusSelected { get; set; }
+        public ObservableCollection<CommandItem> CommandItems;
         #endregion   
     }
 }

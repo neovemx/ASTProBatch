@@ -206,7 +206,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     return;
                 }
 
-                Response resultApiIsAvailable = await ApiIsAvailable(this.UrlDomain + this.UrlPrefix + "/auth");
+                Response resultApiIsAvailable = await ApiIsAvailable(this.UrlDomain + this.UrlPrefix, ApiConsult.ApiAuth);
 
                 if (!resultApiIsAvailable.IsSuccess)
                 {
@@ -215,7 +215,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     return;
                 }
 
-                Response resultToken = await GetToken();
+                Response resultToken = await GetToken(ApiConsult.ApiAuth);
 
                 if (!resultToken.IsSuccess)
                 {
@@ -278,7 +278,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                             this.Password = string.Empty;
                             MainViewModel.GetInstance().Home = new HomeViewModel();
                             Application.Current.MainPage = new NavigationPage(new HomePage());
-                            Alert.Show("Bienvenido: " + this.PbUser.UserName + "!", "Continuar");
+                            Alert.Show("Bienvenido: " + this.PbUser.FisrtName.Trim() + ", " + this.PbUser.LastName.Trim() + "!", "Continuar");
                         }
                     }
                 }
@@ -328,7 +328,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
                 try
                 {
-                    Response resultApiIsAvailable = await ApiIsAvailable(this.UrlDomain + this.UrlPrefix + "/auth");
+                    Response resultApiIsAvailable = await ApiIsAvailable(this.UrlDomain + this.UrlPrefix, ApiConsult.ApiAuth);
 
                     if (!resultApiIsAvailable.IsSuccess)
                     {
@@ -337,7 +337,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                         return;
                     }
 
-                    Response resultToken = await GetToken();
+                    Response resultToken = await GetToken(ApiConsult.ApiAuth);
 
                     if (!resultToken.IsSuccess)
                     {
@@ -420,7 +420,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 this.Password = string.Empty;
                                 MainViewModel.GetInstance().Home = new HomeViewModel();
                                 Application.Current.MainPage = new NavigationPage(new HomePage());
-                                Alert.Show("Bienvenido: " + this.PbUser.UserName + "!", "Continuar");
+                                Alert.Show("Bienvenido: " + this.PbUser.FisrtName.Trim() + ", " + this.PbUser.LastName.Trim() + "!", "Continuar");
                             }
                         }
                     }
@@ -446,14 +446,14 @@ namespace AST_ProBatch_Mobile.ViewModels
             return await this.apiService.CheckConnection();
         }
 
-        private async Task<Response> ApiIsAvailable(string apiUrl)
+        private async Task<Response> ApiIsAvailable(string apiUrl, string apiConsult)
         {
-            return await this.apiService.ApiIsAvailable(apiUrl);
+            return await this.apiService.ApiIsAvailable(apiUrl, apiConsult);
         }
 
-        private async Task<Response> GetToken()
+        private async Task<Response> GetToken(string apiConsult)
         {
-            return await this.apiService.GetToken(this.UrlDomain, this.UrlPrefix);
+            return await this.apiService.GetToken(this.UrlDomain, this.UrlPrefix, apiConsult);
         }
 
         private async Task<Response> AuthenticateProbath(string accessToken, LoginPb loginPb)

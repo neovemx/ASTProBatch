@@ -68,6 +68,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"/>
                                         <StackLayout
+                                            Margin="0,0,3,0"
                                             VerticalOptions="Center">
                                             <control:CustomFrame
                                                 Padding="0"

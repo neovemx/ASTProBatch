@@ -121,15 +121,17 @@
                                                  </ImageButton.CornerRadius>
                                              </ImageButton>
                                          </StackLayout>
-                                         <StackLayout>
-                                             <Label
-                                                 WidthRequest="85"
-                                                 TextColor="#2255AA"
-                                                 FontAttributes="Bold"
-                                                 FontSize="Small"
-                                                 Text="Comando:"
-                                                 VerticalOptions="Center"/>
-                                         </StackLayout>
+                                    </StackLayout>
+                                     <StackLayout>
+                                         <Label
+                                             WidthRequest="85"
+                                             TextColor="#2255AA"
+                                             FontAttributes="Bold"
+                                             FontSize="Small"
+                                             Text="Comando:"
+                                             VerticalOptions="Center"/>
+                                     </StackLayout>
+                                     <StackLayout>
                                          <StackLayout
                                              Orientation="Horizontal">
                                              <controls:StandardEntry
@@ -186,7 +188,7 @@
                                                  </ImageButton.CornerRadius>
                                              </ImageButton>
                                          </StackLayout>
-                                    </StackLayout>
+                                     </StackLayout>                                  
                                 </StackLayout>
                              </StackLayout>
                          </ScrollView>

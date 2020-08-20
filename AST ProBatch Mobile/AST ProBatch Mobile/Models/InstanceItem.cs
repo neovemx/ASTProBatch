@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 
 namespace AST_ProBatch_Mobile.Models
 {
@@ -24,6 +22,7 @@ namespace AST_ProBatch_Mobile.Models
         public int CommandsOmitted { get; set; }
         public bool IsEventual { get; set; }
         public bool IsNotEventual { get; set; }
+        public ObservableCollection<LotItem> LotItems;
         #endregion
     }
 }

@@ -247,6 +247,7 @@
                                                     HorizontalScrollBarVisibility="Never"
                                                     Orientation="Horizontal">
                                                     <StackLayout
+                                                        Padding="13,0,13,0"
                                                         Orientation="Horizontal"
                                                         HorizontalOptions="Center">
                                                         <StackLayout

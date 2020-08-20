@@ -168,6 +168,9 @@
     <BundleResource Include="Resources\tab_lot.png" />
     <BundleResource Include="Resources\tab_lot%402x.png" />
     <BundleResource Include="Resources\tab_lot%403x.png" />
+    <BundleResource Include="Resources\tab_dependence.png" />
+    <BundleResource Include="Resources\tab_dependence%402x.png" />
+    <BundleResource Include="Resources\tab_dependence%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\settings%402x.png" />

@@ -40,4 +40,13 @@ namespace AST_ProBatch_Mobile.Utilities
         public static string Purple { get { return "#B9908E"; } }
         public static string Blue { get { return "#87CEFA"; } }
     }
+
+    public static class ApiConsult
+    {
+        public const string ApiAuth = "PBAUTH";
+        public const string ApiMenuA = "PBMENUA";
+        public const string ApiMenuB = "PBMENUB";
+        public const string ApiMenuC = "PBMENUC";
+        public const string ApiMenuD = "PBMENUD";
+    }
 }

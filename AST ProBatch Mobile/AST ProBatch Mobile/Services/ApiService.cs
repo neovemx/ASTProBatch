@@ -1,5 +1,6 @@
 ﻿using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
+using AST_ProBatch_Mobile.Utilities;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -15,13 +16,19 @@ namespace AST_ProBatch_Mobile.Services
         #region Static Data
         public static class ApiController
         {
-            public static string ApiAuth = "/apiauth";
-            public static string ProbatchAuth = "/probatchauth";
+            public static string PBAuthTest = "/pbauth";
+            public static string PBMenuBTest = "/pbauth";
+            public static string PBAuthApiAuth = "/pbauth/apiauth";
+            public static string PBAuthAuthentication = "/pbauth/probatchauth";
+            public static string PBMenuBApiAuth = "/pbmenub/apiauth";
+            public static string PBMenuBExecute = "/pbmenub/probatchmonitoringandexecution";
         }
 
         public static class ApiMethod
         {
+            public static string Test = "/auth";
             public static string Login = "/login";
+            public static string GetLogs = "/getlogs";
         }
 
         public static class TokenType
@@ -30,20 +37,36 @@ namespace AST_ProBatch_Mobile.Services
         }
         #endregion
 
-        public async Task<Response> ApiIsAvailable(string urlApi)
+        public async Task<Response> ApiIsAvailable(string urlApi, string apiConsult)
         {
             try
             {
                 var client = new HttpClient();
-                client.Timeout = TimeSpan.FromSeconds(5);
-                var response = await client.GetAsync(urlApi);
+                client.Timeout = TimeSpan.FromSeconds(15);
+
+                StringBuilder urlApiConsult = new StringBuilder();
+                switch (apiConsult)
+                {
+                    case ApiConsult.ApiAuth:
+                        urlApiConsult.Append(urlApi);
+                        urlApiConsult.Append(ApiController.PBAuthTest);
+                        urlApiConsult.Append(ApiMethod.Test);
+                        break;
+                    case ApiConsult.ApiMenuB:
+                        urlApiConsult.Append(urlApi);
+                        urlApiConsult.Append(ApiController.PBMenuBTest);
+                        urlApiConsult.Append(ApiMethod.Test);
+                        break;
+                }
+
+                var response = await client.GetAsync(urlApiConsult.ToString());
 
                 if (!response.IsSuccessStatusCode)
                 {
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = "Api no disponible.",
+                        Message = "Api en error o la misma no está disponible",
                         Data = string.Empty,
                     };
                 }
@@ -60,7 +83,7 @@ namespace AST_ProBatch_Mobile.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Api no disponible.",
+                    Message = "Error al intentar consultar la Api",
                     Data = string.Empty,
                 };
             }
@@ -98,7 +121,7 @@ namespace AST_ProBatch_Mobile.Services
         }
 
         #region Methods
-        public async Task<Response> GetToken(string urlDomain, string urlPrefix)
+        public async Task<Response> GetToken(string urlDomain, string urlPrefix, string apiConsult)
         {
             try
             {
@@ -106,15 +129,32 @@ namespace AST_ProBatch_Mobile.Services
                 var content = new StringContent(request, Encoding.UTF8, "application/json");
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlDomain);
-                var url = string.Format("{0}{1}", urlPrefix + ApiController.ApiAuth, ApiMethod.Login);
-                var response = await client.PostAsync(url, content);
+
+                StringBuilder urlApiConsult = new StringBuilder();
+                switch (apiConsult)
+                {
+                    case ApiConsult.ApiAuth:
+                        urlApiConsult.Append(urlPrefix);
+                        urlApiConsult.Append(ApiController.PBAuthApiAuth);
+                        urlApiConsult.Append(ApiMethod.Login);
+                        break;
+                    case ApiConsult.ApiMenuB:
+                        urlApiConsult.Append(urlPrefix);
+                        urlApiConsult.Append(ApiController.PBMenuBApiAuth);
+                        urlApiConsult.Append(ApiMethod.Login);
+                        break;
+                }
+
+                //var url = string.Format("{0}{1}{2}", urlPrefix, ApiController.ApiAuth, ApiMethod.Login);
+
+                var response = await client.PostAsync(urlApiConsult.ToString(), content);
 
                 if (!response.IsSuccessStatusCode)
                 {
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
+                        Message = "Api en error o la misma no está disponible", //response.StatusCode.ToString(),
                         Data = string.Empty,
                     };
                 }
@@ -134,7 +174,7 @@ namespace AST_ProBatch_Mobile.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = ex.Message,
+                    Message = "Error al intentar consultar la Api", //ex.Message,
                     Data = string.Empty,
                 };
             }
@@ -149,7 +189,7 @@ namespace AST_ProBatch_Mobile.Services
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
                 client.BaseAddress = new Uri(urlDomain);
-                var url = string.Format("{0}{1}", urlPrefix + ApiController.ProbatchAuth, ApiMethod.Login);
+                var url = string.Format("{0}{1}{2}", urlPrefix, ApiController.PBAuthAuthentication, ApiMethod.Login);
                 var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)
@@ -157,7 +197,7 @@ namespace AST_ProBatch_Mobile.Services
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
+                        Message = "Api en error o la misma no está disponible", //response.StatusCode.ToString(),
                         Data = string.Empty,
                     };
                 }
@@ -177,7 +217,7 @@ namespace AST_ProBatch_Mobile.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = ex.Message,
+                    Message = "Error al intentar consultar la Api", //ex.Message,
                     Data = string.Empty,
                 };
             }
