@@ -63,7 +63,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Constructors
         public LogObservationsViewModel(LogItem logitem)
         {
-            this.LogTitle = logitem.Title;
+            this.LogTitle = logitem.NameLog;
             SelectedObservation = new ObservationItem();
             GetFakeData();
         }

@@ -1,7 +1,7 @@
-﻿using AST_ProBatch_Mobile.Interfaces;
+﻿using System;
+using AST_ProBatch_Mobile.Interfaces;
 using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.ViewModels;
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,7 +21,7 @@ namespace AST_ProBatch_Mobile.Views
             var logItem = imageButton.CommandParameter as LogItem;
             if (logItem != null)
             {
-                MainViewModel.GetInstance().Notifications = new NotificationsViewModel(logItem);
+                MainViewModel.GetInstance().Notifications = new NotificationsViewModel(true, logItem);
                 Application.Current.MainPage.Navigation.PushModalAsync(new NotificationsPage());
             }
         }
@@ -39,7 +39,7 @@ namespace AST_ProBatch_Mobile.Views
             if (logItem != null)
             {
                 Device.BeginInvokeOnMainThread(async () => {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas ejecutar la: " + logItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas ejecutar la: " + logItem.NameLog + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Ejecutando...");
                 });
             }
@@ -52,7 +52,7 @@ namespace AST_ProBatch_Mobile.Views
             if (logItem != null)
             {
                 Device.BeginInvokeOnMainThread(async () => {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas detener la: " + logItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas detener la: " + logItem.NameLog + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Deteniendo...");
                 });
             }
@@ -65,7 +65,7 @@ namespace AST_ProBatch_Mobile.Views
             if (logItem != null)
             {
                 Device.BeginInvokeOnMainThread(async () => {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas reliberar la bitácora: " + logItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas reliberar la bitácora: " + logItem.NameLog + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Reliberando...");
                 });
             }
@@ -78,7 +78,7 @@ namespace AST_ProBatch_Mobile.Views
             if (logItem != null)
             {
                 Device.BeginInvokeOnMainThread(async () => {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas reconectar la bitácora: " + logItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas reconectar la bitácora: " + logItem.NameLog + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Reconectando...");
                 });
             }
@@ -131,7 +131,7 @@ namespace AST_ProBatch_Mobile.Views
                 //LogInquiriesPage logInquiriesPage = new LogInquiriesPage();
                 //logInquiriesPage.Title = logItem.Title;
                 //Application.Current.MainPage.Navigation.PushAsync(logInquiriesPage);
-                MainViewModel.GetInstance().LogInquiries = new LogInquiriesViewModel(logItem);
+                MainViewModel.GetInstance().LogInquiries = new LogInquiriesViewModel(true, logItem);
                 Application.Current.MainPage.Navigation.PushAsync(new LogInquiriesPage());
             }
         }
@@ -277,9 +277,9 @@ namespace AST_ProBatch_Mobile.Views
             }
             else
             {
-                MainViewModel.GetInstance().ExecutionStageTwo = new ExecutionStageTwoViewModel(logitem);
+                MainViewModel.GetInstance().ExecutionStageTwo = new ExecutionStageTwoViewModel(true, logitem);
                 ExecutionStageTwoPage executionStageTwoPage = new ExecutionStageTwoPage();
-                executionStageTwoPage.Title = logitem.Title;
+                executionStageTwoPage.Title = logitem.NameLog;
                 Application.Current.MainPage.Navigation.PushAsync(executionStageTwoPage);
                 LogsItemsListView.SelectedItem = null;
             }
@@ -294,9 +294,9 @@ namespace AST_ProBatch_Mobile.Views
             }
             else
             {
-                MainViewModel.GetInstance().ExecutionStageTwo = new ExecutionStageTwoViewModel(logitem);
+                MainViewModel.GetInstance().ExecutionStageTwo = new ExecutionStageTwoViewModel(true, logitem);
                 ExecutionStageTwoPage executionStageTwoPage = new ExecutionStageTwoPage();
-                executionStageTwoPage.Title = logitem.Title;
+                executionStageTwoPage.Title = logitem.NameLog;
                 Application.Current.MainPage.Navigation.PushAsync(executionStageTwoPage);
                 CompactLogsItemsListView.SelectedItem = null;
             }

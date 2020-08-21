@@ -79,25 +79,28 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public ExecutionStageTwoViewModel(LogItem logitem)
+        public ExecutionStageTwoViewModel(bool IsReload, LogItem logitem)
         {
-            ToolBarIsVisible = false;
-            ActionIcon = "actions";
-            CheckIcon = "check";
-            ViewIcon = "view_b";
-            FullViewIsVisible = true;
-            CompactViewIsVisible = false;
-            this.IsEventual = logitem.Eventual;
-            if (this.IsEventual)
+            if (IsReload)
             {
-                this.IsNotEventual = false;
-            }
-            else
-            {
-                this.IsNotEventual = true;
-            }
+                ToolBarIsVisible = false;
+                ActionIcon = "actions";
+                CheckIcon = "check";
+                ViewIcon = "view_b";
+                FullViewIsVisible = true;
+                CompactViewIsVisible = false;
+                this.IsEventual = (bool)logitem.IsEventual;
+                if (this.IsEventual)
+                {
+                    this.IsNotEventual = false;
+                }
+                else
+                {
+                    this.IsNotEventual = true;
+                }
 
-            GetFakeData();
+                GetFakeData();
+            }
         }
         #endregion
 

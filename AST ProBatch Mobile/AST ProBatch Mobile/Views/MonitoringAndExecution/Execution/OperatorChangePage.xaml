@@ -29,7 +29,8 @@
                             HorizontalOptions="Center"
                             Text="{Binding LogTitle}"
                             TextColor="#2255AA"
-                            FontAttributes="Bold"/>
+                            FontAttributes="Bold"
+                            LineBreakMode="TailTruncation"/>
                     </controls:CustomFrame>
                     <controls:CustomFrame
                         Margin="0,-7,0,0"

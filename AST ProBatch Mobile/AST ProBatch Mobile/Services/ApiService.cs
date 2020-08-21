@@ -13,31 +13,48 @@ namespace AST_ProBatch_Mobile.Services
 {
     public class ApiService
     {
-        #region Static Data
-        public static class ApiController
+        #region Private Properties
+        private string UrlDomain { get; set; }
+        private string UrlPrefix { get; set; }
+        private DataHelper DBHelper { get; set; }
+        private string ApiToConsult { get; set; }
+        #endregion
+
+        #region Static Class Const Properties
+        private static class ApiController
         {
-            public static string PBAuthTest = "/pbauth";
-            public static string PBMenuBTest = "/pbauth";
-            public static string PBAuthApiAuth = "/pbauth/apiauth";
-            public static string PBAuthAuthentication = "/pbauth/probatchauth";
-            public static string PBMenuBApiAuth = "/pbmenub/apiauth";
-            public static string PBMenuBExecute = "/pbmenub/probatchmonitoringandexecution";
+            public const string PBAuthTest = "/pbauth";
+            public const string PBMenuBTest = "/pbauth";
+            public const string PBAuthApiAuth = "/pbauth/apiauth";
+            public const string PBAuthAuthentication = "/pbauth/probatchauth";
+            public const string PBMenuBApiAuth = "/pbmenub/apiauth";
+            public const string PBMenuBExecute = "/pbmenub/probatchmonitoringandexecution";
         }
 
-        public static class ApiMethod
+        private static class ApiMethod
         {
-            public static string Test = "/auth";
-            public static string Login = "/login";
-            public static string GetLogs = "/getlogs";
+            public const string Test = "/auth";
+            public const string Login = "/login";
+            public const string GetLogs = "/getlogs";
         }
 
-        public static class TokenType
+        private static class TokenType
         {
-            public static string Scheme = "Bearer";
+            public const string Scheme = "Bearer";
         }
         #endregion
 
-        public async Task<Response> ApiIsAvailable(string urlApi, string apiConsult)
+        #region Constructor
+        public ApiService(string apiToConsult)
+        {
+            this.ApiToConsult = apiToConsult;
+            this.DBHelper = new DataHelper();
+            GetAppConfig();
+        }
+        #endregion
+
+        #region Methods
+        public async Task<Response> ApiIsAvailable()
         {
             try
             {
@@ -45,15 +62,15 @@ namespace AST_ProBatch_Mobile.Services
                 client.Timeout = TimeSpan.FromSeconds(15);
 
                 StringBuilder urlApiConsult = new StringBuilder();
-                switch (apiConsult)
+                switch (ApiToConsult)
                 {
                     case ApiConsult.ApiAuth:
-                        urlApiConsult.Append(urlApi);
+                        urlApiConsult.Append(this.UrlDomain + this.UrlPrefix);
                         urlApiConsult.Append(ApiController.PBAuthTest);
                         urlApiConsult.Append(ApiMethod.Test);
                         break;
                     case ApiConsult.ApiMenuB:
-                        urlApiConsult.Append(urlApi);
+                        urlApiConsult.Append(this.UrlDomain + this.UrlPrefix);
                         urlApiConsult.Append(ApiController.PBMenuBTest);
                         urlApiConsult.Append(ApiMethod.Test);
                         break;
@@ -120,26 +137,25 @@ namespace AST_ProBatch_Mobile.Services
             };
         }
 
-        #region Methods
-        public async Task<Response> GetToken(string urlDomain, string urlPrefix, string apiConsult)
+        public async Task<Response> GetToken()
         {
             try
             {
                 var request = JsonConvert.SerializeObject(new CipherData { Data = "ssMz44FsGtYVwik/0Qvr7tTD2326nWjfWEIaLcwlbvm1P1bRK1pXiRdBTYzg+29JuKJlfhC0szINqD4EC8De0TR4KLBigHwVFdeIUNkM3bc=" });
                 var content = new StringContent(request, Encoding.UTF8, "application/json");
                 var client = new HttpClient();
-                client.BaseAddress = new Uri(urlDomain);
+                client.BaseAddress = new Uri(this.UrlDomain);
 
                 StringBuilder urlApiConsult = new StringBuilder();
-                switch (apiConsult)
+                switch (ApiToConsult)
                 {
                     case ApiConsult.ApiAuth:
-                        urlApiConsult.Append(urlPrefix);
+                        urlApiConsult.Append(this.UrlPrefix);
                         urlApiConsult.Append(ApiController.PBAuthApiAuth);
                         urlApiConsult.Append(ApiMethod.Login);
                         break;
                     case ApiConsult.ApiMenuB:
-                        urlApiConsult.Append(urlPrefix);
+                        urlApiConsult.Append(this.UrlPrefix);
                         urlApiConsult.Append(ApiController.PBMenuBApiAuth);
                         urlApiConsult.Append(ApiMethod.Login);
                         break;
@@ -180,7 +196,7 @@ namespace AST_ProBatch_Mobile.Services
             }
         }
 
-        public async Task<Response> AuthenticateProbath(string accessToken, string urlDomain, string urlPrefix, LoginPb loginPb)
+        public async Task<Response> AuthenticateProbath(string accessToken, LoginPb loginPb)
         {
             try
             {
@@ -188,8 +204,8 @@ namespace AST_ProBatch_Mobile.Services
                 var content = new StringContent(request, Encoding.UTF8, "application/json");
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
-                client.BaseAddress = new Uri(urlDomain);
-                var url = string.Format("{0}{1}{2}", urlPrefix, ApiController.PBAuthAuthentication, ApiMethod.Login);
+                client.BaseAddress = new Uri(this.UrlDomain);
+                var url = string.Format("{0}{1}{2}", this.UrlPrefix, ApiController.PBAuthAuthentication, ApiMethod.Login);
                 var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)
@@ -197,7 +213,7 @@ namespace AST_ProBatch_Mobile.Services
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = "Api en error o la misma no está disponible", //response.StatusCode.ToString(),
+                        Message = "Api en error o la misma no está disponible",
                         Data = string.Empty,
                     };
                 }
@@ -212,14 +228,67 @@ namespace AST_ProBatch_Mobile.Services
                     Data = cipherData.Data,
                 };
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Error al intentar consultar la Api", //ex.Message,
+                    Message = "Error al intentar consultar la Api",
                     Data = string.Empty,
                 };
+            }
+        }
+
+        public async Task<Response> GetLogs(string accessToken)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
+                client.BaseAddress = new Uri(this.UrlDomain);
+                var url = string.Format("{0}{1}{2}", this.UrlPrefix, ApiController.PBMenuBExecute, ApiMethod.GetLogs);
+                var response = await client.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = "Api en error o la misma no está disponible",
+                        Data = string.Empty,
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var cipherData = JsonConvert.DeserializeObject<CipherData>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Data Obtenida",
+                    Data = cipherData.Data,
+                };
+            }
+            catch //(Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Error al intentar consultar la Api",
+                    Data = string.Empty,
+                };
+            }
+        }
+        #endregion
+
+        #region Helpers
+        private void GetAppConfig()
+        {
+            Table_Config table_Config = this.DBHelper.GetAppConfig();
+            if (table_Config != null)
+            {
+                this.UrlDomain = table_Config.UrlDomain;
+                this.UrlPrefix = table_Config.UrlPrefix;
             }
         }
         #endregion

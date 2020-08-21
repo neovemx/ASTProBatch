@@ -32,7 +32,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Constructors
         public ControlSchedulesExecutionViewModel(LogItem logItem)
         {
-            this.LogTitle = logItem.Title;
+            this.LogTitle = logItem.NameLog;
             GetFakeData();
         }
         #endregion

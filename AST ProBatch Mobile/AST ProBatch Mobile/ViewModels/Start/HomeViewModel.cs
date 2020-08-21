@@ -35,7 +35,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void About()
         {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().About = new AboutViewModel();
             await Application.Current.MainPage.Navigation.PushModalAsync(new AboutPage());
         }
 
@@ -65,7 +65,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Btnmppala()
         {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().StatisticalReportsMenu = new StatisticalReportsMenuViewModel();
             await Application.Current.MainPage.Navigation.PushModalAsync(new StatisticalReportsMenuPage());
         }
 
@@ -79,7 +79,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Btnmppalb()
         {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().MonitoringAndExecutionMenu = new MonitoringAndExecutionMenuViewModel();
             await Application.Current.MainPage.Navigation.PushModalAsync(new MonitoringAndExecutionMenuPage());
         }
 
@@ -93,7 +93,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Btnmppalc()
         {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().OperationsLog = new OperationsLogViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new OperationsLogPage());
         }
 
@@ -107,7 +107,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Btnmppald()
         {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().PlannerMenu = new PlannerMenuViewModel();
             await Application.Current.MainPage.Navigation.PushModalAsync(new PlannerMenuPage());
         }
         #endregion

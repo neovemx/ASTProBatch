@@ -36,6 +36,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Constructors
         public SettingsViewModel(string urlDomain, string urlPrefix, bool isFingerPrint)
         {
+            DBHelper = new Services.DataHelper();
+
             if (string.IsNullOrEmpty(urlDomain) && string.IsNullOrEmpty(urlPrefix))
             {
                 _ = RefreshAppConfig();
@@ -63,7 +65,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 return;
             }
             Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = this.IsFingerPrint };
-            if (!await dbHelper.PullAsyncAppConfig(table_Config))
+            if (!await DBHelper.PullAsyncAppConfig(table_Config))
             {
                 Alert.Show("No se pudo actualizar la configuración.");
                 return;
@@ -89,7 +91,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Helpers
         private async Task<bool> RefreshAppConfig()
         {
-            Table_Config table_Config = await dbHelper.GetAsyncAppConfig();
+            Table_Config table_Config = await DBHelper.GetAsyncAppConfig();
             if (table_Config != null)
             {
                 this.UrlDomain = table_Config.UrlDomain;

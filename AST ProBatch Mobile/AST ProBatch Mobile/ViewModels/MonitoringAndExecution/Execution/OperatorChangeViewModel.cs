@@ -68,7 +68,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Constructors
         public OperatorChangeViewModel(LogItem logitem)
         {
-            this.LogTitle = logitem.Title;
+            this.LogTitle = logitem.NameLog;
             this.LogOperator = logitem.Operator;
 
             GetFakeData();

@@ -1,14 +1,12 @@
-﻿using Acr.UserDialogs;
+﻿using System.Windows.Input;
+using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
-using AST_ProBatch_Mobile.Views;
 using AST_ProBatch_Mobile.Utilities;
+using AST_ProBatch_Mobile.Views;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Plugin.Fingerprint;
-using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
@@ -18,7 +16,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Atributes
         private string username;
         private string password;
-        private PbUser pbuser;
+        //private PbUser pbuser;
         private string urldomain;
         private string urlprefix;
         private bool ischecked;
@@ -41,11 +39,11 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return password; }
             set { SetValue(ref password, value); }
         }
-        public PbUser PbUser
-        {
-            get { return pbuser; }
-            set { SetValue(ref pbuser, value); }
-        }
+        //public PbUser PbUser
+        //{
+        //    get { return pbuser; }
+        //    set { SetValue(ref pbuser, value); }
+        //}
         public bool UIIsVisible
         {
             get { return uiisvisible; }
@@ -98,6 +96,9 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Constructors
         public LoginViewModel(InitialLoad initialLoad, Table_Config table_Config)
         {
+            ApiSrv = new Services.ApiService(ApiConsult.ApiAuth);
+            DBHelper = new Services.DataHelper();
+
             GetFingerPrintAvailable();
 
             if (initialLoad.IsSuccess)
@@ -199,14 +200,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             {
                 UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
 
-                if (!await RefreshAppConfig())
-                {
-                    UserDialogs.Instance.HideLoading();
-                    Alert.Show("Error en configuración");
-                    return;
-                }
-
-                Response resultApiIsAvailable = await ApiIsAvailable(this.UrlDomain + this.UrlPrefix, ApiConsult.ApiAuth);
+                Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
 
                 if (!resultApiIsAvailable.IsSuccess)
                 {
@@ -215,7 +209,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     return;
                 }
 
-                Response resultToken = await GetToken(ApiConsult.ApiAuth);
+                Response resultToken = await ApiSrv.GetToken();
 
                 if (!resultToken.IsSuccess)
                 {
@@ -227,7 +221,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 {
                     Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
                     LoginPb loginPb = new LoginPb { Username = this.Username, Password = this.Password };
-                    Response resultLoginProbatch = await AuthenticateProbath(token.Key, loginPb);
+                    Response resultLoginProbatch = await ApiSrv.AuthenticateProbath(token.Key, loginPb);
                     if (!resultLoginProbatch.IsSuccess)
                     {
                         UserDialogs.Instance.HideLoading();
@@ -250,7 +244,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                             if (IsChecked)
                             {
                                 Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = this.IsChecked };
-                                if (!await dbHelper.PullAsyncAppConfig(table_Config))
+                                if (!await DBHelper.PullAsyncAppConfig(table_Config))
                                 {
                                     UserDialogs.Instance.HideLoading();
                                     Alert.Show("No se pudo actualizar la configuración.");
@@ -259,7 +253,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 else
                                 {
                                     Table_User table_User = new Table_User { Id = 1, Username = Crypto.EncryptString(this.Username), Password = Crypto.EncryptString(this.Password) };
-                                    if (!await dbHelper.PullAsyncProbatchCredentials(table_User))
+                                    if (!await DBHelper.PullAsyncProbatchCredentials(table_User))
                                     {
                                         UserDialogs.Instance.HideLoading();
                                         Alert.Show("No se pudo actualizar la configuración.");
@@ -278,12 +272,12 @@ namespace AST_ProBatch_Mobile.ViewModels
                             this.Password = string.Empty;
                             MainViewModel.GetInstance().Home = new HomeViewModel();
                             Application.Current.MainPage = new NavigationPage(new HomePage());
-                            Alert.Show("Bienvenido: " + this.PbUser.FisrtName.Trim() + ", " + this.PbUser.LastName.Trim() + "!", "Continuar");
+                            Alert.Show("Bienvenido: " + PbUser.FisrtName.Trim() + ", " + PbUser.LastName.Trim() + "!", "Continuar");
                         }
                     }
                 }
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 UserDialogs.Instance.HideLoading();
                 Toast.ShowError("Ocurrió un error.");
@@ -311,14 +305,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
                 UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
 
-                if (!await RefreshAppConfig())
-                {
-                    UserDialogs.Instance.HideLoading();
-                    Alert.Show("Error en configuración");
-                    return;
-                }
-
-                Table_User tableUserFingerPrint = await dbHelper.GetAsyncProbatchCredentials();
+                Table_User tableUserFingerPrint = await DBHelper.GetAsyncProbatchCredentials();
                 if (tableUserFingerPrint == null)
                 {
                     UserDialogs.Instance.HideLoading();
@@ -328,7 +315,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
                 try
                 {
-                    Response resultApiIsAvailable = await ApiIsAvailable(this.UrlDomain + this.UrlPrefix, ApiConsult.ApiAuth);
+                    Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
 
                     if (!resultApiIsAvailable.IsSuccess)
                     {
@@ -337,7 +324,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                         return;
                     }
 
-                    Response resultToken = await GetToken(ApiConsult.ApiAuth);
+                    Response resultToken = await ApiSrv.GetToken();
 
                     if (!resultToken.IsSuccess)
                     {
@@ -349,7 +336,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     {
                         Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
                         LoginPb loginPb = new LoginPb { Username = Crypto.DecodeString(tableUserFingerPrint.Username), Password = Crypto.DecodeString(tableUserFingerPrint.Password) };
-                        Response resultLoginProbatch = await AuthenticateProbath(token.Key, loginPb);
+                        Response resultLoginProbatch = await ApiSrv.AuthenticateProbath(token.Key, loginPb);
                         if (!resultLoginProbatch.IsSuccess)
                         {
                             UserDialogs.Instance.HideLoading();
@@ -367,7 +354,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 {
                                     IsChecked = false;
                                     Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = IsChecked };
-                                    if (!await dbHelper.PullAsyncAppConfig(table_Config))
+                                    if (!await DBHelper.PullAsyncAppConfig(table_Config))
                                     {
                                         Alert.Show("No se pudo actualizar la configuración.");
                                         return;
@@ -375,7 +362,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     else
                                     {
                                         Table_User table_User = new Table_User { Id = 1, Username = string.Empty, Password = string.Empty };
-                                        if (!await dbHelper.PullAsyncProbatchCredentials(table_User))
+                                        if (!await DBHelper.PullAsyncProbatchCredentials(table_User))
                                         {
                                             Alert.Show("No se pudo actualizar la configuración.");
                                             return;
@@ -394,7 +381,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 if (!IsChecked)
                                 {
                                     Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = this.IsChecked };
-                                    if (!await dbHelper.PullAsyncAppConfig(table_Config))
+                                    if (!await DBHelper.PullAsyncAppConfig(table_Config))
                                     {
                                         Alert.Show("No se pudo actualizar la configuración.");
                                         return;
@@ -402,7 +389,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     else
                                     {
                                         Table_User table_User = new Table_User { Id = 1, Username = string.Empty, Password = string.Empty };
-                                        if (!await dbHelper.PullAsyncProbatchCredentials(table_User))
+                                        if (!await DBHelper.PullAsyncProbatchCredentials(table_User))
                                         {
                                             Alert.Show("No se pudo actualizar la configuración.");
                                             return;
@@ -420,19 +407,19 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 this.Password = string.Empty;
                                 MainViewModel.GetInstance().Home = new HomeViewModel();
                                 Application.Current.MainPage = new NavigationPage(new HomePage());
-                                Alert.Show("Bienvenido: " + this.PbUser.FisrtName.Trim() + ", " + this.PbUser.LastName.Trim() + "!", "Continuar");
+                                Alert.Show("Bienvenido: " + PbUser.FisrtName.Trim() + ", " + PbUser.LastName.Trim() + "!", "Continuar");
                             }
                         }
                     }
                 }
-                catch (Exception ex)
+                catch //(Exception ex)
                 {
                     UserDialogs.Instance.HideLoading();
                     Toast.ShowError("Ocurrió un error.");
                     return;
                 }
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 Toast.ShowError("Ocurrió un error datos locales.");
                 return;
@@ -440,45 +427,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         }
         #endregion
 
-        #region Methods
-        private async Task<Response> CheckConnection()
-        {
-            return await this.apiService.CheckConnection();
-        }
-
-        private async Task<Response> ApiIsAvailable(string apiUrl, string apiConsult)
-        {
-            return await this.apiService.ApiIsAvailable(apiUrl, apiConsult);
-        }
-
-        private async Task<Response> GetToken(string apiConsult)
-        {
-            return await this.apiService.GetToken(this.UrlDomain, this.UrlPrefix, apiConsult);
-        }
-
-        private async Task<Response> AuthenticateProbath(string accessToken, LoginPb loginPb)
-        {
-            return await this.apiService.AuthenticateProbath(accessToken, this.UrlDomain, this.UrlPrefix, loginPb);
-        }
-        #endregion
-
         #region Helpers
-        private async Task<bool> RefreshAppConfig()
-        {
-            Table_Config table_Config = await dbHelper.GetAsyncAppConfig();
-            if (table_Config != null)
-            {
-                this.UrlDomain = table_Config.UrlDomain;
-                this.UrlPrefix = table_Config.UrlPrefix;
-                //this.IsChecked = table_Config.FingerPrintAllow;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private async void GetFingerPrintAvailable()
         {
             IsFingerPrintAvailable = await CrossFingerprint.Current.IsAvailableAsync();

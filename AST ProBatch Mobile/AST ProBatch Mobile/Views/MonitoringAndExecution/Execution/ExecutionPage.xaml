@@ -114,7 +114,7 @@
                                         <controls:CustomFrame 
                                             Padding="6"
                                             CornerRadius="10,10,0,0"
-                                            BackgroundColor="#D7D7D7"
+                                            BackgroundColor="{Binding BarItemColor}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
                                             HeightRequest="35">
@@ -146,14 +146,14 @@
                                                         FontAttributes="Bold"
                                                         FontSize="Medium"
                                                         TextColor="#2255AA"
-                                                        Text="{Binding Title}" 
+                                                        Text="{Binding NameLog}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton 
                                                         BackgroundColor="#F1F2F6"
-                                                        Source="{Binding Notifications}"
+                                                        Source="{Binding NotificationIcon}"
                                                         CommandParameter="{Binding}"
                                                         Clicked="ImageButtonNotification_Clicked"
                                                         WidthRequest="35"
@@ -211,7 +211,7 @@
                                                             LineBreakMode="TailTruncation"/>
                                                         <Label 
                                                             TextColor="White"
-                                                            Text="{Binding Environment}"
+                                                            Text="{Binding NameEnvironment}"
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                     </StackLayout>
@@ -226,7 +226,7 @@
                                                             LineBreakMode="TailTruncation"/>
                                                         <Label 
                                                             TextColor="White"
-                                                            Text="{Binding Execution}"
+                                                            Text="{Binding ExecutionDateTime}"
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                     </StackLayout>
@@ -241,7 +241,7 @@
                                                             LineBreakMode="TailTruncation"/>
                                                         <Label 
                                                             TextColor="White"
-                                                            Text="{Binding End}"
+                                                            Text="{Binding EndingDateTime}"
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                     </StackLayout>
@@ -256,10 +256,11 @@
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                         <StackLayout
+                                                            IsVisible="{Binding NotIsEventual}"
                                                             Orientation="Horizontal">
                                                             <Label 
                                                                 TextColor="White"
-                                                                Text="{Binding CommandsNumber}"
+                                                                Text="{Binding TotalCommands}"
                                                                 FontSize="Small"
                                                                 LineBreakMode="TailTruncation"/>
                                                             <Label 
@@ -269,7 +270,7 @@
                                                                 LineBreakMode="TailTruncation"/>
                                                             <Label 
                                                                 TextColor="#FE6347"
-                                                                Text="{Binding CommandsFail}"
+                                                                Text="{Binding ErrorCommands}"
                                                                 FontSize="Small"
                                                                 LineBreakMode="TailTruncation"/>
                                                         </StackLayout>

@@ -86,13 +86,16 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public LogInquiriesViewModel(LogItem logitem)
+        public LogInquiriesViewModel(bool IsReload, LogItem logitem)
         {
-            this.LogTitle = logitem.Title;
-            this.LogId = logitem.Id;
-            this.ResultIsVisible = false;
-            this.FormIsVisible = true;
-            GetFakeData();
+            if (IsReload)
+            {
+                this.LogTitle = logitem.NameLog;
+                this.LogId = (int)logitem.IdLog;
+                this.ResultIsVisible = false;
+                this.FormIsVisible = true;
+                GetFakeData();
+            }
         }
         #endregion
 

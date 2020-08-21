@@ -1,11 +1,13 @@
-﻿using AST_ProBatch_Mobile.Models;
+﻿using System.Collections.ObjectModel;
+using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Services;
+using ASTProBatchMobile.Models.Service;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
     public class MainViewModel
     {
-        #region ViewModels
+        #region Properties
         public LoginViewModel Login { get; set; }
         public HomeViewModel Home { get; set; }
         public SettingsViewModel Settings { get; set; }
@@ -79,18 +81,18 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.RecurrenceMonitor = new RecurrenceMonitorViewModel();
             this.StatusInfo = new StatusInfoViewModel();
             this.StatusInfoPlanner = new StatusInfoPlannerViewModel();
-            this.Notifications = new NotificationsViewModel(new Models.LogItem());
+            this.Notifications = new NotificationsViewModel(false, new Models.LogItem());
             this.InstanceNotifications = new InstanceNotificationsViewModel(new Models.InstanceItem());
             this.Monitoring = new MonitoringViewModel();
-            this.Execution = new ExecutionViewModel();
-            this.ExecutionStageTwo = new ExecutionStageTwoViewModel(new Models.LogItem());
+            this.Execution = new ExecutionViewModel(false);
+            this.ExecutionStageTwo = new ExecutionStageTwoViewModel(false, new Models.LogItem());
             this.ExecutionStageThree = new ExecutionStageThreeViewModel(new Models.InstanceItem());
             this.CommandNotifications = new CommandNotificationsViewModel(new Models.CommandItem());
             this.LogObservations = new LogObservationsViewModel(new Models.LogItem());
             this.OperatorChange = new OperatorChangeViewModel(new Models.LogItem());
             this.ControlSchedulesExecution = new ControlSchedulesExecutionViewModel(new Models.LogItem());
             this.StatusInfoControlSchedulesExecution = new StatusInfoControlSchedulesExecutionViewModel();
-            this.LogInquiries = new LogInquiriesViewModel(new Models.LogItem());
+            this.LogInquiries = new LogInquiriesViewModel(false, new Models.LogItem());
             this.LogInquirieDetail = new LogInquirieDetailViewModel(new Models.ResultLogInquirieItem());
             this.ControlSchedulesExecutionDetail = new ControlSchedulesExecutionDetailViewModel(new Models.CommandsToControl());
             this.BatchQuery = new BatchQueryViewModel(new Models.InstanceItem());

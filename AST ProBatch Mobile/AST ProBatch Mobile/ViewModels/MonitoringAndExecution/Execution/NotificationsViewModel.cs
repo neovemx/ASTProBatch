@@ -36,11 +36,15 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public NotificationsViewModel(LogItem logitem)
+        public NotificationsViewModel(bool IsReload, LogItem logitem)
         {
-            //TODO: Remplazar por el consumo de datos del webservices
-            LogTitle = logitem.Title;
-            GetFakeData(logitem.Id);
+            if (IsReload)
+            {
+                //TODO: Remplazar por el consumo de datos del webservices
+                LogTitle = logitem.NameLog;
+                GetFakeData((int)logitem.IdLog);
+            }
+            
         }
         #endregion
 

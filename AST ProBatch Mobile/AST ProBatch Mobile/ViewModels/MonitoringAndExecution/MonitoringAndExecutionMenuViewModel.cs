@@ -33,7 +33,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Btnsubmf()
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().Monitoring = new MonitoringViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new MonitoringPage());
         }
 
@@ -48,7 +48,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Btnsubmg()
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().Execution = new ExecutionViewModel(true);
             await Application.Current.MainPage.Navigation.PushAsync(new ExecutionPage());
         }
 
