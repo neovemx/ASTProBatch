@@ -135,7 +135,35 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Observaciones pausa: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Observaciones: " + commandItem.Title + "?", "Sí", "No");
+                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                });
+            }
+        }
+
+        private void ImageButtonAction_9_Clicked(object sender, EventArgs e)
+        {
+            var imageButton = (ImageButton)sender;
+            var commandItem = imageButton.CommandParameter as CommandItem;
+            if (commandItem != null)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Dependencias para: " + commandItem.Title + "?", "Sí", "No");
+                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                });
+            }
+        }
+
+        private void ImageButtonAction_10_Clicked(object sender, EventArgs e)
+        {
+            var imageButton = (ImageButton)sender;
+            var commandItem = imageButton.CommandParameter as CommandItem;
+            if (commandItem != null)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del Lote para: " + commandItem.Title + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }

@@ -40,7 +40,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas ejecutar la: " + instanceItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas ejecutar la: " + instanceItem.NameInstance + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Ejecutando...");
                 });
             }
@@ -54,7 +54,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas detener la: " + instanceItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas detener la: " + instanceItem.NameInstance + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Deteniendo...");
                 });
             }
@@ -68,7 +68,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas matar el proceso para: " + instanceItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas matar el proceso para: " + instanceItem.NameInstance + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Finalizando...");
                 });
             }
@@ -96,7 +96,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas agregar comando para: " + instanceItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas agregar comando para: " + instanceItem.NameInstance + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
@@ -285,7 +285,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 MainViewModel.GetInstance().ExecutionStageThree = new ExecutionStageThreeViewModel(instanceitem);
                 ExecutionStageThreePage executionStageThreePage = new ExecutionStageThreePage();
-                executionStageThreePage.Title = instanceitem.Title;
+                executionStageThreePage.Title = instanceitem.NameInstance;
                 Application.Current.MainPage.Navigation.PushAsync(executionStageThreePage);
                 InstanceItemsListView.SelectedItem = null;
             }
@@ -302,7 +302,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 MainViewModel.GetInstance().ExecutionStageThree = new ExecutionStageThreeViewModel(instanceitem);
                 ExecutionStageThreePage executionStageThreePage = new ExecutionStageThreePage();
-                executionStageThreePage.Title = instanceitem.Title;
+                executionStageThreePage.Title = instanceitem.NameInstance;
                 Application.Current.MainPage.Navigation.PushAsync(executionStageThreePage);
                 CompactInstanceItemsListView.SelectedItem = null;
             }

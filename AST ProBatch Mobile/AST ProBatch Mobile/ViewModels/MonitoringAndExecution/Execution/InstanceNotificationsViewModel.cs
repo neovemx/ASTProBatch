@@ -39,8 +39,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         public InstanceNotificationsViewModel(InstanceItem instanceitem)
         {
             //TODO: Remplazar por el consumo de datos del webservices
-            InstanceTitle = instanceitem.Title;
-            GetFakeData(instanceitem.Id);
+            InstanceTitle = instanceitem.NameInstance;
+            GetFakeData(instanceitem.IdInstance);
         }
         #endregion
 

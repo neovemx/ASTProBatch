@@ -29,6 +29,57 @@ namespace AST_ProBatch_Mobile.Utilities
         }
     }
 
+    public class GetStatusColor
+    {
+        public static string ByIdStatus(string IdStatus)
+        {
+            string resultColor = string.Empty;
+            switch (IdStatus)
+            {
+                case Status.INITIAL:
+                    resultColor = StatusColor.White;
+                    break;
+                case Status.ERROR:
+                    resultColor = StatusColor.Red;
+                    break;
+                case Status.INTERFAZ_ERROR:
+                    resultColor = StatusColor.Red;
+                    break;
+                case Status.INTERFAZ_WAITING:
+                    resultColor = StatusColor.Yellow;
+                    break;
+                case Status.DEPENDENCY_ERROR:
+                    resultColor = StatusColor.Red;
+                    break;
+                case Status.WAITING_DEPENDENCY:
+                    resultColor = StatusColor.Yellow;
+                    break;
+                case Status.CONNECTION_ERROR:
+                    resultColor = StatusColor.Red;
+                    break;
+                case Status.STOP:
+                    resultColor = StatusColor.Orange;
+                    break;
+                case Status.SUCCESS:
+                    resultColor = StatusColor.Blue;
+                    break;
+                case Status.WAITING_RESOURCE:
+                    resultColor = StatusColor.Yellow;
+                    break;
+                case Status.EXECUTING:
+                    resultColor = StatusColor.Green;
+                    break;
+                case Status.MESSAGE:
+                    resultColor = StatusColor.Yellow;
+                    break;
+                case Status.KILLED:
+                    resultColor = StatusColor.Purple;
+                    break;
+            }
+            return resultColor;
+        }
+    }
+
     public static class StatusColor
     {
         public static string Green { get { return "#33CC33"; } }
@@ -70,5 +121,22 @@ namespace AST_ProBatch_Mobile.Utilities
         public static string AmericanDate12Hours { get { return "MM/dd/yyyy hh:mm:ss"; } }
         public static string LatinDate12HoursTTT { get { return "dd/MM/yyyy HH:mm:ss ttt"; } }
         public static string AmericanDate12HoursTTT { get { return "MM/dd/yyyy hh:mm:ss ttt"; } }
+    }
+
+    public static class Status
+    {
+        public const string INITIAL = "";
+        public const string ERROR = "E";
+        public const string INTERFAZ_ERROR = "EIE";
+        public const string INTERFAZ_WAITING = "WIE";
+        public const string DEPENDENCY_ERROR = "D";
+        public const string WAITING_DEPENDENCY = "W";
+        public const string CONNECTION_ERROR = "EC";
+        public const string STOP = "P";
+        public const string SUCCESS = "S";
+        public const string WAITING_RESOURCE = "Y";
+        public const string EXECUTING = "X";
+        public const string MESSAGE = "M";
+        public const string KILLED = "K";
     }
 }

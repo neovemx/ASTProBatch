@@ -1,6 +1,7 @@
 ﻿using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
+using ASTProBatchMobile.Models.Service;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -36,6 +37,7 @@ namespace AST_ProBatch_Mobile.Services
             public const string Test = "/auth";
             public const string Login = "/login";
             public const string GetLogs = "/getlogs";
+            public const string GetInstancesByLogAndUser = "/getinstances";
         }
 
         private static class TokenType
@@ -145,7 +147,7 @@ namespace AST_ProBatch_Mobile.Services
                 var content = new StringContent(request, Encoding.UTF8, "application/json");
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(this.UrlDomain);
-
+                client.Timeout = TimeSpan.FromSeconds(15);
                 StringBuilder urlApiConsult = new StringBuilder();
                 switch (ApiToConsult)
                 {
@@ -205,6 +207,7 @@ namespace AST_ProBatch_Mobile.Services
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
                 client.BaseAddress = new Uri(this.UrlDomain);
+                client.Timeout = TimeSpan.FromSeconds(15);
                 var url = string.Format("{0}{1}{2}", this.UrlPrefix, ApiController.PBAuthAuthentication, ApiMethod.Login);
                 var response = await client.PostAsync(url, content);
 
@@ -246,8 +249,53 @@ namespace AST_ProBatch_Mobile.Services
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
                 client.BaseAddress = new Uri(this.UrlDomain);
+                client.Timeout = TimeSpan.FromSeconds(15);
                 var url = string.Format("{0}{1}{2}", this.UrlPrefix, ApiController.PBMenuBExecute, ApiMethod.GetLogs);
                 var response = await client.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = "Api en error o la misma no está disponible",
+                        Data = string.Empty,
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var cipherData = JsonConvert.DeserializeObject<CipherData>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Data Obtenida",
+                    Data = cipherData.Data,
+                };
+            }
+            catch //(Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Error al intentar consultar la Api",
+                    Data = string.Empty,
+                };
+            }
+        }
+
+        public async Task<Response> GetInstancesByLogAndUser(string accessToken, InstanceQueryValues instanceQueryValues)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(new CipherData { Data = Crypto.EncryptString(JsonConvert.SerializeObject(instanceQueryValues)) });
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
+                client.BaseAddress = new Uri(this.UrlDomain);
+                client.Timeout = TimeSpan.FromSeconds(15);
+                var url = string.Format("{0}{1}{2}", this.UrlPrefix, ApiController.PBMenuBExecute, ApiMethod.GetInstancesByLogAndUser);
+                var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)
                 {

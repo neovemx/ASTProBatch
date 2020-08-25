@@ -225,7 +225,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     if (!resultLoginProbatch.IsSuccess)
                     {
                         UserDialogs.Instance.HideLoading();
-                        Alert.Show(resultLoginProbatch.Message);
+                        Toast.ShowError(resultLoginProbatch.Message);
                         return;
                     }
                     else
@@ -247,7 +247,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 if (!await DBHelper.PullAsyncAppConfig(table_Config))
                                 {
                                     UserDialogs.Instance.HideLoading();
-                                    Alert.Show("No se pudo actualizar la configuración.");
+                                    Toast.ShowError("No se pudo actualizar la configuración.");
                                     return;
                                 }
                                 else
@@ -256,7 +256,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     if (!await DBHelper.PullAsyncProbatchCredentials(table_User))
                                     {
                                         UserDialogs.Instance.HideLoading();
-                                        Alert.Show("No se pudo actualizar la configuración.");
+                                        Toast.ShowError("No se pudo actualizar la configuración.");
                                         return;
                                     }
                                     else
@@ -309,7 +309,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 if (tableUserFingerPrint == null)
                 {
                     UserDialogs.Instance.HideLoading();
-                    Alert.Show("No se pudo obtener las credenciales de ProBatch");
+                    Toast.ShowError("No se pudo obtener las credenciales de ProBatch");
                     return;
                 }
 
@@ -340,7 +340,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                         if (!resultLoginProbatch.IsSuccess)
                         {
                             UserDialogs.Instance.HideLoading();
-                            Alert.Show(resultLoginProbatch.Message);
+                            Toast.ShowError(resultLoginProbatch.Message);
                             return;
                         }
                         else
@@ -356,7 +356,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = IsChecked };
                                     if (!await DBHelper.PullAsyncAppConfig(table_Config))
                                     {
-                                        Alert.Show("No se pudo actualizar la configuración.");
+                                        Toast.ShowError("No se pudo actualizar la configuración.");
                                         return;
                                     }
                                     else
@@ -364,7 +364,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                         Table_User table_User = new Table_User { Id = 1, Username = string.Empty, Password = string.Empty };
                                         if (!await DBHelper.PullAsyncProbatchCredentials(table_User))
                                         {
-                                            Alert.Show("No se pudo actualizar la configuración.");
+                                            Toast.ShowError("No se pudo actualizar la configuración.");
                                             return;
                                         }
                                         else
@@ -383,7 +383,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     Table_Config table_Config = new Table_Config { Id = 1, UrlDomain = this.UrlDomain, UrlPrefix = this.UrlPrefix, FingerPrintAllow = this.IsChecked };
                                     if (!await DBHelper.PullAsyncAppConfig(table_Config))
                                     {
-                                        Alert.Show("No se pudo actualizar la configuración.");
+                                        Toast.ShowError("No se pudo actualizar la configuración.");
                                         return;
                                     }
                                     else
@@ -391,7 +391,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                         Table_User table_User = new Table_User { Id = 1, Username = string.Empty, Password = string.Empty };
                                         if (!await DBHelper.PullAsyncProbatchCredentials(table_User))
                                         {
-                                            Alert.Show("No se pudo actualizar la configuración.");
+                                            Toast.ShowError("No se pudo actualizar la configuración.");
                                             return;
                                         }
                                         else

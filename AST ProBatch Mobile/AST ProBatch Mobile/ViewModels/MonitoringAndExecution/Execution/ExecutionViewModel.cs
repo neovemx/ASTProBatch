@@ -115,7 +115,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     if (!resultGetLogs.IsSuccess)
                     {
                         UserDialogs.Instance.HideLoading();
-                        Alert.Show(resultGetLogs.Message);
+                        Toast.ShowError(resultGetLogs.Message);
                         return;
                     }
                     else
@@ -139,6 +139,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 ErrorCommands = (Int32)log.ErrorCommands,
                                 IsChecked = false,
                                 IsEnabled = true,
+                                IdUser = PbUser.IdUser,
                                 Operator = string.Format("{0} ({1}, {2})", PbUser.IdUser, PbUser.FisrtName.Trim(), PbUser.LastName.Trim()),
                                 NotificationIcon = IconSet.Notification
                             });

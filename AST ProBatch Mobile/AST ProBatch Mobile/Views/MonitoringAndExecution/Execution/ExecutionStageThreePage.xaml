@@ -392,9 +392,42 @@
                                                                 </ImageButton.CornerRadius>
                                                             </ImageButton>
                                                         </StackLayout>
+                                                        <StackLayout>
+                                                            <ImageButton 
+                                                                BackgroundColor="#F1F2F6"
+                                                                IsEnabled="{Binding IsEnabled}"
+                                                                CommandParameter="{Binding}"
+                                                                Source="action_dp"
+                                                                Clicked="ImageButtonAction_9_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35">
+                                                                <ImageButton.CornerRadius>
+                                                                    <OnPlatform x:TypeArguments="x:Int32">
+                                                                        <On Platform="iOS" Value="17" />
+                                                                        <On Platform="Android" Value="50" />
+                                                                    </OnPlatform>
+                                                                </ImageButton.CornerRadius>
+                                                            </ImageButton>
+                                                        </StackLayout>
+                                                        <StackLayout>
+                                                            <ImageButton 
+                                                                BackgroundColor="#F1F2F6"
+                                                                IsEnabled="{Binding IsEnabled}"
+                                                                CommandParameter="{Binding}"
+                                                                Source="action_dl"
+                                                                Clicked="ImageButtonAction_10_Clicked"
+                                                                WidthRequest="35"
+                                                                HeightRequest="35">
+                                                                <ImageButton.CornerRadius>
+                                                                    <OnPlatform x:TypeArguments="x:Int32">
+                                                                        <On Platform="iOS" Value="17" />
+                                                                        <On Platform="Android" Value="50" />
+                                                                    </OnPlatform>
+                                                                </ImageButton.CornerRadius>
+                                                            </ImageButton>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                 </ScrollView>
-
                                             </StackLayout>
                                         </controls:CustomFrame>
                                     </StackLayout>

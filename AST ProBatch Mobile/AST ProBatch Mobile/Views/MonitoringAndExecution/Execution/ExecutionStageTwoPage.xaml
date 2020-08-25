@@ -29,7 +29,7 @@
                     HorizontalOptions="Center">
                     <StackLayout
                         Orientation="Horizontal"
-                        IsVisible="{Binding IsNotEventual}">
+                        IsVisible="{Binding LogItem.NotIsEventual}">
                         <ImageButton
                             WidthRequest="35"
                             HeightRequest="35"
@@ -385,7 +385,7 @@
                                                         Orientation="Horizontal"
                                                         HorizontalOptions="Center">
                                                         <StackLayout
-                                                            IsVisible="{Binding IsNotEventual}">
+                                                            IsVisible="{Binding LogItem.NotIsEventual}">
                                                             <ImageButton
                                                                 CornerRadius="5"
                                                                 BackgroundColor="#F1F2F6"
@@ -404,7 +404,7 @@
                                                             </ImageButton>
                                                         </StackLayout>
                                                         <StackLayout
-                                                            IsVisible="{Binding IsNotEventual}">
+                                                            IsVisible="{Binding LogItem.NotIsEventual}">
                                                             <ImageButton 
                                                                 CornerRadius="5"
                                                                 BackgroundColor="#F1F2F6"
