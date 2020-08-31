@@ -283,7 +283,7 @@ namespace AST_ProBatch_Mobile.Views
             }
             else
             {
-                MainViewModel.GetInstance().ExecutionStageThree = new ExecutionStageThreeViewModel(instanceitem);
+                MainViewModel.GetInstance().ExecutionStageThree = new ExecutionStageThreeViewModel(true, instanceitem);
                 //ExecutionStageThreePage executionStageThreePage = new ExecutionStageThreePage();
                 //executionStageThreePage.Title = instanceitem.NameInstance;
                 Application.Current.MainPage.Navigation.PushAsync(new ExecutionStageThreePage());
@@ -300,7 +300,7 @@ namespace AST_ProBatch_Mobile.Views
             }
             else
             {
-                MainViewModel.GetInstance().ExecutionStageThree = new ExecutionStageThreeViewModel(instanceitem);
+                MainViewModel.GetInstance().ExecutionStageThree = new ExecutionStageThreeViewModel(true, instanceitem);
                 //ExecutionStageThreePage executionStageThreePage = new ExecutionStageThreePage();
                 //executionStageThreePage.Title = instanceitem.NameInstance;
                 Application.Current.MainPage.Navigation.PushAsync(new ExecutionStageThreePage());

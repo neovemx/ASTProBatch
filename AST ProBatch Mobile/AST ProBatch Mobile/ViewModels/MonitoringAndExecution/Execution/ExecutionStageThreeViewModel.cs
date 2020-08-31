@@ -2,13 +2,16 @@
 using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
+using ASTProBatchMobile.Models.Service;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Cmd = AST_ProBatch_Mobile.Models.Service.Command;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
@@ -23,72 +26,58 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool isrefreshing;
         private bool compactviewisvisible;
         private bool fullviewisvisible;
-        //private bool iseventual;
-        //private bool isnoteventual;
+        private bool isvisibleemptyview;
         private InstanceItem instanceitem;
         #endregion
 
         #region Properties
+        public List<Cmd> Commands { get; set; }
+
         public ObservableCollection<CommandItem> CommandItems
         {
             get { return commanditems; }
             set { SetValue(ref commanditems, value); }
         }
-
         public bool ToolBarIsVisible
         {
             get { return toolbarisvisible; }
             set { SetValue(ref toolbarisvisible, value); }
         }
-
         public string ActionIcon
         {
             get { return actionicon; }
             set { SetValue(ref actionicon, value); }
         }
-
         public string CheckIcon
         {
             get { return checkicon; }
             set { SetValue(ref checkicon, value); }
         }
-
         public string ViewIcon
         {
             get { return viewicon; }
             set { SetValue(ref viewicon, value); }
         }
-
         public bool IsRefreshing
         {
             get { return isrefreshing; }
             set { SetValue(ref isrefreshing, value); }
         }
-
         public bool FullViewIsVisible
         {
             get { return fullviewisvisible; }
             set { SetValue(ref fullviewisvisible, value); }
         }
-
         public bool CompactViewIsVisible
         {
             get { return compactviewisvisible; }
             set { SetValue(ref compactviewisvisible, value); }
         }
-
-        //public bool IsEventual
-        //{
-        //    get { return iseventual; }
-        //    set { SetValue(ref iseventual, value); }
-        //}
-
-        //public bool IsNotEventual
-        //{
-        //    get { return isnoteventual; }
-        //    set { SetValue(ref isnoteventual, value); }
-        //}
-
+        public bool IsVisibleEmptyView
+        {
+            get { return isvisibleemptyview; }
+            set { SetValue(ref isvisibleemptyview, value); }
+        }
         public InstanceItem InstanceItem
         {
             get { return instanceitem; }
@@ -110,6 +99,9 @@ namespace AST_ProBatch_Mobile.ViewModels
                 this.ViewIcon = "view_b";
                 this.FullViewIsVisible = true;
                 this.CompactViewIsVisible = false;
+                this.IsVisibleEmptyView = false;
+
+                GetCommandsByInstance(this.InstanceItem.IdInstance);
 
                 //GetFakeData();
             }
@@ -127,6 +119,17 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Actions()
         {
+            if (this.IsVisibleEmptyView)
+            {
+                Alert.Show("No hay datos para realizar operaciones!");
+                return;
+            }
+            if (this.CommandItems.Count == 1)
+            {
+                Alert.Show("Sólo hay un comando en la vista!");
+                return;
+            }
+
             int countItems = 0;
             foreach (CommandItem item in CommandItems)
             {
@@ -159,6 +162,17 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
+                if (this.IsVisibleEmptyView)
+                {
+                    Alert.Show("No hay datos para realizar operaciones!");
+                    return;
+                }
+                if (this.CommandItems.Count == 1)
+                {
+                    Alert.Show("Sólo hay un comando en la vista!");
+                    return;
+                }
+
                 if (string.CompareOrdinal(CheckIcon, "check") == 0)
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
@@ -206,7 +220,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                Alert.Show("Ocurrió un error", "Aceptar");
                 UserDialogs.Instance.HideLoading();
             }
 
@@ -224,6 +238,12 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
+                if (this.IsVisibleEmptyView)
+                {
+                    Alert.Show("No hay datos para realizar operaciones!");
+                    return;
+                }
+
                 if (FullViewIsVisible)
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
@@ -273,7 +293,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                Alert.Show("Ocurrió un error", "Aceptar");
                 UserDialogs.Instance.HideLoading();
             }
 
@@ -307,24 +327,56 @@ namespace AST_ProBatch_Mobile.ViewModels
                 else
                 {
                     Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
-                    InstanceQueryValues instanceQueryValues = new InstanceQueryValues()
+                    CommandQueryValues commandQueryValues = new CommandQueryValues()
                     {
-                        IdLog = IdLog,
-                        IdUser = IdUser,
-                        IsEventual = IsEventual
+                        IdInstance = this.InstanceItem.IdInstance
                     };
-                    Response resultGetInstancesByLogAndUser = await ApiSrv.GetInstancesByLogAndUser(token.Key, instanceQueryValues);
-                    if (!resultGetInstancesByLogAndUser.IsSuccess)
+                    Response resultGetCommandsByInstance = await ApiSrv.GetCommandsByInstance(token.Key, commandQueryValues);
+                    if (!resultGetCommandsByInstance.IsSuccess)
                     {
                         UserDialogs.Instance.HideLoading();
-                        Toast.ShowError(resultGetInstancesByLogAndUser.Message);
+                        Toast.ShowError(resultGetCommandsByInstance.Message);
                         return;
                     }
                     else
                     {
-
+                        Commands = JsonConvert.DeserializeObject<List<Cmd>>(Crypto.DecodeString(resultGetCommandsByInstance.Data));
+                        CommandItems = new ObservableCollection<CommandItem>();
+                        foreach (Cmd command in Commands)
+                        {
+                            TimeSpan execTime = TimeSpan.FromMinutes(command.ExecutionTime);
+                            CommandItems.Add(new CommandItem()
+                            {
+                                IdLot = command.IdLot,
+                                NameLot = command.NameLot.Trim(),
+                                IdCommand = command.IdCommand,
+                                NameCommand = command.NameCommand.Trim(),
+                                Order = command.Order,
+                                IdStatus = command.IdStatus,
+                                Duration = string.Format("{0:00} hora(s) {1:00} minuto(s)", (int)execTime.TotalHours, execTime.Minutes),
+                                ExecutionStart = (command.ExecutionDateTime != null) ? ((DateTime)command.ExecutionDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                ExecutionEnd = (command.EndDateTime != null) ? ((DateTime)command.EndDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                IsChecked = false,
+                                IsEnabled = true,
+                                StatusColor = GetStatusColor.ByIdStatus(command.IdStatus.Trim()),
+                                InstanceItem = this.InstanceItem
+                            });
+                        }
+                        if (CommandItems.Count == 0)
+                        {
+                            this.FullViewIsVisible = false;
+                            this.CompactViewIsVisible = false;
+                            this.IsVisibleEmptyView = true;
+                        }
+                        else
+                        {
+                            this.FullViewIsVisible = true;
+                            this.CompactViewIsVisible = false;
+                            this.IsVisibleEmptyView = false;
+                        }
                     }
                 }
+                UserDialogs.Instance.HideLoading();
             }
             catch //(Exception ex)
             {

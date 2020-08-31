@@ -21,7 +21,7 @@ namespace AST_ProBatch_Mobile.Views
             var commandItem = imageButton.CommandParameter as CommandItem;
             if (commandItem != null)
             {
-                var result = await this.DisplayAlert("AST●ProBatch®", "Pausar el: " + commandItem.Title + "?", "Sí", "No");
+                var result = await this.DisplayAlert("AST●ProBatch®", "Pausar el: " + commandItem.NameCommand + "?", "Sí", "No");
                 if (result) DependencyService.Get<Toast>().Show("Procesando...");
             }
         }
@@ -40,7 +40,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Ejecutar para: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Ejecutar para: " + commandItem.NameCommand + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
@@ -54,7 +54,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Ver resultados para: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Ver resultados para: " + commandItem.NameCommand + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
@@ -68,7 +68,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Matar proceso para: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Matar proceso para: " + commandItem.NameCommand + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
@@ -82,7 +82,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Reejecutar: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Reejecutar: " + commandItem.NameCommand + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
@@ -107,7 +107,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del comando para: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del comando para: " + commandItem.NameCommand + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
@@ -121,7 +121,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Reconectar: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Reconectar: " + commandItem.NameCommand + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
@@ -135,7 +135,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Observaciones: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Observaciones: " + commandItem.NameCommand + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
@@ -149,7 +149,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Dependencias para: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Dependencias para: " + commandItem.NameCommand + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
@@ -163,7 +163,7 @@ namespace AST_ProBatch_Mobile.Views
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del Lote para: " + commandItem.Title + "?", "Sí", "No");
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del Lote para: " + commandItem.NameCommand + "?", "Sí", "No");
                     if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }

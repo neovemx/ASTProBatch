@@ -30,7 +30,7 @@
                         HorizontalOptions="Center">
                         <StackLayout
                             Orientation="Horizontal"
-                            IsVisible="{Binding IsNotEventual}">
+                            IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
                             <ImageButton
                                 WidthRequest="35"
                                 HeightRequest="35"
@@ -134,6 +134,43 @@
                                                 <StackLayout
                                                     VerticalOptions="Center"
                                                     HorizontalOptions="FillAndExpand">
+                                                    <StackLayout
+                                                        Orientation="Vertical"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <Label 
+                                                            FontAttributes="Bold"
+                                                            FontSize="Small"
+                                                            TextColor="White"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Text="{Binding NameLot}" 
+                                                            LineBreakMode="TailTruncation">
+                                                            <Label.Margin>
+                                                                <OnPlatform x:TypeArguments="Thickness">
+                                                                    <On Platform="iOS" Value="0,1,0,0" />
+                                                                    <On Platform="Android" Value="0,-2,0,0" />
+                                                                </OnPlatform>
+                                                            </Label.Margin>
+                                                        </Label>
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="Medium"
+                                                            TextColor="#2255AA"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Text="{Binding NameCommand}" 
+                                                            LineBreakMode="TailTruncation">
+                                                            <Label.Margin>
+                                                                <OnPlatform x:TypeArguments="Thickness">
+                                                                    <On Platform="iOS" Value="0,-7,0,0" />
+                                                                    <On Platform="Android" Value="0,-11,0,0" />
+                                                                </OnPlatform>
+                                                            </Label.Margin>
+                                                        </Label>
+                                                    </StackLayout>   
+                                                </StackLayout>
+                                                <!--<StackLayout
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="FillAndExpand">
                                                     <StackLayout.Margin>
                                                         <OnPlatform x:TypeArguments="Thickness">
                                                             <On Platform="iOS" Value="0,2,0,0" />
@@ -144,9 +181,9 @@
                                                         FontAttributes="Bold"
                                                         FontSize="Medium"
                                                         TextColor="#2255AA"
-                                                        Text="{Binding Title}" 
+                                                        Text="{Binding NameCommand}" 
                                                         LineBreakMode="TailTruncation"/>
-                                                </StackLayout>
+                                                </StackLayout>-->
                                                 <StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton 
@@ -251,7 +288,7 @@
                                                         Orientation="Horizontal"
                                                         HorizontalOptions="Center">
                                                         <StackLayout
-                                                            IsVisible="{Binding IsEventual}">
+                                                            IsVisible="{Binding InstanceItem.LogItem.IsEventual}">
                                                             <ImageButton
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
@@ -269,7 +306,7 @@
                                                             </ImageButton>
                                                         </StackLayout>
                                                         <StackLayout
-                                                            IsVisible="{Binding IsNotEventual}">
+                                                            IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
                                                             <ImageButton
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
@@ -304,7 +341,7 @@
                                                             </ImageButton>
                                                         </StackLayout>
                                                         <StackLayout
-                                                            IsVisible="{Binding IsNotEventual}">
+                                                            IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
                                                             <ImageButton 
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
@@ -322,7 +359,7 @@
                                                             </ImageButton>
                                                         </StackLayout>
                                                         <StackLayout
-                                                            IsVisible="{Binding IsNotEventual}">
+                                                            IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
                                                             <ImageButton 
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
@@ -357,7 +394,7 @@
                                                             </ImageButton>
                                                         </StackLayout>
                                                         <StackLayout
-                                                            IsVisible="{Binding IsNotEventual}">
+                                                            IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
                                                             <ImageButton 
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
@@ -375,7 +412,7 @@
                                                             </ImageButton>
                                                         </StackLayout>
                                                         <StackLayout
-                                                            IsVisible="{Binding IsEventual}">
+                                                            IsVisible="{Binding InstanceItem.LogItem.IsEventual}">
                                                             <ImageButton 
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
@@ -478,13 +515,48 @@
                                                             IsEnabled="{Binding IsEnabled}"
                                                             Color="#2255AA"/>
                                                     </StackLayout>
-                                                    <Label 
+                                                    <StackLayout
+                                                        Orientation="Vertical"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <Label
+                                                            FontSize="Micro"
+                                                            TextColor="White"
+                                                            Text="{Binding NameLot}" 
+                                                            FontAttributes="Bold"
+                                                            LineBreakMode="TailTruncation"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="Center">
+                                                            <Label.Margin>
+                                                                <OnPlatform x:TypeArguments="Thickness">
+                                                                    <On Platform="iOS" Value="0,1,0,0" />
+                                                                    <On Platform="Android" Value="0,0,0,0" />
+                                                                </OnPlatform>
+                                                            </Label.Margin>
+                                                        </Label>
+                                                        <Label
+                                                            FontSize="Small"
+                                                            TextColor="#2255AA"
+                                                            Text="{Binding NameCommand}" 
+                                                            FontAttributes="Bold"
+                                                            LineBreakMode="TailTruncation"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="Center">
+                                                            <Label.Margin>
+                                                                <OnPlatform x:TypeArguments="Thickness">
+                                                                    <On Platform="iOS" Value="0,-7,0,0" />
+                                                                    <On Platform="Android" Value="0,-12,0,0" />
+                                                                </OnPlatform>
+                                                            </Label.Margin>
+                                                        </Label>
+                                                    </StackLayout>
+                                                    <!--<Label 
                                                         TextColor="#2255AA"
-                                                        Text="{Binding Title}" 
+                                                        Text="{Binding NameCommand}" 
                                                         FontAttributes="Bold"
                                                         LineBreakMode="TailTruncation"
                                                         HorizontalOptions="FillAndExpand"
-                                                        VerticalOptions="CenterAndExpand"/>
+                                                        VerticalOptions="CenterAndExpand"/>-->
                                                     <StackLayout
                                                         VerticalOptions="Center">
                                                         <StackLayout.Padding>
@@ -521,6 +593,21 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+            </StackLayout>
+            <StackLayout 
+                IsVisible="{Binding IsVisibleEmptyView}"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    VerticalOptions="CenterAndExpand">
+                    <Image
+                        HorizontalOptions="Center"
+                        Source="warning"/>
+                    <Label
+                        HorizontalOptions="Center"
+                        FontSize="Medium"
+                        TextColor="#D7D7D7"
+                        Text="Sin datos para mostrar..." />
+                </StackLayout>
             </StackLayout>
             <StackLayout 
                 VerticalOptions="End">

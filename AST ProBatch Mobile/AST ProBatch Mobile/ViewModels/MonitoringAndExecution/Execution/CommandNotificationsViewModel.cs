@@ -39,8 +39,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         public CommandNotificationsViewModel(CommandItem commanditem)
         {
             //TODO: Remplazar por el consumo de datos del webservices
-            CommandTitle = commanditem.Title;
-            GetFakeData(commanditem.Id);
+            CommandTitle = commanditem.NameCommand;
+            GetFakeData(commanditem.IdCommand);
         }
         #endregion
 

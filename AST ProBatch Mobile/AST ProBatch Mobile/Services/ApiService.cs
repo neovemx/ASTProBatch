@@ -315,9 +315,100 @@ namespace AST_ProBatch_Mobile.Services
                 };
             }
         }
+
+        public async Task<Response> GetCommandsByInstance(string accessToken, CommandQueryValues commandQueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.GetCommandsByInstance, commandQueryValues);
+        }
         #endregion
 
         #region Helpers
+        private async Task<Response> HttpGet(string accessToken, string apiController, string apiMethod)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
+                client.BaseAddress = new Uri(this.UrlDomain);
+                client.Timeout = TimeSpan.FromSeconds(15);
+                var url = string.Format("{0}{1}{2}", this.UrlPrefix, apiController, apiMethod);
+                var response = await client.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = "Api en error o la misma no está disponible",
+                        Data = string.Empty,
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var cipherData = JsonConvert.DeserializeObject<CipherData>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Data Obtenida",
+                    Data = cipherData.Data,
+                };
+            }
+            catch //(Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Error al intentar consultar la Api",
+                    Data = string.Empty,
+                };
+            }
+        }
+
+        private async Task<Response> HttpPost(string accessToken, string apiController, string apiMethod, object queryValues)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(new CipherData { Data = Crypto.EncryptString(JsonConvert.SerializeObject(queryValues)) });
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
+                client.BaseAddress = new Uri(this.UrlDomain);
+                client.Timeout = TimeSpan.FromSeconds(15);
+                var url = string.Format("{0}{1}{2}", this.UrlPrefix, apiController, apiMethod);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = "Api en error o la misma no está disponible",
+                        Data = string.Empty,
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var cipherData = JsonConvert.DeserializeObject<CipherData>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Data Obtenida",
+                    Data = cipherData.Data,
+                };
+            }
+            catch //(Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Error al intentar consultar la Api",
+                    Data = string.Empty,
+                };
+            }
+        }
+
         private void GetAppConfig()
         {
             Table_Config table_Config = this.DBHelper.GetAppConfig();

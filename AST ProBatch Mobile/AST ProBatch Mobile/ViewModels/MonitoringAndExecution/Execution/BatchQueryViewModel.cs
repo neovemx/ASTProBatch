@@ -415,45 +415,45 @@ namespace AST_ProBatch_Mobile.ViewModels
                 CommandItem commandItem;
 
                 commandItem = new CommandItem();
-                commandItem.Id = 1;
-                commandItem.Title = "8999 - Prueba grande";
-                commandItem.Critical = true;
-                commandItem.Status = "A";
+                //commandItem.Id = 1;
+                //commandItem.Title = "8999 - Prueba grande";
+                //commandItem.Critical = true;
+                //commandItem.Status = "A";
                 this.CommandItems.Add(commandItem);
 
                 commandItem = new CommandItem();
-                commandItem.Id = 2;
-                commandItem.Title = "8999 - Prueba grande";
-                commandItem.Critical = false;
-                commandItem.Status = "A";
+                //commandItem.Id = 2;
+                //commandItem.Title = "8999 - Prueba grande";
+                //commandItem.Critical = false;
+                //commandItem.Status = "A";
                 this.CommandItems.Add(commandItem);
 
                 commandItem = new CommandItem();
-                commandItem.Id = 3;
-                commandItem.Title = "8999 - Prueba grande";
-                commandItem.Critical = true;
-                commandItem.Status = "A";
+                //commandItem.Id = 3;
+                //commandItem.Title = "8999 - Prueba grande";
+                //commandItem.Critical = true;
+                //commandItem.Status = "A";
                 this.CommandItems.Add(commandItem);
 
                 commandItem = new CommandItem();
-                commandItem.Id = 4;
-                commandItem.Title = "8999 - Prueba grande";
-                commandItem.Critical = true;
-                commandItem.Status = "A";
+                //commandItem.Id = 4;
+                //commandItem.Title = "8999 - Prueba grande";
+                //commandItem.Critical = true;
+                //commandItem.Status = "A";
                 this.CommandItems.Add(commandItem);
 
                 commandItem = new CommandItem();
-                commandItem.Id = 5;
-                commandItem.Title = "8999 - Prueba grande";
-                commandItem.Critical = true;
-                commandItem.Status = "A";
+                //commandItem.Id = 5;
+                //commandItem.Title = "8999 - Prueba grande";
+                //commandItem.Critical = true;
+                //commandItem.Status = "A";
                 this.CommandItems.Add(commandItem);
 
                 commandItem = new CommandItem();
-                commandItem.Id = 6;
-                commandItem.Title = "8999 - Prueba grande";
-                commandItem.Critical = false;
-                commandItem.Status = "A";
+                //commandItem.Id = 6;
+                //commandItem.Title = "8999 - Prueba grande";
+                //commandItem.Critical = false;
+                //commandItem.Status = "A";
                 this.CommandItems.Add(commandItem);
 
                 UserDialogs.Instance.HideLoading();

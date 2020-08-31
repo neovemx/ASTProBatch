@@ -127,6 +127,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string Login = "/login";
         public const string GetLogs = "/getlogs";
         public const string GetInstancesByLogAndUser = "/getinstances";
+        public const string GetCommandsByInstance = "/getcommands";
     }
 
     public static class TokenType

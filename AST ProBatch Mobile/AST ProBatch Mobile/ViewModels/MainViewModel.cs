@@ -86,7 +86,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.Monitoring = new MonitoringViewModel();
             this.Execution = new ExecutionViewModel(false);
             this.ExecutionStageTwo = new ExecutionStageTwoViewModel(false, new Models.LogItem());
-            this.ExecutionStageThree = new ExecutionStageThreeViewModel(new Models.InstanceItem());
+            this.ExecutionStageThree = new ExecutionStageThreeViewModel(false, new Models.InstanceItem());
             this.CommandNotifications = new CommandNotificationsViewModel(new Models.CommandItem());
             this.LogObservations = new LogObservationsViewModel(new Models.LogItem());
             this.OperatorChange = new OperatorChangeViewModel(new Models.LogItem());
