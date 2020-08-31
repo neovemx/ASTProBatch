@@ -75,6 +75,9 @@ namespace AST_ProBatch_Mobile.Utilities
                 case Status.KILLED:
                     resultColor = StatusColor.Purple;
                     break;
+                default:
+                    resultColor = StatusColor.Black;
+                    break;
             }
             return resultColor;
         }
@@ -90,6 +93,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public static string Grey { get { return "#7F7F7F"; } }
         public static string Purple { get { return "#B9908E"; } }
         public static string Blue { get { return "#87CEFA"; } }
+        public static string Black { get { return "Black"; } }
     }
 
     public static class BarItemColor
@@ -105,6 +109,29 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string ApiMenuB = "PBMENUB";
         public const string ApiMenuC = "PBMENUC";
         public const string ApiMenuD = "PBMENUD";
+    }
+
+    public static class ApiController
+    {
+        public const string PBAuthTest = "/pbauth";
+        public const string PBMenuBTest = "/pbauth";
+        public const string PBAuthApiAuth = "/pbauth/apiauth";
+        public const string PBAuthAuthentication = "/pbauth/probatchauth";
+        public const string PBMenuBApiAuth = "/pbmenub/apiauth";
+        public const string PBMenuBExecute = "/pbmenub/probatchmonitoringandexecution";
+    }
+
+    public static class ApiMethod
+    {
+        public const string Test = "/auth";
+        public const string Login = "/login";
+        public const string GetLogs = "/getlogs";
+        public const string GetInstancesByLogAndUser = "/getinstances";
+    }
+
+    public static class TokenType
+    {
+        public const string Scheme = "Bearer";
     }
 
     public static class IconSet

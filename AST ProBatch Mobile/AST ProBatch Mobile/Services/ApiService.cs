@@ -21,31 +21,6 @@ namespace AST_ProBatch_Mobile.Services
         private string ApiToConsult { get; set; }
         #endregion
 
-        #region Static Class Const Properties
-        private static class ApiController
-        {
-            public const string PBAuthTest = "/pbauth";
-            public const string PBMenuBTest = "/pbauth";
-            public const string PBAuthApiAuth = "/pbauth/apiauth";
-            public const string PBAuthAuthentication = "/pbauth/probatchauth";
-            public const string PBMenuBApiAuth = "/pbmenub/apiauth";
-            public const string PBMenuBExecute = "/pbmenub/probatchmonitoringandexecution";
-        }
-
-        private static class ApiMethod
-        {
-            public const string Test = "/auth";
-            public const string Login = "/login";
-            public const string GetLogs = "/getlogs";
-            public const string GetInstancesByLogAndUser = "/getinstances";
-        }
-
-        private static class TokenType
-        {
-            public const string Scheme = "Bearer";
-        }
-        #endregion
-
         #region Constructor
         public ApiService(string apiToConsult)
         {
@@ -156,14 +131,27 @@ namespace AST_ProBatch_Mobile.Services
                         urlApiConsult.Append(ApiController.PBAuthApiAuth);
                         urlApiConsult.Append(ApiMethod.Login);
                         break;
+                    case ApiConsult.ApiMenuA:
+                        urlApiConsult.Append(this.UrlPrefix);
+                        //urlApiConsult.Append(ApiController.PBMenuAApiAuth);
+                        urlApiConsult.Append(ApiMethod.Login);
+                        break;
                     case ApiConsult.ApiMenuB:
                         urlApiConsult.Append(this.UrlPrefix);
                         urlApiConsult.Append(ApiController.PBMenuBApiAuth);
                         urlApiConsult.Append(ApiMethod.Login);
                         break;
+                    case ApiConsult.ApiMenuC:
+                        urlApiConsult.Append(this.UrlPrefix);
+                        //urlApiConsult.Append(ApiController.PBMenuCApiAuth);
+                        urlApiConsult.Append(ApiMethod.Login);
+                        break;
+                    case ApiConsult.ApiMenuD:
+                        urlApiConsult.Append(this.UrlPrefix);
+                        //urlApiConsult.Append(ApiController.PBMenuDApiAuth);
+                        urlApiConsult.Append(ApiMethod.Login);
+                        break;
                 }
-
-                //var url = string.Format("{0}{1}{2}", urlPrefix, ApiController.ApiAuth, ApiMethod.Login);
 
                 var response = await client.PostAsync(urlApiConsult.ToString(), content);
 

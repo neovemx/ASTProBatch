@@ -8,7 +8,8 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              NavigationPage.HasBackButton="False"
              Title="AST●ProBatch®"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             NavigationPage.BackButtonTitle="">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding Home}" Text="Acerca" Icon="about" Command="{Binding AboutCommand}" />
         <ToolbarItem BindingContext="{Binding Home}" Text="Salir" Icon="logout" Command="{Binding LogoutCommand}" />

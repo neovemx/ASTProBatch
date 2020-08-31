@@ -278,9 +278,9 @@ namespace AST_ProBatch_Mobile.Views
             else
             {
                 MainViewModel.GetInstance().ExecutionStageTwo = new ExecutionStageTwoViewModel(true, logitem);
-                ExecutionStageTwoPage executionStageTwoPage = new ExecutionStageTwoPage();
-                executionStageTwoPage.Title = logitem.NameLog;
-                Application.Current.MainPage.Navigation.PushAsync(executionStageTwoPage);
+                //ExecutionStageTwoPage executionStageTwoPage = new ExecutionStageTwoPage();
+                //executionStageTwoPage.Title = logitem.NameLog;
+                Application.Current.MainPage.Navigation.PushAsync(new ExecutionStageTwoPage());
                 LogsItemsListView.SelectedItem = null;
             }
         }
@@ -295,9 +295,9 @@ namespace AST_ProBatch_Mobile.Views
             else
             {
                 MainViewModel.GetInstance().ExecutionStageTwo = new ExecutionStageTwoViewModel(true, logitem);
-                ExecutionStageTwoPage executionStageTwoPage = new ExecutionStageTwoPage();
-                executionStageTwoPage.Title = logitem.NameLog;
-                Application.Current.MainPage.Navigation.PushAsync(executionStageTwoPage);
+                //ExecutionStageTwoPage executionStageTwoPage = new ExecutionStageTwoPage();
+                //executionStageTwoPage.Title = logitem.NameLog;
+                Application.Current.MainPage.Navigation.PushAsync(new ExecutionStageTwoPage());
                 CompactLogsItemsListView.SelectedItem = null;
             }
         }

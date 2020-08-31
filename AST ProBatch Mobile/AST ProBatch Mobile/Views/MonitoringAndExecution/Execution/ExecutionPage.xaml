@@ -7,8 +7,9 @@
              xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.ExecutionPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="EJECUCIÓN"
-             BackgroundColor="White">
+             Title="Bitácoras"
+             BackgroundColor="White"
+             NavigationPage.BackButtonTitle="">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding Execution}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />
         <ToolbarItem BindingContext="{Binding Execution}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />
@@ -483,7 +484,7 @@
                                                     </StackLayout>
                                                     <Label 
                                                         TextColor="#2255AA"
-                                                        Text="{Binding Title}" 
+                                                        Text="{Binding NameLog}" 
                                                         FontAttributes="Bold"
                                                         LineBreakMode="TailTruncation"
                                                         HorizontalOptions="FillAndExpand"
@@ -496,7 +497,7 @@
                                                                 <On Platform="Android" Value="0,0,4,0" />
                                                             </OnPlatform>
                                                         </StackLayout.Padding>
-                                                        <ImageButton
+                                                        <!--<ImageButton
                                                             CornerRadius="15"
                                                             BackgroundColor="{Binding StatusColor}"
                                                             Source="{Binding Status}"
@@ -513,7 +514,7 @@
                                                                     <On Platform="Android" Value="25" />
                                                                 </OnPlatform>
                                                             </ImageButton.WidthRequest>
-                                                        </ImageButton>
+                                                        </ImageButton>-->
                                                     </StackLayout>
                                                 </StackLayout>
                                             </StackLayout>
@@ -524,6 +525,21 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+            </StackLayout>
+            <StackLayout 
+                IsVisible="{Binding IsVisibleEmptyView}"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    VerticalOptions="CenterAndExpand">
+                    <Image
+                        HorizontalOptions="Center"
+                        Source="warning"/>
+                    <Label
+                        HorizontalOptions="Center"
+                        FontSize="Medium"
+                        TextColor="#D7D7D7"
+                        Text="Sin datos para mostrar..." />
+                </StackLayout>
             </StackLayout>
             <StackLayout 
                 VerticalOptions="End">

@@ -1,16 +1,15 @@
-﻿using Acr.UserDialogs;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
 using ASTProBatchMobile.Models.Service;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
@@ -24,6 +23,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private string viewicon;
         private bool compactviewisvisible;
         private bool fullviewisvisible;
+        private bool isvisibleemptyview;
         #endregion
 
         #region Properties
@@ -64,6 +64,11 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return compactviewisvisible; }
             set { SetValue(ref compactviewisvisible, value); }
         }
+        public bool IsVisibleEmptyView
+        {
+            get { return isvisibleemptyview; }
+            set { SetValue(ref isvisibleemptyview, value); }
+        }
         #endregion
 
         #region Constructors
@@ -72,12 +77,13 @@ namespace AST_ProBatch_Mobile.ViewModels
             if (IsReload)
             {
                 ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
-                ToolBarIsVisible = false;
-                ActionIcon = "actions";
-                CheckIcon = "check";
-                ViewIcon = "view_b";
-                FullViewIsVisible = true;
-                CompactViewIsVisible = false;
+                this.ToolBarIsVisible = false;
+                this.ActionIcon = "actions";
+                this.CheckIcon = "check";
+                this.ViewIcon = "view_b";
+                this.FullViewIsVisible = true;
+                this.CompactViewIsVisible = false;
+                this.IsVisibleEmptyView = false;
                 GetLogs();
                 //GetFakeData();
             }
@@ -144,6 +150,18 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 NotificationIcon = IconSet.Notification
                             });
                         }
+                        if (LogItems.Count == 0)
+                        {
+                            this.FullViewIsVisible = false;
+                            this.CompactViewIsVisible = false;
+                            this.IsVisibleEmptyView = true;
+                        }
+                        else
+                        {
+                            this.FullViewIsVisible = true;
+                            this.CompactViewIsVisible = false;
+                            this.IsVisibleEmptyView = false;
+                        }
                     }
                 }
                 UserDialogs.Instance.HideLoading();
@@ -152,7 +170,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             {
                 UserDialogs.Instance.HideLoading();
                 Toast.ShowError("Ocurrió un error.");
-                return;
+                //return;
             }
         }
         #endregion
@@ -168,6 +186,17 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Actions()
         {
+            if (this.IsVisibleEmptyView)
+            {
+                Alert.Show("No hay datos para realizar operaciones!");
+                return;
+            }
+            if (this.LogItems.Count == 1)
+            {
+                Alert.Show("Sólo hay una bitácora en la vista!");
+                return;
+            }
+
             int countItems = 0;
             foreach (LogItem item in LogItems)
             {
@@ -175,7 +204,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             }
             if (countItems <= 1)
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
+                Alert.Show("Debe seleccionar dos o más bitácoras");
                 return;
             }
             if (ToolBarIsVisible)
@@ -200,11 +229,20 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
+                if (this.IsVisibleEmptyView)
+                {
+                    Alert.Show("No hay datos para realizar operaciones!");
+                    return;
+                }
+                if (this.LogItems.Count == 1)
+                {
+                    Alert.Show("Sólo hay una bitácora en la vista!");
+                    return;
+                }
+
                 if (string.CompareOrdinal(CheckIcon, "check") == 0)
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
-
-                    await Task.Delay(1000);
 
                     await Task.Run(async () =>
                     {
@@ -226,8 +264,6 @@ namespace AST_ProBatch_Mobile.ViewModels
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
 
-                    await Task.Delay(1000);
-
                     await Task.Run(async () =>
                     {
                         var LogItemsTemp = LogItems;
@@ -247,7 +283,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                Alert.Show("Ocurrió un error", "Aceptar");
                 UserDialogs.Instance.HideLoading();
             }
 
@@ -265,6 +301,12 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
+                if (this.IsVisibleEmptyView)
+                {
+                    Alert.Show("No hay datos para realizar operaciones!");
+                    return;
+                }
+
                 if (FullViewIsVisible)
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
@@ -314,7 +356,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                Alert.Show("Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
                 UserDialogs.Instance.HideLoading();
             }
 

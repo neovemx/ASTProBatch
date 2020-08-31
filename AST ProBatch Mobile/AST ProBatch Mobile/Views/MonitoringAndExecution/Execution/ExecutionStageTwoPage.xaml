@@ -7,8 +7,9 @@
              xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.ExecutionStageTwoPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title=""
-             BackgroundColor="White">
+             Title="Instancias"
+             BackgroundColor="White"
+             NavigationPage.BackButtonTitle="">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding ExecutionStageTwo}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />
         <ToolbarItem BindingContext="{Binding ExecutionStageTwo}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />
@@ -131,25 +132,46 @@
                                                 <StackLayout
                                                     VerticalOptions="Center"
                                                     HorizontalOptions="FillAndExpand">
-                                                    <StackLayout.Margin>
-                                                        <OnPlatform x:TypeArguments="Thickness">
-                                                            <On Platform="iOS" Value="0,2,0,0" />
-                                                            <On Platform="Android" Value="0,0,0,0" />
-                                                        </OnPlatform>
-                                                    </StackLayout.Margin>
-                                                    <Label 
-                                                        FontAttributes="Bold"
-                                                        FontSize="Medium"
-                                                        TextColor="#2255AA"
-                                                        Text="{Binding Title}" 
-                                                        LineBreakMode="TailTruncation"/>
+                                                    <StackLayout
+                                                        Orientation="Vertical"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <Label 
+                                                            FontAttributes="Bold"
+                                                            FontSize="Small"
+                                                            TextColor="White"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Text="{Binding LogItem.NameLog}" 
+                                                            LineBreakMode="TailTruncation">
+                                                            <Label.Margin>
+                                                                <OnPlatform x:TypeArguments="Thickness">
+                                                                    <On Platform="iOS" Value="0,1,0,0" />
+                                                                    <On Platform="Android" Value="0,-2,0,0" />
+                                                                </OnPlatform>
+                                                            </Label.Margin>
+                                                        </Label>
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="Medium"
+                                                            TextColor="#2255AA"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Text="{Binding NameInstance}" 
+                                                            LineBreakMode="TailTruncation">
+                                                            <Label.Margin>
+                                                                <OnPlatform x:TypeArguments="Thickness">
+                                                                    <On Platform="iOS" Value="0,-7,0,0" />
+                                                                    <On Platform="Android" Value="0,-11,0,0" />
+                                                                </OnPlatform>
+                                                            </Label.Margin>
+                                                        </Label>
+                                                    </StackLayout>   
                                                 </StackLayout>
                                                 <StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton 
                                                         CornerRadius="5"
                                                         BackgroundColor="#F1F2F6"
-                                                        Source="{Binding Notifications}"
+                                                        Source="{Binding NotificationIcon}"
                                                         CommandParameter="{Binding}"
                                                         Clicked="ImageButtonNotification_Clicked"
                                                         WidthRequest="35"
@@ -166,7 +188,7 @@
                                                     VerticalOptions="Center">
                                                     <ImageButton
                                                         CornerRadius="5"
-                                                        BackgroundColor="{Binding StatusColor}"
+                                                        BackgroundColor="{Binding StatusInstanceColor}"
                                                         Source="{Binding Status}"
                                                         Clicked="ImageButtonState_Clicked"
                                                         WidthRequest="35"
@@ -325,7 +347,7 @@
                                                             Grid.Column="0"
                                                             TextColor="Black"
                                                             HorizontalOptions="Center"
-                                                            Text="{Binding CommandsTotal}"
+                                                            Text="{Binding TotalCommands}"
                                                             FontSize="Small"/>
                                                         <BoxView 
                                                             Grid.Row="1"
@@ -337,7 +359,7 @@
                                                             TextColor="White"
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
-                                                            Text="{Binding CommandsPending}"
+                                                            Text="{Binding PendingCommands}"
                                                             FontSize="Small"/>
                                                         <BoxView 
                                                             Grid.Row="1"
@@ -349,7 +371,7 @@
                                                             TextColor="White"
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
-                                                            Text="{Binding CommandsOk}"
+                                                            Text="{Binding OkCommands}"
                                                             FontSize="Small"/>
                                                         <BoxView 
                                                             Grid.Row="1"
@@ -361,7 +383,7 @@
                                                             TextColor="White"
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
-                                                            Text="{Binding CommandsError}"
+                                                            Text="{Binding ErrorCommands}"
                                                             FontSize="Small"/>
                                                         <BoxView 
                                                             Grid.Row="1"
@@ -373,7 +395,7 @@
                                                             TextColor="White"
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
-                                                            Text="{Binding CommandsOmitted}"
+                                                            Text="{Binding OmittedCommands}"
                                                             FontSize="Small"/>
                                                     </Grid>
                                                 </StackLayout>
@@ -518,8 +540,7 @@
                                             CornerRadius="10"
                                             BackgroundColor="#D7D7D7"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="Center"
-                                            Padding="-3">
+                                            VerticalOptions="Center">
                                             <StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
@@ -530,16 +551,43 @@
                                                             IsEnabled="{Binding IsEnabled}"
                                                             Color="#2255AA"/>
                                                     </StackLayout>
-                                                    <Label 
-                                                        TextColor="#2255AA"
-                                                        Text="{Binding Title}" 
-                                                        FontAttributes="Bold"
-                                                        LineBreakMode="TailTruncation"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        VerticalOptions="CenterAndExpand"/>
                                                     <StackLayout
-                                                        VerticalOptions="Center"
-                                                        Padding="0,0,4,0">
+                                                        Orientation="Vertical"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <Label
+                                                            FontSize="Micro"
+                                                            TextColor="White"
+                                                            Text="{Binding LogItem.NameLog}" 
+                                                            FontAttributes="Bold"
+                                                            LineBreakMode="TailTruncation"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="Center">
+                                                            <Label.Margin>
+                                                                <OnPlatform x:TypeArguments="Thickness">
+                                                                    <On Platform="iOS" Value="0,1,0,0" />
+                                                                    <On Platform="Android" Value="0,0,0,0" />
+                                                                </OnPlatform>
+                                                            </Label.Margin>
+                                                        </Label>
+                                                        <Label
+                                                            FontSize="Small"
+                                                            TextColor="#2255AA"
+                                                            Text="{Binding NameInstance}" 
+                                                            FontAttributes="Bold"
+                                                            LineBreakMode="TailTruncation"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="Center">
+                                                            <Label.Margin>
+                                                                <OnPlatform x:TypeArguments="Thickness">
+                                                                    <On Platform="iOS" Value="0,-7,0,0" />
+                                                                    <On Platform="Android" Value="0,-12,0,0" />
+                                                                </OnPlatform>
+                                                            </Label.Margin>
+                                                        </Label>
+                                                    </StackLayout>      
+                                                    <StackLayout
+                                                        VerticalOptions="Center">
                                                         <StackLayout.Padding>
                                                             <OnPlatform x:TypeArguments="Thickness">
                                                                 <On Platform="iOS" Value="0,0,7,0" />
@@ -548,7 +596,7 @@
                                                         </StackLayout.Padding>
                                                         <ImageButton
                                                             CornerRadius="15"
-                                                            BackgroundColor="{Binding StatusColor}"
+                                                            BackgroundColor="{Binding StatusInstanceColor}"
                                                             Source="{Binding Status}"
                                                             Clicked="ImageButtonState_Clicked">
                                                             <ImageButton.HeightRequest>
@@ -567,6 +615,12 @@
                                                     </StackLayout>
                                                 </StackLayout>
                                             </StackLayout>
+                                            <controls:CustomFrame.Padding>
+                                                <OnPlatform x:TypeArguments="Thickness">
+                                                    <On Platform="iOS" Value="-3" />
+                                                    <On Platform="Android" Value="0" />
+                                                </OnPlatform>
+                                            </controls:CustomFrame.Padding>
                                         </controls:CustomFrame>
                                     </StackLayout>
                                 </ViewCell.View>
@@ -574,6 +628,21 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+            </StackLayout>
+            <StackLayout 
+                IsVisible="{Binding IsVisibleEmptyView}"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    VerticalOptions="CenterAndExpand">
+                    <Image
+                        HorizontalOptions="Center"
+                        Source="warning"/>
+                    <Label
+                        HorizontalOptions="Center"
+                        FontSize="Medium"
+                        TextColor="#D7D7D7"
+                        Text="Sin datos para mostrar..." />
+                </StackLayout>
             </StackLayout>
             <StackLayout 
                 VerticalOptions="End">

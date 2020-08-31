@@ -284,9 +284,9 @@ namespace AST_ProBatch_Mobile.Views
             else
             {
                 MainViewModel.GetInstance().ExecutionStageThree = new ExecutionStageThreeViewModel(instanceitem);
-                ExecutionStageThreePage executionStageThreePage = new ExecutionStageThreePage();
-                executionStageThreePage.Title = instanceitem.NameInstance;
-                Application.Current.MainPage.Navigation.PushAsync(executionStageThreePage);
+                //ExecutionStageThreePage executionStageThreePage = new ExecutionStageThreePage();
+                //executionStageThreePage.Title = instanceitem.NameInstance;
+                Application.Current.MainPage.Navigation.PushAsync(new ExecutionStageThreePage());
                 InstanceItemsListView.SelectedItem = null;
             }
         }
@@ -301,9 +301,9 @@ namespace AST_ProBatch_Mobile.Views
             else
             {
                 MainViewModel.GetInstance().ExecutionStageThree = new ExecutionStageThreeViewModel(instanceitem);
-                ExecutionStageThreePage executionStageThreePage = new ExecutionStageThreePage();
-                executionStageThreePage.Title = instanceitem.NameInstance;
-                Application.Current.MainPage.Navigation.PushAsync(executionStageThreePage);
+                //ExecutionStageThreePage executionStageThreePage = new ExecutionStageThreePage();
+                //executionStageThreePage.Title = instanceitem.NameInstance;
+                Application.Current.MainPage.Navigation.PushAsync(new ExecutionStageThreePage());
                 CompactInstanceItemsListView.SelectedItem = null;
             }
         }

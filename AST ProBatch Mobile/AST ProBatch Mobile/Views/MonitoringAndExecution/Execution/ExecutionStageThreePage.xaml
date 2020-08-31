@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.ExecutionStageThreePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title=""
+             Title="Lote/Comandos"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding ExecutionStageThree}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />

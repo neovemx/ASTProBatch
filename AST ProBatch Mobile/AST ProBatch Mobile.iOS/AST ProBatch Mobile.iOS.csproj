@@ -171,6 +171,9 @@
     <BundleResource Include="Resources\tab_dependence.png" />
     <BundleResource Include="Resources\tab_dependence%402x.png" />
     <BundleResource Include="Resources\tab_dependence%403x.png" />
+    <BundleResource Include="Resources\warning.png" />
+    <BundleResource Include="Resources\warning%402x.png" />
+    <BundleResource Include="Resources\warning%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\settings%402x.png" />

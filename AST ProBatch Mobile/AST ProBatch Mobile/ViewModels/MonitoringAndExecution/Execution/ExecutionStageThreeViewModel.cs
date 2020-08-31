@@ -1,7 +1,9 @@
 ﻿using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -21,8 +23,9 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool isrefreshing;
         private bool compactviewisvisible;
         private bool fullviewisvisible;
-        private bool iseventual;
-        private bool isnoteventual;
+        //private bool iseventual;
+        //private bool isnoteventual;
+        private InstanceItem instanceitem;
         #endregion
 
         #region Properties
@@ -74,39 +77,42 @@ namespace AST_ProBatch_Mobile.ViewModels
             set { SetValue(ref compactviewisvisible, value); }
         }
 
-        public bool IsEventual
-        {
-            get { return iseventual; }
-            set { SetValue(ref iseventual, value); }
-        }
+        //public bool IsEventual
+        //{
+        //    get { return iseventual; }
+        //    set { SetValue(ref iseventual, value); }
+        //}
 
-        public bool IsNotEventual
+        //public bool IsNotEventual
+        //{
+        //    get { return isnoteventual; }
+        //    set { SetValue(ref isnoteventual, value); }
+        //}
+
+        public InstanceItem InstanceItem
         {
-            get { return isnoteventual; }
-            set { SetValue(ref isnoteventual, value); }
+            get { return instanceitem; }
+            set { SetValue(ref instanceitem, value); }
         }
         #endregion
 
         #region Constructors
-        public ExecutionStageThreeViewModel(InstanceItem instanceitem)
+        public ExecutionStageThreeViewModel(bool IsReload, InstanceItem instanceitem)
         {
-            ToolBarIsVisible = false;
-            ActionIcon = "actions";
-            CheckIcon = "check";
-            ViewIcon = "view_b";
-            FullViewIsVisible = true;
-            CompactViewIsVisible = false;
-            //this.IsEventual = instanceitem.IsEventual;
-            //if (this.IsEventual)
-            //{ 
-            //    this.IsNotEventual = false; 
-            //}
-            //else
-            //{
-            //    this.IsNotEventual = true;
-            //}
-            if (instanceitem == null) { return; }
-            GetFakeData();
+            if (IsReload)
+            {
+                ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
+                this.InstanceItem = instanceitem;
+
+                this.ToolBarIsVisible = false;
+                this.ActionIcon = "actions";
+                this.CheckIcon = "check";
+                this.ViewIcon = "view_b";
+                this.FullViewIsVisible = true;
+                this.CompactViewIsVisible = false;
+
+                //GetFakeData();
+            }
         }
         #endregion
 
@@ -274,107 +280,161 @@ namespace AST_ProBatch_Mobile.ViewModels
         }
         #endregion
 
-        #region FakeData
-        private void GetFakeData()
+        #region Helpers
+        private async void GetCommandsByInstance(int IdInstance)
         {
-            CommandItems = new ObservableCollection<CommandItem>();
-            CommandItem commandItem;
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
 
-            commandItem = new CommandItem();
-            commandItem.Id = 1;
-            commandItem.IdLot = 1;
-            commandItem.TitleLot = "LOTE - 1";
-            commandItem.IdEnvironment = 1;
-            commandItem.TitleEnvironment = "Windows";
-            commandItem.IsChecked = false;
-            commandItem.IsEnabled = true;
-            commandItem.Title = "COMANDO 1";
-            commandItem.Notifications = "notification";
-            commandItem.Status = "";
-            commandItem.StatusColor = StatusColor.Green;
-            commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.Duration = "1 hora 45 minutos";
-            commandItem.IsEventual = this.IsEventual;
-            commandItem.IsNotEventual = this.IsNotEventual;
-            CommandItems.Add(commandItem);
+                Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
 
-            commandItem = new CommandItem();
-            commandItem.Id = 2;
-            commandItem.IdLot = 1;
-            commandItem.TitleLot = "LOTE - 1";
-            commandItem.IdEnvironment = 1;
-            commandItem.TitleEnvironment = "Windows";
-            commandItem.IsChecked = false;
-            commandItem.IsEnabled = true;
-            commandItem.Title = "COMANDO 2";
-            commandItem.Notifications = "notification";
-            commandItem.Status = "";
-            commandItem.StatusColor = StatusColor.Orange;
-            commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.Duration = "1 hora 45 minutos";
-            commandItem.IsEventual = this.IsEventual;
-            commandItem.IsNotEventual = this.IsNotEventual;
-            CommandItems.Add(commandItem);
+                if (!resultApiIsAvailable.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(resultApiIsAvailable.Message);
+                    return;
+                }
 
-            commandItem = new CommandItem();
-            commandItem.Id = 3;
-            commandItem.IdLot = 1;
-            commandItem.TitleLot = "LOTE - 1";
-            commandItem.IdEnvironment = 1;
-            commandItem.TitleEnvironment = "Windows";
-            commandItem.IsChecked = false;
-            commandItem.IsEnabled = true;
-            commandItem.Title = "COMANDO 3";
-            commandItem.Notifications = "notification_n";
-            commandItem.Status = "";
-            commandItem.StatusColor = StatusColor.Green;
-            commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.Duration = "1 hora 45 minutos";
-            commandItem.IsEventual = this.IsEventual;
-            commandItem.IsNotEventual = this.IsNotEventual;
-            CommandItems.Add(commandItem);
+                Response resultToken = await ApiSrv.GetToken();
 
-            commandItem = new CommandItem();
-            commandItem.Id = 4;
-            commandItem.IdLot = 1;
-            commandItem.TitleLot = "LOTE - 1";
-            commandItem.IdEnvironment = 1;
-            commandItem.TitleEnvironment = "Windows";
-            commandItem.IsChecked = false;
-            commandItem.IsEnabled = true;
-            commandItem.Title = "COMANDO 4";
-            commandItem.Notifications = "notification_n";
-            commandItem.Status = "";
-            commandItem.StatusColor = StatusColor.White;
-            commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.Duration = "1 hora 45 minutos";
-            commandItem.IsEventual = this.IsEventual;
-            commandItem.IsNotEventual = this.IsNotEventual;
-            CommandItems.Add(commandItem);
+                if (!resultToken.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(resultToken.Message);
+                    return;
+                }
+                else
+                {
+                    Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                    InstanceQueryValues instanceQueryValues = new InstanceQueryValues()
+                    {
+                        IdLog = IdLog,
+                        IdUser = IdUser,
+                        IsEventual = IsEventual
+                    };
+                    Response resultGetInstancesByLogAndUser = await ApiSrv.GetInstancesByLogAndUser(token.Key, instanceQueryValues);
+                    if (!resultGetInstancesByLogAndUser.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(resultGetInstancesByLogAndUser.Message);
+                        return;
+                    }
+                    else
+                    {
 
-            commandItem = new CommandItem();
-            commandItem.Id = 5;
-            commandItem.IdLot = 1;
-            commandItem.TitleLot = "LOTE - 1";
-            commandItem.IdEnvironment = 1;
-            commandItem.TitleEnvironment = "Windows";
-            commandItem.IsChecked = false;
-            commandItem.IsEnabled = true;
-            commandItem.Title = "COMANDO 5";
-            commandItem.Notifications = "notification";
-            commandItem.Status = "";
-            commandItem.StatusColor = StatusColor.White;
-            commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            commandItem.Duration = "1 hora 45 minutos";
-            commandItem.IsEventual = this.IsEventual;
-            commandItem.IsNotEventual = this.IsNotEventual;
-            CommandItems.Add(commandItem);
+                    }
+                }
+            }
+            catch //(Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                Toast.ShowError("Ocurrió un error.");
+            }
         }
+        #endregion
+
+        #region FakeData
+        //private void GetFakeData()
+        //{
+        //    CommandItems = new ObservableCollection<CommandItem>();
+        //    CommandItem commandItem;
+
+        //    commandItem = new CommandItem();
+        //    commandItem.Id = 1;
+        //    commandItem.IdLot = 1;
+        //    commandItem.TitleLot = "LOTE - 1";
+        //    commandItem.IdEnvironment = 1;
+        //    commandItem.TitleEnvironment = "Windows";
+        //    commandItem.IsChecked = false;
+        //    commandItem.IsEnabled = true;
+        //    commandItem.Title = "COMANDO 1";
+        //    commandItem.Notifications = "notification";
+        //    commandItem.Status = "";
+        //    commandItem.StatusColor = StatusColor.Green;
+        //    commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.Duration = "1 hora 45 minutos";
+        //    commandItem.IsEventual = this.IsEventual;
+        //    commandItem.IsNotEventual = this.IsNotEventual;
+        //    CommandItems.Add(commandItem);
+
+        //    commandItem = new CommandItem();
+        //    commandItem.Id = 2;
+        //    commandItem.IdLot = 1;
+        //    commandItem.TitleLot = "LOTE - 1";
+        //    commandItem.IdEnvironment = 1;
+        //    commandItem.TitleEnvironment = "Windows";
+        //    commandItem.IsChecked = false;
+        //    commandItem.IsEnabled = true;
+        //    commandItem.Title = "COMANDO 2";
+        //    commandItem.Notifications = "notification";
+        //    commandItem.Status = "";
+        //    commandItem.StatusColor = StatusColor.Orange;
+        //    commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.Duration = "1 hora 45 minutos";
+        //    commandItem.IsEventual = this.IsEventual;
+        //    commandItem.IsNotEventual = this.IsNotEventual;
+        //    CommandItems.Add(commandItem);
+
+        //    commandItem = new CommandItem();
+        //    commandItem.Id = 3;
+        //    commandItem.IdLot = 1;
+        //    commandItem.TitleLot = "LOTE - 1";
+        //    commandItem.IdEnvironment = 1;
+        //    commandItem.TitleEnvironment = "Windows";
+        //    commandItem.IsChecked = false;
+        //    commandItem.IsEnabled = true;
+        //    commandItem.Title = "COMANDO 3";
+        //    commandItem.Notifications = "notification_n";
+        //    commandItem.Status = "";
+        //    commandItem.StatusColor = StatusColor.Green;
+        //    commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.Duration = "1 hora 45 minutos";
+        //    commandItem.IsEventual = this.IsEventual;
+        //    commandItem.IsNotEventual = this.IsNotEventual;
+        //    CommandItems.Add(commandItem);
+
+        //    commandItem = new CommandItem();
+        //    commandItem.Id = 4;
+        //    commandItem.IdLot = 1;
+        //    commandItem.TitleLot = "LOTE - 1";
+        //    commandItem.IdEnvironment = 1;
+        //    commandItem.TitleEnvironment = "Windows";
+        //    commandItem.IsChecked = false;
+        //    commandItem.IsEnabled = true;
+        //    commandItem.Title = "COMANDO 4";
+        //    commandItem.Notifications = "notification_n";
+        //    commandItem.Status = "";
+        //    commandItem.StatusColor = StatusColor.White;
+        //    commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.Duration = "1 hora 45 minutos";
+        //    commandItem.IsEventual = this.IsEventual;
+        //    commandItem.IsNotEventual = this.IsNotEventual;
+        //    CommandItems.Add(commandItem);
+
+        //    commandItem = new CommandItem();
+        //    commandItem.Id = 5;
+        //    commandItem.IdLot = 1;
+        //    commandItem.TitleLot = "LOTE - 1";
+        //    commandItem.IdEnvironment = 1;
+        //    commandItem.TitleEnvironment = "Windows";
+        //    commandItem.IsChecked = false;
+        //    commandItem.IsEnabled = true;
+        //    commandItem.Title = "COMANDO 5";
+        //    commandItem.Notifications = "notification";
+        //    commandItem.Status = "";
+        //    commandItem.StatusColor = StatusColor.White;
+        //    commandItem.ExecutionStart = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.ExecutionEnd = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        //    commandItem.Duration = "1 hora 45 minutos";
+        //    commandItem.IsEventual = this.IsEventual;
+        //    commandItem.IsNotEventual = this.IsNotEventual;
+        //    CommandItems.Add(commandItem);
+        //}
         #endregion
     }
 }

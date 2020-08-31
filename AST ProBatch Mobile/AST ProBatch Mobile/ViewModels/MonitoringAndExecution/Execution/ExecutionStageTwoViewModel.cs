@@ -1,16 +1,15 @@
-﻿using Acr.UserDialogs;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
 using ASTProBatchMobile.Models.Service;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
@@ -25,8 +24,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool isrefreshing;
         private bool compactviewisvisible;
         private bool fullviewisvisible;
-        //private bool iseventual;
-        //private bool isnoteventual;
+        private bool isvisibleemptyview;
         private LogItem logitem;
         #endregion
 
@@ -73,16 +71,11 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return compactviewisvisible; }
             set { SetValue(ref compactviewisvisible, value); }
         }
-        //public bool IsEventual
-        //{
-        //    get { return iseventual; }
-        //    set { SetValue(ref iseventual, value); }
-        //}
-        //public bool IsNotEventual
-        //{
-        //    get { return isnoteventual; }
-        //    set { SetValue(ref isnoteventual, value); }
-        //}
+        public bool IsVisibleEmptyView
+        {
+            get { return isvisibleemptyview; }
+            set { SetValue(ref isvisibleemptyview, value); }
+        }
         public LogItem LogItem
         {
             get { return logitem; }
@@ -98,24 +91,15 @@ namespace AST_ProBatch_Mobile.ViewModels
                 ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
                 this.LogItem = logitem;
 
-                ToolBarIsVisible = false;
-                ActionIcon = "actions";
-                CheckIcon = "check";
-                ViewIcon = "view_b";
-                FullViewIsVisible = true;
-                CompactViewIsVisible = false;
+                this.ToolBarIsVisible = false;
+                this.ActionIcon = "actions";
+                this.CheckIcon = "check";
+                this.ViewIcon = "view_b";
+                this.FullViewIsVisible = true;
+                this.CompactViewIsVisible = false;
+                this.IsVisibleEmptyView = false;
 
                 GetInstancesByLogAndUser(this.LogItem.IdLog, this.LogItem.IdUser, this.LogItem.IsEventual);
-
-                //this.IsEventual = (bool)logitem.IsEventual;
-                //if (this.IsEventual)
-                //{
-                //    this.IsNotEventual = false;
-                //}
-                //else
-                //{
-                //    this.IsNotEventual = true;
-                //}
 
                 //GetFakeData();
             }
@@ -133,6 +117,17 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Actions()
         {
+            if (this.IsVisibleEmptyView)
+            {
+                Alert.Show("No hay datos para realizar operaciones!");
+                return;
+            }
+            if (this.InstanceItems.Count == 1)
+            {
+                Alert.Show("Sólo hay una instancia en la vista!");
+                return;
+            }
+
             int countItems = 0;
             foreach (InstanceItem item in InstanceItems)
             {
@@ -140,7 +135,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             }
             if (countItems <= 1)
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más instancias", "Aceptar");
+                Alert.Show("Debe seleccionar dos o más instancias");
                 return;
             }
             if (ToolBarIsVisible)
@@ -165,6 +160,18 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
+                if (this.IsVisibleEmptyView)
+                {
+                    Alert.Show("No hay datos para realizar operaciones!");
+                    return;
+                }
+
+                if (this.InstanceItems.Count == 1)
+                {
+                    Alert.Show("Sólo hay una instancia en la vista!");
+                    return;
+                }
+
                 if (string.CompareOrdinal(CheckIcon, "check") == 0)
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
@@ -212,7 +219,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                Alert.Show("Ocurrió un error", "Aceptar");
                 UserDialogs.Instance.HideLoading();
             }
 
@@ -230,6 +237,12 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
+                if (this.IsVisibleEmptyView)
+                {
+                    Alert.Show("No hay datos para realizar operaciones!");
+                    return;
+                }
+
                 if (FullViewIsVisible)
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
@@ -279,7 +292,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
+                Alert.Show("Ocurrió un error: " + "/n/r/n/r" + ex.Message, "Aceptar");
                 UserDialogs.Instance.HideLoading();
             }
 
@@ -347,18 +360,31 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 IsChecked = false,
                                 IsEnabled = true,
                                 NotificationIcon = IconSet.Notification,
-                                StatusInstanceColor = GetStatusColor.ByIdStatus(instance.IdStatusInstance),
-                                StatusLastProcessColor = GetStatusColor.ByIdStatus(instance.IdStatusLastCommand)
+                                StatusInstanceColor = GetStatusColor.ByIdStatus(instance.IdStatusInstance.Trim()),
+                                StatusLastProcessColor = GetStatusColor.ByIdStatus(instance.IdStatusLastCommand.Trim()),
+                                LogItem = this.LogItem
                             });
+                        }
+                        if (InstanceItems.Count == 0)
+                        {
+                            this.FullViewIsVisible = false;
+                            this.CompactViewIsVisible = false;
+                            this.IsVisibleEmptyView = true;
+                        }
+                        else
+                        {
+                            this.FullViewIsVisible = true;
+                            this.CompactViewIsVisible = false;
+                            this.IsVisibleEmptyView = false;
                         }
                     }
                 }
+                UserDialogs.Instance.HideLoading();
             }
             catch //(Exception ex)
             {
                 UserDialogs.Instance.HideLoading();
                 Toast.ShowError("Ocurrió un error.");
-                return;
             }
         }
         #endregion

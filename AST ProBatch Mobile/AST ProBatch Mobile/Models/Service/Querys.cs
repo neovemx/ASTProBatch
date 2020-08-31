@@ -1,4 +1,5 @@
-﻿namespace ASTProBatchMobile.Models.Service
+﻿using System;
+namespace ASTProBatchMobile.Models.Service
 {
     public class InstanceQueryValues
     {

@@ -8680,6 +8680,9 @@ namespace AST_ProBatch_Mobile.Droid
 			// aapt resource value: 0x7F0700C8
 			public const int view_b = 2131165384;
 			
+			// aapt resource value: 0x7F0700C9
+			public const int warning = 2131165385;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
