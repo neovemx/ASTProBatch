@@ -90,7 +90,7 @@ namespace AST_ProBatch_Mobile.Views
             var logItem = imageButton.CommandParameter as LogItem;
             if (logItem != null)
             {
-                MainViewModel.GetInstance().OperatorChange = new  OperatorChangeViewModel(logItem);
+                MainViewModel.GetInstance().OperatorChange = new  OperatorChangeViewModel(true, logItem);
                 Application.Current.MainPage.Navigation.PushAsync(new OperatorChangePage());
                 //Device.BeginInvokeOnMainThread(async () => {
                 //    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas cambiar el operador para la bitácora: " + logItem.Title + "?", "Sí", "No");

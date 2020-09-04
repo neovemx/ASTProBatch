@@ -304,7 +304,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
-                UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+                UserDialogs.Instance.ShowLoading("Obteniendo instancias...", MaskType.Black);
 
                 Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
 

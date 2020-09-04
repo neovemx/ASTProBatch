@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
+using AST_ProBatch_Mobile.Models;
 
 namespace AST_ProBatch_Mobile.Utilities
 {
@@ -96,6 +98,18 @@ namespace AST_ProBatch_Mobile.Utilities
         public static string Black { get { return "Black"; } }
     }
 
+    public static class Answers
+    {
+        public static string Yes { get { return "SI"; } }
+        public static string No { get { return "NO"; } }
+    }
+
+    public static class AlertMessages
+    {
+        public static string UserInvalid { get { return "Credenciales inválidas!"; } }
+        public static string Error { get { return "Ocurrió un error!"; } }
+    }
+
     public static class BarItemColor
     {
         public static string Base { get { return "#D7D7D7"; } }
@@ -128,6 +142,9 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string GetLogs = "/getlogs";
         public const string GetInstancesByLogAndUser = "/getinstances";
         public const string GetCommandsByInstance = "/getcommands";
+        public const string GetOperatorChangeUsers = "/getoperatorchangeusers";
+        public const string GetOperatorChangeInstances = "/getoperatorchangeinstances";
+        public const string GetOperatorChangeUserIsInAllInstances = "/getoperatorchangeuserisinallinstances";
     }
 
     public static class TokenType
@@ -166,5 +183,42 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string EXECUTING = "X";
         public const string MESSAGE = "M";
         public const string KILLED = "K";
+    }
+
+    public class AppHelper
+    {
+        public static bool UserIsSupervisor(PbUser pbUser)
+        {
+            bool result = false;
+            foreach (PbUserProfile userProfile in pbUser.Profiles)
+            {
+                switch (userProfile.Profile)
+                {
+                    case "SUPERVISOR":
+                        result = true;
+                        break;
+                }
+            }
+            return result;
+        }
+    }
+
+    public class TokenValidator
+    {
+        public static bool IsValid(Token token)
+        {
+            bool result = false;
+            if (token.Creation.Date == DateTime.Now.Date)
+            {
+                if (token.Creation.Hour == DateTime.Now.Hour)
+                {
+                    if ((token.Creation.Minute - DateTime.Now.Minute) <= token.ValidTime)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            return result;
+        }
     }
 }

@@ -34,17 +34,17 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public SettingsViewModel(string urlDomain, string urlPrefix, bool isFingerPrint)
+        public SettingsViewModel()
         {
             DBHelper = new Services.DataHelper();
-
-            if (string.IsNullOrEmpty(urlDomain) && string.IsNullOrEmpty(urlPrefix))
-            {
-                _ = RefreshAppConfig();
-            }
-            this.UrlDomain = urlDomain;
-            this.UrlPrefix = urlPrefix;
-            this.IsFingerPrint = isFingerPrint;
+            RefreshAppConfig();
+            //if (string.IsNullOrEmpty(urlDomain) && string.IsNullOrEmpty(urlPrefix))
+            //{
+            //    RefreshAppConfig();
+            //}
+            //this.UrlDomain = urlDomain;
+            //this.UrlPrefix = urlPrefix;
+            //this.IsFingerPrint = isFingerPrint;
         }
         #endregion
 
@@ -89,7 +89,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Helpers
-        private async Task<bool> RefreshAppConfig()
+        private async void RefreshAppConfig()
         {
             Table_Config table_Config = await DBHelper.GetAsyncAppConfig();
             if (table_Config != null)
@@ -97,11 +97,6 @@ namespace AST_ProBatch_Mobile.ViewModels
                 this.UrlDomain = table_Config.UrlDomain;
                 this.UrlPrefix = table_Config.UrlPrefix;
                 this.IsFingerPrint = table_Config.FingerPrintAllow;
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
         #endregion

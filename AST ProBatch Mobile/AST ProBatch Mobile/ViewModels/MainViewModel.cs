@@ -68,7 +68,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
             this.Login = new LoginViewModel(initialLoad, table_Config);
             this.Home = new HomeViewModel();
-            this.Settings = new SettingsViewModel(string.Empty, string.Empty, false);
+            this.Settings = new SettingsViewModel();
             this.StatisticalReportsMenu = new StatisticalReportsMenuViewModel();
             this.About = new AboutViewModel();
             this.CommandBatch = new CommandBatchViewModel();
@@ -89,7 +89,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.ExecutionStageThree = new ExecutionStageThreeViewModel(false, new Models.InstanceItem());
             this.CommandNotifications = new CommandNotificationsViewModel(new Models.CommandItem());
             this.LogObservations = new LogObservationsViewModel(new Models.LogItem());
-            this.OperatorChange = new OperatorChangeViewModel(new Models.LogItem());
+            this.OperatorChange = new OperatorChangeViewModel(false, new Models.LogItem());
             this.ControlSchedulesExecution = new ControlSchedulesExecutionViewModel(new Models.LogItem());
             this.StatusInfoControlSchedulesExecution = new StatusInfoControlSchedulesExecutionViewModel();
             this.LogInquiries = new LogInquiriesViewModel(false, new Models.LogItem());

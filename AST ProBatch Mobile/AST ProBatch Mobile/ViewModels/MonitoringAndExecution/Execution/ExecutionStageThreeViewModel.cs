@@ -305,7 +305,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
-                UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+                UserDialogs.Instance.ShowLoading("Obteniendo lote/comandos...", MaskType.Black);
 
                 Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
 

@@ -96,7 +96,6 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Constructors
         public LoginViewModel(InitialLoad initialLoad, Table_Config table_Config)
         {
-            ApiSrv = new Services.ApiService(ApiConsult.ApiAuth);
             DBHelper = new Services.DataHelper();
 
             GetFingerPrintAvailable();
@@ -149,7 +148,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Settings()
         {
-            MainViewModel.GetInstance().Settings = new SettingsViewModel(this.UrlDomain, this.UrlPrefix, this.IsChecked);
+            MainViewModel.GetInstance().Settings = new SettingsViewModel();
             await Application.Current.MainPage.Navigation.PushModalAsync(new SettingsPage());
         }
 
@@ -196,9 +195,12 @@ namespace AST_ProBatch_Mobile.ViewModels
                 }
             }
 
+            ApiSrv = new Services.ApiService(ApiConsult.ApiAuth);
+            RefreshAppConfig();
+
             try
             {
-                UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+                UserDialogs.Instance.ShowLoading("Iniciando sesión...", MaskType.Black);
 
                 Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
 
@@ -297,13 +299,16 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
+                ApiSrv = new Services.ApiService(ApiConsult.ApiAuth);
+                RefreshAppConfig();
+
                 var result = await CrossFingerprint.Current.AuthenticateAsync("Toque el sensor");
                 if (!result.Authenticated)
                 {
                     return;
                 }
 
-                UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
+                UserDialogs.Instance.ShowLoading("Iniciando sesión...", MaskType.Black);
 
                 Table_User tableUserFingerPrint = await DBHelper.GetAsyncProbatchCredentials();
                 if (tableUserFingerPrint == null)
@@ -428,6 +433,17 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Helpers
+        private async void RefreshAppConfig()
+        {
+            Table_Config table_Config = await DBHelper.GetAsyncAppConfig();
+            if (table_Config != null)
+            {
+                this.UrlDomain = table_Config.UrlDomain;
+                this.UrlPrefix = table_Config.UrlPrefix;
+                //this.IsChecked = table_Config.FingerPrintAllow;
+            }
+        }
+
         private async void GetFingerPrintAvailable()
         {
             IsFingerPrintAvailable = await CrossFingerprint.Current.IsAvailableAsync();

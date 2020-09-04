@@ -232,93 +232,112 @@ namespace AST_ProBatch_Mobile.Services
 
         public async Task<Response> GetLogs(string accessToken)
         {
-            try
-            {
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
-                client.BaseAddress = new Uri(this.UrlDomain);
-                client.Timeout = TimeSpan.FromSeconds(15);
-                var url = string.Format("{0}{1}{2}", this.UrlPrefix, ApiController.PBMenuBExecute, ApiMethod.GetLogs);
-                var response = await client.GetAsync(url);
+            return await HttpGet(accessToken, ApiController.PBMenuBExecute, ApiMethod.GetLogs);
+            //try
+            //{
+            //    var client = new HttpClient();
+            //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
+            //    client.BaseAddress = new Uri(this.UrlDomain);
+            //    client.Timeout = TimeSpan.FromSeconds(15);
+            //    var url = string.Format("{0}{1}{2}", this.UrlPrefix, ApiController.PBMenuBExecute, ApiMethod.GetLogs);
+            //    var response = await client.GetAsync(url);
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = "Api en error o la misma no está disponible",
-                        Data = string.Empty,
-                    };
-                }
+            //    if (!response.IsSuccessStatusCode)
+            //    {
+            //        return new Response
+            //        {
+            //            IsSuccess = false,
+            //            Message = "Api en error o la misma no está disponible",
+            //            Data = string.Empty,
+            //        };
+            //    }
 
-                var result = await response.Content.ReadAsStringAsync();
-                var cipherData = JsonConvert.DeserializeObject<CipherData>(result);
+            //    var result = await response.Content.ReadAsStringAsync();
+            //    var cipherData = JsonConvert.DeserializeObject<CipherData>(result);
 
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = "Data Obtenida",
-                    Data = cipherData.Data,
-                };
-            }
-            catch //(Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = "Error al intentar consultar la Api",
-                    Data = string.Empty,
-                };
-            }
+            //    return new Response
+            //    {
+            //        IsSuccess = true,
+            //        Message = "Data Obtenida",
+            //        Data = cipherData.Data,
+            //    };
+            //}
+            //catch //(Exception ex)
+            //{
+            //    return new Response
+            //    {
+            //        IsSuccess = false,
+            //        Message = "Error al intentar consultar la Api",
+            //        Data = string.Empty,
+            //    };
+            //}
         }
 
         public async Task<Response> GetInstancesByLogAndUser(string accessToken, InstanceQueryValues instanceQueryValues)
         {
-            try
-            {
-                var request = JsonConvert.SerializeObject(new CipherData { Data = Crypto.EncryptString(JsonConvert.SerializeObject(instanceQueryValues)) });
-                var content = new StringContent(request, Encoding.UTF8, "application/json");
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
-                client.BaseAddress = new Uri(this.UrlDomain);
-                client.Timeout = TimeSpan.FromSeconds(15);
-                var url = string.Format("{0}{1}{2}", this.UrlPrefix, ApiController.PBMenuBExecute, ApiMethod.GetInstancesByLogAndUser);
-                var response = await client.PostAsync(url, content);
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.GetInstancesByLogAndUser, instanceQueryValues);
+            #region FIXED
+                        //try
+                            //{
+                            //    var request = JsonConvert.SerializeObject(new CipherData { Data = Crypto.EncryptString(JsonConvert.SerializeObject(instanceQueryValues)) });
+                            //    var content = new StringContent(request, Encoding.UTF8, "application/json");
+                            //    var client = new HttpClient();
+                            //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(TokenType.Scheme, accessToken);
+                            //    client.BaseAddress = new Uri(this.UrlDomain);
+                            //    client.Timeout = TimeSpan.FromSeconds(15);
+                            //    var url = string.Format("{0}{1}{2}", this.UrlPrefix, ApiController.PBMenuBExecute, ApiMethod.GetInstancesByLogAndUser);
+                            //    var response = await client.PostAsync(url, content);
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = "Api en error o la misma no está disponible",
-                        Data = string.Empty,
-                    };
-                }
+            //    if (!response.IsSuccessStatusCode)
+            //    {
+            //        return new Response
+            //        {
+            //            IsSuccess = false,
+            //            Message = "Api en error o la misma no está disponible",
+            //            Data = string.Empty,
+            //        };
+            //    }
 
-                var result = await response.Content.ReadAsStringAsync();
-                var cipherData = JsonConvert.DeserializeObject<CipherData>(result);
+            //    var result = await response.Content.ReadAsStringAsync();
+            //    var cipherData = JsonConvert.DeserializeObject<CipherData>(result);
 
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = "Data Obtenida",
-                    Data = cipherData.Data,
-                };
-            }
-            catch //(Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = "Error al intentar consultar la Api",
-                    Data = string.Empty,
-                };
-            }
+            //    return new Response
+            //    {
+            //        IsSuccess = true,
+            //        Message = "Data Obtenida",
+            //        Data = cipherData.Data,
+            //    };
+            //}
+            //catch //(Exception ex)
+            //{
+            //    return new Response
+            //    {
+            //        IsSuccess = false,
+            //        Message = "Error al intentar consultar la Api",
+            //        Data = string.Empty,
+            //    };
+            //}
+            #endregion
         }
 
         public async Task<Response> GetCommandsByInstance(string accessToken, CommandQueryValues commandQueryValues)
         {
             return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.GetCommandsByInstance, commandQueryValues);
+        }
+
+        public async Task<Response> GetOperatorChangeUsers(string accessToken, OperatorChangeUserQueryValues operatorChangeUserQueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.GetOperatorChangeUsers, operatorChangeUserQueryValues);
+        }
+
+        public async Task<Response> GetOperatorChangeInstances(string accessToken, OperatorChangeInstanceQueryValues operatorChangeInstanceQueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.GetOperatorChangeInstances, operatorChangeInstanceQueryValues);
+        }
+
+        public async Task<Response> GetOperatorChangeUserIsInAllInstances(string accessToken, OperatorChangeUserIsInAllInstancesQueryValues operatorChangeUserIsInAllInstancesQueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.GetOperatorChangeUserIsInAllInstances, operatorChangeUserIsInAllInstancesQueryValues);
         }
         #endregion
 

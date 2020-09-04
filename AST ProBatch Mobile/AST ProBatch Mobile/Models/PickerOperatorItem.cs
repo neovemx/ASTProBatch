@@ -6,7 +6,7 @@ namespace AST_ProBatch_Mobile.Models
 {
     public class PickerOperatorItem
     {
-        public int Id { get; set; }
-        public string OperatorName { get; set; }
+        public string IdUser { get; set; }
+        public string FullNameUser { get; set; }
     }
 }

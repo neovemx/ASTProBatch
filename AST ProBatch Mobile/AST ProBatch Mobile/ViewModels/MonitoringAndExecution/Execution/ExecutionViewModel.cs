@@ -90,91 +90,6 @@ namespace AST_ProBatch_Mobile.ViewModels
         }
         #endregion
 
-        #region Helpers
-        private async void GetLogs()
-        {
-            try
-            {
-                UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
-
-                Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
-
-                if (!resultApiIsAvailable.IsSuccess)
-                {
-                    UserDialogs.Instance.HideLoading();
-                    Toast.ShowError(resultApiIsAvailable.Message);
-                    return;
-                }
-
-                Response resultToken = await ApiSrv.GetToken();
-
-                if (!resultToken.IsSuccess)
-                {
-                    UserDialogs.Instance.HideLoading();
-                    Toast.ShowError(resultToken.Message);
-                    return;
-                }
-                else
-                {
-                    Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
-                    Response resultGetLogs = await ApiSrv.GetLogs(token.Key);
-                    if (!resultGetLogs.IsSuccess)
-                    {
-                        UserDialogs.Instance.HideLoading();
-                        Toast.ShowError(resultGetLogs.Message);
-                        return;
-                    }
-                    else
-                    {
-                        Logs = JsonConvert.DeserializeObject<List<Log>>(Crypto.DecodeString(resultGetLogs.Data));
-                        LogItems = new ObservableCollection<LogItem>();
-                        foreach (Log log in Logs)
-                        {
-                            LogItems.Add(new LogItem()
-                            {
-                                IdLog = (Int32)log.IdLog,
-                                NameLog = log.NameLog.Trim(),
-                                IsEventual = (bool)log.IsEventual,
-                                NotIsEventual = !(bool)log.IsEventual,
-                                BarItemColor = ((bool)log.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base,
-                                IdEnvironment = (Int16)log.IdEnvironment,
-                                NameEnvironment = log.NameEnvironment.Trim(),
-                                ExecutionDateTime = (log.ExecutionDateTime != null) ? ((DateTime)log.ExecutionDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
-                                EndingDateTime = (log.EndingDateTime != null) ? ((DateTime)log.EndingDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
-                                TotalCommands = (Int32)log.TotalCommands,
-                                ErrorCommands = (Int32)log.ErrorCommands,
-                                IsChecked = false,
-                                IsEnabled = true,
-                                IdUser = PbUser.IdUser,
-                                Operator = string.Format("{0} ({1}, {2})", PbUser.IdUser, PbUser.FisrtName.Trim(), PbUser.LastName.Trim()),
-                                NotificationIcon = IconSet.Notification
-                            });
-                        }
-                        if (LogItems.Count == 0)
-                        {
-                            this.FullViewIsVisible = false;
-                            this.CompactViewIsVisible = false;
-                            this.IsVisibleEmptyView = true;
-                        }
-                        else
-                        {
-                            this.FullViewIsVisible = true;
-                            this.CompactViewIsVisible = false;
-                            this.IsVisibleEmptyView = false;
-                        }
-                    }
-                }
-                UserDialogs.Instance.HideLoading();
-            }
-            catch //(Exception ex)
-            {
-                UserDialogs.Instance.HideLoading();
-                Toast.ShowError("Ocurrió un error.");
-                //return;
-            }
-        }
-        #endregion
-
         #region Commands
         public ICommand ActionsCommand
         {
@@ -360,6 +275,91 @@ namespace AST_ProBatch_Mobile.ViewModels
                 UserDialogs.Instance.HideLoading();
             }
 
+        }
+        #endregion
+
+        #region Helpers
+        private async void GetLogs()
+        {
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Obteniendo bitácoras...", MaskType.Black);
+
+                Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
+
+                if (!resultApiIsAvailable.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(resultApiIsAvailable.Message);
+                    return;
+                }
+
+                Response resultToken = await ApiSrv.GetToken();
+
+                if (!resultToken.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(resultToken.Message);
+                    return;
+                }
+                else
+                {
+                    Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                    Response resultGetLogs = await ApiSrv.GetLogs(token.Key);
+                    if (!resultGetLogs.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(resultGetLogs.Message);
+                        return;
+                    }
+                    else
+                    {
+                        Logs = JsonConvert.DeserializeObject<List<Log>>(Crypto.DecodeString(resultGetLogs.Data));
+                        LogItems = new ObservableCollection<LogItem>();
+                        foreach (Log log in Logs)
+                        {
+                            LogItems.Add(new LogItem()
+                            {
+                                IdLog = (Int32)log.IdLog,
+                                NameLog = log.NameLog.Trim(),
+                                IsEventual = (bool)log.IsEventual,
+                                NotIsEventual = !(bool)log.IsEventual,
+                                BarItemColor = ((bool)log.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base,
+                                IdEnvironment = (Int16)log.IdEnvironment,
+                                NameEnvironment = log.NameEnvironment.Trim(),
+                                ExecutionDateTime = (log.ExecutionDateTime != null) ? ((DateTime)log.ExecutionDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                EndingDateTime = (log.EndingDateTime != null) ? ((DateTime)log.EndingDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                TotalCommands = (Int32)log.TotalCommands,
+                                ErrorCommands = (Int32)log.ErrorCommands,
+                                IsChecked = false,
+                                IsEnabled = true,
+                                IdUser = PbUser.IdUser,
+                                Operator = string.Format("{0} ({1}, {2})", PbUser.IdUser, PbUser.FisrtName.Trim(), PbUser.LastName.Trim()),
+                                NotificationIcon = IconSet.Notification
+                            });
+                        }
+                        if (LogItems.Count == 0)
+                        {
+                            this.FullViewIsVisible = false;
+                            this.CompactViewIsVisible = false;
+                            this.IsVisibleEmptyView = true;
+                        }
+                        else
+                        {
+                            this.FullViewIsVisible = true;
+                            this.CompactViewIsVisible = false;
+                            this.IsVisibleEmptyView = false;
+                        }
+                    }
+                }
+                UserDialogs.Instance.HideLoading();
+            }
+            catch //(Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                Toast.ShowError("Ocurrió un error.");
+                //return;
+            }
         }
         #endregion
 

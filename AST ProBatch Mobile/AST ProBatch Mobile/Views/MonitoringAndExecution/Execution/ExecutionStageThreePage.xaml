@@ -503,8 +503,7 @@
                                             CornerRadius="10"
                                             BackgroundColor="#D7D7D7"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="Center"
-                                            Padding="-3">
+                                            VerticalOptions="Center">
                                             <StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
@@ -550,13 +549,6 @@
                                                             </Label.Margin>
                                                         </Label>
                                                     </StackLayout>
-                                                    <!--<Label 
-                                                        TextColor="#2255AA"
-                                                        Text="{Binding NameCommand}" 
-                                                        FontAttributes="Bold"
-                                                        LineBreakMode="TailTruncation"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        VerticalOptions="CenterAndExpand"/>-->
                                                     <StackLayout
                                                         VerticalOptions="Center">
                                                         <StackLayout.Padding>
@@ -586,6 +578,12 @@
                                                     </StackLayout>
                                                 </StackLayout>
                                             </StackLayout>
+                                            <controls:CustomFrame.Padding>
+                                                <OnPlatform x:TypeArguments="Thickness">
+                                                    <On Platform="iOS" Value="-3" />
+                                                    <On Platform="Android" Value="0" />
+                                                </OnPlatform>
+                                            </controls:CustomFrame.Padding>
                                         </controls:CustomFrame>
                                     </StackLayout>
                                 </ViewCell.View>

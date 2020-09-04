@@ -27,7 +27,7 @@
                         <Label
                             Padding="5"
                             HorizontalOptions="Center"
-                            Text="{Binding LogTitle}"
+                            Text="{Binding LogItem.NameLog}"
                             TextColor="#2255AA"
                             FontAttributes="Bold"
                             LineBreakMode="TailTruncation"/>
@@ -53,14 +53,15 @@
                                     WidthRequest="120"
                                     TextColor="White"
                                     FontSize="Small"
-                                    Text="{Binding LogOperator}"
+                                    Text="{Binding LogItem.Operator}"
                                     LineBreakMode="TailTruncation"
                                     VerticalOptions="Center"
                                     HorizontalOptions="FillAndExpand"/>
                             </StackLayout>
                             <StackLayout
                                 Orientation="Horizontal">
-                                <Label 
+                                <Label
+                                    MinimumWidthRequest="85"
                                     WidthRequest="85"
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
@@ -71,7 +72,7 @@
                                 <controls:StandardPicker
                                     Title="Seleccione..."
                                     ItemsSource="{Binding OperatorsItems}"
-                                    ItemDisplayBinding="{Binding OperatorName}"
+                                    ItemDisplayBinding="{Binding FullNameUser}"
                                     SelectedItem="{Binding SelectedOperator}"
                                     HorizontalOptions="FillAndExpand"
                                     Padding="5"
@@ -181,7 +182,7 @@
                                                             <Label
                                                                 FontSize="Small"
                                                                 TextColor="Black"
-                                                                Text="{Binding Title}"
+                                                                Text="{Binding NameInstance}"
                                                                 LineBreakMode="TailTruncation"/>
                                                         </StackLayout>
                                                         <StackLayout
@@ -192,7 +193,7 @@
                                                                 WidthRequest="65"
                                                                 LineBreakMode="TailTruncation"
                                                                 TextColor="Black"
-                                                                Text="{Binding IsRunning}"/>
+                                                                Text="{Binding RunningDisplay}"/>
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </ViewCell.View>
@@ -202,8 +203,7 @@
                                 </ListView>
                             </StackLayout>
                         </StackLayout>
-                    </controls:CustomFrame>
-                    
+                    </controls:CustomFrame>               
                 </StackLayout>
             </ScrollView>
             <StackLayout 

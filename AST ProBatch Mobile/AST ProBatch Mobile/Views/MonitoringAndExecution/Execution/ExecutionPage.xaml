@@ -462,7 +462,7 @@
                                         Padding="10,5,10,5">
                                         <controls:CustomFrame
                                             CornerRadius="10"
-                                            BackgroundColor="#D7D7D7"
+                                            BackgroundColor="{Binding BarItemColor}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
                                             Padding="-3">
