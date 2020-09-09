@@ -11,8 +11,8 @@ namespace AST_ProBatch_Mobile.Models
         public bool IsEventual { get; set; }
         public Int16 IdEnvironment { get; set; }
         public string NameEnvironment { get; set; }
-        public string ExecutionDateTime { get; set; }
-        public string EndingDateTime { get; set; }
+        public DateTime ExecutionDateTime { get; set; }
+        public DateTime EndingDateTime { get; set; }
         public Int32 TotalCommands { get; set; }
         public Int32 ErrorCommands { get; set; }
         #endregion
@@ -25,6 +25,8 @@ namespace AST_ProBatch_Mobile.Models
         public string Operator { get; set; }
         public string NotificationIcon { get; set; }
         public string BarItemColor { get; set; }
+        public string ExecutionDateTimeString { get; set; }
+        public string EndingDateTimeString { get; set; }
         #endregion
 
         //public string Status { get; set; }

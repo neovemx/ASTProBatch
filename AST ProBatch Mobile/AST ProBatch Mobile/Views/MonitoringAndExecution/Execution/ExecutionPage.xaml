@@ -227,7 +227,7 @@
                                                             LineBreakMode="TailTruncation"/>
                                                         <Label 
                                                             TextColor="White"
-                                                            Text="{Binding ExecutionDateTime}"
+                                                            Text="{Binding ExecutionDateTimeString}"
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                     </StackLayout>
@@ -242,7 +242,7 @@
                                                             LineBreakMode="TailTruncation"/>
                                                         <Label 
                                                             TextColor="White"
-                                                            Text="{Binding EndingDateTime}"
+                                                            Text="{Binding EndingDateTimeString}"
                                                             FontSize="Small"
                                                             LineBreakMode="TailTruncation"/>
                                                     </StackLayout>

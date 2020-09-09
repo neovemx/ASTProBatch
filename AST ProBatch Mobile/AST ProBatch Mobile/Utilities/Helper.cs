@@ -108,6 +108,14 @@ namespace AST_ProBatch_Mobile.Utilities
     {
         public static string UserInvalid { get { return "Credenciales inválidas!"; } }
         public static string Error { get { return "Ocurrió un error!"; } }
+        public static string Success { get { return "Operación completada exitosamente!"; } }
+        public static string Existing { get { return "Elemento existente!"; } }
+        public static string NoSuccess { get { return "No se pudo completar la operación!"; } }
+        public static string Adding { get { return "Agregando nuevo elemento..."; } }
+        public static string Updating { get { return "Actualizando elemento seleccionado..."; } }
+        public static string Deleting { get { return "Eliminando elemento seleccionado..."; } }
+        public static string UpdatingList { get { return "Actualizando lista de elementos..."; } }
+        public static string Delete { get { return "Debe seleccionar un elemento para eliminar!"; } }
     }
 
     public static class BarItemColor
@@ -145,6 +153,11 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string GetOperatorChangeUsers = "/getoperatorchangeusers";
         public const string GetOperatorChangeInstances = "/getoperatorchangeinstances";
         public const string GetOperatorChangeUserIsInAllInstances = "/getoperatorchangeuserisinallinstances";
+        public const string GetOperatorChange = "/getoperatorchange";
+        public const string GetObservations = "/getobservationsbyloganduser";
+        public const string AddObservation = "/addobservationsbyloganduser";
+        public const string ModObservation = "/modobservationsbyloganduser";
+        public const string DelObservation = "/delobservations";
     }
 
     public static class TokenType
@@ -166,6 +179,8 @@ namespace AST_ProBatch_Mobile.Utilities
         public static string AmericanDate12Hours { get { return "MM/dd/yyyy hh:mm:ss"; } }
         public static string LatinDate12HoursTTT { get { return "dd/MM/yyyy HH:mm:ss ttt"; } }
         public static string AmericanDate12HoursTTT { get { return "MM/dd/yyyy hh:mm:ss ttt"; } }
+        public static string LatinDate { get { return "dd/MM/yyyy"; } }
+        public static string AmericanDate { get { return "MM/dd/yyyy"; } }
     }
 
     public static class Status
@@ -183,6 +198,13 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string EXECUTING = "X";
         public const string MESSAGE = "M";
         public const string KILLED = "K";
+    }
+
+    public static class AddOrModResult
+    {
+        public const int OK = 1;
+        public const int ERROR = 0;
+        public const int EXISTING_DATA = 2;
     }
 
     public class AppHelper

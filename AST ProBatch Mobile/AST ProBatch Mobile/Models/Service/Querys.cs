@@ -32,4 +32,42 @@ namespace ASTProBatchMobile.Models.Service
         public string IdUser { get; set; }
         public string Instances { get; set; }
     }
+
+    public class OperatorChangeQueryValues
+    {
+        public Int32 IdLog { get; set; }
+        public string NewIdUser { get; set; }
+        public string Instances { get; set; }
+        public string OldIdUser { get; set; }
+        public string StartDate { get; set; }
+        public string ClientIp { get; set; }
+    }
+
+    public class ObservationGetQueryValues
+    {
+        public Int32 IdLog { get; set; }
+        public string IdUser { get; set; }
+    }
+
+    public class ObservationAddQueryValues
+    {
+        public Int32 IdLog { get; set; }
+        public string IdUser { get; set; }
+        public string NameObsv { get; set; }
+        public string DetailObsv { get; set; }
+    }
+
+    public class ObservationModQueryValues
+    {
+        public Int32 IdObsv { get; set; }
+        public Int32 IdLog { get; set; }
+        public string IdUser { get; set; }
+        public string NameObsv { get; set; }
+        public string DetailObsv { get; set; }
+    }
+
+    public class ObservationDelQueryValues
+    {
+        public Int32 IdObsv { get; set; }
+    }
 }

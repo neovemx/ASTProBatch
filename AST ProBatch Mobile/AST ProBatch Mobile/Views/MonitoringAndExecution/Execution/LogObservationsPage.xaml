@@ -28,7 +28,7 @@
                         <Label
                             HorizontalOptions="Center"
                             Padding="5"
-                            Text="{Binding LogTitle}"
+                            Text="{Binding LogItem.NameLog}"
                             TextColor="#2255AA"
                             FontAttributes="Bold"
                             LineBreakMode="TailTruncation"/>
@@ -153,7 +153,7 @@
                                                             WidthRequest="75">
                                                             <Label 
                                                                 TextColor="Black"
-                                                                Text="{Binding Date}"
+                                                                Text="{Binding DateObsvString}"
                                                                 FontSize="Small"/>
                                                         </StackLayout>
                                                         <StackLayout
@@ -163,7 +163,7 @@
                                                             <Label 
                                                                 LineBreakMode="TailTruncation"
                                                                 TextColor="Black"
-                                                                Text="{Binding Name}"
+                                                                Text="{Binding NameObsv}"
                                                                 FontSize="Small"/>
                                                         </StackLayout>
                                                         <StackLayout
@@ -173,7 +173,7 @@
                                                                 WidthRequest="110"
                                                                 LineBreakMode="TailTruncation"
                                                                 TextColor="Black"
-                                                                Text="{Binding Operator}"
+                                                                Text="{Binding IdUser}"
                                                                 FontSize="Small"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -187,21 +187,6 @@
                     </controls:CustomFrame>   
                 </StackLayout>
             </ScrollView>
-            <controls:CustomFrame 
-                CornerRadius="20,20,0,0"
-                BackgroundColor="LightGray"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="Center"
-                HeightRequest="100"
-                IsVisible="{Binding IsLoadingData}">
-                <controls:LoadingIndicator
-                    BackgroundColor="LightGray"
-                    IsLoading="True"
-                    LoadingIndicatorColor="Orange"
-                    Text="Cargando..."
-                    TextColor="Orange"
-                    TextFontSize="20" />
-            </controls:CustomFrame>
             <StackLayout 
                 VerticalOptions="End">
                 <Label 

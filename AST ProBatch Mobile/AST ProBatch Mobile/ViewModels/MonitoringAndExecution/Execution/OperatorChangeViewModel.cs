@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -31,6 +32,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private List<OperatorChangeUser> Users { get; set; }
         private List<OperatorChangeInstance> Instances { get; set; }
         private List<OperatorChangeUserIsInAllInstances> UserInInstances { get; set; }
+        private List<OperatorChange> OperatorChanges { get; set; }
         private Token TokenGet { get; set; }
         private Token TokenPbAuth { get; set; }
         private Token TokenMenuB { get; set; }
@@ -222,7 +224,74 @@ namespace AST_ProBatch_Mobile.ViewModels
                                         }
                                     }
                                 }
-
+                                if (InstancesRunning.Length > 0)
+                                {
+                                    UserDialogs.Instance.HideLoading();
+                                    UserDialogs.Instance.ShowLoading("Cambiando al operador seleccionado...", MaskType.Black);
+                                    ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
+                                    if (!TokenValidator.IsValid(TokenMenuB))
+                                    {
+                                        if (!await ApiIsOnline())
+                                        {
+                                            UserDialogs.Instance.HideLoading();
+                                            Toast.ShowError(AlertMessages.Error);
+                                            return;
+                                        }
+                                        else
+                                        {
+                                            if (!await GetTokenSuccess())
+                                            {
+                                                UserDialogs.Instance.HideLoading();
+                                                Toast.ShowError(AlertMessages.Error);
+                                                return;
+                                            }
+                                            else
+                                            {
+                                                TokenMenuB = TokenGet;
+                                            }
+                                        }
+                                    }
+                                    //string MyIp;
+                                    //foreach (IPAddress iPAddress in Dns.GetHostAddresses(Dns.GetHostName()))
+                                    //{
+                                    //    MyIp = iPAddress.ToString();
+                                    //}
+                                    OperatorChangeQueryValues operatorChangeQueryValues = new OperatorChangeQueryValues()
+                                    {
+                                        IdLog = this.LogItem.IdLog,
+                                        NewIdUser = operatorObject.IdUser,
+                                        Instances = Instances.ToString(),
+                                        OldIdUser = PbUser.IdUser,
+                                        StartDate = ConvertStartDateToSp(this.LogItem.ExecutionDateTime),
+                                        ClientIp = "127.0.0.1"
+                                    };
+                                    Response resultOperatorChange = await ApiSrv.GetOperatorChange(TokenMenuB.Key, operatorChangeQueryValues);
+                                    if (!resultOperatorChange.IsSuccess)
+                                    {
+                                        UserDialogs.Instance.HideLoading();
+                                        Toast.ShowError(AlertMessages.Error);
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        OperatorChanges = JsonConvert.DeserializeObject<List<OperatorChange>>(Crypto.DecodeString(resultOperatorChange.Data));
+                                        if (!OperatorChanges[0].IsSuccess)
+                                        {
+                                            UserDialogs.Instance.HideLoading();
+                                            Alert.Show(string.Format("Ocurrió un error al intentar cambiar el operador actual por: {0}", operatorObject.IdUser), "Aceptar");
+                                            return;
+                                        }
+                                        this.SelectedOperator = null;
+                                        this.OperatorPassword = string.Empty;
+                                        UserDialogs.Instance.HideLoading();
+                                        Alert.Show(string.Format("Cambio de operador satisfactorio!"), "Aceptar");
+                                    }
+                                }
+                                else
+                                {
+                                    UserDialogs.Instance.HideLoading();
+                                    Alert.Show(string.Format("No hay instancias en ejecución!"), "Aceptar");
+                                }
                             }
                         }
                     }
@@ -345,6 +414,27 @@ namespace AST_ProBatch_Mobile.ViewModels
             {
                 TokenGet = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
                 result = true;
+            }
+            return result;
+        }
+
+        private string ConvertStartDateToSp(DateTime startDate)
+        {
+            string result = string.Empty;
+            if (startDate.Millisecond < 100)
+            {
+                if (startDate.Millisecond < 10)
+                {
+                    result = String.Format("{0:yyyy/MM/dd}", startDate) + " " + startDate.ToString("HH:mm:ss") + ".00" + startDate.Millisecond;
+                }
+                else
+                {
+                    result = String.Format("{0:yyyy/MM/dd}", startDate) + " " + startDate.ToString("HH:mm:ss") + ".0" + startDate.Millisecond;
+                }
+            }
+            else
+            {
+                result = String.Format("{0:yyyy/MM/dd}", startDate) + " " + startDate.ToString("HH:mm:ss") + "." + startDate.Millisecond;
             }
             return result;
         }

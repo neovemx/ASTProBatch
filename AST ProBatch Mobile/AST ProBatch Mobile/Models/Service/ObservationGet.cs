@@ -1,19 +1,13 @@
 ﻿using System;
 
-namespace AST_ProBatch_Mobile.Models
+namespace AST_ProBatch_Mobile.Models.Service
 {
-    public class ObservationItem
+    public class ObservationGet
     {
-        #region Original Model From Api
         public Int32 IdObsv { get; set; }
         public DateTime DateObsv { get; set; }
         public string NameObsv { get; set; }
         public string IdUser { get; set; }
         public string DetailObsv { get; set; }
-        #endregion
-
-        #region Model Extended
-        public string DateObsvString { get; set; }
-        #endregion
     }
 }
