@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AST_ProBatch_Mobile.Models
+namespace AST_ProBatch_Mobile.Models.Service
 {
     public class PbUser
     {

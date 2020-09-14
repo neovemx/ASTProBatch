@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Models.Service;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
 using AST_ProBatch_Mobile.Views;

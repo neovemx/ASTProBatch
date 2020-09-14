@@ -112,7 +112,7 @@ namespace AST_ProBatch_Mobile.Views
             var logItem = imageButton.CommandParameter as LogItem;
             if (logItem != null)
             {
-                MainViewModel.GetInstance().ControlSchedulesExecution = new ControlSchedulesExecutionViewModel(logItem);
+                MainViewModel.GetInstance().ControlSchedulesExecution = new ControlSchedulesExecutionViewModel(true, logItem);
                 Application.Current.MainPage.Navigation.PushAsync(new ControlSchedulesExecutionPage());
             }
         }

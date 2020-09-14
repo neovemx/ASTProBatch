@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ASTProBatchMobile.Models.Service
+namespace AST_ProBatch_Mobile.Models.Service
 {
     public class InstanceQueryValues
     {
@@ -69,5 +69,10 @@ namespace ASTProBatchMobile.Models.Service
     public class ObservationDelQueryValues
     {
         public Int32 IdObsv { get; set; }
+    }
+
+    public class ControlSchedulesExecutionQueryValues
+    {
+        public Int32 IdLog { get; set; }
     }
 }

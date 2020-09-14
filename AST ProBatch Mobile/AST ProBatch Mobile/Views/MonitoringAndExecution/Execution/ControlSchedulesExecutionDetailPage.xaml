@@ -17,7 +17,7 @@
                 <Label 
                     FontSize="Large"
                     TextColor="White"
-                    Text="{Binding CommandToControl.LogTitle}"
+                    Text="{Binding LogItem.NameLog}"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />
@@ -74,7 +74,7 @@
                             </controls:CustomFrame>
                         </StackLayout>
                     </StackLayout>
-                    <StackLayout>
+                    <!--<StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
                             <Label
@@ -88,7 +88,7 @@
                                 TextColor="White"
                                 Text="{Binding CommandToControl.InstanceName}"/>
                         </StackLayout>
-                    </StackLayout>
+                    </StackLayout>-->
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
@@ -101,7 +101,7 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding CommandToControl.LotName}"/>
+                                Text="{Binding CommandToControl.Lot}"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
@@ -116,7 +116,7 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding CommandToControl.CommandName}"/>
+                                Text="{Binding CommandToControl.Command}"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
@@ -131,7 +131,7 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding CommandToControl.Start}"/>
+                                Text="{Binding CommandToControl.StartDateString}"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
@@ -146,7 +146,7 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding CommandToControl.End}"/>
+                                Text="{Binding CommandToControl.EndDateString}"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
@@ -161,7 +161,7 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding CommandToControl.ControlStart}"/>
+                                Text="{Binding CommandToControl.TimeFromString}"/>
                         </StackLayout>
                         <StackLayout>
                             <StackLayout
@@ -175,7 +175,7 @@
                                 <Label
                                     FontSize="Small"
                                     TextColor="White"
-                                    Text="{Binding CommandToControl.ControlEnd}"/>
+                                    Text="{Binding CommandToControl.TimeUntilString}"/>
                             </StackLayout>
                         </StackLayout>
                         <StackLayout>

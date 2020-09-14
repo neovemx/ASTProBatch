@@ -38,6 +38,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             set
             {
                 SetValue(ref lotselected, value);
+                DoSomething();
             }
         }
         public ObservableCollection<PickerCommandItem> CommandItems
@@ -124,7 +125,10 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Helpers
-
+        private void DoSomething()
+        {
+            Alert.Show(this.LotSelected.Id.ToString());
+        }
         #endregion
 
         #region Fake Data

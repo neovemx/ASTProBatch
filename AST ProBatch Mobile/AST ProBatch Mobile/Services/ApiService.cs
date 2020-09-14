@@ -1,7 +1,7 @@
 ﻿using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
-using ASTProBatchMobile.Models.Service;
+using AST_ProBatch_Mobile.Models.Service;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -283,6 +283,11 @@ namespace AST_ProBatch_Mobile.Services
         public async Task<Response> DelObservationsByLogAndUser(string accessToken, ObservationDelQueryValues QueryValues)
         {
             return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.DelObservation, QueryValues);
+        }
+
+        public async Task<Response> GetControlSchedulesExecution(string accessToken, ControlSchedulesExecutionQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.ControlSchedulesExecution, QueryValues);
         }
         #endregion
 

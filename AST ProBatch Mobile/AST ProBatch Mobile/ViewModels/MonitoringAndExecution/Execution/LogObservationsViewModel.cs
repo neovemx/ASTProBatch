@@ -1,10 +1,8 @@
 ﻿using Acr.UserDialogs;
-//using AST_ProBatch_Mobile.Interfaces;
 using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Models.Service;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
-using ASTProBatchMobile.Models.Service;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using System;
@@ -12,7 +10,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {

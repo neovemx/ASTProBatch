@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
-using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Models.Service;
 
 namespace AST_ProBatch_Mobile.Utilities
 {
@@ -158,6 +158,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string AddObservation = "/addobservationsbyloganduser";
         public const string ModObservation = "/modobservationsbyloganduser";
         public const string DelObservation = "/delobservations";
+        public const string ControlSchedulesExecution = "/getControlschedulesexecution";
     }
 
     public static class TokenType
@@ -181,6 +182,8 @@ namespace AST_ProBatch_Mobile.Utilities
         public static string AmericanDate12HoursTTT { get { return "MM/dd/yyyy hh:mm:ss ttt"; } }
         public static string LatinDate { get { return "dd/MM/yyyy"; } }
         public static string AmericanDate { get { return "MM/dd/yyyy"; } }
+        public static string Time12Hour { get { return "hh:mm:ss"; } }
+        public static string Time24Hour { get { return "HH:mm:ss"; } }
     }
 
     public static class Status

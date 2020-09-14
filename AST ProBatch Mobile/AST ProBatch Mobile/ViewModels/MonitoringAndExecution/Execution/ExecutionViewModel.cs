@@ -7,7 +7,7 @@ using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
-using ASTProBatchMobile.Models.Service;
+using AST_ProBatch_Mobile.Models.Service;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 

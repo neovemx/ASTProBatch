@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AST_ProBatch_Mobile.Models
+namespace AST_ProBatch_Mobile.Models.Service
 {
     public class Token
     {

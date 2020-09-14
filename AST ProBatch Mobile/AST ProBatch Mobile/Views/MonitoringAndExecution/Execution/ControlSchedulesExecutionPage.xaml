@@ -25,9 +25,10 @@
                     <Label
                         HorizontalOptions="Center"
                         Padding="5"
-                        Text="{Binding LogTitle}"
+                        Text="{Binding LogItem.NameLog}"
                         TextColor="#2255AA"
-                        FontAttributes="Bold"/>
+                        FontAttributes="Bold"
+                        LineBreakMode="TailTruncation"/>
                 </controls:CustomFrame>
                 <controls:CustomFrame
                     Margin="0,-7,0,0"
@@ -160,7 +161,7 @@
                                                     Grid.Column="1"
                                                     TextColor="Black"
                                                     VerticalOptions="Center"
-                                                    Text="{Binding CommandName}"
+                                                    Text="{Binding Command}"
                                                     LineBreakMode="TailTruncation"
                                                     FontSize="Small"/>
                                                 <BoxView 
@@ -172,7 +173,7 @@
                                                     TextColor="Black"
                                                     VerticalOptions="Center"
                                                     HorizontalOptions="Center"
-                                                    Text="{Binding Start}"
+                                                    Text="{Binding StartDateString}"
                                                     LineBreakMode="TailTruncation"
                                                     FontSize="Small"/>
                                                 <BoxView 
@@ -184,7 +185,7 @@
                                                     TextColor="Black"
                                                     VerticalOptions="Center"
                                                     HorizontalOptions="Center"
-                                                    Text="{Binding End}"
+                                                    Text="{Binding EndDateString}"
                                                     LineBreakMode="TailTruncation"
                                                     FontSize="Small"/>
                                                 <BoxView 

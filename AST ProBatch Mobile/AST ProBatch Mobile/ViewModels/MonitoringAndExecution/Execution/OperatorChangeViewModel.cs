@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -10,10 +9,9 @@ using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Models.Service;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
-using ASTProBatchMobile.Models.Service;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
-using OperatorObject = AST_ProBatch_Mobile.Models.PbUser;
+using OperatorObject = AST_ProBatch_Mobile.Models.Service.PbUser;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {

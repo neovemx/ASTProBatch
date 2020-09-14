@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ASTProBatchMobile.Models.Service
+namespace AST_ProBatch_Mobile.Models.Service
 {
     public class Instance
     {

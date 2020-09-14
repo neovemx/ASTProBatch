@@ -1,7 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using AST_ProBatch_Mobile.Models;
+﻿using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Services;
-using ASTProBatchMobile.Models.Service;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
@@ -90,7 +88,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.CommandNotifications = new CommandNotificationsViewModel(new Models.CommandItem());
             this.LogObservations = new LogObservationsViewModel(false, new Models.LogItem());
             this.OperatorChange = new OperatorChangeViewModel(false, new Models.LogItem());
-            this.ControlSchedulesExecution = new ControlSchedulesExecutionViewModel(new Models.LogItem());
+            this.ControlSchedulesExecution = new ControlSchedulesExecutionViewModel(false, new Models.LogItem());
             this.StatusInfoControlSchedulesExecution = new StatusInfoControlSchedulesExecutionViewModel();
             this.LogInquiries = new LogInquiriesViewModel(false, new Models.LogItem());
             this.LogInquirieDetail = new LogInquirieDetailViewModel(new Models.ResultLogInquirieItem());

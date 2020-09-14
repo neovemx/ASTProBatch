@@ -1,4 +1,4 @@
-﻿using AST_ProBatch_Mobile.Models;
+﻿using AST_ProBatch_Mobile.Models.Service;
 using AST_ProBatch_Mobile.Services;
 using System.Collections.Generic;
 using System.ComponentModel;
