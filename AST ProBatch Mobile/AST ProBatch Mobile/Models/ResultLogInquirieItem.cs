@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AST_ProBatch_Mobile.Models
+﻿namespace AST_ProBatch_Mobile.Models
 {
     public class ResultLogInquirieItem
     {
-        public string LogTitle { get; set; }
         public int IdLog { get; set; }
-        public int IdInstance { get; set; }
+        public string NameLog { get; set; }
         public string NameInstance { get; set; }
         public string StartHour { get; set; }
         public string Pause { get; set; }

@@ -2,7 +2,9 @@
 {
     public class PickerLotItem
     {
-        public int Id { get; set; }
-        public string LotName { get; set; }
+        public int IdLot { get; set; }
+        public string NameLot { get; set; }
+        public string NameDisplay { get; set; }
+        public string CodeLot { get; set; }
     }
 }

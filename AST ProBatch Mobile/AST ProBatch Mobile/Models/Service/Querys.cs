@@ -75,4 +75,21 @@ namespace AST_ProBatch_Mobile.Models.Service
     {
         public Int32 IdLog { get; set; }
     }
+
+    public class LogInquirieGetCommandsQueryValues
+    {
+        public Int32 IdLot { get; set; }
+    }
+
+    public class LogInquirieGetOperatorsQueryValues
+    {
+        public Int32 IdLog { get; set; }
+    }
+
+    public class LogInquirieGetLogsQueryValues
+    {
+        public Int32 IdLog { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
+    }
 }

@@ -17,7 +17,7 @@
                 <Label 
                     FontSize="Large"
                     TextColor="White"
-                    Text="{Binding ResultLogInquirieItem.LogTitle}"
+                    Text="{Binding ResultLogInquirieItem.NameLog}"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />
@@ -44,7 +44,8 @@
                         <StackLayout
                             Orientation="Horizontal"
                             HorizontalOptions="FillAndExpand">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -59,7 +60,8 @@
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -68,13 +70,15 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding ResultLogInquirieItem.Start}"/>
+                                Text="{Binding ResultLogInquirieItem.StartHour}"
+                                LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -83,13 +87,15 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding ResultLogInquirieItem.Pause}"/>
+                                Text="{Binding ResultLogInquirieItem.Pause}"
+                                LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -98,13 +104,15 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding ResultLogInquirieItem.NameLot}"/>
+                                Text="{Binding ResultLogInquirieItem.NameLot}"
+                                LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -113,13 +121,15 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding ResultLogInquirieItem.NameCommand}"/>
+                                Text="{Binding ResultLogInquirieItem.NameCommand}"
+                                LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -128,13 +138,15 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding ResultLogInquirieItem.Status}"/>
+                                Text="{Binding ResultLogInquirieItem.Status}"
+                                LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -143,13 +155,15 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding ResultLogInquirieItem.StatusResult}"/>
+                                Text="{Binding ResultLogInquirieItem.StatusResult}"
+                                LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -158,13 +172,15 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding ResultLogInquirieItem.StartDateTime}"/>
+                                Text="{Binding ResultLogInquirieItem.StartDateTime}"
+                                LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -173,13 +189,15 @@
                             <Label
                                 FontSize="Small"
                                 TextColor="White"
-                                Text="{Binding ResultLogInquirieItem.EndDateTime}"/>
+                                Text="{Binding ResultLogInquirieItem.EndDateTime}"
+                                LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
                         <StackLayout
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
+                                MinimumWidthRequest="70"
                                 WidthRequest="70"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"

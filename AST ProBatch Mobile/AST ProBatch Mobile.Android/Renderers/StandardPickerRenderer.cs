@@ -26,18 +26,22 @@ namespace AST_ProBatch_Mobile.Droid.Renderers
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == StandardEntry.CornerRadiusProperty.PropertyName)
+            if (e.PropertyName == StandardPicker.CornerRadiusProperty.PropertyName)
             {
                 UpdateBackground();
             }
-            else if (e.PropertyName == StandardEntry.BorderThicknessProperty.PropertyName)
+            else if (e.PropertyName == StandardPicker.BorderThicknessProperty.PropertyName)
             {
                 UpdateBackground();
             }
-            else if (e.PropertyName == StandardEntry.BorderColorProperty.PropertyName)
+            else if (e.PropertyName == StandardPicker.BorderColorProperty.PropertyName)
             {
                 UpdateBackground();
             }
+            //else if (e.PropertyName == StandardPicker.LineBreakModeProperty.PropertyName)
+            //{
+            //    UpdateBackground();
+            //}
 
             base.OnElementPropertyChanged(sender, e);
         }

@@ -159,6 +159,10 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string ModObservation = "/modobservationsbyloganduser";
         public const string DelObservation = "/delobservations";
         public const string ControlSchedulesExecution = "/getControlschedulesexecution";
+        public const string LogInquirieGetLots = "/loginquiriesgetlots";
+        public const string LogInquirieGetCommands = "/loginquiriesgetcommands";
+        public const string LogInquirieGetOperators = "/loginquiriesgetoperators";
+        public const string LogInquirieGetLogs = "/loginquiriesgetlogs";
     }
 
     public static class TokenType

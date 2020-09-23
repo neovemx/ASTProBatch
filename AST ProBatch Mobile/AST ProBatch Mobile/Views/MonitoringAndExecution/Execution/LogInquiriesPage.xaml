@@ -41,7 +41,7 @@
                         <Label
                             HorizontalOptions="Center"
                             Padding="5"
-                            Text="{Binding LogTitle}"
+                            Text="{Binding LogItem.NameLog}"
                             TextColor="#2255AA"
                             FontAttributes="Bold"/>
                     </controls:CustomFrame>
@@ -55,14 +55,27 @@
                                  VerticalOptions="FillAndExpand"
                                  Padding="10">
                                  <StackLayout>
-                                     <StackLayout>
-                                         <Label
-                                             WidthRequest="85"
-                                             TextColor="#2255AA"
-                                             FontAttributes="Bold"
-                                             FontSize="Small"
-                                             Text="Lote:"
-                                             VerticalOptions="Center"/>
+                                     <StackLayout
+                                         Orientation="Horizontal">
+                                         <StackLayout>
+                                             <Label
+                                                 MinimumWidthRequest="85"
+                                                 WidthRequest="85"
+                                                 TextColor="#2255AA"
+                                                 FontAttributes="Bold"
+                                                 FontSize="Small"
+                                                 Text="Lote:"
+                                                 VerticalOptions="Center"/>
+                                         </StackLayout>
+                                         <StackLayout>
+                                             <Label
+                                                 TextColor="White"
+                                                 FontSize="Small"
+                                                 Text="{Binding NameLot}"
+                                                 VerticalOptions="Center"
+                                                 LineBreakMode="TailTruncation"
+                                                 HorizontalOptions="FillAndExpand"/>
+                                         </StackLayout>
                                      </StackLayout>
                                      <StackLayout>
                                          <StackLayout
@@ -95,8 +108,9 @@
                                              </ImageButton>
                                              <controls:StandardPicker 
                                                  ItemsSource="{Binding LotItems}"
-                                                 ItemDisplayBinding="{Binding LotName}"
+                                                 ItemDisplayBinding="{Binding NameDisplay}"
                                                  SelectedItem="{Binding LotSelected}"
+                                                 SelectedIndex="{Binding LotSelectedIndex}"
                                                  HorizontalOptions="FillAndExpand"
                                                  Padding="5"
                                                  BackgroundColor="White"
@@ -122,14 +136,27 @@
                                              </ImageButton>
                                          </StackLayout>
                                     </StackLayout>
-                                     <StackLayout>
-                                         <Label
-                                             WidthRequest="85"
-                                             TextColor="#2255AA"
-                                             FontAttributes="Bold"
-                                             FontSize="Small"
-                                             Text="Comando:"
-                                             VerticalOptions="Center"/>
+                                     <StackLayout
+                                         Orientation="Horizontal">
+                                         <StackLayout>
+                                             <Label
+                                                 MinimumWidthRequest="85"
+                                                 WidthRequest="85"
+                                                 TextColor="#2255AA"
+                                                 FontAttributes="Bold"
+                                                 FontSize="Small"
+                                                 Text="Comando:"
+                                                 VerticalOptions="Center"/>
+                                         </StackLayout>
+                                         <StackLayout>
+                                             <Label
+                                                 TextColor="White"
+                                                 FontSize="Small"
+                                                 Text="{Binding NameCommand}"
+                                                 VerticalOptions="Center"
+                                                 LineBreakMode="TailTruncation"
+                                                 HorizontalOptions="FillAndExpand"/>
+                                         </StackLayout>
                                      </StackLayout>
                                      <StackLayout>
                                          <StackLayout
@@ -162,8 +189,9 @@
                                              </ImageButton>
                                              <controls:StandardPicker 
                                                  ItemsSource="{Binding CommandItems}"
-                                                 ItemDisplayBinding="{Binding CommandName}"
+                                                 ItemDisplayBinding="{Binding NameDisplay}"
                                                  SelectedItem="{Binding CommandSelected}"
+                                                 SelectedIndex="{Binding CommandSelectedIndex}"
                                                  HorizontalOptions="FillAndExpand"
                                                  Padding="5"
                                                  BackgroundColor="White"
@@ -232,7 +260,8 @@
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout
-                                IsVisible="{Binding ResultIsVisible}">
+                                IsVisible="{Binding ResultIsVisible}"
+                                VerticalOptions="FillAndExpand">
                                 <ListView
                                     x:Name="LVLogInquiriesResult"
                                     HeightRequest="240"
@@ -357,7 +386,7 @@
                         <Label
                             HorizontalOptions="Center"
                             Padding="5"
-                            Text="{Binding LogTitle}"
+                            Text="{Binding LogItem.NameLog}"
                             TextColor="#2255AA"
                             FontAttributes="Bold"/>
                     </controls:CustomFrame>

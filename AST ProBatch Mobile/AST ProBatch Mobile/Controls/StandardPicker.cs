@@ -16,6 +16,9 @@ namespace AST_ProBatch_Mobile.Controls
         public static BindableProperty BorderColorProperty =
             BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(StandardEntry), Color.Transparent);
 
+        //public static BindableProperty LineBreakModeProperty =
+        //    BindableProperty.Create(nameof(LineBreakModes), typeof(LineBreakMode), typeof(StandardEntry), LineBreakMode.TailTruncation);
+
         public int CornerRadius
         {
             get => (int)GetValue(CornerRadiusProperty);
@@ -32,6 +35,13 @@ namespace AST_ProBatch_Mobile.Controls
             get => (Color)GetValue(BorderColorProperty);
             set => SetValue(BorderColorProperty, value);
         }
+
+        //public LineBreakMode LineBreakModes
+        //{
+        //    get => (LineBreakMode)GetValue(LineBreakModeProperty);
+        //    set => SetValue(LineBreakModeProperty, value);
+        //}
+
         /// <summary>
         /// This property cannot be changed at runtime in iOS.
         /// </summary>

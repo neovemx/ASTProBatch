@@ -2,7 +2,9 @@
 {
     public class PickerCommandItem
     {
-        public int Id { get; set; }
-        public string CommandName { get; set; }
+        public int IdCommand { get; set; }
+        public string NameCommand { get; set; }
+        public string NameDisplay { get; set; }
+        public string CodeCommand { get; set; }
     }
 }

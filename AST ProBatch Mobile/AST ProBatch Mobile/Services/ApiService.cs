@@ -289,6 +289,26 @@ namespace AST_ProBatch_Mobile.Services
         {
             return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.ControlSchedulesExecution, QueryValues);
         }
+
+        public async Task<Response> LogInquirieGetLots(string accessToken)
+        {
+            return await HttpGet(accessToken, ApiController.PBMenuBExecute, ApiMethod.LogInquirieGetLots);
+        }
+
+        public async Task<Response> LogInquirieGetCommands(string accessToken, LogInquirieGetCommandsQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.LogInquirieGetCommands, QueryValues);
+        }
+
+        public async Task<Response> LogInquirieGetOperators(string accessToken, LogInquirieGetOperatorsQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.LogInquirieGetOperators, QueryValues);
+        }
+
+        public async Task<Response> LogInquirieGetLogs(string accessToken, LogInquirieGetLogsQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.LogInquirieGetLogs, QueryValues);
+        }
         #endregion
 
         #region Helpers
@@ -349,11 +369,13 @@ namespace AST_ProBatch_Mobile.Services
 
                 if (!response.IsSuccessStatusCode)
                 {
+                    var resultError = await response.Content.ReadAsStringAsync();
+                    var cipherDataError = JsonConvert.DeserializeObject<CipherData>(resultError);
                     return new Response
                     {
                         IsSuccess = false,
                         Message = "Api en error o la misma no está disponible",
-                        Data = string.Empty,
+                        Data = cipherDataError.Data,
                     };
                 }
 
