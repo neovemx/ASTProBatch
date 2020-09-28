@@ -240,8 +240,8 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 Status = logInquiriesResult.Status,
                                 StatusColor = GetStatusColor.ByIdStatus(logInquiriesResult.IdStatus),
                                 StatusResult = logInquiriesResult.Result,
-                                StartDateTime = (logInquiriesResult.DateStart != null) ? ((DateTime)logInquiriesResult.DateStart).ToString(DateTimeFormatString.LatinDate) : "",
-                                EndDateTime = (logInquiriesResult.DateEnd != null) ? ((DateTime)logInquiriesResult.StartTime).ToString(DateTimeFormatString.LatinDate) : ""
+                                StartDateTime = (logInquiriesResult.DateStart != null) ? ((DateTime)logInquiriesResult.DateStart).ToString(DateTimeFormatString.Time24Hour) : "",
+                                EndDateTime = (logInquiriesResult.DateEnd != null) ? ((DateTime)logInquiriesResult.StartTime).ToString(DateTimeFormatString.Time24Hour) : ""
                             });
                         }
                         UserDialogs.Instance.HideLoading();
