@@ -431,17 +431,15 @@ namespace AST_ProBatch_Mobile.ViewModels
                         {
                             Lots = JsonConvert.DeserializeObject<List<LogInquiriesLot>>(Crypto.DecodeString(resultGetLots.Data));
                             LotItems = new ObservableCollection<PickerLotItem>();
-                            int ContItems = 1;
                             foreach (LogInquiriesLot logInquiriesLot in Lots)
                             {
                                 LotItems.Add(new PickerLotItem()
                                 {
                                     IdLot = logInquiriesLot.IdLot,
-                                    NameLot = logInquiriesLot.Lot.Split('-')[1].Trim(),
-                                    NameDisplay = string.Format("{0} - Lote {1}", logInquiriesLot.Lot.Split('-')[0].Trim(), ContItems),
+                                    NameLot = logInquiriesLot.Lot,
+                                    NameDisplay = (logInquiriesLot.Lot.Length > 20) ? logInquiriesLot.Lot.Substring(0, 20) + "..." : logInquiriesLot.Lot,
                                     CodeLot = logInquiriesLot.Lot.Split('-')[0].Trim()
                                 });
-                                ContItems += 1;
                             }
                             UserDialogs.Instance.HideLoading();
                             UserDialogs.Instance.ShowLoading("Obteniendo operadores...", MaskType.Black);
@@ -569,17 +567,15 @@ namespace AST_ProBatch_Mobile.ViewModels
                         {
                             CommandItems.Clear();
                         }
-                        int ContItems = 1;
                         foreach (LogInquiriesCommand logInquiriesCommand in Commands)
                         {
                             CommandItems.Add(new PickerCommandItem()
                             {
                                 IdCommand = logInquiriesCommand.IdCommand,
-                                NameCommand = logInquiriesCommand.Command.Split('-')[1].Trim(),
-                                NameDisplay = string.Format("{0} - Comando {1}", logInquiriesCommand.Command.Split('-')[0].Trim(), ContItems),
+                                NameCommand = logInquiriesCommand.Command,
+                                NameDisplay = (logInquiriesCommand.Command.Length > 20) ? logInquiriesCommand.Command.Substring(0, 20) + "..." : logInquiriesCommand.Command,
                                 CodeCommand = logInquiriesCommand.Command.Split('-')[0].Trim()
                             });
-                            ContItems += 1;
                         }
                         UserDialogs.Instance.HideLoading();
                     }
