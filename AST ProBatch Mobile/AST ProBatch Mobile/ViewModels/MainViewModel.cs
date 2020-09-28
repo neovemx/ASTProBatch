@@ -19,7 +19,6 @@ namespace AST_ProBatch_Mobile.ViewModels
         public OperationsLogViewModel OperationsLog { get; set; }
         public ProcessMonitorViewModel ProcessMonitor { get; set; }
         public RecurrenceMonitorViewModel RecurrenceMonitor { get; set; }
-        public StatusInfoViewModel StatusInfo { get; set; }
         public StatusInfoPlannerViewModel StatusInfoPlanner { get; set; }
         public NotificationsViewModel Notifications { get; set; }
         public InstanceNotificationsViewModel InstanceNotifications { get; set; }
@@ -80,7 +79,6 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.OperationsLog = new OperationsLogViewModel();
             this.ProcessMonitor = new ProcessMonitorViewModel();
             this.RecurrenceMonitor = new RecurrenceMonitorViewModel();
-            this.StatusInfo = new StatusInfoViewModel();
             this.StatusInfoPlanner = new StatusInfoPlannerViewModel();
             this.Notifications = new NotificationsViewModel(false, new Models.LogItem());
             this.InstanceNotifications = new InstanceNotificationsViewModel(new Models.InstanceItem());
