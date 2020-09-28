@@ -3,6 +3,7 @@ using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Models.Service;
 using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
+using AST_ProBatch_Mobile.Views;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using System;
@@ -11,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
@@ -254,6 +256,20 @@ namespace AST_ProBatch_Mobile.ViewModels
                 UserDialogs.Instance.HideLoading();
                 Toast.ShowError(AlertMessages.Error);
             }
+        }
+
+        public ICommand StatusCommand
+        {
+            get
+            {
+                return new RelayCommand(Status);
+            }
+        }
+
+        private async void Status()
+        {
+            MainViewModel.GetInstance().StatusInfoLogInquiries = new StatusInfoLogInquiriesViewModel();
+            await Application.Current.MainPage.Navigation.PushModalAsync(new StatusInfoLogInquiriesPage());
         }
 
         public ICommand LotSelectCommand

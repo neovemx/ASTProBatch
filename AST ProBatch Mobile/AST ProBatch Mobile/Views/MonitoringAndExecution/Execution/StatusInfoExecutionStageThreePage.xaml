@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
+             mc:Ignorable="d"
+             x:Class="AST_ProBatch_Mobile.Views.StatusInfoExecutionStageThreePage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundColor="LightGray">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding StatusInfoExecutionStageThree}">
+            <StackLayout
+                BackgroundColor="#2255AA"
+                Padding="5"
+                Orientation="Horizontal">
+                <Label 
+                    FontSize="Large"
+                    TextColor="White"
+                    Text="REFERENCIAS"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    LineBreakMode="TailTruncation" />
+                <ImageButton 
+                    HorizontalOptions="End"
+                    Command="{Binding CloseCommand}"
+                    BackgroundColor="#F1F2F6"
+                    Source="close_page"
+                    HeightRequest="30"
+                    WidthRequest="30">
+                    <ImageButton.CornerRadius>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="15" />
+                            <On Platform="Android" Value="50" />
+                        </OnPlatform>
+                    </ImageButton.CornerRadius>
+                </ImageButton>
+            </StackLayout>
+            <StackLayout
+                VerticalOptions="FillAndExpand"
+                Padding="30,0,30,0">
+                <controls:CustomFrame
+                    IsVisible="False"
+                    Padding="0"
+                    BackgroundColor="DarkGray"
+                    CornerRadius="10">
+                    <Label
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="#2255AA"
+                        Text="ÚLTIMO PROCESO"/>
+                </controls:CustomFrame>
+                <ListView
+                    VerticalScrollBarVisibility="Never"
+                    SelectionMode="None"
+                    ItemsSource="{Binding StatusItemsProcess}"
+                    BackgroundColor="Transparent">
+                    <ListView.SeparatorVisibility>
+                        <OnPlatform x:TypeArguments="SeparatorVisibility">
+                            <On Platform="iOS" Value="None" />
+                            <On Platform="Android" Value="Default" />
+                        </OnPlatform>
+                    </ListView.SeparatorVisibility>
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="40" />
+                            <On Platform="Android" Value="43" />
+                        </OnPlatform>
+                    </ListView.RowHeight>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label 
+                                            FontSize="Medium"
+                                            Text="{Binding Title}"
+                                            TextColor="Black"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton
+                                            Margin="0,0,3,0"
+                                            VerticalOptions="Center"
+                                            BackgroundColor="{Binding StateColor}"
+                                            Source="{Binding State}"
+                                            HeightRequest="35"
+                                            WidthRequest="35">
+                                            <ImageButton.CornerRadius>
+                                                <OnPlatform x:TypeArguments="x:Int32">
+                                                    <On Platform="iOS" Value="17" />
+                                                    <On Platform="Android" Value="50" />
+                                                </OnPlatform>
+                                            </ImageButton.CornerRadius>
+                                        </ImageButton>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout 
+                VerticalOptions="End">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

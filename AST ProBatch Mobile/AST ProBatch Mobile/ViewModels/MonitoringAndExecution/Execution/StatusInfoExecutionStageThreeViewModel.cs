@@ -7,20 +7,13 @@ using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
-    public class StatusInfoViewModel : BaseViewModel
+    public class StatusInfoExecutionStageThreeViewModel : BaseViewModel
     {
         #region Atributes
-        private ObservableCollection<StatusItem> statusitemsinstance;
         private ObservableCollection<StatusItem> statusitemsprocess;
         #endregion
 
         #region Properties
-        public ObservableCollection<StatusItem> StatusItemsInstance
-        {
-            get { return statusitemsinstance; }
-            set { SetValue(ref statusitemsinstance, value); }
-        }
-
         public ObservableCollection<StatusItem> StatusItemsProcess
         {
             get { return statusitemsprocess; }
@@ -29,7 +22,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public StatusInfoViewModel()
+        public StatusInfoExecutionStageThreeViewModel()
         {
             GetStates();
         }
@@ -53,45 +46,6 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Helpers
         private void GetStates()
         {
-            StatusItemsInstance = new ObservableCollection<StatusItem>();
-            StatusItem statusItem;
-
-            statusItem = new StatusItem();
-            statusItem.Title = "No Ininiciada";
-            statusItem.State = "";
-            statusItem.StateColor = StatusColor.White;
-            StatusItemsInstance.Add(statusItem);
-
-            statusItem = new StatusItem();
-            statusItem.Title = "En Ejecución";
-            statusItem.State = "";
-            statusItem.StateColor = StatusColor.Green;
-            StatusItemsInstance.Add(statusItem);
-
-            statusItem = new StatusItem();
-            statusItem.Title = "Mensaje";
-            statusItem.State = "";
-            statusItem.StateColor = StatusColor.Yellow;
-            StatusItemsInstance.Add(statusItem);
-
-            statusItem = new StatusItem();
-            statusItem.Title = "Detenida";
-            statusItem.State = "";
-            statusItem.StateColor = StatusColor.Orange;
-            StatusItemsInstance.Add(statusItem);
-
-            statusItem = new StatusItem();
-            statusItem.Title = "Finalizada";
-            statusItem.State = "";
-            statusItem.StateColor = StatusColor.Blue;
-            StatusItemsInstance.Add(statusItem);
-
-            statusItem = new StatusItem();
-            statusItem.Title = "Finalizada con Errores";
-            statusItem.State = "";
-            statusItem.StateColor = StatusColor.Red;
-            StatusItemsInstance.Add(statusItem);
-
             StatusItemsProcess = new ObservableCollection<StatusItem>();
             StatusItem statusItemProcess;
 

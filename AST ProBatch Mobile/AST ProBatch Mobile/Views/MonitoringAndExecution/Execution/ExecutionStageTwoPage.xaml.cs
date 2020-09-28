@@ -28,8 +28,8 @@ namespace AST_ProBatch_Mobile.Views
 
         private void ImageButtonState_Clicked(object sender, EventArgs e)
         {
-            MainViewModel.GetInstance().StatusInfo = new StatusInfoViewModel();
-            Application.Current.MainPage.Navigation.PushModalAsync(new StatusInfoPage());
+            MainViewModel.GetInstance().StatusInfoExecutionStageTwo = new StatusInfoExecutionStageTwoViewModel();
+            Application.Current.MainPage.Navigation.PushModalAsync(new StatusInfoExecutionStageTwoPage());
         }
 
         private void ImageButtonLogAction_1_Clicked(object sender, EventArgs e)

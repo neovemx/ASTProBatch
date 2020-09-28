@@ -37,6 +37,9 @@ namespace AST_ProBatch_Mobile.ViewModels
         public ControlSchedulesExecutionDetailViewModel ControlSchedulesExecutionDetail { get; set; }
         public BatchQueryViewModel BatchQuery { get; set; }
         public EditParametersViewModel EditParameters { get; set; }
+        public StatusInfoExecutionStageTwoViewModel StatusInfoExecutionStageTwo { get; set; }
+        public StatusInfoExecutionStageThreeViewModel StatusInfoExecutionStageThree { get; set; }
+        public StatusInfoLogInquiriesViewModel StatusInfoLogInquiries { get; set; }
         #endregion
 
         #region Constructors
@@ -95,6 +98,9 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.ControlSchedulesExecutionDetail = new ControlSchedulesExecutionDetailViewModel(new Models.CommandsToControl());
             this.BatchQuery = new BatchQueryViewModel(new Models.InstanceItem());
             this.EditParameters = new EditParametersViewModel(new Models.CommandItem());
+            this.StatusInfoExecutionStageTwo = new StatusInfoExecutionStageTwoViewModel();
+            this.StatusInfoExecutionStageThree = new StatusInfoExecutionStageThreeViewModel();
+            this.StatusInfoLogInquiries = new StatusInfoLogInquiriesViewModel();
         }
         #endregion
 
