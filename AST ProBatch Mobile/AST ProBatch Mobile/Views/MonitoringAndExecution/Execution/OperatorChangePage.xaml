@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              x:Class="AST_ProBatch_Mobile.Views.OperatorChangePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="CAMBIO DE OPERADOR"
+             Title="Cambio de Operador"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding OperatorChange}" Text="Nuevo"  Icon="new_item" Command="{Binding NewCommand}" />

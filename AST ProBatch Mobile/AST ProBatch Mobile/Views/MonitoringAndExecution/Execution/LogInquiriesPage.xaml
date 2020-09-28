@@ -7,7 +7,7 @@
             xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
             x:Class="AST_ProBatch_Mobile.Views.LogInquiriesPage"
             BindingContext="{Binding Main, Source={StaticResource Locator}}"
-            Title="CONSULTAS BITÁCORAS"
+            Title="Consultas Bitácora"
             BackgroundColor="White"
             SelectedTabColor="#2255AA"
             UnselectedTabColor="DarkGray"
