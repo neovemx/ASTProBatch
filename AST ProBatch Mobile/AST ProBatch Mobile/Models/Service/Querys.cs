@@ -92,4 +92,30 @@ namespace AST_ProBatch_Mobile.Models.Service
         public Int32 IdLot { get; set; }
         public Int32 IdCommand { get; set; }
     }
+
+    public class DependenciesGetLotsThatDependsQueryValues
+    {
+        public Int32 IdLog { get; set; }
+        public Int32 IdLot { get; set; }
+    }
+
+    public class DependenciesGetDependentLotDetailQueryValues
+    {
+        public Int32 IdLog { get; set; }
+        public Int32 IdLot { get; set; }
+    }
+
+    public class DependenciesGetCommandsThatDependsQueryValues
+    {
+        public Int32 IdLog { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
+    }
+
+    public class DependenciesGetDependentCommandDetailQueryValues
+    {
+        public Int32 IdLog { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
+    }
 }

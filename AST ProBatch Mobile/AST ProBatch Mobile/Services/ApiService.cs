@@ -309,6 +309,26 @@ namespace AST_ProBatch_Mobile.Services
         {
             return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.LogInquirieGetLogs, QueryValues);
         }
+
+        public async Task<Response> DependenciesGetLotsThatDepends(string accessToken, DependenciesGetLotsThatDependsQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.DependenciesGetLotsThatDepends, QueryValues);
+        }
+
+        public async Task<Response> DependenciesGetDependentLotDetail(string accessToken, DependenciesGetDependentLotDetailQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.DependenciesGetDependentLotDetail, QueryValues);
+        }
+
+        public async Task<Response> DependenciesGetCommandsThatDepends(string accessToken, DependenciesGetCommandsThatDependsQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.DependenciesGetCommandsThatDepends, QueryValues);
+        }
+
+        public async Task<Response> DependenciesGetDependentCommandDetail(string accessToken, DependenciesGetDependentCommandDetailQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.DependenciesGetDependentCommandDetail, QueryValues);
+        }
         #endregion
 
         #region Helpers

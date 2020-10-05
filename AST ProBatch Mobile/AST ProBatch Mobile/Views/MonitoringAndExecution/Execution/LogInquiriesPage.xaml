@@ -228,46 +228,6 @@
                         IsVisible="{Binding ResultIsVisible}"
                         VerticalOptions="FillAndExpand">
                         <StackLayout>
-                            <!--<StackLayout
-                                Margin="10,15,0,0"
-                                Orientation="Horizontal">
-                                <StackLayout
-                                    WidthRequest="75">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        TextColor="#2255AA"
-                                        FontSize="Small"
-                                        Text="Instancia"
-                                        LineBreakMode="TailTruncation"/>
-                                </StackLayout>
-                                <StackLayout
-                                    WidthRequest="75">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        TextColor="#2255AA"
-                                        FontSize="Small"
-                                        Text="Comando"
-                                        LineBreakMode="TailTruncation"/>
-                                </StackLayout>
-                                <StackLayout
-                                    WidthRequest="50">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        TextColor="#2255AA"
-                                        FontSize="Small"
-                                        Text="Inicio"
-                                        LineBreakMode="TailTruncation"/>
-                                </StackLayout>
-                                <StackLayout
-                                    WidthRequest="110">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        TextColor="#2255AA"
-                                        FontSize="Small"
-                                        Text="Fin"
-                                        LineBreakMode="TailTruncation"/>
-                                </StackLayout>
-                            </StackLayout>-->
                             <StackLayout
                                 IsVisible="{Binding ResultIsVisible}"
                                 VerticalOptions="FillAndExpand">

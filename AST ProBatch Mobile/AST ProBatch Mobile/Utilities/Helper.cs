@@ -96,6 +96,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public static string Purple { get { return "#B9908E"; } }
         public static string Blue { get { return "#87CEFA"; } }
         public static string Black { get { return "Black"; } }
+        public static string DarkBlue { get { return "#070471"; } }
     }
 
     public static class Answers
@@ -163,6 +164,10 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string LogInquirieGetCommands = "/loginquiriesgetcommands";
         public const string LogInquirieGetOperators = "/loginquiriesgetoperators";
         public const string LogInquirieGetLogs = "/loginquiriesgetlogs";
+        public const string DependenciesGetLotsThatDepends = "/dependenciesgetlotsthatdepends";
+        public const string DependenciesGetDependentLotDetail = "/dependenciesgetdependentlotdetail";
+        public const string DependenciesGetCommandsThatDepends = "/dependenciesgetcommandsthatdepends";
+        public const string DependenciesGetDependentCommandDetail = "/dependenciesgetdependentcommanddetail";
     }
 
     public static class TokenType

@@ -1,0 +1,842 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
+             x:Class="AST_ProBatch_Mobile.Views.DependenciesPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Dependencias"
+             BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem BindingContext="{Binding Dependencies}" Text="Status"  Icon="about" Command="{Binding StatusCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Dependencies}">
+            <ScrollView
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Padding="10">
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="{Binding CommandItem.InstanceItem.NameInstance}"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout
+                            Padding="10">
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    WidthRequest="70"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Lote:"
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    WidthRequest="120"
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding CommandItem.NameLot}"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    WidthRequest="70"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Comando:"
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    WidthRequest="120"
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding CommandItem.NameCommand}"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="{Binding ListViewTitleLot}"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            LineBreakMode="TailTruncation"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <ListView
+                            ItemsSource="{Binding DependenciesLotItems}"
+                            SelectionMode="None"
+                            BackgroundColor="Transparent"
+                            HeightRequest="150">
+                            <ListView.SeparatorVisibility>
+                                <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                    <On Platform="iOS" Value="None" />
+                                    <On Platform="Android" Value="Default" />
+                                </OnPlatform>
+                            </ListView.SeparatorVisibility>
+                            <ListView.Header>
+                                <Grid
+                                    Padding="10"
+                                    ColumnSpacing="0"
+                                    RowSpacing="0"
+                                    VerticalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25" />   
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Tipo"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="1"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Código"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="2"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Lote"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="3"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Instancias"
+                                        LineBreakMode="TailTruncation"/>
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <Grid
+                                                Padding="10"
+                                                ColumnSpacing="0"
+                                                RowSpacing="0"
+                                                VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="25" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Type}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Code}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding NameLot}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Instance}"
+                                                    LineBreakMode="TailTruncation"/>
+                                            </Grid>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>                      
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="{Binding ListViewTitleLotDetail}"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            LineBreakMode="TailTruncation"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <ListView
+                            ItemsSource="{Binding DependenciesLotDetailItems}"
+                            SelectionMode="None"
+                            BackgroundColor="Transparent"
+                            HeightRequest="150">
+                            <ListView.SeparatorVisibility>
+                                <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                    <On Platform="iOS" Value="None" />
+                                    <On Platform="Android" Value="Default" />
+                                </OnPlatform>
+                            </ListView.SeparatorVisibility>
+                            <ListView.Header>
+                                <Grid
+                                    Padding="10"
+                                    ColumnSpacing="0"
+                                    RowSpacing="0"
+                                    VerticalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25" />   
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Tipo"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="1"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Código"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="2"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Lote"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="3"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Instancias"
+                                        LineBreakMode="TailTruncation"/>
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <Grid
+                                                Padding="10"
+                                                ColumnSpacing="0"
+                                                RowSpacing="0"
+                                                VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="25" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Type}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Code}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding NameLot}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Instance}"
+                                                    LineBreakMode="TailTruncation"/>
+                                            </Grid>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView> 
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="{Binding ListViewTitleCommand}"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            LineBreakMode="TailTruncation"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <ListView
+                            ItemsSource="{Binding DependenciesCommandItems}"
+                            SelectionMode="None"
+                            BackgroundColor="Transparent"
+                            HeightRequest="150">
+                            <ListView.SeparatorVisibility>
+                                <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                    <On Platform="iOS" Value="None" />
+                                    <On Platform="Android" Value="Default" />
+                                </OnPlatform>
+                            </ListView.SeparatorVisibility>
+                            <ListView.Header>
+                                <Grid
+                                    Padding="10"
+                                    ColumnSpacing="0"
+                                    RowSpacing="0"
+                                    VerticalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25" />   
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="10" />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text=""
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="1"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text=""
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="2"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Lote"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="3"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Comando"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="4"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="4"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Tipo"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="5"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="5"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Instancia"
+                                        LineBreakMode="TailTruncation"/>
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <Grid
+                                                Padding="10"
+                                                ColumnSpacing="0"
+                                                RowSpacing="0"
+                                                VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="25" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="25" />
+                                                    <ColumnDefinition Width="10" />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"/>
+                                                <controls:CustomFrame
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    CornerRadius="17"
+                                                    BackgroundColor="{Binding StatusColor}"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text=""
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding IdLot}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Command}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="4"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="4"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Type}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="5"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="5"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Instance}"
+                                                    LineBreakMode="TailTruncation"/>
+                                            </Grid>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView> 
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="{Binding ListViewTitleCommandDetail}"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            LineBreakMode="TailTruncation"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <ListView
+                            ItemsSource="{Binding DependenciesCommandDetailItems}"
+                            SelectionMode="None"
+                            BackgroundColor="Transparent"
+                            HeightRequest="150">
+                            <ListView.SeparatorVisibility>
+                                <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                    <On Platform="iOS" Value="None" />
+                                    <On Platform="Android" Value="Default" />
+                                </OnPlatform>
+                            </ListView.SeparatorVisibility>
+                            <ListView.Header>
+                                <Grid
+                                    Padding="10"
+                                    ColumnSpacing="0"
+                                    RowSpacing="0"
+                                    VerticalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25" />   
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="10" />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text=""
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="1"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text=""
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="2"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Lote"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="3"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Comando"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="4"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="4"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Tipo"
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="5"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="5"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Instancia"
+                                        LineBreakMode="TailTruncation"/>
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <Grid
+                                                Padding="10"
+                                                ColumnSpacing="0"
+                                                RowSpacing="0"
+                                                VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="25" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="25" />
+                                                    <ColumnDefinition Width="10" />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"/>
+                                                <controls:CustomFrame
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    CornerRadius="17"
+                                                    BackgroundColor="{Binding StatusColor}"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text=""
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding IdLot}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Command}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="4"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="4"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Type}"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <BoxView 
+                                                    Grid.Row="0"
+                                                    Grid.Column="5"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="5"
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Instance}"
+                                                    LineBreakMode="TailTruncation"/>
+                                            </Grid>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView> 
+                    </controls:CustomFrame>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout 
+                VerticalOptions="End">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+        </ContentPage.Content>
+</ContentPage>

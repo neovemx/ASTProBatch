@@ -39,6 +39,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         public StatusInfoExecutionStageTwoViewModel StatusInfoExecutionStageTwo { get; set; }
         public StatusInfoExecutionStageThreeViewModel StatusInfoExecutionStageThree { get; set; }
         public StatusInfoLogInquiriesViewModel StatusInfoLogInquiries { get; set; }
+        public DependenciesViewModel Dependencies { get; set; }
+        public StatusInfoDependenciesViewModel StatusInfoDependencies { get; set; }
         #endregion
 
         #region Constructors
@@ -99,6 +101,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.StatusInfoExecutionStageTwo = new StatusInfoExecutionStageTwoViewModel();
             this.StatusInfoExecutionStageThree = new StatusInfoExecutionStageThreeViewModel();
             this.StatusInfoLogInquiries = new StatusInfoLogInquiriesViewModel();
+            this.Dependencies = new DependenciesViewModel(false, new Models.CommandItem());
+            this.StatusInfoDependencies = new StatusInfoDependenciesViewModel();
         }
         #endregion
 

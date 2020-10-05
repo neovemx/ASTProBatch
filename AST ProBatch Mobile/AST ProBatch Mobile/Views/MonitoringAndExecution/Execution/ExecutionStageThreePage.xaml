@@ -8,7 +8,8 @@
              x:Class="AST_ProBatch_Mobile.Views.ExecutionStageThreePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Lote/Comandos"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             NavigationPage.BackButtonTitle="">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding ExecutionStageThree}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />
         <ToolbarItem BindingContext="{Binding ExecutionStageThree}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />

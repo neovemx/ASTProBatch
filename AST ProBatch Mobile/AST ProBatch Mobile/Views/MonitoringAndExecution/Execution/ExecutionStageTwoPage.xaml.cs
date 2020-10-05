@@ -108,13 +108,11 @@ namespace AST_ProBatch_Mobile.Views
             var instanceItem = imageButton.CommandParameter as InstanceItem;
             if (instanceItem != null)
             {
-                MainViewModel.GetInstance().BatchQuery = new BatchQueryViewModel(instanceItem);
-                Application.Current.MainPage.Navigation.PushAsync(new BatchQueryPage());
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas buscar lote comando para: " + instanceItem.Title + "?", "Sí", "No");
-                //    if (result) DependencyService.Get<Toast>().Show("Procesando...");
-                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas buscar lote comando para: " + instanceItem.NameInstance + "?", "Sí", "No");
+                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                });
             }
         }
 
@@ -166,54 +164,6 @@ namespace AST_ProBatch_Mobile.Views
             }
         }
 
-        //private void ImageButtonLogToolBarAction_3_Clicked(object sender, EventArgs e)
-        //{
-        //    var imageButton = (ImageButton)sender;
-        //    var instanceItem = imageButton.CommandParameter as ExecutionStageTwoViewModel;
-        //    int instamceitemcount = 0;
-        //    if (instanceItem != null)
-        //    {
-        //        foreach (InstanceItem item in instanceItem.InstanceItems)
-        //        {
-        //            if (item.IsChecked) { instamceitemcount += 1; }
-        //        }
-        //        if (instamceitemcount <= 1)
-        //        {
-        //            Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
-        //            return;
-        //        }
-        //        Device.BeginInvokeOnMainThread(async () =>
-        //        {
-        //            var result = await this.DisplayAlert("AST●ProBatch®", "Deseas cambiar el operador para: " + instamceitemcount + " instancias seleccionadas?", "Sí", "No");
-        //            if (result) DependencyService.Get<Toast>().Show("Procesando...");
-        //        });
-        //    }
-        //}
-
-        //private void ImageButtonLogToolBarAction_4_Clicked(object sender, EventArgs e)
-        //{
-        //    var imageButton = (ImageButton)sender;
-        //    var instanceItem = imageButton.CommandParameter as ExecutionStageTwoViewModel;
-        //    int instamceitemcount = 0;
-        //    if (instanceItem != null)
-        //    {
-        //        foreach (InstanceItem item in instanceItem.InstanceItems)
-        //        {
-        //            if (item.IsChecked) { instamceitemcount += 1; }
-        //        }
-        //        if (instamceitemcount <= 1)
-        //        {
-        //            Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
-        //            return;
-        //        }
-        //        Device.BeginInvokeOnMainThread(async () =>
-        //        {
-        //            var result = await this.DisplayAlert("AST●ProBatch®", "Deseas reconectar las: " + instamceitemcount + " instancias seleccionadas?", "Sí", "No");
-        //            if (result) DependencyService.Get<Toast>().Show("Reconectando...");
-        //        });
-        //    }
-        //}
-
         private void ImageButtonLogToolBarAction_3_Clicked(object sender, EventArgs e)
         {
             var imageButton = (ImageButton)sender;
@@ -233,46 +183,6 @@ namespace AST_ProBatch_Mobile.Views
                 Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Obervaciones para: " + instamceitemcount + " instacias seleccionadas.", "Aceptar");
             }
         }
-
-        //private void ImageButtonLogToolBarAction_6_Clicked(object sender, EventArgs e)
-        //{
-        //    var imageButton = (ImageButton)sender;
-        //    var instanceItem = imageButton.CommandParameter as ExecutionStageTwoViewModel;
-        //    int instamceitemcount = 0;
-        //    if (instanceItem != null)
-        //    {
-        //        foreach (InstanceItem item in instanceItem.InstanceItems)
-        //        {
-        //            if (item.IsChecked) { instamceitemcount += 1; }
-        //        }
-        //        if (instamceitemcount <= 1)
-        //        {
-        //            Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
-        //            return;
-        //        }
-        //        Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Notificaciones para: " + instamceitemcount + " instancias seleccionadas.", "Aceptar");
-        //    }
-        //}
-
-        //private void ImageButtonLogToolBarAction_7_Clicked(object sender, EventArgs e)
-        //{
-        //    var imageButton = (ImageButton)sender;
-        //    var instanceItem = imageButton.CommandParameter as ExecutionStageTwoViewModel;
-        //    int instamceitemcount = 0;
-        //    if (instanceItem != null)
-        //    {
-        //        foreach (InstanceItem item in instanceItem.InstanceItems)
-        //        {
-        //            if (item.IsChecked) { instamceitemcount += 1; }
-        //        }
-        //        if (instamceitemcount <= 1)
-        //        {
-        //            Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
-        //            return;
-        //        }
-        //        Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Lote / Comando para: " + instamceitemcount + " instancias seleccionadas.", "Aceptar");
-        //    }
-        //}
 
         private void InstanceItemsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

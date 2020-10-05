@@ -9,7 +9,7 @@
     x:Class="AST_ProBatch_Mobile.Views.EditParametersPage"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
     BackgroundColor="White"
-    Title="MODIFICAR PARÁMETROS">
+    Title="Modificar Parámetros">
     <ContentPage.ToolbarItems>
         <ToolbarItem BindingContext="{Binding EditParameters}" Text="Nuevo"  Icon="new_item" Command="{Binding NewParameterCommand}" />
         <ToolbarItem BindingContext="{Binding EditParameters}" Text="Guardar"  Icon="save_item" Command="{Binding SaveParameterCommand}" />

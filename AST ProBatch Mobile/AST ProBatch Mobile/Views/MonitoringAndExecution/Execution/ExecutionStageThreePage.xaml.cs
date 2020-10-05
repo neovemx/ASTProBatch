@@ -147,11 +147,13 @@ namespace AST_ProBatch_Mobile.Views
             var commandItem = imageButton.CommandParameter as CommandItem;
             if (commandItem != null)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Dependencias para: " + commandItem.NameCommand + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
-                });
+                MainViewModel.GetInstance().Dependencies = new DependenciesViewModel(true, commandItem);
+                Application.Current.MainPage.Navigation.PushAsync(new DependenciesPage());
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    var result = await this.DisplayAlert("AST●ProBatch®", "Dependencias para: " + commandItem.NameCommand + "?", "Sí", "No");
+                //    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                //});
             }
         }
 
@@ -161,11 +163,13 @@ namespace AST_ProBatch_Mobile.Views
             var commandItem = imageButton.CommandParameter as CommandItem;
             if (commandItem != null)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del Lote para: " + commandItem.NameCommand + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
-                });
+                MainViewModel.GetInstance().BatchQuery = new BatchQueryViewModel(commandItem.InstanceItem);
+                Application.Current.MainPage.Navigation.PushAsync(new BatchQueryPage());
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del Lote para: " + commandItem.NameCommand + "?", "Sí", "No");
+                //    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                //});
             }
         }
 
