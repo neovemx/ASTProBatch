@@ -1,13 +1,12 @@
 ﻿using System;
 
-namespace AST_ProBatch_Mobile.Models
+namespace AST_ProBatch_Mobile.Models.Service
 {
-    public class CalendarItem
+    public class BatchQueryCalendar
     {
-        #region Original Model From API
         public Int32 IdLot { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public DateTime? Start { get; set; }
+        public DateTime? End { get; set; }
         public string Frecuency { get; set; }
         public bool Daily { get; set; }
         public bool Weekly { get; set; }
@@ -30,14 +29,5 @@ namespace AST_ProBatch_Mobile.Models
         public bool UsaHoliday { get; set; }
         public Int16 HolidayType { get; set; }
         public bool HolidayBusinessDay { get; set; }
-        #endregion
-
-        #region Model Extended
-        public string StartDateString { get; set; }
-        public string EndDateString { get; set; }
-        public bool StartChecked { get; set; }
-        public bool EndChecked { get; set; }
-        public bool ContraryBusinessDay { get; set; }
-        #endregion
     }
 }

@@ -142,17 +142,17 @@ namespace AST_ProBatch_Mobile.ViewModels
 
                     foreach (ParameterItem item in observationItemsTemp)
                     {
-                        if (item.Id == this.SelectedParameter.Id)
-                        {
-                            int oldIndexItem = ParameterItems.IndexOf(item);
-                            ParameterItem tempItem = item;
-                            tempItem.Title = this.TitleParameter;
-                            tempItem.Value = this.ValueParameter;
-                            ParameterItems.Remove(item);
-                            ParameterItems.Add(tempItem);
-                            int newIndexItem = ParameterItems.IndexOf(tempItem);
-                            ParameterItems.Move(newIndexItem, oldIndexItem);
-                        }
+                        //if (item.Id == this.SelectedParameter.Id)
+                        //{
+                        //    int oldIndexItem = ParameterItems.IndexOf(item);
+                        //    ParameterItem tempItem = item;
+                        //    tempItem.Title = this.TitleParameter;
+                        //    tempItem.Value = this.ValueParameter;
+                        //    ParameterItems.Remove(item);
+                        //    ParameterItems.Add(tempItem);
+                        //    int newIndexItem = ParameterItems.IndexOf(tempItem);
+                        //    ParameterItems.Move(newIndexItem, oldIndexItem);
+                        //}
                     }
                     this.TitleParameter = string.Empty;
                     this.ValueParameter = string.Empty;
@@ -175,84 +175,84 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.ParameterItems = new ObservableCollection<ParameterItem>();
             ParameterItem parameterItem;
 
-            parameterItem = new ParameterItem();
-            parameterItem.Id = 1;
-            parameterItem.Title = "PARAMETRO PRUEBA";
-            parameterItem.Value = "valor prueba";
-            parameterItem.IdEnvironment = 1;
-            parameterItem.TitleEnvironment = "Windows";
-            parameterItem.IdUser = 1;
-            parameterItem.TitleUser = "ADMINISTRADOR WEB";
-            this.ParameterItems.Add(parameterItem);
+            //parameterItem = new ParameterItem();
+            //parameterItem.Id = 1;
+            //parameterItem.Title = "PARAMETRO PRUEBA";
+            //parameterItem.Value = "valor prueba";
+            //parameterItem.IdEnvironment = 1;
+            //parameterItem.TitleEnvironment = "Windows";
+            //parameterItem.IdUser = 1;
+            //parameterItem.TitleUser = "ADMINISTRADOR WEB";
+            //this.ParameterItems.Add(parameterItem);
 
-            parameterItem = new ParameterItem();
-            parameterItem.Id = 2;
-            parameterItem.Title = "PARAMETRO PRUEBA";
-            parameterItem.Value = "valor prueba";
-            parameterItem.IdEnvironment = 1;
-            parameterItem.TitleEnvironment = "Windows";
-            parameterItem.IdUser = 1;
-            parameterItem.TitleUser = "ADMINISTRADOR WEB";
-            this.ParameterItems.Add(parameterItem);
+            //parameterItem = new ParameterItem();
+            //parameterItem.Id = 2;
+            //parameterItem.Title = "PARAMETRO PRUEBA";
+            //parameterItem.Value = "valor prueba";
+            //parameterItem.IdEnvironment = 1;
+            //parameterItem.TitleEnvironment = "Windows";
+            //parameterItem.IdUser = 1;
+            //parameterItem.TitleUser = "ADMINISTRADOR WEB";
+            //this.ParameterItems.Add(parameterItem);
 
-            parameterItem = new ParameterItem();
-            parameterItem.Id = 3;
-            parameterItem.Title = "PARAMETRO PRUEBA";
-            parameterItem.Value = "valor prueba";
-            parameterItem.IdEnvironment = 1;
-            parameterItem.TitleEnvironment = "Windows";
-            parameterItem.IdUser = 1;
-            parameterItem.TitleUser = "ADMINISTRADOR WEB";
-            this.ParameterItems.Add(parameterItem);
+            //parameterItem = new ParameterItem();
+            //parameterItem.Id = 3;
+            //parameterItem.Title = "PARAMETRO PRUEBA";
+            //parameterItem.Value = "valor prueba";
+            //parameterItem.IdEnvironment = 1;
+            //parameterItem.TitleEnvironment = "Windows";
+            //parameterItem.IdUser = 1;
+            //parameterItem.TitleUser = "ADMINISTRADOR WEB";
+            //this.ParameterItems.Add(parameterItem);
 
-            parameterItem = new ParameterItem();
-            parameterItem.Id = 4;
-            parameterItem.Title = "PARAMETRO PRUEBA";
-            parameterItem.Value = "valor prueba";
-            parameterItem.IdEnvironment = 1;
-            parameterItem.TitleEnvironment = "Windows";
-            parameterItem.IdUser = 1;
-            parameterItem.TitleUser = "ADMINISTRADOR WEB";
-            this.ParameterItems.Add(parameterItem);
+            //parameterItem = new ParameterItem();
+            //parameterItem.Id = 4;
+            //parameterItem.Title = "PARAMETRO PRUEBA";
+            //parameterItem.Value = "valor prueba";
+            //parameterItem.IdEnvironment = 1;
+            //parameterItem.TitleEnvironment = "Windows";
+            //parameterItem.IdUser = 1;
+            //parameterItem.TitleUser = "ADMINISTRADOR WEB";
+            //this.ParameterItems.Add(parameterItem);
 
-            parameterItem = new ParameterItem();
-            parameterItem.Id = 5;
-            parameterItem.Title = "PARAMETRO PRUEBA";
-            parameterItem.Value = "valor prueba";
-            parameterItem.IdEnvironment = 1;
-            parameterItem.TitleEnvironment = "Windows";
-            parameterItem.IdUser = 1;
-            parameterItem.TitleUser = "ADMINISTRADOR WEB";
-            this.ParameterItems.Add(parameterItem);
+            //parameterItem = new ParameterItem();
+            //parameterItem.Id = 5;
+            //parameterItem.Title = "PARAMETRO PRUEBA";
+            //parameterItem.Value = "valor prueba";
+            //parameterItem.IdEnvironment = 1;
+            //parameterItem.TitleEnvironment = "Windows";
+            //parameterItem.IdUser = 1;
+            //parameterItem.TitleUser = "ADMINISTRADOR WEB";
+            //this.ParameterItems.Add(parameterItem);
 
-            parameterItem = new ParameterItem();
-            parameterItem.Id = 6;
-            parameterItem.Title = "PARAMETRO PRUEBA";
-            parameterItem.Value = "valor prueba";
-            parameterItem.IdEnvironment = 1;
-            parameterItem.TitleEnvironment = "Windows";
-            parameterItem.IdUser = 1;
-            parameterItem.TitleUser = "ADMINISTRADOR WEB";
-            this.ParameterItems.Add(parameterItem);
+            //parameterItem = new ParameterItem();
+            //parameterItem.Id = 6;
+            //parameterItem.Title = "PARAMETRO PRUEBA";
+            //parameterItem.Value = "valor prueba";
+            //parameterItem.IdEnvironment = 1;
+            //parameterItem.TitleEnvironment = "Windows";
+            //parameterItem.IdUser = 1;
+            //parameterItem.TitleUser = "ADMINISTRADOR WEB";
+            //this.ParameterItems.Add(parameterItem);
 
-            parameterItem = new ParameterItem();
-            parameterItem.Id = 7;
-            parameterItem.Title = "PARAMETRO PRUEBA";
-            parameterItem.Value = "valor prueba";
-            parameterItem.IdEnvironment = 1;
-            parameterItem.TitleEnvironment = "Windows";
-            parameterItem.IdUser = 1;
-            parameterItem.TitleUser = "ADMINISTRADOR WEB";
-            this.ParameterItems.Add(parameterItem);
+            //parameterItem = new ParameterItem();
+            //parameterItem.Id = 7;
+            //parameterItem.Title = "PARAMETRO PRUEBA";
+            //parameterItem.Value = "valor prueba";
+            //parameterItem.IdEnvironment = 1;
+            //parameterItem.TitleEnvironment = "Windows";
+            //parameterItem.IdUser = 1;
+            //parameterItem.TitleUser = "ADMINISTRADOR WEB";
+            //this.ParameterItems.Add(parameterItem);
         }
 
         private void HandleSelectedParameter()
         {
-            this.TitleParameter = this.SelectedParameter.Title;
-            this.ValueParameter = this.SelectedParameter.Value;
-            this.ParameterSelectedTitleEnvironment = this.SelectedParameter.TitleEnvironment;
-            this.ParameterSelectedTitleUser = this.SelectedParameter.TitleUser;
-            this.IsEnabled = true;
+            //this.TitleParameter = this.SelectedParameter.Title;
+            //this.ValueParameter = this.SelectedParameter.Value;
+            //this.ParameterSelectedTitleEnvironment = this.SelectedParameter.TitleEnvironment;
+            //this.ParameterSelectedTitleUser = this.SelectedParameter.TitleUser;
+            //this.IsEnabled = true;
         }
         #endregion
     }

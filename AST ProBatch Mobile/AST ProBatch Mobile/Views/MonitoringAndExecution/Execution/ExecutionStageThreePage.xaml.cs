@@ -163,7 +163,7 @@ namespace AST_ProBatch_Mobile.Views
             var commandItem = imageButton.CommandParameter as CommandItem;
             if (commandItem != null)
             {
-                MainViewModel.GetInstance().BatchQuery = new BatchQueryViewModel(commandItem.InstanceItem);
+                MainViewModel.GetInstance().BatchQuery = new BatchQueryViewModel(true, commandItem);
                 Application.Current.MainPage.Navigation.PushAsync(new BatchQueryPage());
                 //Device.BeginInvokeOnMainThread(async () =>
                 //{

@@ -329,6 +329,26 @@ namespace AST_ProBatch_Mobile.Services
         {
             return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.DependenciesGetDependentCommandDetail, QueryValues);
         }
+
+        public async Task<Response> BatchQueryGetLots(string accessToken, BatchAllQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.BatchQueryGetLots, QueryValues);
+        }
+
+        public async Task<Response> BatchQueryGetParameters(string accessToken, BatchAllQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.BatchQueryGetParameters, QueryValues);
+        }
+
+        public async Task<Response> BatchQueryGetCommands(string accessToken, BatchAllQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.BatchQueryGetCommands, QueryValues);
+        }
+
+        public async Task<Response> BatchQueryGetCalendars(string accessToken, BatchAllQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, ApiController.PBMenuBExecute, ApiMethod.BatchQueryGetCalendars, QueryValues);
+        }
         #endregion
 
         #region Helpers

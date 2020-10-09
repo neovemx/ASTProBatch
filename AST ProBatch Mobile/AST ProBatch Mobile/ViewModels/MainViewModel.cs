@@ -96,7 +96,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.LogInquiries = new LogInquiriesViewModel(false, new Models.LogItem());
             this.LogInquirieDetail = new LogInquirieDetailViewModel(new Models.ResultLogInquirieItem());
             this.ControlSchedulesExecutionDetail = new ControlSchedulesExecutionDetailViewModel(new Models.CommandsToControl());
-            this.BatchQuery = new BatchQueryViewModel(new Models.InstanceItem());
+            this.BatchQuery = new BatchQueryViewModel(false, new Models.CommandItem());
             this.EditParameters = new EditParametersViewModel(new Models.CommandItem());
             this.StatusInfoExecutionStageTwo = new StatusInfoExecutionStageTwoViewModel();
             this.StatusInfoExecutionStageThree = new StatusInfoExecutionStageThreeViewModel();

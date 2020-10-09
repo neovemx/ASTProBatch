@@ -14,14 +14,10 @@
     UnselectedTabColor="DarkGray"
     BarBackgroundColor="White">
     <ContentPage Title="LOTE" IconImageSource="tab_lot">
-        <ContentPage.ToolbarItems>
-            <ToolbarItem BindingContext="{Binding BatchQuery}" Text="Buscar"  Icon="search" Command="{Binding SearchParametersCommand}" />
-        </ContentPage.ToolbarItems>
         <ContentPage.Content>
             <StackLayout
                 BindingContext="{Binding BatchQuery}">
-                <ScrollView
-                    VerticalOptions="FillAndExpand">
+                <ScrollView>
                     <StackLayout
                         Padding="10">
                         <BoxView
@@ -42,7 +38,7 @@
                             <Label
                                 HorizontalOptions="Center"
                                 Padding="5"
-                                Text="{Binding InstanceItem.Title}"
+                                Text="{Binding CommandItem.InstanceItem.NameInstance}"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"/>
                         </controls:CustomFrame>
@@ -50,8 +46,7 @@
                             Margin="0,-7,0,0"
                             CornerRadius="0,0,10,10"
                             BackgroundColor="DarkGray"
-                            Padding="0"
-                            VerticalOptions="Fill">
+                            Padding="0">
                             <StackLayout
                                  Padding="10">
                                 <StackLayout Orientation="Horizontal">
@@ -62,17 +57,13 @@
                                         FontSize="Small"
                                         Text="Código:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardEntry
-                                        Text="{Binding LotItem.Code, Mode=TwoWay}"
-                                        Padding="5"
-                                        BackgroundColor="White"
-                                        BorderColor="#2255AA"
-                                        BorderThickness="1"
-                                        CornerRadius="7"
-                                        HeightRequest="30"
-                                        TextColor="#2255AA"
+                                    <Label 
+                                        WidthRequest="120"
+                                        TextColor="White"
                                         FontSize="Small"
-                                        IsEnabled="False"
+                                        Text="{Binding LotItem.Code}"
+                                        LineBreakMode="TailTruncation"
+                                        VerticalOptions="Center"
                                         HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
@@ -83,18 +74,14 @@
                                         FontSize="Small"
                                         Text="Nombre:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardEntry
-                                        Text="{Binding LotItem.Title, Mode=TwoWay}"
-                                        Padding="5"
-                                        BackgroundColor="White"
-                                        BorderColor="#2255AA"
-                                        BorderThickness="1"
-                                        CornerRadius="7"
-                                        HeightRequest="30"
-                                        TextColor="#2255AA"
+                                    <Label 
+                                        WidthRequest="120"
+                                        TextColor="White"
                                         FontSize="Small"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsEnabled="False"/>
+                                        Text="{Binding LotItem.NameLot}"
+                                        LineBreakMode="TailTruncation"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label
@@ -104,18 +91,14 @@
                                         FontSize="Small"
                                         Text="Descripción:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardEntry
-                                        Text="{Binding LotItem.Description, Mode=TwoWay}"
-                                        Padding="5"
-                                        BackgroundColor="White"
-                                        BorderColor="#2255AA"
-                                        BorderThickness="1"
-                                        CornerRadius="7"
-                                        HeightRequest="30"
-                                        TextColor="#2255AA"
+                                    <Label 
+                                        WidthRequest="120"
+                                        TextColor="White"
                                         FontSize="Small"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsEnabled="False"/>
+                                        Text="{Binding LotItem.Description}"
+                                        LineBreakMode="TailTruncation"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label
@@ -125,18 +108,14 @@
                                         FontSize="Small"
                                         Text="Fecha de Creación:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardEntry
-                                        Text="{Binding LotItem.DateCreation, Mode=TwoWay}"
-                                        Padding="5"
-                                        BackgroundColor="White"
-                                        BorderColor="#2255AA"
-                                        BorderThickness="1"
-                                        CornerRadius="7"
-                                        HeightRequest="30"
-                                        TextColor="#2255AA"
+                                    <Label 
+                                        WidthRequest="120"
+                                        TextColor="White"
                                         FontSize="Small"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsEnabled="False"/>
+                                        Text="{Binding LotItem.CreationDateString}"
+                                        LineBreakMode="TailTruncation"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label
@@ -146,18 +125,14 @@
                                         FontSize="Small"
                                         Text="Path de Entrada:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardEntry
-                                        Text="{Binding LotItem.InPath, Mode=TwoWay}"
-                                        Padding="5"
-                                        BackgroundColor="White"
-                                        BorderColor="#2255AA"
-                                        BorderThickness="1"
-                                        CornerRadius="7"
-                                        HeightRequest="30"
-                                        TextColor="#2255AA"
+                                    <Label 
+                                        WidthRequest="120"
+                                        TextColor="White"
                                         FontSize="Small"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsEnabled="False"/>
+                                        Text="{Binding LotItem.PathIn}"
+                                        LineBreakMode="TailTruncation"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label
@@ -167,18 +142,14 @@
                                         FontSize="Small"
                                         Text="Path de Salida:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardEntry
-                                        Text="{Binding LotItem.OutPath, Mode=TwoWay}"
-                                        Padding="5"
-                                        BackgroundColor="White"
-                                        BorderColor="#2255AA"
-                                        BorderThickness="1"
-                                        CornerRadius="7"
-                                        HeightRequest="30"
-                                        TextColor="#2255AA"
+                                    <Label 
+                                        WidthRequest="120"
+                                        TextColor="White"
                                         FontSize="Small"
-                                        HorizontalOptions="FillAndExpand"
-                                        IsEnabled="False"/>
+                                        Text="{Binding LotItem.PathOut}"
+                                        LineBreakMode="TailTruncation"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label
@@ -188,22 +159,14 @@
                                         FontSize="Small"
                                         Text="Estado:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardPicker
-                                        Title="Seleccione..."
-                                        ItemsSource="{Binding StatusItems}"
-                                        ItemDisplayBinding="{Binding StatusName}"
-                                        SelectedItem="{Binding StatusSelected, Mode=TwoWay}"
-                                        SelectedIndex="{Binding StatusIndex, Mode=TwoWay}"
-                                        HorizontalOptions="FillAndExpand"
-                                        Padding="5"
-                                        BackgroundColor="White"
-                                        BorderColor="#2255AA"
-                                        BorderThickness="1"
-                                        CornerRadius="7"
-                                        TextColor="#2255AA"
-                                        HeightRequest="30"
+                                    <Label 
+                                        WidthRequest="120"
+                                        TextColor="White"
                                         FontSize="Small"
-                                        IsEnabled="False"/>
+                                        Text="{Binding LotItem.Status}"
+                                        LineBreakMode="TailTruncation"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
                         </controls:CustomFrame>
@@ -211,8 +174,7 @@
                             CornerRadius="10"
                             Padding="0"
                             BackgroundColor="DarkGray"
-                            IsVisible="{Binding ResultIsVisible}"
-                            HeightRequest="230">
+                            HeightRequest="300">
                             <StackLayout>
                                 <StackLayout
                                     Margin="10,15,10,0"
@@ -239,8 +201,7 @@
                                     <ListView
                                         ItemsSource="{Binding ParameterItems}"
                                         BackgroundColor="Transparent"
-                                        SelectionMode="None"
-                                        HeightRequest="235">
+                                        SelectionMode="None">
                                         <ListView.SeparatorVisibility>
                                             <OnPlatform x:TypeArguments="SeparatorVisibility">
                                                 <On Platform="iOS" Value="None" />
@@ -259,7 +220,7 @@
                                                                 <Label
                                                                     TextColor="Black"
                                                                     FontSize="Small"
-                                                                    Text="{Binding Title}"
+                                                                    Text="{Binding NameParameter}"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
                                                             <StackLayout
@@ -283,7 +244,7 @@
                     </StackLayout>
                 </ScrollView>
                 <StackLayout 
-                    VerticalOptions="End">
+                    VerticalOptions="EndAndExpand">
                     <Label 
                         Text="AST●ProBatch® Workload Automation © 2020"
                         HorizontalTextAlignment="Center"
@@ -299,15 +260,11 @@
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
-    <ContentPage Title="COMANDO" IconImageSource="tab_command">
-        <ContentPage.ToolbarItems>
-            <ToolbarItem BindingContext="{Binding BatchQuery}" Text="Buscar"  Icon="search" Command="{Binding SearchCommandsCommand}" />
-        </ContentPage.ToolbarItems>
+    <ContentPage Title="COMANDOS" IconImageSource="tab_command">
         <ContentPage.Content>
             <StackLayout
                 BindingContext="{Binding BatchQuery}">
-                <ScrollView
-                    VerticalOptions="FillAndExpand">
+                <ScrollView>
                     <StackLayout
                         Padding="10">
                         <BoxView
@@ -328,7 +285,7 @@
                             <Label
                                 HorizontalOptions="Center"
                                 Padding="5"
-                                Text="{Binding InstanceItem.Title}"
+                                Text="{Binding CommandItem.InstanceItem.NameInstance}"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"/>
                         </controls:CustomFrame>
@@ -337,7 +294,7 @@
                             CornerRadius="0,0,10,10"
                             BackgroundColor="DarkGray"
                             Padding="0"
-                            VerticalOptions="FillAndExpand">
+                            HeightRequest="475">
                             <StackLayout>
                                 <StackLayout
                                     Margin="10,15,10,0"
@@ -374,13 +331,11 @@
                                             LineBreakMode="TailTruncation"/>
                                     </StackLayout>
                                 </StackLayout>  
-                                <StackLayout
-                                    VerticalOptions="FillAndExpand">
+                                <StackLayout>
                                     <ListView
                                         ItemsSource="{Binding CommandItems}"
                                         BackgroundColor="Transparent"
-                                        SelectionMode="None"
-                                        HeightRequest="235">
+                                        SelectionMode="None">
                                         <ListView.SeparatorVisibility>
                                             <OnPlatform x:TypeArguments="SeparatorVisibility">
                                                 <On Platform="iOS" Value="None" />
@@ -400,7 +355,7 @@
                                                                 <Label
                                                                     TextColor="Black"
                                                                     FontSize="Small"
-                                                                    Text="{Binding Title}"
+                                                                    Text="{Binding NameCommand}"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
                                                             <StackLayout
@@ -421,7 +376,7 @@
                                                                     HorizontalOptions="Center"
                                                                     TextColor="Black"
                                                                     FontSize="Small"
-                                                                    Text="{Binding Status}"
+                                                                    Text="{Binding IdStatus}"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
                                                         </StackLayout>
@@ -436,7 +391,7 @@
                     </StackLayout>
                 </ScrollView>
                 <StackLayout 
-                    VerticalOptions="End">
+                    VerticalOptions="EndAndExpand">
                     <Label 
                         Text="AST●ProBatch® Workload Automation © 2020"
                         HorizontalTextAlignment="Center"
@@ -453,16 +408,14 @@
         </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="CALENDARIO" IconImageSource="tab_calendar">
-        <ContentPage.ToolbarItems>
-            <ToolbarItem BindingContext="{Binding BatchQuery}" Text="Buscar"  Icon="search" Command="{Binding SearchCalendarCommand}" />
-        </ContentPage.ToolbarItems>
         <ContentPage.Content>
             <StackLayout
                 BindingContext="{Binding BatchQuery}">
                 <ScrollView
                     VerticalOptions="FillAndExpand">
                     <StackLayout
-                        Padding="10">
+                        Padding="10"
+                        IsVisible="{Binding IsVisibleCalendar}">
                         <BoxView
                             HeightRequest="1" 
                             BackgroundColor="DarkGray" 
@@ -477,8 +430,7 @@
                         <controls:CustomFrame
                             CornerRadius="10,10,0,0"
                             BackgroundColor="#D7D7D7"
-                            Padding="0"
-                            IsVisible="{Binding IsVisibleCalendar}">
+                            Padding="0">
                             <Label
                                 HorizontalOptions="Center"
                                 Padding="5"
@@ -491,8 +443,7 @@
                             CornerRadius="0,0,10,10"
                             BackgroundColor="DarkGray"
                             Padding="0"
-                            VerticalOptions="Fill"
-                            IsVisible="{Binding IsVisibleCalendar}">
+                            VerticalOptions="Fill">
                             <StackLayout
                                 Padding="10">
                                 <StackLayout
@@ -502,19 +453,19 @@
                                         FontSize="Small"
                                         TextColor="#2255AA"
                                         Text="DIARIA"
-                                        IsVisible="{Binding IsDaily}"/>
+                                        IsVisible="{Binding BatchCalendarItem.Daily}"/>
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Small"
                                         TextColor="#2255AA"
                                         Text="SEMANAL"
-                                        IsVisible="{Binding IsWeekly}"/>
+                                        IsVisible="{Binding BatchCalendarItem.Weekly}"/>
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Small"
                                         TextColor="#2255AA"
                                         Text="MENSUAL"
-                                        IsVisible="{Binding IsMonthly}"/>
+                                        IsVisible="{Binding BatchCalendarItem.Monthly}"/>
                                 </StackLayout>
                                 <BoxView
                                     Margin="-10,0,-10,0"
@@ -525,15 +476,19 @@
                                 <StackLayout
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
-                                    IsVisible="{Binding IsDaily}">
+                                    IsVisible="{Binding BatchCalendarItem.Daily}">
                                     <Label
-                                        WidthRequest="80"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
                                         FontSize="Small"
                                         Text="Cada:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardPicker
+                                    <Label
+                                        TextColor="White"
+                                        FontSize="Small"
+                                        Text="{Binding BatchCalendarItem.RangeFrecuency}"
+                                        VerticalOptions="CenterAndExpand"/>
+                                    <!--<controls:StandardPicker
                                         Title="Seleccione..."
                                         ItemsSource="{Binding DayItems}"
                                         ItemDisplayBinding="{Binding DayName}"
@@ -548,9 +503,8 @@
                                         WidthRequest="50"
                                         HeightRequest="30"
                                         FontSize="Small"
-                                        IsEnabled="False"/>
+                                        IsEnabled="False"/>-->
                                     <Label
-                                        WidthRequest="130"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
                                         FontSize="Small"
@@ -558,13 +512,14 @@
                                         VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
                                 <StackLayout
-                                    IsVisible="{Binding IsWeekly}">
+                                    IsVisible="{Binding BatchCalendarItem.Weekly}">
                                     <StackLayout
-                                        Orientation="Horizontal">
+                                        Orientation="Horizontal"
+                                        IsVisible="{Binding BatchCalendarItem.ContraryBusinessDay}">
                                         <CheckBox
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding SpecificDays}"/>
+                                            IsChecked="{Binding BatchCalendarItem.ContraryBusinessDay}"/>
                                         <Label
                                             WidthRequest="130"
                                             TextColor="#2255AA"
@@ -575,7 +530,8 @@
                                     </StackLayout>
                                     <StackLayout
                                         Orientation="Horizontal"
-                                        HorizontalOptions="CenterAndExpand">
+                                        HorizontalOptions="CenterAndExpand"
+                                        IsVisible="{Binding BatchCalendarItem.ContraryBusinessDay}">
                                         <Label
                                             HorizontalTextAlignment="Center"
                                             Text="L"
@@ -627,49 +583,50 @@
                                     </StackLayout>
                                     <StackLayout
                                         Orientation="Horizontal"
-                                        HorizontalOptions="CenterAndExpand">
+                                        HorizontalOptions="CenterAndExpand"
+                                        IsVisible="{Binding BatchCalendarItem.ContraryBusinessDay}">
                                         <CheckBox
                                             HorizontalOptions="Center"
                                             WidthRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding Monday}"/>
+                                            IsChecked="{Binding BatchCalendarItem.Monday}"/>
                                         <CheckBox
                                             HorizontalOptions="Center"
                                             WidthRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding Tuesday}"/>
+                                            IsChecked="{Binding BatchCalendarItem.Tuesday}"/>
                                         <CheckBox
                                             HorizontalOptions="Center"
                                             WidthRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding Wednesday}"/>
+                                            IsChecked="{Binding BatchCalendarItem.Wednesday}"/>
                                         <CheckBox
                                             HorizontalOptions="Center"
                                             WidthRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding Thursday}"/>
+                                            IsChecked="{Binding BatchCalendarItem.Thursday}"/>
                                         <CheckBox
                                             HorizontalOptions="Center"
                                             WidthRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding Friday}"/>
+                                            IsChecked="{Binding BatchCalendarItem.Friday}"/>
                                         <CheckBox
                                             HorizontalOptions="Center"
                                             WidthRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding Saturday}"/>
+                                            IsChecked="{Binding BatchCalendarItem.Saturday}"/>
                                         <CheckBox
                                             HorizontalOptions="Center"
                                             WidthRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding Sunday}"/>
+                                            IsChecked="{Binding BatchCalendarItem.Sunday}"/>
                                         <CheckBox
                                             HorizontalOptions="Center"
                                             WidthRequest="50"
@@ -684,22 +641,28 @@
                                         HorizontalOptions="FillAndExpand">
                                     </BoxView>
                                     <StackLayout
-                                        Orientation="Horizontal">
+                                        Orientation="Horizontal"
+                                        IsVisible="{Binding BatchCalendarItem.BusinessDay}">
                                         <CheckBox
                                             HeightRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
                                             IsChecked="{Binding BusinessDays}"/>
                                         <Label
-                                            WidthRequest="80"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
                                             FontSize="Small"
                                             Text="El día hábil:"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
-                                    <StackLayout>
-                                        <controls:StandardPicker
+                                    <StackLayout
+                                        IsVisible="{Binding BatchCalendarItem.BusinessDay}">
+                                        <Label
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding BatchCalendarItem.WeeklyBusinessDay}"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <!--<controls:StandardPicker
                                             Title="..."
                                             ItemsSource="{Binding TheBusinessDayItems}"
                                             ItemDisplayBinding="{Binding TheBusinessDayName}"
@@ -714,24 +677,30 @@
                                             TextColor="#2255AA"
                                             HeightRequest="30"
                                             FontSize="Small"
-                                            IsEnabled="False"/>
+                                            IsEnabled="False"/>-->
                                     </StackLayout>
                                     <BoxView
                                         Margin="-10,0,-10,0"
                                         HeightRequest="1" 
                                         BackgroundColor="LightGray" 
-                                        HorizontalOptions="FillAndExpand">
+                                        HorizontalOptions="FillAndExpand"
+                                        IsVisible="{Binding BatchCalendarItem.Weekly}">
                                     </BoxView>
                                     <StackLayout
-                                        Orientation="Horizontal">
+                                        Orientation="Horizontal"
+                                        IsVisible="{Binding BatchCalendarItem.Weekly}">
                                         <Label
-                                            WidthRequest="80"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
                                             FontSize="Small"
-                                            Text="Frecuencia:"
+                                            Text="De cada:"
                                             VerticalOptions="CenterAndExpand"/>
-                                        <controls:StandardPicker
+                                        <Label
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding BatchCalendarItem.RangeFrecuency}"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <!--<controls:StandardPicker
                                             Title="..."
                                             ItemsSource="{Binding EveryWeeksItems}"
                                             ItemDisplayBinding="{Binding EveryWeeksName}"
@@ -746,9 +715,8 @@
                                             TextColor="#2255AA"
                                             HeightRequest="30"
                                             FontSize="Small"
-                                            IsEnabled="False"/>
+                                            IsEnabled="False"/>-->
                                         <Label
-                                            WidthRequest="70"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
                                             FontSize="Small"
@@ -757,22 +725,34 @@
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout
-                                    IsVisible="{Binding IsMonthly}">
+                                    IsVisible="{Binding BatchCalendarItem.Monthly}">
                                     <StackLayout
-                                        Orientation="Horizontal">
+                                        Orientation="Horizontal"
+                                        IsVisible="{Binding BatchCalendarItem.ContraryBusinessDay}">
                                         <CheckBox
                                             HeightRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding DaysMonth}"/>
+                                            IsChecked="{Binding BatchCalendarItem.ContraryBusinessDay}"/>
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
                                             FontSize="Small"
-                                            Text="Días del mes:"
+                                            Text="El:"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <Label
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding BatchCalendarItem.Day}"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <Label
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="día"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
-                                    <StackLayout
+                                    <!--<StackLayout
                                         Orientation="Horizontal">
                                         <controls:StandardPicker
                                             Title="..."
@@ -796,8 +776,8 @@
                                             FontSize="Small"
                                             Text="dia y los subsiguientes"
                                             VerticalOptions="CenterAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout
+                                    </StackLayout>-->
+                                    <!--<StackLayout
                                         Orientation="Horizontal">
                                         <controls:StandardPicker
                                             Title="..."
@@ -821,28 +801,45 @@
                                             FontSize="Small"
                                             Text="día(s)"
                                             VerticalOptions="CenterAndExpand"/>
-                                    </StackLayout>
-                                    <BoxView
+                                    </StackLayout>-->
+                                    <!--<BoxView
                                         Margin="-10,0,-10,0"
                                         HeightRequest="1" 
                                         BackgroundColor="LightGray" 
                                         HorizontalOptions="FillAndExpand">
-                                    </BoxView>
+                                    </BoxView>-->
                                     <StackLayout
-                                        Orientation="Horizontal">
+                                        Orientation="Horizontal"
+                                        IsVisible="{Binding BatchCalendarItem.BusinessDay}">
                                         <CheckBox
                                             HeightRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding MonthlyRange}"/>
+                                            IsChecked="{Binding BatchCalendarItem.BusinessDay}"/>
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
                                             FontSize="Small"
-                                            Text="Rango mensual:"
+                                            Text="El:"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <Label
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding BatchCalendarItem.MonthlyRangeDay}"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <Label
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text=" / "
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <Label
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding BatchCalendarItem.MonthlyDayWeek}"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
-                                    <StackLayout>
+                                    <!--<StackLayout>
                                         <controls:StandardPicker
                                             Title="..."
                                             ItemsSource="{Binding MonthlyRangeStartItems}"
@@ -875,20 +872,22 @@
                                             HeightRequest="30"
                                             FontSize="Small"
                                             IsEnabled="False"/>
-                                    </StackLayout>
+                                    </StackLayout>-->
                                     <BoxView
                                         Margin="-10,0,-10,0"
                                         HeightRequest="1" 
                                         BackgroundColor="LightGray" 
-                                        HorizontalOptions="FillAndExpand">
+                                        HorizontalOptions="FillAndExpand"
+                                        IsVisible="{Binding BatchCalendarItem.Monthly}">
                                     </BoxView>
                                     <StackLayout
-                                        Orientation="Horizontal">
+                                        Orientation="Horizontal"
+                                        IsVisible="{Binding BatchCalendarItem.BusinessDay}">
                                         <CheckBox
                                             HeightRequest="30"
                                             IsEnabled="False"
                                             Color="#2255AA"
-                                            IsChecked="{Binding MonthlyBusinessDay}"/>
+                                            IsChecked="{Binding BatchCalendarItem.BusinessDay}"/>
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
@@ -900,18 +899,24 @@
                                         Margin="-10,0,-10,0"
                                         HeightRequest="1" 
                                         BackgroundColor="LightGray" 
-                                        HorizontalOptions="FillAndExpand">
+                                        HorizontalOptions="FillAndExpand"
+                                        IsVisible="{Binding BatchCalendarItem.Monthly}">
                                     </BoxView>
                                     <StackLayout
-                                        Orientation="Horizontal">
+                                        Orientation="Horizontal"
+                                        IsVisible="{Binding BatchCalendarItem.Monthly}">
                                         <Label
-                                            WidthRequest="80"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
                                             FontSize="Small"
-                                            Text="Frecuencia:"
+                                            Text="De cada:"
                                             VerticalOptions="CenterAndExpand"/>
-                                        <controls:StandardPicker
+                                        <Label
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding BatchCalendarItem.RangeFrecuency}"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <!--<controls:StandardPicker
                                             Title="..."
                                             ItemsSource="{Binding EveryMonthItems}"
                                             ItemDisplayBinding="{Binding EveryMonthName}"
@@ -926,7 +931,7 @@
                                             TextColor="#2255AA"
                                             HeightRequest="30"
                                             FontSize="Small"
-                                            IsEnabled="False"/>
+                                            IsEnabled="False"/>-->
                                         <Label
                                             WidthRequest="70"
                                             TextColor="#2255AA"
@@ -942,7 +947,7 @@
                             CornerRadius="10,10,0,0"
                             BackgroundColor="#D7D7D7"
                             Padding="0"
-                            IsVisible="{Binding IsVisibleCalendar}">
+                            IsVisible="False">
                             <Label
                                 HorizontalOptions="Center"
                                 Padding="5"
@@ -956,7 +961,7 @@
                             BackgroundColor="DarkGray"
                             Padding="0"
                             VerticalOptions="Fill"
-                            IsVisible="{Binding IsVisibleCalendar}">
+                            IsVisible="False">
                             <StackLayout
                                 Padding="10">
                                 <StackLayout
@@ -1016,8 +1021,7 @@
                         <controls:CustomFrame
                             CornerRadius="10,10,0,0"
                             BackgroundColor="#D7D7D7"
-                            Padding="0"
-                            IsVisible="{Binding IsVisibleCalendar}">
+                            Padding="0">
                             <Label
                                 HorizontalOptions="Center"
                                 Padding="5"
@@ -1030,8 +1034,7 @@
                             CornerRadius="0,0,10,10"
                             BackgroundColor="DarkGray"
                             Padding="0"
-                            VerticalOptions="Fill"
-                            IsVisible="{Binding IsVisibleCalendar}">
+                            VerticalOptions="Fill">
                             <StackLayout
                                 Padding="10">
                                 <StackLayout Orientation="Horizontal">
@@ -1042,7 +1045,13 @@
                                         FontSize="Small"
                                         Text="Inicia el:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardEntry
+                                    <Label
+                                        WidthRequest="80"
+                                        TextColor="White"
+                                        FontSize="Small"
+                                        Text="{Binding BatchCalendarItem.StartDateString}"
+                                        VerticalOptions="CenterAndExpand"/>
+                                    <!--<controls:StandardEntry
                                         Text="{Binding StartDate, Mode=TwoWay}"
                                         Padding="5"
                                         BackgroundColor="White"
@@ -1053,12 +1062,12 @@
                                         TextColor="#2255AA"
                                         FontSize="Small"
                                         IsEnabled="False"
-                                        HorizontalOptions="FillAndExpand"/>
+                                        HorizontalOptions="FillAndExpand"/>-->
                                     <CheckBox
                                         IsEnabled="False"
                                         HeightRequest="30"
                                         Color="#2255AA"
-                                        IsChecked="{Binding Start}" />
+                                        IsChecked="{Binding BatchCalendarItem.StartChecked}" />
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label
@@ -1068,7 +1077,13 @@
                                         FontSize="Small"
                                         Text="Termina el:"
                                         VerticalOptions="CenterAndExpand"/>
-                                    <controls:StandardEntry
+                                    <Label
+                                        WidthRequest="80"
+                                        TextColor="White"
+                                        FontSize="Small"
+                                        Text="{Binding BatchCalendarItem.EndDateString}"
+                                        VerticalOptions="CenterAndExpand"/>
+                                    <!--<controls:StandardEntry
                                         Text="{Binding EndDate, Mode=TwoWay}"
                                         Padding="5"
                                         BackgroundColor="White"
@@ -1079,12 +1094,12 @@
                                         TextColor="#2255AA"
                                         FontSize="Small"
                                         IsEnabled="False"
-                                        HorizontalOptions="FillAndExpand"/>
+                                        HorizontalOptions="FillAndExpand"/>-->
                                     <CheckBox
                                         IsEnabled="False"
                                         HeightRequest="30"
                                         Color="#2255AA"
-                                        IsChecked="{Binding End}" />
+                                        IsChecked="{Binding BatchCalendarItem.EndChecked}" />
                                 </StackLayout>
                             </StackLayout>
                         </controls:CustomFrame>

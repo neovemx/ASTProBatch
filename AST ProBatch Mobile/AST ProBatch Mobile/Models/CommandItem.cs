@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AST_ProBatch_Mobile.Models
 {
@@ -26,6 +24,7 @@ namespace AST_ProBatch_Mobile.Models
         public bool IsEnabled { get; set; }
         public string StatusColor { get; set; }
         public InstanceItem InstanceItem { get; set; }
+        public bool Critical { get; set; }
 
         //public int Id { get; set; }
         //public int IdLot { get; set; }
