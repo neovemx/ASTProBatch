@@ -99,7 +99,4 @@
     <Folder Include="Views\StatisticalReports\LotAndCommand\" />
     <Folder Include="ViewModels\StatisticalReports\LotAndCommand\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Views\StatisticalReports\LotAndCommand\LotAndCommandPage.xaml.cs" />
-  </ItemGroup>
 </Project>
