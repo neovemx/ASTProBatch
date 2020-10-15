@@ -42,18 +42,29 @@
                             Padding="10">
                             <StackLayout
                                 Orientation="Horizontal">
-                                <Label 
-                                    FontAttributes="Bold"
+                                <Label
+                                    MinimumWidthRequest="85"
+                                    WidthRequest="85"
+                                    HorizontalOptions="Center"
                                     TextColor="#2255AA"
-                                    Text="Ambiente:" 
-                                    WidthRequest="75"
+                                    FontAttributes="Bold"
                                     FontSize="Small"
-                                    LineBreakMode="TailTruncation"/>
-                                <Label 
-                                    TextColor="White"
-                                    Text="{Binding CommandItem.TitleEnvironment}"
-                                    FontSize="Small"
-                                    LineBreakMode="TailTruncation"/>
+                                    Text="Plantilla:"
+                                    VerticalOptions="Center"/>
+                                <controls:StandardPicker
+                                    Title="Seleccione..."
+                                    ItemsSource="{Binding TemplateItems}"
+                                    ItemDisplayBinding="{Binding NameTemplateUser}"
+                                    SelectedItem="{Binding SelectedTemplate}"
+                                    HorizontalOptions="FillAndExpand"
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    BorderColor="#2255AA"
+                                    BorderThickness="2"
+                                    CornerRadius="7"
+                                    TextColor="#2255AA"
+                                    HeightRequest="30"
+                                    FontSize="Small"/>
                             </StackLayout>
                         </StackLayout>
                     </controls:CustomFrame>
@@ -261,7 +272,7 @@
                 </StackLayout>
             </ScrollView>
             <StackLayout 
-                VerticalOptions="End">
+                VerticalOptions="EndAndExpand">
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"

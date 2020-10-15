@@ -49,9 +49,6 @@
     <EmbeddedResource Update="Views\Planner\StatusInfoPlannerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StatisticalReports\CommandBatch\CommandBatchPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\MonitoringAndExecution\Execution\CommandNotificationsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -97,5 +94,12 @@
     <EmbeddedResource Update="Views\StatisticalReports\StatisticalReportsMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\StatisticalReports\LotAndCommand\" />
+    <Folder Include="ViewModels\StatisticalReports\LotAndCommand\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\StatisticalReports\LotAndCommand\LotAndCommandPage.xaml.cs" />
   </ItemGroup>
 </Project>

@@ -123,4 +123,37 @@ namespace AST_ProBatch_Mobile.Models.Service
     {
         public Int32 IdLot { get; set; }
     }
+
+    public class LotAndCommandLogQueryValues
+    {
+        public Int32 IdTemplate { get; set; }
+    }
+
+    public class LotAndCommandLotQueryValues
+    {
+        public Int32 IdLog { get; set; }
+    }
+
+    public class LotAndCommandCommandQueryValues
+    {
+        public Int32 IdLot { get; set; }
+    }
+
+    public class LotAndCommandResultQueryValues
+    {
+        public Int32 IdTemplate { get; set; }
+        public Int32 IdLog { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public Int32 Executions { get; set; }
+        public bool Monday { get; set; }
+        public bool Tuesday { get; set; }
+        public bool Wednesday { get; set; }
+        public bool Thursday { get; set; }
+        public bool Friday { get; set; }
+        public bool Saturday { get; set; }
+        public bool Sunday { get; set; }
+    }
 }

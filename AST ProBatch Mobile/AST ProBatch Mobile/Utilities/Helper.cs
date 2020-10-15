@@ -137,11 +137,20 @@ namespace AST_ProBatch_Mobile.Utilities
     public static class ApiController
     {
         public const string PBAuthTest = "/pbauth";
-        public const string PBMenuBTest = "/pbauth";
+        public const string PBMenuATest = "/pbmenua";
+        public const string PBMenuBTest = "/pbmenub";
+        public const string PBMenuCTest = "/pbmenuc";
+        public const string PBMenuDTest = "/pbmenud";
         public const string PBAuthApiAuth = "/pbauth/apiauth";
         public const string PBAuthAuthentication = "/pbauth/probatchauth";
+        public const string PBMenuAApiAuth = "/pbmenua/apiauth";
         public const string PBMenuBApiAuth = "/pbmenub/apiauth";
-        public const string PBMenuBExecute = "/pbmenub/probatchmonitoringandexecution";
+        public const string PBMenuCApiAuth = "/pbmenuc/apiauth";
+        public const string PBMenuDApiAuth = "/pbmenud/apiauth";
+        public const string PBMenuA = "/pbmenua/probatchstatisticalreports";
+        public const string PBMenuB = "/pbmenub/probatchmonitoringandexecution";
+        public const string PBMenuC = "";
+        public const string PBMenuD = "";
     }
 
     public static class ApiMethod
@@ -172,6 +181,11 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string BatchQueryGetParameters = "/batchquerygetparameters";
         public const string BatchQueryGetCommands = "/batchquerygetcommands";
         public const string BatchQueryGetCalendars = "/batchquerygetcalendars";
+        public const string LotAndCommandGetTemplates = "/lotandcommandgettemplate";
+        public const string LotAndCommandGetLogs = "/lotandcommandgetlogs";
+        public const string LotAndCommandGetLots = "/lotandcommandgetlots";
+        public const string LotAndCommandGetCommands = "/lotandcommandgetcommands";
+        public const string LotAndCommandGetResults = "/lotandcommandgetresults";
     }
 
     public static class TokenType

@@ -36,8 +36,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Btnsubma()
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new CommandBatchPage());
+            MainViewModel.GetInstance().LotAndCommand = new LotAndCommandViewModel(true);
+            await Application.Current.MainPage.Navigation.PushAsync(new LotAndCommandPage());
         }
 
         public ICommand BtnsubmbCommand

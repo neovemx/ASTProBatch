@@ -11,7 +11,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public SettingsViewModel Settings { get; set; }
         public StatisticalReportsMenuViewModel StatisticalReportsMenu { get; set; }
         public AboutViewModel About { get; set; }
-        public CommandBatchViewModel CommandBatch { get; set; }
+        public LotAndCommandViewModel LotAndCommand { get; set; }
         public LogExecutionDelayViewModel LogExecutionDelay { get; set; }
         public LogExecutionViewModel LogExecution { get; set; }
         public PlannerMenuViewModel PlannerMenu { get; set; }
@@ -73,7 +73,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.Settings = new SettingsViewModel();
             this.StatisticalReportsMenu = new StatisticalReportsMenuViewModel();
             this.About = new AboutViewModel();
-            this.CommandBatch = new CommandBatchViewModel();
+            this.LotAndCommand = new LotAndCommandViewModel(false);
             this.LogExecutionDelay = new LogExecutionDelayViewModel();
             this.LogExecution = new LogExecutionViewModel();
             this.PlannerMenu = new PlannerMenuViewModel();
