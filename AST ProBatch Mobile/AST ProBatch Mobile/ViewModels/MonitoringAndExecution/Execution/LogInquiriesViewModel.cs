@@ -514,7 +514,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 }
                 this.NameLot = this.LotSelected.NameLot;
                 UserDialogs.Instance.ShowLoading("Obteniendo comandos...", MaskType.Black);
-                ApiSrv = new Services.ApiService(ApiConsult.ApiAuth);
+                //ApiSrv = new Services.ApiService(ApiConsult.ApiAuth);
                 if (!await ApiIsOnline())
                 {
                     UserDialogs.Instance.HideLoading();
@@ -580,7 +580,6 @@ namespace AST_ProBatch_Mobile.ViewModels
                         UserDialogs.Instance.HideLoading();
                     }
                 }
-                //Alert.Show(this.LotSelected.NameLot.ToString());
             }
             catch //(Exception ex)
             {

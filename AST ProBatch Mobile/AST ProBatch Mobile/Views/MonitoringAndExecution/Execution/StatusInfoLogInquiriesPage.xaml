@@ -102,7 +102,7 @@
                 </ListView>
             </StackLayout>
             <StackLayout 
-                VerticalOptions="End">
+                VerticalOptions="EndAndExpand">
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"

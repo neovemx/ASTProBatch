@@ -41,10 +41,8 @@
                             Padding="10"
                             Orientation="Vertical">
                             <StackLayout
-                                Orientation="Horizontal">
+                                Orientation="Vertical">
                                 <Label
-                                    MinimumWidthRequest="85"
-                                    WidthRequest="85"
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
@@ -67,10 +65,8 @@
                                     FontSize="Small"/>
                             </StackLayout>
                             <StackLayout
-                                Orientation="Horizontal">
+                                Orientation="Vertical">
                                 <Label
-                                    MinimumWidthRequest="85"
-                                    WidthRequest="85"
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
@@ -79,7 +75,7 @@
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
                                     Title="Seleccione..."
-                                    ItemsSource="{Binding LogItems}"
+                                    ItemsSource="{Binding PickerLogItems}"
                                     ItemDisplayBinding="{Binding NameLog}"
                                     SelectedItem="{Binding LogSelected}"
                                     HorizontalOptions="FillAndExpand"
@@ -93,10 +89,8 @@
                                     FontSize="Small"/>
                             </StackLayout>
                             <StackLayout
-                                Orientation="Horizontal">
+                                Orientation="Vertical">
                                 <Label
-                                    MinimumWidthRequest="85"
-                                    WidthRequest="85"
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
@@ -105,7 +99,7 @@
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
                                     Title="Seleccione..."
-                                    ItemsSource="{Binding LotItems}"
+                                    ItemsSource="{Binding PickerLotItems}"
                                     ItemDisplayBinding="{Binding NameLot}"
                                     SelectedItem="{Binding LotSelected}"
                                     HorizontalOptions="FillAndExpand"
@@ -119,10 +113,8 @@
                                     FontSize="Small"/>
                             </StackLayout>
                             <StackLayout
-                                Orientation="Horizontal">
+                                Orientation="Vertical">
                                 <Label
-                                    MinimumWidthRequest="85"
-                                    WidthRequest="85"
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
@@ -131,7 +123,7 @@
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
                                     Title="Seleccione..."
-                                    ItemsSource="{Binding CommandItems}"
+                                    ItemsSource="{Binding PickerCommandItems}"
                                     ItemDisplayBinding="{Binding NameCommand}"
                                     SelectedItem="{Binding CommandSelected}"
                                     HorizontalOptions="FillAndExpand"
@@ -145,6 +137,7 @@
                                     FontSize="Small"/>
                             </StackLayout>
                             <StackLayout
+                                Margin="0,20,0,0"
                                 Orientation="Horizontal">
                                 <Label
                                     MinimumWidthRequest="85"

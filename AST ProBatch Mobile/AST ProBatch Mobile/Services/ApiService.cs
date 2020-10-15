@@ -391,6 +391,7 @@ namespace AST_ProBatch_Mobile.Services
         {
             try
             {
+                string test = JsonConvert.SerializeObject(queryValues);
                 var request = JsonConvert.SerializeObject(new CipherData { Data = Crypto.EncryptString(JsonConvert.SerializeObject(queryValues)) });
                 var content = new StringContent(request, Encoding.UTF8, "application/json");
                 var client = new HttpClient();

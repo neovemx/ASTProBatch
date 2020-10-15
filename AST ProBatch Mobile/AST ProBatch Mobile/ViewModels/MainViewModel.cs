@@ -1,4 +1,5 @@
-﻿using AST_ProBatch_Mobile.Models;
+﻿using System.Collections.ObjectModel;
+using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Services;
 
 namespace AST_ProBatch_Mobile.ViewModels
@@ -41,6 +42,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public StatusInfoLogInquiriesViewModel StatusInfoLogInquiries { get; set; }
         public DependenciesViewModel Dependencies { get; set; }
         public StatusInfoDependenciesViewModel StatusInfoDependencies { get; set; }
+        public LotAndCommandReportViewModel LotAndCommandReport { get; set; }
         #endregion
 
         #region Constructors
@@ -103,6 +105,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.StatusInfoLogInquiries = new StatusInfoLogInquiriesViewModel();
             this.Dependencies = new DependenciesViewModel(false, new Models.CommandItem());
             this.StatusInfoDependencies = new StatusInfoDependenciesViewModel();
+            this.LotAndCommandReport = new LotAndCommandReportViewModel(false, new ObservableCollection<LotAndCommandReportItem>());
         }
         #endregion
 
