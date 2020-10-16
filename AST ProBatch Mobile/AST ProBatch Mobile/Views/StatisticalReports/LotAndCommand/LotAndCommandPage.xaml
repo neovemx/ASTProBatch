@@ -140,8 +140,8 @@
                                 Margin="0,20,0,0"
                                 Orientation="Horizontal">
                                 <Label
-                                    MinimumWidthRequest="85"
-                                    WidthRequest="85"
+                                    MinimumWidthRequest="86"
+                                    WidthRequest="86"
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
@@ -164,8 +164,8 @@
                             <StackLayout
                                 Orientation="Horizontal">
                                 <Label
-                                    MinimumWidthRequest="85"
-                                    WidthRequest="85"
+                                    MinimumWidthRequest="86"
+                                    WidthRequest="86"
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
@@ -297,8 +297,8 @@
                             <StackLayout
                                 Orientation="Horizontal">
                                 <Label
-                                    MinimumWidthRequest="85"
-                                    WidthRequest="85"
+                                    MinimumWidthRequest="86"
+                                    WidthRequest="86"
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"

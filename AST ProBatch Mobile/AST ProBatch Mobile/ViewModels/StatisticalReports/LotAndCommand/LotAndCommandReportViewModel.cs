@@ -10,9 +10,9 @@ namespace AST_ProBatch_Mobile.ViewModels
     public class LotAndCommandReportViewModel : BaseViewModel
     {
         #region Atributes
-
-        #endregion
         private ObservableCollection<LotAndCommandReportItem> lotandcommandresult;
+        #endregion
+
         #region Properties
         public ObservableCollection<LotAndCommandReportItem> LotAndCommandResult
         {
