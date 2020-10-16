@@ -102,7 +102,7 @@
                     </ListView.SeparatorVisibility>
                     <ListView.RowHeight>
                         <OnPlatform x:TypeArguments="x:Int32">
-                            <On Platform="iOS" Value="226" />
+                            <On Platform="iOS" Value="235" />
                             <On Platform="Android" Value="248" />
                         </OnPlatform>
                     </ListView.RowHeight>
