@@ -115,17 +115,17 @@ namespace AST_ProBatch_Mobile.ViewModels
                         colorPos += 1;
                     }
                 }
-                this.BarChart = new BarChart() { Entries = entries };
+                this.BarChart = new BarChart() { LabelTextSize = 30, Entries = entries };
                 this.IsVisibleBarChart = true;
-                this.LineChart = new LineChart() { Entries = entries };
+                this.LineChart = new LineChart() { LabelTextSize = 30, Entries = entries };
                 this.IsVisibleLineChart = false;
-                this.PointChart = new PointChart() { Entries = entries };
+                this.PointChart = new PointChart() { LabelTextSize = 30, Entries = entries };
                 this.IsVisiblePointChart = false;
-                this.RadialGaugeChart = new RadialGaugeChart() { Entries = entries };
+                this.RadialGaugeChart = new RadialGaugeChart() { LabelTextSize = 30, Entries = entries };
                 this.IsVisibleRadialGaugeChart = false;
-                this.DonutChart = new DonutChart() { Entries = entries };
+                this.DonutChart = new DonutChart() { LabelTextSize = 30, Entries = entries };
                 this.IsVisibleDonutChart = false;
-                this.RadarChart = new RadarChart() { Entries = entries };
+                this.RadarChart = new RadarChart() { LabelTextSize = 30, Entries = entries };
                 this.IsVisibleRadarChart = false;
             }
         }
@@ -264,5 +264,196 @@ namespace AST_ProBatch_Mobile.ViewModels
             return color;
         }
         #endregion
+
+        //private List<ChartEntry> GetFixedData()
+        //{
+        //    List<ChartEntry> entries = new List<ChartEntry>();
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(445)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(76)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(22)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(30)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(90)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    }); entries.Add(new ChartEntry(70)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(550)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(120)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(90)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(80)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(10)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(20)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(40)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(30)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(10)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    entries.Add(new ChartEntry(90)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2EABBD")
+        //    });
+        //    entries.Add(new ChartEntry(50)
+        //    {
+        //        Label = "Valor 1",
+        //        ValueLabel = "40",
+        //        Color = SKColor.Parse("#2255AA")
+        //    });
+        //    return entries;
+        //}
     }
 }
