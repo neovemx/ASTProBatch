@@ -95,7 +95,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public static string Grey { get { return "#7F7F7F"; } }
         public static string Purple { get { return "#B9908E"; } }
         public static string Blue { get { return "#87CEFA"; } }
-        public static string Black { get { return "Black"; } }
+        public static string Black { get { return "#000000"; } }
         public static string DarkBlue { get { return "#070471"; } }
     }
 

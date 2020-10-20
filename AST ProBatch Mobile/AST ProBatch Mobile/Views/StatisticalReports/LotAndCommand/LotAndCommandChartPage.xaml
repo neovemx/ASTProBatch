@@ -49,62 +49,73 @@
                     Text="Tiempo de Ejecución"
                     VerticalOptions="Center"/>
             </StackLayout>
-            <StackLayout
-                Padding="15">
+            <ScrollView
+                Orientation="Both"
+                HorizontalScrollBarVisibility="Never"
+                VerticalScrollBarVisibility="Never"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
                 <StackLayout
-                    IsVisible="{Binding IsVisibleBarChart}"
-                    Margin="0,20,0,0"
-                    VerticalOptions="CenterAndExpand">
-                    <forms:ChartView
-                        HeightRequest="400"
-                        Chart="{Binding BarChart}"/>
+                    Padding="15">
+                    <StackLayout
+                        IsVisible="{Binding IsVisibleBarChart}"
+                        VerticalOptions="CenterAndExpand">
+                        <forms:ChartView
+                            HeightRequest="{Binding Zoom}"
+                            Chart="{Binding BarChart}"/>
+                    </StackLayout>
+                    <StackLayout
+                        IsVisible="{Binding IsVisibleLineChart}"
+                        VerticalOptions="CenterAndExpand">
+                        <forms:ChartView
+                            HeightRequest="{Binding Zoom}"
+                            Chart="{Binding LineChart}"/>
+                    </StackLayout>
+                    <StackLayout
+                        IsVisible="{Binding IsVisiblePointChart}"
+                        VerticalOptions="CenterAndExpand">
+                        <forms:ChartView
+                            HeightRequest="{Binding Zoom}"
+                            Chart="{Binding PointChart}"/>
+                    </StackLayout>
+                    <StackLayout
+                        IsVisible="{Binding IsVisibleRadialGaugeChart}"
+                        VerticalOptions="CenterAndExpand">
+                        <forms:ChartView
+                            HeightRequest="{Binding Zoom}"
+                            Chart="{Binding RadialGaugeChart}"/>
+                    </StackLayout>
+                    <StackLayout
+                        IsVisible="{Binding IsVisibleDonutChart}"
+                        VerticalOptions="CenterAndExpand">
+                        <forms:ChartView
+                            HeightRequest="{Binding Zoom}"
+                            Chart="{Binding DonutChart}"/>
+                    </StackLayout>
+                    <StackLayout
+                        IsVisible="{Binding IsVisibleRadarChart}"
+                        VerticalOptions="CenterAndExpand">
+                        <forms:ChartView
+                            HeightRequest="{Binding Zoom}"
+                            Chart="{Binding RadarChart}"/>
+                    </StackLayout>
                 </StackLayout>
-                <StackLayout
-                    IsVisible="{Binding IsVisibleLineChart}"
-                    Margin="0,20,0,0"
-                    VerticalOptions="CenterAndExpand">
-                    <forms:ChartView
-                        HeightRequest="400"
-                        Chart="{Binding LineChart}"/>
-                </StackLayout>
-                <StackLayout
-                    IsVisible="{Binding IsVisiblePointChart}"
-                    Margin="0,20,0,0"
-                    VerticalOptions="CenterAndExpand">
-                    <forms:ChartView
-                        HeightRequest="400"
-                        Chart="{Binding PointChart}"/>
-                </StackLayout>
-                <StackLayout
-                    IsVisible="{Binding IsVisibleRadialGaugeChart}"
-                    Margin="0,20,0,0"
-                    VerticalOptions="CenterAndExpand">
-                    <forms:ChartView
-                        HeightRequest="400"
-                        Chart="{Binding RadialGaugeChart}"/>
-                </StackLayout>
-                <StackLayout
-                    IsVisible="{Binding IsVisibleDonutChart}"
-                    Margin="0,20,0,0"
-                    VerticalOptions="CenterAndExpand">
-                    <forms:ChartView
-                        HeightRequest="400"
-                        Chart="{Binding DonutChart}"/>
-                </StackLayout>
-                <StackLayout
-                    IsVisible="{Binding IsVisibleRadarChart}"
-                    Margin="0,20,0,0"
-                    VerticalOptions="CenterAndExpand">
-                    <forms:ChartView
-                        HeightRequest="400"
-                        Chart="{Binding RadarChart}"/>
-                </StackLayout>
-            </StackLayout>
+            </ScrollView>
             <StackLayout
                 HorizontalOptions="Center"
-                VerticalOptions="EndAndExpand"
-                Orientation="Horizontal">
+                VerticalOptions="End"
+                Orientation="Horizontal"
+                Padding="30,0,30,0">
+                <Slider
+                    MinimumTrackColor="#2255AA"
+                    MaximumTrackColor="DarkGray"
+                    ThumbColor="#2255AA"
+                    WidthRequest="250"
+                    Maximum="500"
+                    Minimum="230"
+                    Value="{Binding Zoom}" />
                 <ImageButton
+                    Margin="10,0,0,0"
                     HeightRequest="50"
                     WidthRequest="50"
                     CornerRadius="25"
@@ -112,8 +123,8 @@
                     Source="chart_view"
                     Command="{Binding ViewCommand}"/>
             </StackLayout>
-            <StackLayout 
-                VerticalOptions="EndAndExpand">
+            <StackLayout
+                VerticalOptions="End">
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"

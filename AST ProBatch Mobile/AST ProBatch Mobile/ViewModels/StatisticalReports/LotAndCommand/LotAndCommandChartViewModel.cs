@@ -25,6 +25,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool isvisibleradialgaugechart;
         private bool isvisibledonutchart;
         private bool isvisibleradarchart;
+        private int zoom;
         #endregion
 
         #region Properties
@@ -88,6 +89,11 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return isvisibleradarchart; }
             set { SetValue(ref isvisibleradarchart, value); }
         }
+        public int Zoom
+        {
+            get { return zoom; }
+            set { SetValue(ref zoom, value); }
+        }
         #endregion
 
         #region Constructor
@@ -95,6 +101,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             if (IsReload)
             {
+                this.Zoom = 230;
                 int colorPos = 1;
                 List<ChartEntry> entries = new List<ChartEntry>();
                 foreach (LotAndCommandResult lotAndCommandResults in LotAndCommandResult)
@@ -127,6 +134,19 @@ namespace AST_ProBatch_Mobile.ViewModels
                 this.IsVisibleDonutChart = false;
                 this.RadarChart = new RadarChart() { LabelTextSize = 30, Entries = entries };
                 this.IsVisibleRadarChart = false;
+
+                //this.BarChart = new BarChart() { LabelTextSize = 20, Entries = GetFixedData() };
+                //this.IsVisibleBarChart = true;
+                //this.LineChart = new LineChart() { LabelTextSize = 20, Entries = GetFixedData() };
+                //this.IsVisibleLineChart = false;
+                //this.PointChart = new PointChart() { LabelTextSize = 20, Entries = GetFixedData() };
+                //this.IsVisiblePointChart = false;
+                //this.RadialGaugeChart = new RadialGaugeChart() { LabelTextSize = 20, Entries = GetFixedData() };
+                //this.IsVisibleRadialGaugeChart = false;
+                //this.DonutChart = new DonutChart() { LabelTextSize = 20, Entries = GetFixedData() };
+                //this.IsVisibleDonutChart = false;
+                //this.RadarChart = new RadarChart() { LabelTextSize = 20, Entries = GetFixedData() };
+                //this.IsVisibleRadarChart = false;
             }
         }
         #endregion
@@ -230,6 +250,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 case 2:
                     color = "#2EABBD";
                     break;
+
                     //case 1:
                     //    color = StatusColor.Green;
                     //    break;
@@ -263,197 +284,36 @@ namespace AST_ProBatch_Mobile.ViewModels
             }
             return color;
         }
-        #endregion
 
-        //private List<ChartEntry> GetFixedData()
-        //{
-        //    List<ChartEntry> entries = new List<ChartEntry>();
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(445)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(76)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(22)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(30)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(90)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    }); entries.Add(new ChartEntry(70)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(550)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(120)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(90)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(80)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(10)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(20)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(40)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(30)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(10)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    entries.Add(new ChartEntry(90)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2EABBD")
-        //    });
-        //    entries.Add(new ChartEntry(50)
-        //    {
-        //        Label = "Valor 1",
-        //        ValueLabel = "40",
-        //        Color = SKColor.Parse("#2255AA")
-        //    });
-        //    return entries;
-        //}
+        private List<ChartEntry> GetFixedData()
+        {
+            int colorPos = 1;
+            List<ChartEntry> entries = new List<ChartEntry>();
+            float value = 25;
+            for (int i = 1; i < 40; i++)
+            {
+                entries.Add(new ChartEntry(value)
+                {
+                    Label = "Valor " + i,
+                    ValueLabel = value.ToString(),
+                    Color = SKColor.Parse(GetColor(colorPos))
+                });
+                value += 25;
+                if (value == 200)
+                {
+                    value = 25;
+                }
+                if (colorPos == 2)
+                {
+                    colorPos = 1;
+                }
+                else
+                {
+                    colorPos += 1;
+                }
+            }
+            return entries;
+        }
+        #endregion
     }
 }
