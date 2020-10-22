@@ -46,6 +46,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         public StatusInfoDependenciesViewModel StatusInfoDependencies { get; set; }
         public LotAndCommandReportViewModel LotAndCommandReport { get; set; }
         public LotAndCommandChartViewModel LotAndCommandChart { get; set; }
+        public LogExecutionDelayReportViewModel LogExecutionDelayReport { get; set; }
+        public LogExecutionDelayChartViewModel LogExecutionDelayChart { get; set; }
         #endregion
 
         #region Constructors
@@ -79,7 +81,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.StatisticalReportsMenu = new StatisticalReportsMenuViewModel();
             this.About = new AboutViewModel();
             this.LotAndCommand = new LotAndCommandViewModel(false);
-            this.LogExecutionDelay = new LogExecutionDelayViewModel();
+            this.LogExecutionDelay = new LogExecutionDelayViewModel(false);
             this.LogExecution = new LogExecutionViewModel();
             this.PlannerMenu = new PlannerMenuViewModel();
             this.MonitoringAndExecutionMenu = new MonitoringAndExecutionMenuViewModel();
@@ -110,6 +112,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.StatusInfoDependencies = new StatusInfoDependenciesViewModel();
             this.LotAndCommandReport = new LotAndCommandReportViewModel(false, new ObservableCollection<LotAndCommandReportItem>());
             this.LotAndCommandChart = new LotAndCommandChartViewModel(false, new List<LotAndCommandResult>());
+            this.LogExecutionDelayReport = new LogExecutionDelayReportViewModel(false, new ObservableCollection<LogExecutionDelayReportItem>());
+            this.LogExecutionDelayChart = new LogExecutionDelayChartViewModel(false, new List<LogExecutionDelayResult>());
         }
         #endregion
 

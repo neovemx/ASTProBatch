@@ -5,12 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              mc:Ignorable="d"
-             x:Class="AST_ProBatch_Mobile.Views.LotAndCommandChartPage"
+             x:Class="AST_ProBatch_Mobile.Views.LogExecutionDelayChartPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding LotAndCommandChart}">
+            BindingContext="{Binding LogExecutionDelayChart}">
             <StackLayout
                 BackgroundColor="#53BA53"
                 Padding="5"
@@ -18,7 +18,7 @@
                 <Label 
                     FontSize="Large"
                     TextColor="White"
-                    Text="LOTE / COMANDO GRÁFICO"
+                    Text="DEMORA EJECUCIÓN BITÁCORA GRÁFICO"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
                     LineBreakMode="TailTruncation" />

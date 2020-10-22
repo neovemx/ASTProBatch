@@ -51,7 +51,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Btnsubmb()
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().LogExecutionDelay = new LogExecutionDelayViewModel(true);
             await Application.Current.MainPage.Navigation.PushAsync(new LogExecutionDelayPage());
         }
 

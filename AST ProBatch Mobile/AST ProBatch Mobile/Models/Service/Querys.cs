@@ -156,4 +156,32 @@ namespace AST_ProBatch_Mobile.Models.Service
         public bool Saturday { get; set; }
         public bool Sunday { get; set; }
     }
+
+    public class LogExecutionDelayLotQueryValues
+    {
+        public Int32 IdLog { get; set; }
+    }
+
+    public class LogExecutionDelayCommandQueryValues
+    {
+        public Int32 IdLot { get; set; }
+    }
+
+    public class LogExecutionDelayResultQueryValues
+    {
+        public Int32 IdTemplate { get; set; }
+        public Int32 IdLog { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
+        public Int32 IdEvent { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public bool Monday { get; set; }
+        public bool Tuesday { get; set; }
+        public bool Wednesday { get; set; }
+        public bool Thursday { get; set; }
+        public bool Friday { get; set; }
+        public bool Saturday { get; set; }
+        public bool Sunday { get; set; }
+    }
 }

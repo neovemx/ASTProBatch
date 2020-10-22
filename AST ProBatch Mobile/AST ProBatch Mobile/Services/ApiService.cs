@@ -342,6 +342,31 @@ namespace AST_ProBatch_Mobile.Services
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.LotAndCommandGetResults, QueryValues);
         }
+
+        public async Task<Response> LogExecutionDelayGetTemplates(string accessToken)
+        {
+            return await HttpGet(accessToken, this.ApiControllerSet, ApiMethod.LogExecutionDelayGetTemplates);
+        }
+
+        public async Task<Response> LogExecutionDelayGetEvents(string accessToken)
+        {
+            return await HttpGet(accessToken, this.ApiControllerSet, ApiMethod.LogExecutionDelayGetEvents);
+        }
+
+        public async Task<Response> LogExecutionDelayGetLots(string accessToken, LogExecutionDelayLotQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.LogExecutionDelayGetLots, QueryValues);
+        }
+
+        public async Task<Response> LogExecutionDelayGetCommands(string accessToken, LogExecutionDelayCommandQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.LogExecutionDelayGetCommands, QueryValues);
+        }
+
+        public async Task<Response> LogExecutionDelayGetResults(string accessToken, LogExecutionDelayResultQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.LogExecutionDelayGetResults, QueryValues);
+        }
         #endregion
 
         #region Helpers

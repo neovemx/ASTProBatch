@@ -186,6 +186,11 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string LotAndCommandGetLots = "/lotandcommandgetlots";
         public const string LotAndCommandGetCommands = "/lotandcommandgetcommands";
         public const string LotAndCommandGetResults = "/lotandcommandgetresults";
+        public const string LogExecutionDelayGetTemplates = "/logexecutiondelaygettemplates";
+        public const string LogExecutionDelayGetEvents = "/logexecutiondelaygetevents";
+        public const string LogExecutionDelayGetLots = "/logexecutiondelaygetlots";
+        public const string LogExecutionDelayGetCommands = "/logexecutiondelaygetcommands";
+        public const string LogExecutionDelayGetResults = "/logexecutiondelaygetresults";
     }
 
     public static class TokenType

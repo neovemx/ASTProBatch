@@ -186,6 +186,9 @@
     <BundleResource Include="Resources\chart_view.png" />
     <BundleResource Include="Resources\chart_view%402x.png" />
     <BundleResource Include="Resources\chart_view%403x.png" />
+    <BundleResource Include="Resources\clear.png" />
+    <BundleResource Include="Resources\clear%402x.png" />
+    <BundleResource Include="Resources\clear%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\settings%402x.png" />
