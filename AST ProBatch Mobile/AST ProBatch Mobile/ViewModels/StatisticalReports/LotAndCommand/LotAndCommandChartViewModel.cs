@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using AST_ProBatch_Mobile.Models.Service;
-using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using Microcharts;
 using SkiaSharp;

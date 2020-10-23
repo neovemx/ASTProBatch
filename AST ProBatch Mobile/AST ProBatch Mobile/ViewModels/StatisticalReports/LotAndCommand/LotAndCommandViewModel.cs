@@ -372,42 +372,6 @@ namespace AST_ProBatch_Mobile.ViewModels
                             Alert.Show("No hay datos para mostrar!");
                             return;
                         }
-                        //if (LotAndCommandReportItem == null)
-                        //{
-                        //    LotAndCommandReportItem = new ObservableCollection<LotAndCommandReportItem>();
-                        //}
-                        //else
-                        //{
-                        //    LotAndCommandReportItem.Clear();
-                        //}
-                        //foreach (LotAndCommandResult lotAndCommandResult in LotAndCommandResults)
-                        //{
-                        //    LotAndCommandReportItem.Add(new LotAndCommandReportItem()
-                        //    {
-                        //        IdTemplate = lotAndCommandResult.IdTemplate,
-                        //        Template = lotAndCommandResult.Template,
-                        //        IdLog = lotAndCommandResult.IdLog,
-                        //        Log = lotAndCommandResult.Log,
-                        //        Instance = lotAndCommandResult.Instance,
-                        //        IdLot = lotAndCommandResult.IdLot,
-                        //        Lot = lotAndCommandResult.Lot,
-                        //        IdCommand = lotAndCommandResult.IdCommand,
-                        //        Command = lotAndCommandResult.Command,
-                        //        IdCommandGroup = lotAndCommandResult.IdCommandGroup,
-                        //        CommandGroup = lotAndCommandResult.CommandGroup,
-                        //        IdEnvironment = lotAndCommandResult.IdEnvironment,
-                        //        Environment = lotAndCommandResult.Environment,
-                        //        ExecutionTime = lotAndCommandResult.ExecutionTime,
-                        //        StartDate = lotAndCommandResult.StartDate,
-                        //        StartTime = lotAndCommandResult.StartTime,
-                        //        EndDate = lotAndCommandResult.EndDate,
-                        //        IdStatus = lotAndCommandResult.IdStatus,
-                        //        Status = lotAndCommandResult.Status,
-                        //        StartDateString = (lotAndCommandResult.StartDate != null) ? ((DateTime)lotAndCommandResult.StartDate).ToString(DateTimeFormatString.LatinDate24Hours) : "",
-                        //        StartTimeString = (lotAndCommandResult.StartTime != null) ? ((DateTime)lotAndCommandResult.StartTime).ToString(DateTimeFormatString.Time24Hour) : "",
-                        //        EndDateString = (lotAndCommandResult.EndDate != null) ? ((DateTime)lotAndCommandResult.EndDate).ToString(DateTimeFormatString.LatinDate24Hours) : ""
-                        //    });
-                        //}
                         UserDialogs.Instance.HideLoading();
                         MainViewModel.GetInstance().LotAndCommandChart = new LotAndCommandChartViewModel(true, LotAndCommandResults);
                         await Application.Current.MainPage.Navigation.PushModalAsync(new LotAndCommandChartPage());

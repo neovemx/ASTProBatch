@@ -191,6 +191,8 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string LogExecutionDelayGetLots = "/logexecutiondelaygetlots";
         public const string LogExecutionDelayGetCommands = "/logexecutiondelaygetcommands";
         public const string LogExecutionDelayGetResults = "/logexecutiondelaygetresults";
+        public const string LogExecutionGetTemplates = "/logexecutiongettemplates";
+        public const string LogExecutionGetResults = "/logexecutiongetresults";
     }
 
     public static class TokenType

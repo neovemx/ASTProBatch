@@ -85,8 +85,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.LotAndCommand = new LotAndCommandViewModel(false);
             this.LogExecutionDelay = new LogExecutionDelayViewModel(false);
             this.LogExecution = new LogExecutionViewModel(false);
-            this.LogExecutionReport = new LogExecutionReportViewModel(false);
-            this.LogExecutionChart = new LogExecutionChartViewModel(false);
+            this.LogExecutionReport = new LogExecutionReportViewModel(false, new ObservableCollection<LogExecutionReportItem>());
+            this.LogExecutionChart = new LogExecutionChartViewModel(false, new List<LogExecutionResult>());
             this.PlannerMenu = new PlannerMenuViewModel();
             this.MonitoringAndExecutionMenu = new MonitoringAndExecutionMenuViewModel();
             this.OperationsLog = new OperationsLogViewModel();

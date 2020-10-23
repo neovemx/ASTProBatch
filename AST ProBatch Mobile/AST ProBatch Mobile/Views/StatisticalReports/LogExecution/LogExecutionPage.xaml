@@ -1,13 +1,273 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
              mc:Ignorable="d"
              x:Class="AST_ProBatch_Mobile.Views.LogExecutionPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Ejecución Bitácora"
              BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem BindingContext="{Binding LogExecution}" Text="Reporte"  Icon="report" Command="{Binding ReportCommand}" />
+        <ToolbarItem BindingContext="{Binding LogExecution}" Text="Gráfico"  Icon="graph" Command="{Binding GraphCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <StackLayout>
+            <ScrollView
+                VerticalOptions="FillAndExpand"
+                BindingContext="{Binding LogExecution}">
+                <StackLayout
+                    Padding="10">
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="Criterios de Búsqueda"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"
+                            LineBreakMode="TailTruncation"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout
+                            Padding="10"
+                            Orientation="Vertical">
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    HorizontalOptions="Center"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Plantilla:"
+                                    VerticalOptions="Center"/>
+                                <controls:StandardPicker
+                                    Title="Seleccione..."
+                                    ItemsSource="{Binding PickerTemplateItems}"
+                                    ItemDisplayBinding="{Binding NameTemplate}"
+                                    SelectedItem="{Binding TemplateSelected}"
+                                    HorizontalOptions="FillAndExpand"
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    BorderColor="#2255AA"
+                                    BorderThickness="1"
+                                    CornerRadius="7"
+                                    TextColor="#2255AA"
+                                    HeightRequest="30"
+                                    FontSize="Small"/>
+                            </StackLayout>
+                            <StackLayout
+                                Margin="0,20,0,0"
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumWidthRequest="86"
+                                    WidthRequest="86"
+                                    HorizontalOptions="Center"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Fecha Inicio:"
+                                    VerticalOptions="Center"/>
+                                <Button
+                                    Padding="0"
+                                    FontSize="Small"
+                                    HorizontalOptions="FillAndExpand"
+                                    HeightRequest="30"
+                                    BackgroundColor="White"
+                                    TextColor="#2255AA"
+                                    BorderColor="#2255AA"
+                                    BorderWidth="1"
+                                    CornerRadius="7"
+                                    Text="{Binding StartDateString}"
+                                    Command="{Binding StartDateCommand}"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumWidthRequest="86"
+                                    WidthRequest="86"
+                                    HorizontalOptions="Center"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Fecha Fin:"
+                                    VerticalOptions="Center"/>
+                                <Button
+                                    Padding="0"
+                                    FontSize="Small"
+                                    HorizontalOptions="FillAndExpand"
+                                    HeightRequest="30"
+                                    BackgroundColor="White"
+                                    TextColor="#2255AA"
+                                    BorderColor="#2255AA"
+                                    BorderWidth="1"
+                                    CornerRadius="7"
+                                    Text="{Binding EndDateString}"
+                                    Command="{Binding EndDateCommand}"/>
+                            </StackLayout>
+                            <StackLayout
+                                Margin="0,15,0,15"
+                                Orientation="Horizontal">
+                                <StackLayout
+                                    Orientation="Vertical"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="Small"
+                                        TextColor="White"
+                                        Text="L"/>
+                                    <CheckBox
+                                        Color="#2255AA"
+                                        IsChecked="{Binding WeekDays.Monday}"
+                                        HeightRequest="30"
+                                        WidthRequest="30"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Orientation="Vertical"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="Small"
+                                        TextColor="White"
+                                        Text="M"/>
+                                    <CheckBox
+                                        Color="#2255AA"
+                                        IsChecked="{Binding WeekDays.Tuesday}"
+                                        HeightRequest="30"
+                                        WidthRequest="30"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Orientation="Vertical"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="Small"
+                                        TextColor="White"
+                                        Text="M"/>
+                                    <CheckBox
+                                        Color="#2255AA"
+                                        IsChecked="{Binding WeekDays.Wednesday}"
+                                        HeightRequest="30"
+                                        WidthRequest="30"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Orientation="Vertical"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="Small"
+                                        TextColor="White"
+                                        Text="J"/>
+                                    <CheckBox
+                                        Color="#2255AA"
+                                        IsChecked="{Binding WeekDays.Thursday}"
+                                        HeightRequest="30"
+                                        WidthRequest="30"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Orientation="Vertical"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="Small"
+                                        TextColor="White"
+                                        Text="V"/>
+                                    <CheckBox
+                                        Color="#2255AA"
+                                        IsChecked="{Binding WeekDays.Friday}"
+                                        HeightRequest="30"
+                                        WidthRequest="30"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Orientation="Vertical"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="Small"
+                                        TextColor="White"
+                                        Text="S"/>
+                                    <CheckBox
+                                        Color="#2255AA"
+                                        IsChecked="{Binding WeekDays.Saturday}"
+                                        HeightRequest="30"
+                                        WidthRequest="30"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Orientation="Vertical"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="Small"
+                                        TextColor="White"
+                                        Text="D"/>
+                                    <CheckBox
+                                        Color="#2255AA"
+                                        IsChecked="{Binding WeekDays.Sunday}"
+                                        HeightRequest="30"
+                                        WidthRequest="30"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumWidthRequest="86"
+                                    WidthRequest="86"
+                                    HorizontalOptions="Center"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Ejecuciones:"
+                                    VerticalOptions="Center"/>
+                                <controls:StandardEntry
+                                    Text="{Binding Executions, Mode=TwoWay}"
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    BorderColor="#2255AA"
+                                    BorderThickness="1"
+                                    CornerRadius="7"
+                                    TextColor="#2255AA"
+                                    PlaceholderColor="DarkGray"
+                                    Placeholder="100"
+                                    MaxLength="250"
+                                    HorizontalOptions="FillAndExpand"
+                                    HeightRequest="30"
+                                    FontSize="Small"
+                                    Keyboard="Numeric"
+                                    ClearButtonVisibility="WhileEditing"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout 
+                VerticalOptions="EndAndExpand">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
