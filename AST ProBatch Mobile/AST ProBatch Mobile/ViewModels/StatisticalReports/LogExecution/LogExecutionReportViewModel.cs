@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
-    public class LogExecutionViewModel : BaseViewModel
+    public class LogExecutionReportViewModel : BaseViewModel
     {
         #region Atributes
 
@@ -15,9 +13,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public LogExecutionViewModel(bool IsReload)
+        public LogExecutionReportViewModel(bool IsReload)
         {
-
         }
         #endregion
 

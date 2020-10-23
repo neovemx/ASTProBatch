@@ -17,6 +17,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         public LotAndCommandViewModel LotAndCommand { get; set; }
         public LogExecutionDelayViewModel LogExecutionDelay { get; set; }
         public LogExecutionViewModel LogExecution { get; set; }
+        public LogExecutionReportViewModel LogExecutionReport { get; set; }
+        public LogExecutionChartViewModel LogExecutionChart { get; set; }
         public PlannerMenuViewModel PlannerMenu { get; set; }
         public MonitoringAndExecutionMenuViewModel MonitoringAndExecutionMenu { get; set; }
         public OperationsLogViewModel OperationsLog { get; set; }
@@ -82,7 +84,9 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.About = new AboutViewModel();
             this.LotAndCommand = new LotAndCommandViewModel(false);
             this.LogExecutionDelay = new LogExecutionDelayViewModel(false);
-            this.LogExecution = new LogExecutionViewModel();
+            this.LogExecution = new LogExecutionViewModel(false);
+            this.LogExecutionReport = new LogExecutionReportViewModel(false);
+            this.LogExecutionChart = new LogExecutionChartViewModel(false);
             this.PlannerMenu = new PlannerMenuViewModel();
             this.MonitoringAndExecutionMenu = new MonitoringAndExecutionMenuViewModel();
             this.OperationsLog = new OperationsLogViewModel();
