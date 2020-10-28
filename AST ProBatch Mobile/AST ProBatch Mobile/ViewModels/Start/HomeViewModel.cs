@@ -93,7 +93,7 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Btnmppalc()
         {
-            MainViewModel.GetInstance().OperationsLog = new OperationsLogViewModel();
+            MainViewModel.GetInstance().OperationsLog = new OperationsLogViewModel(true);
             await Application.Current.MainPage.Navigation.PushAsync(new OperationsLogPage());
         }
 

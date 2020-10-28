@@ -149,7 +149,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string PBMenuDApiAuth = "/pbmenud/apiauth";
         public const string PBMenuA = "/pbmenua/probatchstatisticalreports";
         public const string PBMenuB = "/pbmenub/probatchmonitoringandexecution";
-        public const string PBMenuC = "";
+        public const string PBMenuC = "/pbmenuc/probatchoperationslog";
         public const string PBMenuD = "";
     }
 
@@ -193,6 +193,14 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string LogExecutionDelayGetResults = "/logexecutiondelaygetresults";
         public const string LogExecutionGetTemplates = "/logexecutiongettemplates";
         public const string LogExecutionGetResults = "/logexecutiongetresults";
+        public const string OperationsLogGetLogs = "/operationsloggetlogs";
+        public const string OperationsLogGetUsers = "/operationsloggetusers";
+        public const string OperationsLogGetStatuses = "/operationsloggetstatuses";
+        public const string OperationsLogGetEnvironments = "/operationsloggetenvironments";
+        public const string OperationsLogGetServices = "/operationsloggetservices";
+        public const string OperationsLogGetLots = "/operationsloggetlots";
+        public const string OperationsLogGetCommands = "/operationsloggetcommands";
+        public const string OperationsLogGetResults = "/operationsloggetresults";
     }
 
     public static class TokenType

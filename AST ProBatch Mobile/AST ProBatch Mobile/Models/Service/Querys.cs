@@ -199,4 +199,30 @@ namespace AST_ProBatch_Mobile.Models.Service
         public bool Saturday { get; set; }
         public bool Sunday { get; set; }
     }
+
+    public class OperationsLogLogQueryValues
+    {
+        public bool Finished { get; set; }
+    }
+
+    public class OperationsLogCommandQueryValues
+    {
+        public Int32 IdLot { get; set; }
+    }
+
+
+    public class OperationsLogResultQueryValues
+    {
+        public Int32 IdLog { get; set; }
+        public string IdUser { get; set; }
+        public string IdStatus { get; set; }
+        public Int32 IdEnvironment { get; set; }
+        public Int32 IdService { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
+        public DateTime StartDateFrom { get; set; }
+        public DateTime StartDateTo { get; set; }
+        public DateTime EndDateFrom { get; set; }
+        public DateTime EndDateTo { get; set; }
+    }
 }

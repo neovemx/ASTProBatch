@@ -9,7 +9,6 @@ using Xamarin.Forms.Xaml;
 
 namespace AST_ProBatch_Mobile.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OperationsLogPage : ContentPage
     {
         public OperationsLogPage()

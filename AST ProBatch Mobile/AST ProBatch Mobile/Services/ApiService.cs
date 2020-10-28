@@ -58,6 +58,11 @@ namespace AST_ProBatch_Mobile.Services
                         urlApiConsult.Append(ApiController.PBMenuBTest);
                         urlApiConsult.Append(ApiMethod.Test);
                         break;
+                    case ApiConsult.ApiMenuC:
+                        urlApiConsult.Append(this.UrlDomain + this.UrlPrefix);
+                        urlApiConsult.Append(ApiController.PBMenuCTest);
+                        urlApiConsult.Append(ApiMethod.Test);
+                        break;
                 }
 
                 var response = await client.GetAsync(urlApiConsult.ToString());
@@ -150,7 +155,7 @@ namespace AST_ProBatch_Mobile.Services
                         break;
                     case ApiConsult.ApiMenuC:
                         urlApiConsult.Append(this.UrlPrefix);
-                        //urlApiConsult.Append(ApiController.PBMenuCApiAuth);
+                        urlApiConsult.Append(ApiController.PBMenuCApiAuth);
                         urlApiConsult.Append(ApiMethod.Login);
                         break;
                     case ApiConsult.ApiMenuD:
@@ -377,6 +382,46 @@ namespace AST_ProBatch_Mobile.Services
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.LogExecutionGetResults, QueryValues);
         }
+
+        public async Task<Response> OperationsLogGetLogs(string accessToken, OperationsLogLogQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.OperationsLogGetLogs, QueryValues);
+        }
+
+        public async Task<Response> OperationsLogGetUsers(string accessToken)
+        {
+            return await HttpGet(accessToken, this.ApiControllerSet, ApiMethod.OperationsLogGetUsers);
+        }
+
+        public async Task<Response> OperationsLogGetStatuses(string accessToken)
+        {
+            return await HttpGet(accessToken, this.ApiControllerSet, ApiMethod.OperationsLogGetStatuses);
+        }
+
+        public async Task<Response> OperationsLogGetEnvironments(string accessToken)
+        {
+            return await HttpGet(accessToken, this.ApiControllerSet, ApiMethod.OperationsLogGetEnvironments);
+        }
+
+        public async Task<Response> OperationsLogGetServices(string accessToken)
+        {
+            return await HttpGet(accessToken, this.ApiControllerSet, ApiMethod.OperationsLogGetServices);
+        }
+
+        public async Task<Response> OperationsLogGetLots(string accessToken)
+        {
+            return await HttpGet(accessToken, this.ApiControllerSet, ApiMethod.OperationsLogGetLots);
+        }
+
+        public async Task<Response> OperationsLogGetCommands(string accessToken, OperationsLogCommandQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.OperationsLogGetCommands, QueryValues);
+        }
+
+        public async Task<Response> OperationsLogGetResults(string accessToken, OperationsLogResultQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.OperationsLogGetResults, QueryValues);
+        }
         #endregion
 
         #region Helpers
@@ -493,7 +538,7 @@ namespace AST_ProBatch_Mobile.Services
                     this.ApiControllerSet = ApiController.PBMenuB;
                     break;
                 case ApiConsult.ApiMenuC:
-                    //this.ApiControllerSet = ApiController.PBMenuC;
+                    this.ApiControllerSet = ApiController.PBMenuC;
                     break;
                 case ApiConsult.ApiMenuD:
                     //this.ApiControllerSet = ApiController.PBMenuD;
