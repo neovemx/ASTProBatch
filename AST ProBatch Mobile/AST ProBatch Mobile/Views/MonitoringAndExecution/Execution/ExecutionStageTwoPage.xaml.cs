@@ -116,6 +116,16 @@ namespace AST_ProBatch_Mobile.Views
             }
         }
 
+        private void ImageButtonLogAction_6_Clicked(object sender, EventArgs e)
+        {
+            var imageButton = (ImageButton)sender;
+            var instanceItem = imageButton.CommandParameter as InstanceItem;
+            if (instanceItem != null)
+            {
+                Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Obervaciones para: " + instanceItem.NameInstance, "Aceptar");
+            }
+        }
+
         private void ImageButtonLogToolBarAction_1_Clicked(object sender, EventArgs e)
         {
             var imageButton = (ImageButton)sender;

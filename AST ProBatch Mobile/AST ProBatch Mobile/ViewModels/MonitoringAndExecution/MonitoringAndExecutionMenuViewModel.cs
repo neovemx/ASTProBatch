@@ -32,9 +32,12 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Btnsubmf()
         {
+            //await Application.Current.MainPage.Navigation.PopModalAsync();
+            //MainViewModel.GetInstance().Monitoring = new MonitoringViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new MonitoringPage());
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().Monitoring = new MonitoringViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new MonitoringPage());
+            MainViewModel.GetInstance().Execution = new ExecutionViewModel(true);
+            await Application.Current.MainPage.Navigation.PushAsync(new ExecutionPage());
         }
 
         public ICommand BtnsubmgCommand

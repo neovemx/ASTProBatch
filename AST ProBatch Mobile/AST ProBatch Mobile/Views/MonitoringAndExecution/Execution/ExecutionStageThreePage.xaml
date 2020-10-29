@@ -11,8 +11,8 @@
              BackgroundColor="White"
              NavigationPage.BackButtonTitle="">
     <ContentPage.ToolbarItems>
-        <ToolbarItem BindingContext="{Binding ExecutionStageThree}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />
-        <ToolbarItem BindingContext="{Binding ExecutionStageThree}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />
+        <!--<ToolbarItem BindingContext="{Binding ExecutionStageThree}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />
+        <ToolbarItem BindingContext="{Binding ExecutionStageThree}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />-->
         <ToolbarItem BindingContext="{Binding ExecutionStageThree}" Text="Ver"  Icon="{Binding ViewIcon}" Command="{Binding ViewCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -33,12 +33,9 @@
                             Orientation="Horizontal"
                             IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
                             <ImageButton
-                                BorderWidth="1"
-                                BorderColor="White"
                                 WidthRequest="35"
                                 HeightRequest="35"
-                                IsEnabled="False"
-                                BackgroundColor="DarkGray"
+                                BackgroundColor="#F1F2F6"
                                 CommandParameter="{Binding}"
                                 Source="action_ap"
                                 Clicked="ImageButtonToolBarAction_1_Clicked">
@@ -50,13 +47,10 @@
                                 </ImageButton.CornerRadius>
                             </ImageButton>
                             <ImageButton
-                                BorderWidth="1"
-                                BorderColor="White"
                                 WidthRequest="35"
                                 HeightRequest="35"
                                 CornerRadius="5"
-                                IsEnabled="False"
-                                BackgroundColor="DarkGray"
+                                BackgroundColor="#F1F2F6"
                                 CommandParameter="{Binding}"
                                 Source="action_ic"
                                 Clicked="ImageButtonToolBarAction_2_Clicked">
@@ -69,39 +63,6 @@
                             </ImageButton>
                         </StackLayout>
                         <!--<StackLayout
-                            Orientation="Horizontal"
-                            IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
-                            <ImageButton
-                                WidthRequest="35"
-                                HeightRequest="35"
-                                BackgroundColor="#F1F2F6"
-                                CommandParameter="{Binding}"
-                                Source="action_ap"
-                                Clicked="ImageButtonToolBarAction_1_Clicked">
-                                <ImageButton.CornerRadius>
-                                    <OnPlatform x:TypeArguments="x:Int32">
-                                        <On Platform="iOS" Value="17" />
-                                        <On Platform="Android" Value="50" />
-                                    </OnPlatform>
-                                </ImageButton.CornerRadius>
-                            </ImageButton>
-                            <ImageButton
-                                WidthRequest="35"
-                                HeightRequest="35"
-                                CornerRadius="5"
-                                BackgroundColor="#F1F2F6"
-                                CommandParameter="{Binding}"
-                                Source="action_ic"
-                                Clicked="ImageButtonToolBarAction_2_Clicked">
-                                <ImageButton.CornerRadius>
-                                    <OnPlatform x:TypeArguments="x:Int32">
-                                        <On Platform="iOS" Value="17" />
-                                        <On Platform="Android" Value="50" />
-                                    </OnPlatform>
-                                </ImageButton.CornerRadius>
-                            </ImageButton>
-                        </StackLayout>-->
-                        <StackLayout
                             Orientation="Horizontal">
                             <ImageButton
                                 WidthRequest="35"
@@ -118,7 +79,7 @@
                                     </OnPlatform>
                                 </ImageButton.CornerRadius>
                             </ImageButton>
-                        </StackLayout>
+                        </StackLayout>-->
                     </StackLayout>
                 </StackLayout>
             </controls:CustomFrame>
@@ -211,26 +172,7 @@
                                                 <StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton
-                                                        BorderWidth="1"
-                                                        BorderColor="White"
-                                                        BackgroundColor="DarkGray"
-                                                        IsEnabled="False"
-                                                        Source="action_ap"
-                                                        CommandParameter="{Binding}"
-                                                        Clicked="ImageButtonPause_Clicked"
-                                                        WidthRequest="35"
-                                                        HeightRequest="35">
-                                                        <ImageButton.CornerRadius>
-                                                            <OnPlatform x:TypeArguments="x:Int32">
-                                                                <On Platform="iOS" Value="17" />
-                                                                <On Platform="Android" Value="50" />
-                                                            </OnPlatform>
-                                                        </ImageButton.CornerRadius>
-                                                    </ImageButton>
-                                                </StackLayout>
-                                                <!--<StackLayout
-                                                    VerticalOptions="Center">
-                                                    <ImageButton 
+                                                        IsVisible="False"
                                                         BackgroundColor="#F1F2F6"
                                                         IsEnabled="{Binding IsEnabled}"
                                                         Source="action_ap"
@@ -245,7 +187,7 @@
                                                             </OnPlatform>
                                                         </ImageButton.CornerRadius>
                                                     </ImageButton>
-                                                </StackLayout>-->
+                                                </StackLayout>
                                                 <StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton
@@ -334,26 +276,7 @@
                                                         <StackLayout
                                                             IsVisible="{Binding InstanceItem.LogItem.IsEventual}">
                                                             <ImageButton
-                                                                BorderWidth="1"
-                                                                BorderColor="White"
-                                                                BackgroundColor="DarkGray"
-                                                                IsEnabled="{Binding IsEnabled}"
-                                                                CommandParameter="{Binding}"
-                                                                Source="action_ej"
-                                                                Clicked="ImageButtonAction_1_Clicked"
-                                                                WidthRequest="35"
-                                                                HeightRequest="35">
-                                                                <ImageButton.CornerRadius>
-                                                                    <OnPlatform x:TypeArguments="x:Int32">
-                                                                        <On Platform="iOS" Value="17" />
-                                                                        <On Platform="Android" Value="50" />
-                                                                    </OnPlatform>
-                                                                </ImageButton.CornerRadius>
-                                                            </ImageButton>
-                                                        </StackLayout>
-                                                        <!--<StackLayout
-                                                            IsVisible="{Binding InstanceItem.LogItem.IsEventual}">
-                                                            <ImageButton
+                                                                IsVisible="False"
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
@@ -368,7 +291,7 @@
                                                                     </OnPlatform>
                                                                 </ImageButton.CornerRadius>
                                                             </ImageButton>
-                                                        </StackLayout>-->
+                                                        </StackLayout>
                                                         <StackLayout
                                                             IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
                                                             <ImageButton
@@ -387,67 +310,8 @@
                                                                 </ImageButton.CornerRadius>
                                                             </ImageButton>
                                                         </StackLayout>
-                                                        <StackLayout>
-                                                            <ImageButton
-                                                                BorderWidth="1"
-                                                                BorderColor="White"
-                                                                BackgroundColor="DarkGray"
-                                                                IsEnabled="False"
-                                                                CommandParameter="{Binding}"
-                                                                Source="action_kl"
-                                                                Clicked="ImageButtonAction_3_Clicked"
-                                                                WidthRequest="35"
-                                                                HeightRequest="35">
-                                                                <ImageButton.CornerRadius>
-                                                                    <OnPlatform x:TypeArguments="x:Int32">
-                                                                        <On Platform="iOS" Value="17" />
-                                                                        <On Platform="Android" Value="50" />
-                                                                    </OnPlatform>
-                                                                </ImageButton.CornerRadius>
-                                                            </ImageButton>
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
-                                                            <ImageButton
-                                                                BorderWidth="1"
-                                                                BorderColor="White"
-                                                                BackgroundColor="DarkGray"
-                                                                IsEnabled="False"
-                                                                CommandParameter="{Binding}"
-                                                                Source="action_rm"
-                                                                Clicked="ImageButtonAction_4_Clicked"
-                                                                WidthRequest="35"
-                                                                HeightRequest="35">
-                                                                <ImageButton.CornerRadius>
-                                                                    <OnPlatform x:TypeArguments="x:Int32">
-                                                                        <On Platform="iOS" Value="17" />
-                                                                        <On Platform="Android" Value="50" />
-                                                                    </OnPlatform>
-                                                                </ImageButton.CornerRadius>
-                                                            </ImageButton>
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
-                                                            <ImageButton
-                                                                BorderWidth="1"
-                                                                BorderColor="White"
-                                                                BackgroundColor="DarkGray"
-                                                                IsEnabled="False"
-                                                                CommandParameter="{Binding}"
-                                                                Source="action_pr"
-                                                                Clicked="ImageButtonAction_5_Clicked"
-                                                                WidthRequest="35"
-                                                                HeightRequest="35">
-                                                                <ImageButton.CornerRadius>
-                                                                    <OnPlatform x:TypeArguments="x:Int32">
-                                                                        <On Platform="iOS" Value="17" />
-                                                                        <On Platform="Android" Value="50" />
-                                                                    </OnPlatform>
-                                                                </ImageButton.CornerRadius>
-                                                            </ImageButton>
-                                                        </StackLayout>
                                                         <!--<StackLayout>
-                                                            <ImageButton 
+                                                            <ImageButton
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
@@ -465,7 +329,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
-                                                            <ImageButton 
+                                                            <ImageButton
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
@@ -483,7 +347,7 @@
                                                         </StackLayout>
                                                         <StackLayout
                                                             IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
-                                                            <ImageButton 
+                                                            <ImageButton
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"
                                                                 CommandParameter="{Binding}"
@@ -506,26 +370,6 @@
                                                                 CommandParameter="{Binding}"
                                                                 Source="action_dc"
                                                                 Clicked="ImageButtonAction_6_Clicked"
-                                                                WidthRequest="35"
-                                                                HeightRequest="35">
-                                                                <ImageButton.CornerRadius>
-                                                                    <OnPlatform x:TypeArguments="x:Int32">
-                                                                        <On Platform="iOS" Value="17" />
-                                                                        <On Platform="Android" Value="50" />
-                                                                    </OnPlatform>
-                                                                </ImageButton.CornerRadius>
-                                                            </ImageButton>
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            IsVisible="{Binding InstanceItem.LogItem.NotIsEventual}">
-                                                            <ImageButton
-                                                                BorderWidth="1"
-                                                                BorderColor="White"
-                                                                BackgroundColor="DarkGray"
-                                                                IsEnabled="False"
-                                                                CommandParameter="{Binding}"
-                                                                Source="action_rc"
-                                                                Clicked="ImageButtonAction_7_Clicked"
                                                                 WidthRequest="35"
                                                                 HeightRequest="35">
                                                                 <ImageButton.CornerRadius>
