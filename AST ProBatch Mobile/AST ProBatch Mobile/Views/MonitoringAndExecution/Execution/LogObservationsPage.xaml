@@ -100,7 +100,7 @@
                                 Padding="5,10,5,0">
                                 <StackLayout
                                     VerticalOptions="Center"
-                                    WidthRequest="75">
+                                    WidthRequest="80">
                                     <Label
                                         HorizontalOptions="Center"
                                         FontAttributes="Bold"
@@ -150,7 +150,7 @@
                                                         Orientation="Horizontal">
                                                         <StackLayout
                                                             VerticalOptions="Center"
-                                                            WidthRequest="75">
+                                                            WidthRequest="80">
                                                             <Label 
                                                                 TextColor="Black"
                                                                 Text="{Binding DateObsvString}"

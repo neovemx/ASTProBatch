@@ -238,22 +238,22 @@ namespace AST_ProBatch_Mobile.Services
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.GetOperatorChange, QueryValues);
         }
 
-        public async Task<Response> GetObservationsByLogAndUser(string accessToken, ObservationGetQueryValues QueryValues)
+        public async Task<Response> GetObservations(string accessToken, ObservationGetQueryValues QueryValues)
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.GetObservations, QueryValues);
         }
 
-        public async Task<Response> AddObservationsByLogAndUser(string accessToken, ObservationAddQueryValues QueryValues)
+        public async Task<Response> AddObservations(string accessToken, ObservationAddQueryValues QueryValues)
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.AddObservation, QueryValues);
         }
 
-        public async Task<Response> ModObservationsByLogAndUser(string accessToken, ObservationModQueryValues QueryValues)
+        public async Task<Response> ModObservations(string accessToken, ObservationModQueryValues QueryValues)
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.ModObservation, QueryValues);
         }
 
-        public async Task<Response> DelObservationsByLogAndUser(string accessToken, ObservationDelQueryValues QueryValues)
+        public async Task<Response> DelObservations(string accessToken, ObservationDelQueryValues QueryValues)
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.DelObservation, QueryValues);
         }

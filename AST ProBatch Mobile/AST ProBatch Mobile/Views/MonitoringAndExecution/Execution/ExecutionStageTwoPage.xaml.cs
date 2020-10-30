@@ -122,7 +122,8 @@ namespace AST_ProBatch_Mobile.Views
             var instanceItem = imageButton.CommandParameter as InstanceItem;
             if (instanceItem != null)
             {
-                Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Obervaciones para: " + instanceItem.NameInstance, "Aceptar");
+                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, instanceItem.LogItem);
+                Application.Current.MainPage.Navigation.PushAsync(new LogObservationsPage());
             }
         }
 
@@ -190,7 +191,8 @@ namespace AST_ProBatch_Mobile.Views
                     Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
                     return;
                 }
-                Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Obervaciones para: " + instamceitemcount + " instacias seleccionadas.", "Aceptar");
+                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, instanceItem.LogItem);
+                Application.Current.MainPage.Navigation.PushAsync(new LogObservationsPage());
             }
         }
 

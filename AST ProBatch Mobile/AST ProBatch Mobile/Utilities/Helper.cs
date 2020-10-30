@@ -164,9 +164,9 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string GetOperatorChangeInstances = "/getoperatorchangeinstances";
         public const string GetOperatorChangeUserIsInAllInstances = "/getoperatorchangeuserisinallinstances";
         public const string GetOperatorChange = "/getoperatorchange";
-        public const string GetObservations = "/getobservationsbyloganduser";
-        public const string AddObservation = "/addobservationsbyloganduser";
-        public const string ModObservation = "/modobservationsbyloganduser";
+        public const string GetObservations = "/getobservations";
+        public const string AddObservation = "/addobservations";
+        public const string ModObservation = "/modobservations";
         public const string DelObservation = "/delobservations";
         public const string ControlSchedulesExecution = "/getControlschedulesexecution";
         public const string LogInquirieGetLots = "/loginquiriesgetlots";

@@ -502,8 +502,7 @@
                                                                 </ImageButton.CornerRadius>
                                                             </ImageButton>
                                                         </StackLayout>
-                                                        <StackLayout
-                                                            IsVisible="{Binding LogItem.NotIsEventual}">
+                                                        <StackLayout>
                                                             <ImageButton 
                                                                 CornerRadius="5"
                                                                 BackgroundColor="#F1F2F6"

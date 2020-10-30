@@ -155,10 +155,13 @@ namespace AST_ProBatch_Mobile.ViewModels
                             IdObsv = this.SelectedObservation.IdObsv,
                             IdLog = this.LogItem.IdLog,
                             IdUser = PbUser.IdUser,
+                            IdInstance = 0,
+                            IdLot = 0,
+                            IdCommand = 0,
                             NameObsv = this.Name,
                             DetailObsv = this.Details
                         };
-                        Response resultObservationsMod = await ApiSrv.ModObservationsByLogAndUser(TokenGet.Key, QueryValuesMod);
+                        Response resultObservationsMod = await ApiSrv.ModObservations(TokenGet.Key, QueryValuesMod);
                         if (!resultObservationsMod.IsSuccess)
                         {
                             UserDialogs.Instance.HideLoading();
@@ -176,9 +179,12 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     ObservationGetQueryValues QueryValuesGet = new ObservationGetQueryValues()
                                     {
                                         IdLog = this.LogItem.IdLog,
-                                        IdUser = PbUser.IdUser
+                                        IdUser = PbUser.IdUser,
+                                        IdInstance = 0,
+                                        IdLot = 0,
+                                        IdCommand = 0
                                     };
-                                    Response resultObservationsGet = await ApiSrv.GetObservationsByLogAndUser(TokenGet.Key, QueryValuesGet);
+                                    Response resultObservationsGet = await ApiSrv.GetObservations(TokenGet.Key, QueryValuesGet);
                                     if (!resultObservationsGet.IsSuccess)
                                     {
                                         UserDialogs.Instance.HideLoading();
@@ -245,10 +251,13 @@ namespace AST_ProBatch_Mobile.ViewModels
                         {
                             IdLog = this.LogItem.IdLog,
                             IdUser = PbUser.IdUser,
+                            IdInstance = 0,
+                            IdLot = 0,
+                            IdCommand = 0,
                             NameObsv = this.Name,
                             DetailObsv = this.Details
                         };
-                        Response resultObservationsAdd = await ApiSrv.AddObservationsByLogAndUser(TokenGet.Key, QueryValuesAdd);
+                        Response resultObservationsAdd = await ApiSrv.AddObservations(TokenGet.Key, QueryValuesAdd);
                         if (!resultObservationsAdd.IsSuccess)
                         {
                             UserDialogs.Instance.HideLoading();
@@ -266,9 +275,12 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     ObservationGetQueryValues QueryValuesGet = new ObservationGetQueryValues()
                                     {
                                         IdLog = this.LogItem.IdLog,
-                                        IdUser = PbUser.IdUser
+                                        IdUser = PbUser.IdUser,
+                                        IdInstance = 0,
+                                        IdLot = 0,
+                                        IdCommand = 0
                                     };
-                                    Response resultObservationsGet = await ApiSrv.GetObservationsByLogAndUser(TokenGet.Key, QueryValuesGet);
+                                    Response resultObservationsGet = await ApiSrv.GetObservations(TokenGet.Key, QueryValuesGet);
                                     if (!resultObservationsGet.IsSuccess)
                                     {
                                         UserDialogs.Instance.HideLoading();
@@ -368,7 +380,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     {
                         IdObsv = this.SelectedObservation.IdObsv
                     };
-                    Response resultObservationsDel = await ApiSrv.DelObservationsByLogAndUser(TokenGet.Key, QueryValuesDel);
+                    Response resultObservationsDel = await ApiSrv.DelObservations(TokenGet.Key, QueryValuesDel);
                     if (!resultObservationsDel.IsSuccess)
                     {
                         UserDialogs.Instance.HideLoading();
@@ -390,9 +402,12 @@ namespace AST_ProBatch_Mobile.ViewModels
                             ObservationGetQueryValues QueryValuesGet = new ObservationGetQueryValues()
                             {
                                 IdLog = this.LogItem.IdLog,
-                                IdUser = PbUser.IdUser
+                                IdUser = PbUser.IdUser,
+                                IdInstance = 0,
+                                IdLot = 0,
+                                IdCommand = 0
                             };
-                            Response resultObservationsGet = await ApiSrv.GetObservationsByLogAndUser(TokenGet.Key, QueryValuesGet);
+                            Response resultObservationsGet = await ApiSrv.GetObservations(TokenGet.Key, QueryValuesGet);
                             if (!resultObservationsGet.IsSuccess)
                             {
                                 UserDialogs.Instance.HideLoading();
@@ -467,9 +482,12 @@ namespace AST_ProBatch_Mobile.ViewModels
                         ObservationGetQueryValues QueryValues = new ObservationGetQueryValues()
                         {
                             IdLog = this.LogItem.IdLog,
-                            IdUser = PbUser.IdUser
+                            IdUser = PbUser.IdUser,
+                            IdInstance = 0,
+                            IdLot = 0,
+                            IdCommand = 0
                         };
-                        Response resultObservationsGet = await ApiSrv.GetObservationsByLogAndUser(TokenGet.Key, QueryValues);
+                        Response resultObservationsGet = await ApiSrv.GetObservations(TokenGet.Key, QueryValues);
                         if (!resultObservationsGet.IsSuccess)
                         {
                             UserDialogs.Instance.HideLoading();

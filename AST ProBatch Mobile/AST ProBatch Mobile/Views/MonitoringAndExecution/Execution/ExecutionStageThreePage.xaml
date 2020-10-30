@@ -398,8 +398,7 @@
                                                                 </ImageButton.CornerRadius>
                                                             </ImageButton>
                                                         </StackLayout>-->
-                                                        <StackLayout
-                                                            IsVisible="{Binding InstanceItem.LogItem.IsEventual}">
+                                                        <StackLayout>
                                                             <ImageButton 
                                                                 BackgroundColor="#F1F2F6"
                                                                 IsEnabled="{Binding IsEnabled}"

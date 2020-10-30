@@ -133,11 +133,8 @@ namespace AST_ProBatch_Mobile.Views
             var commandItem = imageButton.CommandParameter as CommandItem;
             if (commandItem != null)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Observaciones: " + commandItem.NameCommand + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
-                });
+                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, commandItem.InstanceItem.LogItem);
+                Application.Current.MainPage.Navigation.PushAsync(new LogObservationsPage());
             }
         }
 

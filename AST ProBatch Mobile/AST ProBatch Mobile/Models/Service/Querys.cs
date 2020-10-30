@@ -47,12 +47,18 @@ namespace AST_ProBatch_Mobile.Models.Service
     {
         public Int32 IdLog { get; set; }
         public string IdUser { get; set; }
+        public Int32 IdInstance { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
     }
 
     public class ObservationAddQueryValues
     {
         public Int32 IdLog { get; set; }
         public string IdUser { get; set; }
+        public Int32 IdInstance { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
         public string NameObsv { get; set; }
         public string DetailObsv { get; set; }
     }
@@ -62,6 +68,9 @@ namespace AST_ProBatch_Mobile.Models.Service
         public Int32 IdObsv { get; set; }
         public Int32 IdLog { get; set; }
         public string IdUser { get; set; }
+        public Int32 IdInstance { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
         public string NameObsv { get; set; }
         public string DetailObsv { get; set; }
     }
