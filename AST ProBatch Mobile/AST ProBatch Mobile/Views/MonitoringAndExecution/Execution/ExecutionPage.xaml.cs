@@ -101,7 +101,7 @@ namespace AST_ProBatch_Mobile.Views
             var logItem = imageButton.CommandParameter as LogItem;
             if (logItem != null)
             {
-                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, logItem);
+                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, new LotAndCommandObservation(), logItem);
                 Application.Current.MainPage.Navigation.PushAsync(new LogObservationsPage());
             }
         }

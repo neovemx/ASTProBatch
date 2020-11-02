@@ -484,7 +484,9 @@
                                                                 </ImageButton.CornerRadius>
                                                             </ImageButton>
                                                         </StackLayout>
-                                                        <StackLayout>
+                                                        <!--
+                                                            ELIMININAR
+                                                            <StackLayout>
                                                             <ImageButton 
                                                                 CornerRadius="5"
                                                                 BackgroundColor="#F1F2F6"
@@ -501,7 +503,7 @@
                                                                     </OnPlatform>
                                                                 </ImageButton.CornerRadius>
                                                             </ImageButton>
-                                                        </StackLayout>
+                                                        </StackLayout>-->
                                                         <StackLayout>
                                                             <ImageButton 
                                                                 CornerRadius="5"

@@ -1,5 +1,7 @@
-﻿using AST_ProBatch_Mobile.Interfaces;
+﻿using Acr.UserDialogs;
+//using AST_ProBatch_Mobile.Interfaces;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Utilities;
 using AST_ProBatch_Mobile.ViewModels;
 using System;
 using Xamarin.Forms;
@@ -22,7 +24,8 @@ namespace AST_ProBatch_Mobile.Views
             if (commandItem != null)
             {
                 var result = await this.DisplayAlert("AST●ProBatch®", "Pausar el: " + commandItem.NameCommand + "?", "Sí", "No");
-                if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                Toast.ShowMessage("Procesando...");
+                //if (result) DependencyService.Get<Toast>().Show("Procesando...");
             }
         }
 
@@ -41,7 +44,8 @@ namespace AST_ProBatch_Mobile.Views
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var result = await this.DisplayAlert("AST●ProBatch®", "Ejecutar para: " + commandItem.NameCommand + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                    Toast.ShowMessage("Procesando...");
+                    //if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
         }
@@ -55,7 +59,8 @@ namespace AST_ProBatch_Mobile.Views
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var result = await this.DisplayAlert("AST●ProBatch®", "Ver resultados para: " + commandItem.NameCommand + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                    Toast.ShowMessage("Procesando...");
+                    //if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
         }
@@ -69,7 +74,8 @@ namespace AST_ProBatch_Mobile.Views
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var result = await this.DisplayAlert("AST●ProBatch®", "Matar proceso para: " + commandItem.NameCommand + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                    Toast.ShowMessage("Procesando...");
+                    //if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
         }
@@ -83,7 +89,8 @@ namespace AST_ProBatch_Mobile.Views
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var result = await this.DisplayAlert("AST●ProBatch®", "Reejecutar: " + commandItem.NameCommand + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                    Toast.ShowMessage("Procesando...");
+                    //if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
         }
@@ -108,7 +115,8 @@ namespace AST_ProBatch_Mobile.Views
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var result = await this.DisplayAlert("AST●ProBatch®", "Datos del comando para: " + commandItem.NameCommand + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                    Toast.ShowMessage("Procesando...");
+                    //if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
         }
@@ -122,7 +130,8 @@ namespace AST_ProBatch_Mobile.Views
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var result = await this.DisplayAlert("AST●ProBatch®", "Reconectar: " + commandItem.NameCommand + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
+                    Toast.ShowMessage("Procesando...");
+                    //if (result) DependencyService.Get<Toast>().Show("Procesando...");
                 });
             }
         }
@@ -133,7 +142,14 @@ namespace AST_ProBatch_Mobile.Views
             var commandItem = imageButton.CommandParameter as CommandItem;
             if (commandItem != null)
             {
-                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, commandItem.InstanceItem.LogItem);
+                LotAndCommandObservation lotAndCommandObservation = new LotAndCommandObservation()
+                {
+                    HasData = true,
+                    IdInstance = commandItem.InstanceItem.IdInstance,
+                    IdLot = commandItem.IdLot,
+                    IdCommand = commandItem.IdCommand
+                };
+                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, lotAndCommandObservation, commandItem.InstanceItem.LogItem);
                 Application.Current.MainPage.Navigation.PushAsync(new LogObservationsPage());
             }
         }
@@ -227,6 +243,109 @@ namespace AST_ProBatch_Mobile.Views
                     return;
                 }
                 Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Observaciones para: " + instamceitemcount + " lotes seleccionados.", "Aceptar");
+            }
+        }
+
+        private void ToolbarSearch_Clicked(Object sender, EventArgs e)
+        {
+            try
+            {
+                
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var toolbarItem = (ToolbarItem)sender;
+                    var contextPage = toolbarItem.CommandParameter as ExecutionStageThreeViewModel;
+                    CommandItem commandItem = new CommandItem();
+                    LotAndCommandFinder lotAndCommandFinder = new LotAndCommandFinder();
+                    PromptConfig promptConfig = new PromptConfig();
+                    promptConfig.SetTitle("Criterios de Búsqueda");
+                    promptConfig.SetCancelText("Cancelar");
+                    promptConfig.SetOkText("Buscar");
+                    promptConfig.InputType = InputType.Default;
+                    promptConfig.SetMessage("Puede ingresar el nombre completo o parte el mismo de un lote o comando a buscar así como una combinación de ambos separados por ':'");
+                    promptConfig.SetPlaceholder("1 - LOTE : 1 - COMANDO");
+                    promptConfig.IsCancellable = true;
+                    var criteriaValues = await UserDialogs.Instance.PromptAsync(promptConfig);
+                    if (criteriaValues.Ok)
+                    {
+                        if (criteriaValues.Text.Contains(":"))
+                        {
+                            if (criteriaValues.Text.Split(':').Length > 2)
+                            {
+                                Alert.Show("Sólo debe ingresar una vez el separador ':'");
+                                return;
+                            }
+                            if (string.IsNullOrEmpty(criteriaValues.Text.Split(':')[0]))
+                            {
+                                Alert.Show("Debe ingresar un criterio antes del separador de búsqueda!");
+                                return;
+                            }
+                            if (string.IsNullOrWhiteSpace(criteriaValues.Text.Split(':')[0]))
+                            {
+                                Alert.Show("Debe ingresar un criterio antes del separador de búsqueda!");
+                                return;
+                            }
+                            if (string.IsNullOrEmpty(criteriaValues.Text.Split(':')[1]))
+                            {
+                                Alert.Show("Debe ingresar un criterio después del separador de búsqueda!");
+                                return;
+                            }
+                            if (string.IsNullOrWhiteSpace(criteriaValues.Text.Split(':')[1]))
+                            {
+                                Alert.Show("Debe ingresar un criterio después del separador de búsqueda!");
+                                return;
+                            }
+                            lotAndCommandFinder.BothCriteria = true;
+                            lotAndCommandFinder.CriteriaA = criteriaValues.Text.Split(':')[0];
+                            lotAndCommandFinder.CriteriaB = criteriaValues.Text.Split(':')[1];
+                        }
+                        else
+                        {
+                            if (string.IsNullOrEmpty(criteriaValues.Text))
+                            {
+                                Alert.Show("Debe ingresar un criterio de búsqueda!");
+                                return;
+                            }
+                            if (string.IsNullOrWhiteSpace(criteriaValues.Text))
+                            {
+                                Alert.Show("Debe ingresar un criterio de búsqueda!");
+                                return;
+                            }
+                            lotAndCommandFinder.BothCriteria = false;
+                            lotAndCommandFinder.Criteria = criteriaValues.Text;
+                        }
+                        if (lotAndCommandFinder.BothCriteria)
+                        {
+                            foreach (CommandItem item in contextPage.CommandItems)
+                            {
+                                if (item.NameLot.ToUpper().Contains(lotAndCommandFinder.CriteriaA.ToUpper()) && item.NameCommand.ToUpper().Contains(lotAndCommandFinder.CriteriaB.ToUpper()))
+                                {
+                                    commandItem = item;
+                                    InstanceItemsListView.ScrollTo(commandItem, ScrollToPosition.Start, true);
+                                    return;
+                                }
+                            }
+                            Alert.Show("No se encontro el registro");
+                        }
+                        else
+                        {
+                            foreach (CommandItem item in contextPage.CommandItems)
+                            {
+                                if (item.NameLot.ToUpper().Contains(lotAndCommandFinder.Criteria.ToUpper()) || item.NameCommand.ToUpper().Contains(lotAndCommandFinder.Criteria.ToUpper()))
+                                {
+                                    commandItem = item;
+                                    InstanceItemsListView.ScrollTo(commandItem, ScrollToPosition.Start, true);
+                                    return;
+                                }
+                            }
+                            Alert.Show("No se encontro el registro");
+                        }
+                    }
+                });
+            }
+            catch //(Exception ex)
+            {
+                Alert.Show("Ocurrió un error", "Aceptar");
             }
         }
     }

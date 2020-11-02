@@ -22,6 +22,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private string details;
         private ObservationItem selectedobservation;
         private bool isloadingdata;
+        private LotAndCommandObservation lotandcommanddata;
         #endregion
 
         #region Properties
@@ -65,15 +66,21 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return isloadingdata; }
             set { SetValue(ref isloadingdata, value); }
         }
+        public LotAndCommandObservation LotAndCommandData
+        {
+            get { return lotandcommanddata; }
+            set { SetValue(ref lotandcommanddata, value); }
+        }
         #endregion
 
         #region Constructors
-        public LogObservationsViewModel(bool IsReload, LogItem logitem)
+        public LogObservationsViewModel(bool IsReload, LotAndCommandObservation lotAndCommandData, LogItem logitem)
         {
             if (IsReload)
             {
                 ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
                 this.LogItem = logitem;
+                this.LotAndCommandData = lotAndCommandData;
                 SelectedObservation = new ObservationItem();
                 GetInitialData();
                 //GetFakeData();
@@ -150,17 +157,36 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 }
                             }
                         }
-                        ObservationModQueryValues QueryValuesMod = new ObservationModQueryValues()
+                        ObservationModQueryValues QueryValuesMod;
+                        if (this.LotAndCommandData.HasData)
                         {
-                            IdObsv = this.SelectedObservation.IdObsv,
-                            IdLog = this.LogItem.IdLog,
-                            IdUser = PbUser.IdUser,
-                            IdInstance = 0,
-                            IdLot = 0,
-                            IdCommand = 0,
-                            NameObsv = this.Name,
-                            DetailObsv = this.Details
-                        };
+                            QueryValuesMod = new ObservationModQueryValues()
+                            {
+                                IdObsv = this.SelectedObservation.IdObsv,
+                                IdLog = this.LogItem.IdLog,
+                                IdUser = PbUser.IdUser,
+                                IdInstance = this.LotAndCommandData.IdInstance,
+                                IdLot = this.LotAndCommandData.IdLot,
+                                IdCommand = this.LotAndCommandData.IdCommand,
+                                NameObsv = this.Name,
+                                DetailObsv = this.Details
+                            };
+                        }
+                        else
+                        {
+                            QueryValuesMod = new ObservationModQueryValues()
+                            {
+                                IdObsv = this.SelectedObservation.IdObsv,
+                                IdLog = this.LogItem.IdLog,
+                                IdUser = PbUser.IdUser,
+                                IdInstance = 0,
+                                IdLot = 0,
+                                IdCommand = 0,
+                                NameObsv = this.Name,
+                                DetailObsv = this.Details
+                            };
+                        }
+                        
                         Response resultObservationsMod = await ApiSrv.ModObservations(TokenGet.Key, QueryValuesMod);
                         if (!resultObservationsMod.IsSuccess)
                         {
@@ -176,14 +202,29 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 case AddOrModResult.OK:
                                     UserDialogs.Instance.HideLoading();
                                     UserDialogs.Instance.ShowLoading(AlertMessages.UpdatingList, MaskType.Black);
-                                    ObservationGetQueryValues QueryValuesGet = new ObservationGetQueryValues()
+                                    ObservationGetQueryValues QueryValuesGet;
+                                    if (this.LotAndCommandData.HasData)
                                     {
-                                        IdLog = this.LogItem.IdLog,
-                                        IdUser = PbUser.IdUser,
-                                        IdInstance = 0,
-                                        IdLot = 0,
-                                        IdCommand = 0
-                                    };
+                                        QueryValuesGet = new ObservationGetQueryValues()
+                                        {
+                                            IdLog = this.LogItem.IdLog,
+                                            IdUser = PbUser.IdUser,
+                                            IdInstance = this.LotAndCommandData.IdInstance,
+                                            IdLot = this.LotAndCommandData.IdLot,
+                                            IdCommand = this.LotAndCommandData.IdCommand
+                                        };
+                                    }
+                                    else
+                                    {
+                                        QueryValuesGet = new ObservationGetQueryValues()
+                                        {
+                                            IdLog = this.LogItem.IdLog,
+                                            IdUser = PbUser.IdUser,
+                                            IdInstance = 0,
+                                            IdLot = 0,
+                                            IdCommand = 0
+                                        };
+                                    }
                                     Response resultObservationsGet = await ApiSrv.GetObservations(TokenGet.Key, QueryValuesGet);
                                     if (!resultObservationsGet.IsSuccess)
                                     {
@@ -247,16 +288,33 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 }
                             }
                         }
-                        ObservationAddQueryValues QueryValuesAdd = new ObservationAddQueryValues()
+                        ObservationAddQueryValues QueryValuesAdd;
+                        if (this.LotAndCommandData.HasData)
                         {
-                            IdLog = this.LogItem.IdLog,
-                            IdUser = PbUser.IdUser,
-                            IdInstance = 0,
-                            IdLot = 0,
-                            IdCommand = 0,
-                            NameObsv = this.Name,
-                            DetailObsv = this.Details
-                        };
+                            QueryValuesAdd = new ObservationAddQueryValues()
+                            {
+                                IdLog = this.LogItem.IdLog,
+                                IdUser = PbUser.IdUser,
+                                IdInstance = this.LotAndCommandData.IdInstance,
+                                IdLot = this.LotAndCommandData.IdLot,
+                                IdCommand = this.LotAndCommandData.IdCommand,
+                                NameObsv = this.Name,
+                                DetailObsv = this.Details
+                            };
+                        }
+                        else
+                        {
+                            QueryValuesAdd = new ObservationAddQueryValues()
+                            {
+                                IdLog = this.LogItem.IdLog,
+                                IdUser = PbUser.IdUser,
+                                IdInstance = 0,
+                                IdLot = 0,
+                                IdCommand = 0,
+                                NameObsv = this.Name,
+                                DetailObsv = this.Details
+                            };
+                        }
                         Response resultObservationsAdd = await ApiSrv.AddObservations(TokenGet.Key, QueryValuesAdd);
                         if (!resultObservationsAdd.IsSuccess)
                         {
@@ -272,14 +330,29 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 case AddOrModResult.OK:
                                     UserDialogs.Instance.HideLoading();
                                     UserDialogs.Instance.ShowLoading(AlertMessages.UpdatingList, MaskType.Black);
-                                    ObservationGetQueryValues QueryValuesGet = new ObservationGetQueryValues()
+                                    ObservationGetQueryValues QueryValuesGet;
+                                    if (this.LotAndCommandData.HasData)
                                     {
-                                        IdLog = this.LogItem.IdLog,
-                                        IdUser = PbUser.IdUser,
-                                        IdInstance = 0,
-                                        IdLot = 0,
-                                        IdCommand = 0
-                                    };
+                                        QueryValuesGet = new ObservationGetQueryValues()
+                                        {
+                                            IdLog = this.LogItem.IdLog,
+                                            IdUser = PbUser.IdUser,
+                                            IdInstance = this.LotAndCommandData.IdInstance,
+                                            IdLot = this.LotAndCommandData.IdLot,
+                                            IdCommand = this.LotAndCommandData.IdCommand
+                                        };
+                                    }
+                                    else
+                                    {
+                                        QueryValuesGet = new ObservationGetQueryValues()
+                                        {
+                                            IdLog = this.LogItem.IdLog,
+                                            IdUser = PbUser.IdUser,
+                                            IdInstance = 0,
+                                            IdLot = 0,
+                                            IdCommand = 0
+                                        };
+                                    }
                                     Response resultObservationsGet = await ApiSrv.GetObservations(TokenGet.Key, QueryValuesGet);
                                     if (!resultObservationsGet.IsSuccess)
                                     {
@@ -399,14 +472,29 @@ namespace AST_ProBatch_Mobile.ViewModels
                         {
                             UserDialogs.Instance.HideLoading();
                             UserDialogs.Instance.ShowLoading(AlertMessages.UpdatingList, MaskType.Black);
-                            ObservationGetQueryValues QueryValuesGet = new ObservationGetQueryValues()
+                            ObservationGetQueryValues QueryValuesGet;
+                            if (this.LotAndCommandData.HasData)
                             {
-                                IdLog = this.LogItem.IdLog,
-                                IdUser = PbUser.IdUser,
-                                IdInstance = 0,
-                                IdLot = 0,
-                                IdCommand = 0
-                            };
+                                QueryValuesGet = new ObservationGetQueryValues()
+                                {
+                                    IdLog = this.LogItem.IdLog,
+                                    IdUser = PbUser.IdUser,
+                                    IdInstance = this.LotAndCommandData.IdInstance,
+                                    IdLot = this.LotAndCommandData.IdLot,
+                                    IdCommand = this.LotAndCommandData.IdCommand
+                                };
+                            }
+                            else
+                            {
+                                QueryValuesGet = new ObservationGetQueryValues()
+                                {
+                                    IdLog = this.LogItem.IdLog,
+                                    IdUser = PbUser.IdUser,
+                                    IdInstance = 0,
+                                    IdLot = 0,
+                                    IdCommand = 0
+                                };
+                            }
                             Response resultObservationsGet = await ApiSrv.GetObservations(TokenGet.Key, QueryValuesGet);
                             if (!resultObservationsGet.IsSuccess)
                             {
@@ -479,15 +567,30 @@ namespace AST_ProBatch_Mobile.ViewModels
                     }
                     else
                     {
-                        ObservationGetQueryValues QueryValues = new ObservationGetQueryValues()
+                        ObservationGetQueryValues QueryValuesGet;
+                        if (this.LotAndCommandData.HasData)
                         {
-                            IdLog = this.LogItem.IdLog,
-                            IdUser = PbUser.IdUser,
-                            IdInstance = 0,
-                            IdLot = 0,
-                            IdCommand = 0
-                        };
-                        Response resultObservationsGet = await ApiSrv.GetObservations(TokenGet.Key, QueryValues);
+                            QueryValuesGet = new ObservationGetQueryValues()
+                            {
+                                IdLog = this.LogItem.IdLog,
+                                IdUser = PbUser.IdUser,
+                                IdInstance = this.LotAndCommandData.IdInstance,
+                                IdLot = this.LotAndCommandData.IdLot,
+                                IdCommand = this.LotAndCommandData.IdCommand
+                            };
+                        }
+                        else
+                        {
+                            QueryValuesGet = new ObservationGetQueryValues()
+                            {
+                                IdLog = this.LogItem.IdLog,
+                                IdUser = PbUser.IdUser,
+                                IdInstance = 0,
+                                IdLot = 0,
+                                IdCommand = 0
+                            };
+                        }
+                        Response resultObservationsGet = await ApiSrv.GetObservations(TokenGet.Key, QueryValuesGet);
                         if (!resultObservationsGet.IsSuccess)
                         {
                             UserDialogs.Instance.HideLoading();

@@ -102,19 +102,20 @@ namespace AST_ProBatch_Mobile.Views
             }
         }
 
-        private void ImageButtonLogAction_5_Clicked(object sender, EventArgs e)
-        {
-            var imageButton = (ImageButton)sender;
-            var instanceItem = imageButton.CommandParameter as InstanceItem;
-            if (instanceItem != null)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas buscar lote comando para: " + instanceItem.NameInstance + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
-                });
-            }
-        }
+        //ELIMINAR
+        //private void ImageButtonLogAction_5_Clicked(object sender, EventArgs e)
+        //{
+        //    var imageButton = (ImageButton)sender;
+        //    var instanceItem = imageButton.CommandParameter as InstanceItem;
+        //    if (instanceItem != null)
+        //    {
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            var result = await this.DisplayAlert("AST●ProBatch®", "Deseas buscar lote comando para: " + instanceItem.NameInstance + "?", "Sí", "No");
+        //            if (result) DependencyService.Get<Toast>().Show("Procesando...");
+        //        });
+        //    }
+        //}
 
         private void ImageButtonLogAction_6_Clicked(object sender, EventArgs e)
         {
@@ -122,7 +123,7 @@ namespace AST_ProBatch_Mobile.Views
             var instanceItem = imageButton.CommandParameter as InstanceItem;
             if (instanceItem != null)
             {
-                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, instanceItem.LogItem);
+                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, new LotAndCommandObservation(), instanceItem.LogItem);
                 Application.Current.MainPage.Navigation.PushAsync(new LogObservationsPage());
             }
         }
@@ -191,7 +192,7 @@ namespace AST_ProBatch_Mobile.Views
                     Application.Current.MainPage.DisplayAlert("AST●ProBatch®", "Debe seleccionar dos o más bitácoras", "Aceptar");
                     return;
                 }
-                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, instanceItem.LogItem);
+                MainViewModel.GetInstance().LogObservations = new LogObservationsViewModel(true, new LotAndCommandObservation(), instanceItem.LogItem);
                 Application.Current.MainPage.Navigation.PushAsync(new LogObservationsPage());
             }
         }
