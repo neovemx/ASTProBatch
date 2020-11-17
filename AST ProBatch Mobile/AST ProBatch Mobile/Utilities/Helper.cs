@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using AST_ProBatch_Mobile.Models;
 using AST_ProBatch_Mobile.Models.Service;
 
 namespace AST_ProBatch_Mobile.Utilities
@@ -85,6 +86,82 @@ namespace AST_ProBatch_Mobile.Utilities
         }
     }
 
+    public class GetExecutionStatus
+    {
+        public static StatusItem ByIdStatus(string IdStatus)
+        {
+            StatusItem resultStatusObject = new StatusItem();
+            switch (IdStatus)
+            {
+                case Status.INITIAL:
+                    resultStatusObject.State = "state_p";
+                    resultStatusObject.StateColor = StatusColor.Grey;
+                    break;
+                case Status.EXECUTING:
+                    resultStatusObject.State = "state_e";
+                    resultStatusObject.StateColor = StatusColor.Green;
+                    break;
+                case Status.FINISHED:
+                    resultStatusObject.State = "state_f";
+                    resultStatusObject.StateColor = StatusColor.Blue;
+                    break;
+                case Status.WAITING_DEPENDENCY:
+                    resultStatusObject.State = "state_ed";
+                    resultStatusObject.StateColor = StatusColor.Blue;
+                    break;
+                case Status.INTERFAZ_WAITING:
+                    resultStatusObject.State = "state_ei";
+                    resultStatusObject.StateColor = StatusColor.Yellow;
+                    break;
+                case Status.WAITING_RESOURCE:
+                    resultStatusObject.State = "state_er";
+                    resultStatusObject.StateColor = StatusColor.Yellow;
+                    break;
+                case Status.WAITING_SOCKET:
+                    resultStatusObject.State = "state_ep";
+                    resultStatusObject.StateColor = StatusColor.Yellow;
+                    break;
+                case Status.RESOURCE_ERROR:
+                    resultStatusObject.State = "state_er";
+                    resultStatusObject.StateColor = StatusColor.Red;
+                    break;
+                case Status.ERROR:
+                    resultStatusObject.State = "state_e";
+                    resultStatusObject.StateColor = StatusColor.Red;
+                    break;
+                case Status.DEPENDENCY_ERROR:
+                    resultStatusObject.State = "state_ed";
+                    resultStatusObject.StateColor = StatusColor.Orange;
+                    break;
+                case Status.INTERFAZ_ERROR:
+                    resultStatusObject.State = "state_ei";
+                    resultStatusObject.StateColor = StatusColor.Red;
+                    break;
+                case Status.SOCKET_ERROR:
+                    resultStatusObject.State = "state_ep";
+                    resultStatusObject.StateColor = StatusColor.Red;
+                    break;
+                case Status.STOP:
+                    resultStatusObject.State = "state_pause";
+                    resultStatusObject.StateColor = StatusColor.White;
+                    break;
+                case Status.KILLED:
+                    resultStatusObject.State = "state_ab";
+                    resultStatusObject.StateColor = StatusColor.Purple;
+                    break;
+                case Status.OMITTED:
+                    resultStatusObject.State = "state_om";
+                    resultStatusObject.StateColor = StatusColor.White;
+                    break;
+                default:
+                    resultStatusObject.State = "";
+                    resultStatusObject.StateColor = StatusColor.Black;
+                    break;
+            }
+            return resultStatusObject;
+        }
+    }
+
     public static class StatusColor
     {
         public static string Green { get { return "#33CC33"; } }
@@ -150,7 +227,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string PBMenuA = "/pbmenua/probatchstatisticalreports";
         public const string PBMenuB = "/pbmenub/probatchmonitoringandexecution";
         public const string PBMenuC = "/pbmenuc/probatchoperationslog";
-        public const string PBMenuD = "";
+        public const string PBMenuD = "/pbmenud/probatchplanner";
     }
 
     public static class ApiMethod
@@ -201,6 +278,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string OperationsLogGetLots = "/operationsloggetlots";
         public const string OperationsLogGetCommands = "/operationsloggetcommands";
         public const string OperationsLogGetResults = "/operationsloggetresults";
+        public const string PlannerMonitorsGetData = "/monitorgetdata";
     }
 
     public static class TokenType
@@ -243,6 +321,11 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string EXECUTING = "X";
         public const string MESSAGE = "M";
         public const string KILLED = "K";
+        public const string WAITING_SOCKET = "WS";
+        public const string RESOURCE_ERROR = "EY";
+        public const string SOCKET_ERROR = "ES";
+        public const string OMITTED = "O";
+        public const string FINISHED = "F";
     }
 
     public static class AddOrModResult

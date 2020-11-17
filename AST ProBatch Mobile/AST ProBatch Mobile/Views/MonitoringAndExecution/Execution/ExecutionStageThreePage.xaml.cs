@@ -112,12 +112,8 @@ namespace AST_ProBatch_Mobile.Views
             var commandItem = imageButton.CommandParameter as CommandItem;
             if (commandItem != null)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del comando para: " + commandItem.NameCommand + "?", "Sí", "No");
-                    Toast.ShowMessage("Procesando...");
-                    //if (result) DependencyService.Get<Toast>().Show("Procesando...");
-                });
+                MainViewModel.GetInstance().CommandData = new CommandDataViewModel(true);
+                Application.Current.MainPage.Navigation.PushAsync(new CommandDataPage());
             }
         }
 
@@ -262,7 +258,7 @@ namespace AST_ProBatch_Mobile.Views
                     promptConfig.SetCancelText("Cancelar");
                     promptConfig.SetOkText("Buscar");
                     promptConfig.InputType = InputType.Default;
-                    promptConfig.SetMessage("Puede ingresar el nombre completo o parte el mismo de un lote o comando a buscar así como una combinación de ambos separados por ':'");
+                    promptConfig.SetMessage("Puede ingresar el nombre completo o parte del mismo de un lote o comando a buscar así como una combinación de ambos separados por ':'");
                     promptConfig.SetPlaceholder("1 - LOTE : 1 - COMANDO");
                     promptConfig.IsCancellable = true;
                     var criteriaValues = await UserDialogs.Instance.PromptAsync(promptConfig);

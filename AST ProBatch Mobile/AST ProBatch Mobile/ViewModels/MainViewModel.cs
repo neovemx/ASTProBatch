@@ -51,6 +51,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public LogExecutionDelayReportViewModel LogExecutionDelayReport { get; set; }
         public LogExecutionDelayChartViewModel LogExecutionDelayChart { get; set; }
         public OperationsLogReportViewModel OperationsLogReport { get; set; }
+        public CommandDataViewModel CommandData { get; set; }
         #endregion
 
         #region Constructors
@@ -91,7 +92,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.PlannerMenu = new PlannerMenuViewModel();
             this.MonitoringAndExecutionMenu = new MonitoringAndExecutionMenuViewModel();
             this.OperationsLog = new OperationsLogViewModel(false);
-            this.ProcessMonitor = new ProcessMonitorViewModel();
+            this.ProcessMonitor = new ProcessMonitorViewModel(false);
             this.RecurrenceMonitor = new RecurrenceMonitorViewModel();
             this.StatusInfoPlanner = new StatusInfoPlannerViewModel();
             this.Notifications = new NotificationsViewModel(false, new Models.LogItem());
@@ -120,6 +121,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.LogExecutionDelayReport = new LogExecutionDelayReportViewModel(false, new ObservableCollection<LogExecutionDelayReportItem>());
             this.LogExecutionDelayChart = new LogExecutionDelayChartViewModel(false, new List<LogExecutionDelayResult>());
             this.OperationsLogReport = new OperationsLogReportViewModel(false, new ObservableCollection<OperationsLogReportItem>());
+            this.CommandData = new CommandDataViewModel(false);
         }
         #endregion
 

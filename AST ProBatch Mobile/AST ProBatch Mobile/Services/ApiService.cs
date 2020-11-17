@@ -63,6 +63,11 @@ namespace AST_ProBatch_Mobile.Services
                         urlApiConsult.Append(ApiController.PBMenuCTest);
                         urlApiConsult.Append(ApiMethod.Test);
                         break;
+                    case ApiConsult.ApiMenuD:
+                        urlApiConsult.Append(this.UrlDomain + this.UrlPrefix);
+                        urlApiConsult.Append(ApiController.PBMenuDTest);
+                        urlApiConsult.Append(ApiMethod.Test);
+                        break;
                 }
 
                 var response = await client.GetAsync(urlApiConsult.ToString());
@@ -160,7 +165,7 @@ namespace AST_ProBatch_Mobile.Services
                         break;
                     case ApiConsult.ApiMenuD:
                         urlApiConsult.Append(this.UrlPrefix);
-                        //urlApiConsult.Append(ApiController.PBMenuDApiAuth);
+                        urlApiConsult.Append(ApiController.PBMenuDApiAuth);
                         urlApiConsult.Append(ApiMethod.Login);
                         break;
                 }
@@ -422,6 +427,11 @@ namespace AST_ProBatch_Mobile.Services
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.OperationsLogGetResults, QueryValues);
         }
+
+        public async Task<Response> MonitorGetData(string accessToken, MonitorDataQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.PlannerMonitorsGetData, QueryValues);
+        }
         #endregion
 
         #region Helpers
@@ -541,7 +551,7 @@ namespace AST_ProBatch_Mobile.Services
                     this.ApiControllerSet = ApiController.PBMenuC;
                     break;
                 case ApiConsult.ApiMenuD:
-                    //this.ApiControllerSet = ApiController.PBMenuD;
+                    this.ApiControllerSet = ApiController.PBMenuD;
                     break;
             }
         }

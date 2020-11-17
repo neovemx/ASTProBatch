@@ -1,8 +1,12 @@
 ﻿using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Models.Service;
+using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,6 +23,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Properties
+        public List<Monitor> MonitorData { get; set; }
+
         public ObservableCollection<ProcessItem> ProcessItems
         {
             get { return processitems; }
@@ -37,11 +43,17 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public ProcessMonitorViewModel()
+        public ProcessMonitorViewModel(bool IsReload)
         {
-            ToolBarIsVisible = false;
-            CheckIcon = "check";
-            GetFakeData();
+            if (IsReload)
+            {
+                ApiSrv = new Services.ApiService(ApiConsult.ApiMenuD);
+
+                ToolBarIsVisible = false;
+                CheckIcon = "check";
+
+                GetInitialData();
+            }
         }
         #endregion
 
@@ -92,7 +104,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
 
-                    await Task.Delay(1000);
+                    //await Task.Delay(1000);
 
                     await Task.Run(async () =>
                     {
@@ -143,91 +155,191 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Helpers
-        private void GetFakeData()
+        private async void GetInitialData()
         {
-            ProcessItems = new ObservableCollection<ProcessItem>();
-            ProcessItem processItem;
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Obteniendo datos del monitor de procesos...", MaskType.Black);
 
-            processItem = new ProcessItem();
-            processItem.Id = 1;
-            processItem.IsChecked = false;
-            processItem.IsEnabled = true;
-            processItem.PID = 2756321;
-            processItem.Title = "8-PRUEBA BAT";
-            processItem.Lot = "-";
-            processItem.Command = "8-Prueba BAT";
-            processItem.Environment = "WKS0396";
-            processItem.Service = "Windows";
-            processItem.State = "state_e";
-            processItem.StateColor = StatusColor.Green;
-            processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-            ProcessItems.Add(processItem);
+                Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
 
-            processItem = new ProcessItem();
-            processItem.Id = 2;
-            processItem.IsChecked = false;
-            processItem.IsEnabled = true;
-            processItem.PID = 2756322;
-            processItem.Title = "8-PRUEBA BAT";
-            processItem.Lot = "-";
-            processItem.Command = "8-Prueba BAT";
-            processItem.Environment = "WKS0396";
-            processItem.Service = "Windows";
-            processItem.State = "state_pause";
-            processItem.StateColor = StatusColor.White;
-            processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-            ProcessItems.Add(processItem);
+                if (!resultApiIsAvailable.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(resultApiIsAvailable.Message);
+                    return;
+                }
 
-            processItem = new ProcessItem();
-            processItem.Id = 3;
-            processItem.IsChecked = false;
-            processItem.IsEnabled = true;
-            processItem.PID = 2756323;
-            processItem.Title = "8-PRUEBA BAT";
-            processItem.Lot = "-";
-            processItem.Command = "8-Prueba BAT";
-            processItem.Environment = "WKS0396";
-            processItem.Service = "Windows";
-            processItem.State = "state_ed";
-            processItem.StateColor = StatusColor.Orange;
-            processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-            ProcessItems.Add(processItem);
+                Response resultToken = await ApiSrv.GetToken();
 
-            processItem = new ProcessItem();
-            processItem.Id = 4;
-            processItem.IsChecked = false;
-            processItem.IsEnabled = true;
-            processItem.PID = 2756324;
-            processItem.Title = "8-PRUEBA BAT";
-            processItem.Lot = "-";
-            processItem.Command = "8-Prueba BAT";
-            processItem.Environment = "WKS0396";
-            processItem.Service = "Windows";
-            processItem.State = "state_om";
-            processItem.StateColor = StatusColor.White;
-            processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-            ProcessItems.Add(processItem);
-
-            processItem = new ProcessItem();
-            processItem.Id = 5;
-            processItem.IsChecked = false;
-            processItem.IsEnabled = true;
-            processItem.PID = 2756325;
-            processItem.Title = "8-PRUEBA BAT";
-            processItem.Lot = "-";
-            processItem.Command = "8-Prueba BAT";
-            processItem.Environment = "WKS0396";
-            processItem.Service = "Windows";
-            processItem.State = "state_f";
-            processItem.StateColor = StatusColor.Blue;
-            processItem.StartHour = "10:45";
-            processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-            ProcessItems.Add(processItem);
+                if (!resultToken.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(resultToken.Message);
+                    return;
+                }
+                else
+                {
+                    Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                    MonitorDataQueryValues query = new MonitorDataQueryValues()
+                    {
+                        CurrentDate = DateTime.Now,
+                        IsRecurrent = 0
+                    };
+                    Response resultGetMonitorData = await ApiSrv.MonitorGetData(token.Key, query);
+                    if (!resultGetMonitorData.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(resultGetMonitorData.Message);
+                        return;
+                    }
+                    else
+                    {
+                        MonitorData = JsonConvert.DeserializeObject<List<Monitor>>(Crypto.DecodeString(resultGetMonitorData.Data));
+                        ProcessItems = new ObservableCollection<ProcessItem>();
+                        foreach (Monitor item in MonitorData)
+                        {
+                            ProcessItems.Add(new ProcessItem()
+                            {
+                                IdCalendar = item.IdCalendar,
+                                PID = item.PID,
+                                IdLot = (item.IdLot != null) ? (Int32)item.IdLot : 0,
+                                NameLot = item.NameLot,
+                                IdCommand = (item.IdCommand != null) ? (Int32)item.IdCommand : 0,
+                                NameCommand = item.NameCommand,
+                                IdEnvironment = (item.IdEnvironment) != null ? (short)item.IdEnvironment : new short(),
+                                NameEnvironment = item.NameEnvironment,
+                                IPAddress = item.IPAddress,
+                                IdService = (item.IdService != null) ? (short)item.IdService : new short(),
+                                NameService = item.NameService,
+                                IsServicePD = (item.IsServicePD != null) ? (bool)item.IsServicePD : false,
+                                StartHour = (item.StartHour != null) ? (TimeSpan)item.StartHour : new TimeSpan(),
+                                IdStatus = (item.IdStatus != null) ? (string)item.IdStatus : "",
+                                Ommited = (item.Ommited != null) ? (string)item.Ommited : "",
+                                ExecutionStart = (item.ExecutionStart != null) ? (DateTime)item.ExecutionStart : new DateTime(),
+                                ExecutionEnd = (item.ExecutionEnd != null) ? (DateTime)item.ExecutionEnd : new DateTime(),
+                                ReExecution = (item.ReExecution != null) ? (bool)item.ReExecution : false,
+                                RecurrenceTime = (item.RecurrenceTime != null) ? (TimeSpan)item.RecurrenceTime : new TimeSpan(),
+                                EndHour = (item.EndHour != null) ? (TimeSpan)item.EndHour : new TimeSpan(),
+                                Order = (item.Order) != null ? (short)item.Order : new short(),
+                                StartHourString = (item.StartHour != null) ? ((TimeSpan)item.StartHour).ToString() : "",
+                                ExecutionStartString = (item.ExecutionStart != null) ? ((DateTime)item.ExecutionStart).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                ExecutionEndString = (item.ExecutionEnd != null) ? ((DateTime)item.ExecutionEnd).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                RecurrenceTimeString = (item.RecurrenceTime != null) ? ((TimeSpan)item.RecurrenceTime).ToString() : "",
+                                EndHourString = (item.EndHour != null) ? ((TimeSpan)item.EndHour).ToString() : "",
+                                IsChecked = false,
+                                IsEnabled = true,
+                                Status = GetExecutionStatus.ByIdStatus((item.IdStatus != null) ? (string)item.IdStatus : "")
+                            });
+                        }
+                        //if (LogItems.Count == 0)
+                        //{
+                        //    this.FullViewIsVisible = false;
+                        //    this.CompactViewIsVisible = false;
+                        //    this.IsVisibleEmptyView = true;
+                        //}
+                        //else
+                        //{
+                        //    this.FullViewIsVisible = true;
+                        //    this.CompactViewIsVisible = false;
+                        //    this.IsVisibleEmptyView = false;
+                        //}
+                    }
+                }
+                UserDialogs.Instance.HideLoading();
+            }
+            catch (Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                Toast.ShowError("Ocurrió un error.");
+            }
         }
+
+        //private void GetFakeData()
+        //{
+        //    ProcessItems = new ObservableCollection<ProcessItem>();
+        //    ProcessItem processItem;
+
+        //    processItem = new ProcessItem();
+        //    processItem.Id = 1;
+        //    processItem.IsChecked = false;
+        //    processItem.IsEnabled = true;
+        //    processItem.PID = 2756321;
+        //    processItem.Title = "8-PRUEBA BAT";
+        //    processItem.Lot = "-";
+        //    processItem.Command = "8-Prueba BAT";
+        //    processItem.Environment = "WKS0396";
+        //    processItem.Service = "Windows";
+        //    processItem.State = "state_e";
+        //    processItem.StateColor = StatusColor.Green;
+        //    processItem.StartHour = "10:45";
+        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
+        //    ProcessItems.Add(processItem);
+
+        //    processItem = new ProcessItem();
+        //    processItem.Id = 2;
+        //    processItem.IsChecked = false;
+        //    processItem.IsEnabled = true;
+        //    processItem.PID = 2756322;
+        //    processItem.Title = "8-PRUEBA BAT";
+        //    processItem.Lot = "-";
+        //    processItem.Command = "8-Prueba BAT";
+        //    processItem.Environment = "WKS0396";
+        //    processItem.Service = "Windows";
+        //    processItem.State = "state_pause";
+        //    processItem.StateColor = StatusColor.White;
+        //    processItem.StartHour = "10:45";
+        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
+        //    ProcessItems.Add(processItem);
+
+        //    processItem = new ProcessItem();
+        //    processItem.Id = 3;
+        //    processItem.IsChecked = false;
+        //    processItem.IsEnabled = true;
+        //    processItem.PID = 2756323;
+        //    processItem.Title = "8-PRUEBA BAT";
+        //    processItem.Lot = "-";
+        //    processItem.Command = "8-Prueba BAT";
+        //    processItem.Environment = "WKS0396";
+        //    processItem.Service = "Windows";
+        //    processItem.State = "state_ed";
+        //    processItem.StateColor = StatusColor.Orange;
+        //    processItem.StartHour = "10:45";
+        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
+        //    ProcessItems.Add(processItem);
+
+        //    processItem = new ProcessItem();
+        //    processItem.Id = 4;
+        //    processItem.IsChecked = false;
+        //    processItem.IsEnabled = true;
+        //    processItem.PID = 2756324;
+        //    processItem.Title = "8-PRUEBA BAT";
+        //    processItem.Lot = "-";
+        //    processItem.Command = "8-Prueba BAT";
+        //    processItem.Environment = "WKS0396";
+        //    processItem.Service = "Windows";
+        //    processItem.State = "state_om";
+        //    processItem.StateColor = StatusColor.White;
+        //    processItem.StartHour = "10:45";
+        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
+        //    ProcessItems.Add(processItem);
+
+        //    processItem = new ProcessItem();
+        //    processItem.Id = 5;
+        //    processItem.IsChecked = false;
+        //    processItem.IsEnabled = true;
+        //    processItem.PID = 2756325;
+        //    processItem.Title = "8-PRUEBA BAT";
+        //    processItem.Lot = "-";
+        //    processItem.Command = "8-Prueba BAT";
+        //    processItem.Environment = "WKS0396";
+        //    processItem.Service = "Windows";
+        //    processItem.State = "state_f";
+        //    processItem.StateColor = StatusColor.Blue;
+        //    processItem.StartHour = "10:45";
+        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
+        //    ProcessItems.Add(processItem);
+        //}
         #endregion
     }
 }

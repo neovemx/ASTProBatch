@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:AST_ProBatch_Mobile.Controls"
+             x:Class="AST_ProBatch_Mobile.Views.CommandDataPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Datos del Comando"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding CommandData}">
+            <ScrollView
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Padding="10">
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            Padding="5"
+                            HorizontalOptions="Center"
+                            Text="{Binding SelectedModule}"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"
+                            LineBreakMode="TailTruncation"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding A_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE A"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding B_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE B"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding C_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE C"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding D_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE D"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding E_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE E"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout>
+                <ScrollView
+                    x:Name="ToolBar"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalScrollBarVisibility="Never"
+                    Orientation="Horizontal">
+                    <StackLayout
+                        Padding="3,0,3,0"
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center">
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding A_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding A_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Clicked="Module_Start_Clicked"
+                                    Command="{Binding Module_A_ClickCommand}"
+                                    BackgroundColor="{Binding A_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding A_Icon}"
+                                    WidthRequest="{Binding A_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding A_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding A_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding B_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding B_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Clicked="Module_Visible_Clicked"
+                                    Command="{Binding Module_B_ClickCommand}"
+                                    BackgroundColor="{Binding B_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding B_Icon}"
+                                    WidthRequest="{Binding B_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding B_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding B_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding C_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding C_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Clicked="Module_Visible_Clicked"
+                                    Command="{Binding Module_C_ClickCommand}"
+                                    BackgroundColor="{Binding C_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding C_Icon}"
+                                    WidthRequest="{Binding C_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding C_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding C_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding D_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding D_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Clicked="Module_Visible_Clicked"
+                                    Command="{Binding Module_D_ClickCommand}"
+                                    BackgroundColor="{Binding D_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding D_Icon}"
+                                    WidthRequest="{Binding D_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding D_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding D_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding E_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding E_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Clicked="Module_End_Clicked"
+                                    Command="{Binding Module_E_ClickCommand}"
+                                    BackgroundColor="{Binding E_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding E_Icon}"
+                                    WidthRequest="{Binding E_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding E_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding E_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+            <StackLayout 
+                VerticalOptions="End">
+                <Label 
+                    Text="AST●ProBatch® Workload Automation © 2020"
+                    HorizontalTextAlignment="Center"
+                    TextColor="#2255AA">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="11" />
+                            <On Platform="Android" Value="12" />
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

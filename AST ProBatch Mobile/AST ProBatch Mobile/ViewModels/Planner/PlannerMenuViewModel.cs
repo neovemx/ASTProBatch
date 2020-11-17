@@ -36,7 +36,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Btnsubmd()
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().ProcessMonitor = new ProcessMonitorViewModel(true);
             await Application.Current.MainPage.Navigation.PushAsync(new ProcessMonitorPage());
         }
 
@@ -51,7 +51,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Btnsubme()
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().RecurrenceMonitor = new RecurrenceMonitorViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new RecurrenceMonitorPage());
         }
 

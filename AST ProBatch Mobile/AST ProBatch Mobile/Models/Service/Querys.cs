@@ -234,4 +234,17 @@ namespace AST_ProBatch_Mobile.Models.Service
         public DateTime EndDateFrom { get; set; }
         public DateTime EndDateTo { get; set; }
     }
+
+    public class MonitorDataQueryValues
+    {
+        public DateTime CurrentDate { get; set; }
+        public int IsRecurrent { get; set; }
+    }
+
+    public class ExecutionResultQueryValues
+    {
+        public Int32 IdInstance { get; set; }
+        public Int32 IdLot { get; set; }
+        public Int32 IdCommand { get; set; }
+    }
 }
