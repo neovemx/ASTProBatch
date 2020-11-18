@@ -189,6 +189,12 @@
     <BundleResource Include="Resources\clear.png" />
     <BundleResource Include="Resources\clear%402x.png" />
     <BundleResource Include="Resources\clear%403x.png" />
+    <BundleResource Include="Resources\toolbar_selected.png" />
+    <BundleResource Include="Resources\toolbar_selected%402x.png" />
+    <BundleResource Include="Resources\toolbar_selected%403x.png" />
+    <BundleResource Include="Resources\toolbar_unselected.png" />
+    <BundleResource Include="Resources\toolbar_unselected%402x.png" />
+    <BundleResource Include="Resources\toolbar_unselected%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\settings%402x.png" />

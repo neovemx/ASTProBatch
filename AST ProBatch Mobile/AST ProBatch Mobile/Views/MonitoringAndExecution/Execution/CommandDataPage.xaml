@@ -12,82 +12,14 @@
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding CommandData}">
-            <ScrollView
-                VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Padding="10">
-                    <controls:CustomFrame
-                        CornerRadius="10,10,0,0"
-                        BackgroundColor="#D7D7D7"
-                        Padding="0">
-                        <Label
-                            Padding="5"
-                            HorizontalOptions="Center"
-                            Text="{Binding SelectedModule}"
-                            TextColor="#2255AA"
-                            FontAttributes="Bold"
-                            LineBreakMode="TailTruncation"/>
-                    </controls:CustomFrame>
-                    <controls:CustomFrame
-                        IsVisible="{Binding A_IsActive}"
-                        Margin="0,-7,0,0"
-                        CornerRadius="0,0,10,10"
-                        BackgroundColor="DarkGray"
-                        Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE A"/>
-                        </StackLayout>
-                    </controls:CustomFrame>
-                    <controls:CustomFrame
-                        IsVisible="{Binding B_IsActive}"
-                        Margin="0,-7,0,0"
-                        CornerRadius="0,0,10,10"
-                        BackgroundColor="DarkGray"
-                        Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE B"/>
-                        </StackLayout>
-                    </controls:CustomFrame>
-                    <controls:CustomFrame
-                        IsVisible="{Binding C_IsActive}"
-                        Margin="0,-7,0,0"
-                        CornerRadius="0,0,10,10"
-                        BackgroundColor="DarkGray"
-                        Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE C"/>
-                        </StackLayout>
-                    </controls:CustomFrame>
-                    <controls:CustomFrame
-                        IsVisible="{Binding D_IsActive}"
-                        Margin="0,-7,0,0"
-                        CornerRadius="0,0,10,10"
-                        BackgroundColor="DarkGray"
-                        Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE D"/>
-                        </StackLayout>
-                    </controls:CustomFrame>
-                    <controls:CustomFrame
-                        IsVisible="{Binding E_IsActive}"
-                        Margin="0,-7,0,0"
-                        CornerRadius="0,0,10,10"
-                        BackgroundColor="DarkGray"
-                        Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE E"/>
-                        </StackLayout>
-                    </controls:CustomFrame>
-                </StackLayout>
-            </ScrollView>
-            <StackLayout>
+            <StackLayout
+                MinimumHeightRequest="80">
                 <ScrollView
                     x:Name="ToolBar"
                     HorizontalOptions="FillAndExpand"
                     HorizontalScrollBarVisibility="Never"
                     Orientation="Horizontal">
                     <StackLayout
-                        Padding="3,0,3,0"
                         Orientation="Horizontal"
                         HorizontalOptions="Center">
                         <controls:CustomFrame
@@ -223,6 +155,499 @@
                                     HorizontalOptions="Center"
                                     FontSize="Small"
                                     Text="{Binding E_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+            <ScrollView
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Padding="10">
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                            <Label
+                                Padding="5"
+                                FontSize="Medium"
+                                Text="{Binding SelectedModule}"
+                                TextColor="#2255AA"
+                                FontAttributes="Bold"
+                                LineBreakMode="TailTruncation"/>
+                            <Label
+                                Padding="0,5,5,5"
+                                FontSize="Medium"
+                                Text="{Binding SelectedModule_Child}"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                LineBreakMode="TailTruncation"/>
+                        </StackLayout>      
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding A_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout
+                            Padding="10">
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumHeightRequest="100"
+                                    WidthRequest="100"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Código:"
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    WidthRequest="120"
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding A_Code}"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumHeightRequest="100"
+                                    WidthRequest="100"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Crítico Neg.:"
+                                    VerticalOptions="Center"/>
+                                <CheckBox
+                                    HeightRequest="10"
+                                    HorizontalOptions="Center"
+                                    IsChecked="{Binding A_Critical}"
+                                    Color="#2255AA"
+                                    IsEnabled="False"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumHeightRequest="100"
+                                    WidthRequest="100"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Nombre:"
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    WidthRequest="120"
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding A_Name}"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    MinimumHeightRequest="100"
+                                    WidthRequest="100"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Descripción:"
+                                    VerticalOptions="Center"/>
+                                <controls:CustomLabel
+                                    FontSize="Small"
+                                    Text="{Binding A_Description}"
+                                    TextColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumHeightRequest="100"
+                                    WidthRequest="100"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Grupo:"
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    WidthRequest="120"
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding A_Group}"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumHeightRequest="100"
+                                    WidthRequest="100"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Tipo:"
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    WidthRequest="120"
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding A_Type}"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumHeightRequest="100"
+                                    WidthRequest="100"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Reejecución:"
+                                    VerticalOptions="Center"/>
+                                <CheckBox
+                                    HeightRequest="10"
+                                    HorizontalOptions="Center"
+                                    IsChecked="{Binding A_ReExecution}"
+                                    Color="#2255AA"
+                                    IsEnabled="False"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding B_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE B"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding C_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE C"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding D_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE D"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding E_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE E"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding B_b_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout
+                            Padding="10">
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    MinimumHeightRequest="100"
+                                    WidthRequest="100"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Comando:"
+                                    VerticalOptions="Center"/>
+                                <controls:CustomLabel
+                                    FontSize="Small"
+                                    Text="{Binding B_b_Command}"
+                                    TextColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Directorio por Defecto:"/>
+                                <Label 
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding B_b_DefaultPath}"
+                                    LineBreakMode="TailTruncation"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Directorio Actual:"/>
+                                <Label 
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding B_b_CurrentPath}"
+                                    LineBreakMode="TailTruncation"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Posee SubProcesos:"/>
+                                <CheckBox
+                                    HeightRequest="10"
+                                    IsChecked="{Binding B_b_HasSubProcess}"
+                                    Color="#2255AA"
+                                    IsEnabled="False"/>
+                            </StackLayout>
+                            <controls:CustomFrame
+                                Margin="0,20,0,0"
+                                CornerRadius="10,10,0,0"
+                                BackgroundColor="#D7D7D7"
+                                Padding="0">
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Padding="5"
+                                        FontSize="Medium"
+                                        Text="Sub-Procesos"
+                                        TextColor="#2255AA"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>      
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                Margin="0,-7,0,0"
+                                CornerRadius="0,0,10,10"
+                                BackgroundColor="Gray"
+                                Padding="0">
+                                <StackLayout
+                                    Padding="10">
+                                    <StackLayout
+                                        Orientation="Vertical">
+                                        <Label
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Servicio de Monitoreo:"/>
+                                        <Label 
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding B_b_MonitoringService}"
+                                            LineBreakMode="TailTruncation"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Vertical">
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <CheckBox
+                                                HeightRequest="10"
+                                                HorizontalOptions="Center"
+                                                IsChecked="{Binding B_b_IsUser}"
+                                                Color="#2255AA"
+                                                IsEnabled="False"/>
+                                            <Label
+                                                TextColor="#2255AA"
+                                                FontAttributes="Bold"
+                                                FontSize="Small"
+                                                Text="Usuario:"/>
+                                        </StackLayout>
+                                        <Label 
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding B_b_User}"
+                                            LineBreakMode="TailTruncation"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Vertical">
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <CheckBox
+                                                HeightRequest="10"
+                                                HorizontalOptions="Center"
+                                                IsChecked="{Binding B_b_IsSubProcess}"
+                                                Color="#2255AA"
+                                                IsEnabled="False"/>
+                                            <Label
+                                                TextColor="#2255AA"
+                                                FontAttributes="Bold"
+                                                FontSize="Small"
+                                                Text="SubProcesos:"/>
+                                        </StackLayout>
+                                        <Label 
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding B_b_SubProcess}"
+                                            LineBreakMode="TailTruncation"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Vertical">
+                                        <Label
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Tiempo Monitoreo (Seg):"/>
+                                        <Label 
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding B_b_MonitoringTime}"
+                                            LineBreakMode="TailTruncation"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Espera fin SubProcesos:"/>
+                                        <CheckBox
+                                            HeightRequest="10"
+                                            IsChecked="{Binding B_b_WaitEndSubProcess}"
+                                            Color="#2255AA"
+                                            IsEnabled="False"/>
+                                    </StackLayout>
+                                    <StackLayout>
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </controls:CustomFrame>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                                    
+                    <controls:CustomFrame
+                        IsVisible="{Binding C_c_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout>
+                            <Label Text="MODULE Cc"/>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout
+                MinimumHeightRequest="80">
+                <ScrollView
+                    x:Name="ToolBar_A_Child"
+                    IsVisible="{Binding ToolBar_A_Child}"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalScrollBarVisibility="Never"
+                    Orientation="Horizontal">
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center">
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding A_a_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding A_a_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Command="{Binding Module_A_a_ClickCommand}"
+                                    BackgroundColor="{Binding A_a_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding A_Icon}"
+                                    WidthRequest="{Binding A_a_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding A_a_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding A_a_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding B_b_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding B_b_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Command="{Binding Module_B_b_ClickCommand}"
+                                    BackgroundColor="{Binding B_b_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding B_Icon}"
+                                    WidthRequest="{Binding B_b_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding B_b_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding B_b_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding C_c_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding C_c_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Command="{Binding Module_C_c_ClickCommand}"
+                                    BackgroundColor="{Binding C_c_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding C_c_Icon}"
+                                    WidthRequest="{Binding C_c_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding C_c_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding C_c_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
                     </StackLayout>

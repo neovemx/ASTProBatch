@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AST_ProBatch_Mobile.Models;
@@ -10,13 +11,16 @@ namespace AST_ProBatch_Mobile.ViewModels
     public class CommandDataViewModel : BaseViewModel
     {
         #region Atributes
-        //private ObservableCollection<InstanceRunningItem> instancerunningitems;
         //private ObservableCollection<PickerOperatorItem> operatorsitems;
         //private LogItem logitem;
         //private PickerOperatorItem selectedoperator;
         //private bool isloadingdata;
         public string selectedmodule;
+        public string selectedmodulechild;
+        public bool toolbarachild;
 
+        #region Atributes ToolBar A B C D E
+        // A
         public bool aisactive;
         public string abackgroundcolor;
         public int awidth;
@@ -24,7 +28,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string atext;
         public string afontcolor;
         public string aicon;
-
+        // B
         public bool bisactive;
         public string bbackgroundcolor;
         public int bwidth;
@@ -32,7 +36,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string btext;
         public string bfontcolor;
         public string bicon;
-
+        // C
         public bool cisactive;
         public string cbackgroundcolor;
         public int cwidth;
@@ -40,7 +44,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string ctext;
         public string cfontcolor;
         public string cicon;
-
+        // D
         public bool disactive;
         public string dbackgroundcolor;
         public int dwidth;
@@ -48,7 +52,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string dtext;
         public string dfontcolor;
         public string dicon;
-
+        // E
         public bool eisactive;
         public string ebackgroundcolor;
         public int ewidth;
@@ -56,6 +60,61 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string etext;
         public string efontcolor;
         public string eicon;
+        #endregion
+        #region Atributes ToolBar a b c
+        // A
+        public bool aaisactive;
+        public string aabackgroundcolor;
+        public int aawidth;
+        public int aaimagebuttonwidth;
+        public string aatext;
+        public string aafontcolor;
+        public string aaicon;
+        // B
+        public bool bbisactive;
+        public string bbbackgroundcolor;
+        public int bbwidth;
+        public int bbimagebuttonwidth;
+        public string bbtext;
+        public string bbfontcolor;
+        public string bbicon;
+        // C
+        public bool ccisactive;
+        public string ccbackgroundcolor;
+        public int ccwidth;
+        public int ccimagebuttonwidth;
+        public string cctext;
+        public string ccfontcolor;
+        public string ccicon;
+        #endregion
+        #region Atributes Modules A B C D E F
+        // A
+        public string acode;
+        public bool acritical;
+        public string aname;
+        public string adescription;
+        public string agroup;
+        public string atype;
+        public bool areexecution;
+        // B
+        // C
+        // D
+        // E
+        #endregion
+        #region Atributes Modules b c
+        public string bbcommand;
+        public string bbdefaultpath;
+        public string bbcurrentpath;
+        public bool bbhassubprocess;
+        public string bbmonitoringservice;
+        public bool bbisuser;
+        public string bbuser;
+        public bool bbissubprocess;
+        public string bbsubprocess;
+        public string bbmonitoringtime;
+        public bool bbwaitendsubprocess;
+        private ObservableCollection<CommandDataProcessItem> processitems;
+        #endregion
         #endregion
 
         #region Properties
@@ -96,7 +155,18 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return selectedmodule; }
             set { SetValue(ref selectedmodule, value); }
         }
-        #region Button Module A
+        public string SelectedModule_Child
+        {
+            get { return selectedmodulechild; }
+            set { SetValue(ref selectedmodulechild, value); }
+        }
+        public bool ToolBar_A_Child
+        {
+            get { return toolbarachild; }
+            set { SetValue(ref toolbarachild, value); }
+        }
+        #region Properties ToolBar A B C D E
+        // A
         public bool A_IsActive
         {
             get { return aisactive; }
@@ -132,8 +202,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return aicon; }
             set { SetValue(ref aicon, value); }
         }
-        #endregion
-        #region Button Module B
+        // B
         public bool B_IsActive
         {
             get { return bisactive; }
@@ -169,8 +238,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return bicon; }
             set { SetValue(ref bicon, value); }
         }
-        #endregion
-        #region Button Module C
+        // C
         public bool C_IsActive
         {
             get { return cisactive; }
@@ -206,8 +274,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return cicon; }
             set { SetValue(ref cicon, value); }
         }
-        #endregion
-        #region Button Module D
+        // D
         public bool D_IsActive
         {
             get { return disactive; }
@@ -243,8 +310,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return dicon; }
             set { SetValue(ref dicon, value); }
         }
-        #endregion
-        #region Button Module E
+        // E
         public bool E_IsActive
         {
             get { return eisactive; }
@@ -281,6 +347,221 @@ namespace AST_ProBatch_Mobile.ViewModels
             set { SetValue(ref eicon, value); }
         }
         #endregion
+        #region Properties ToolBar a b c
+        // A
+        public bool A_a_IsActive
+        {
+            get { return aaisactive; }
+            set { SetValue(ref aaisactive, value); }
+        }
+        public string A_a_BackgroundColor
+        {
+            get { return aabackgroundcolor; }
+            set { SetValue(ref aabackgroundcolor, value); }
+        }
+        public int A_a_Width
+        {
+            get { return aawidth; }
+            set { SetValue(ref aawidth, value); }
+        }
+        public int A_a_ImageButtonWidth
+        {
+            get { return aaimagebuttonwidth; }
+            set { SetValue(ref aaimagebuttonwidth, value); }
+        }
+        public string A_a_Text
+        {
+            get { return aatext; }
+            set { SetValue(ref aatext, value); }
+        }
+        public string A_a_FontColor
+        {
+            get { return aafontcolor; }
+            set { SetValue(ref aafontcolor, value); }
+        }
+        public string A_a_Icon
+        {
+            get { return aaicon; }
+            set { SetValue(ref aaicon, value); }
+        }
+        // B
+        public bool B_b_IsActive
+        {
+            get { return bbisactive; }
+            set { SetValue(ref bbisactive, value); }
+        }
+        public string B_b_BackgroundColor
+        {
+            get { return bbbackgroundcolor; }
+            set { SetValue(ref bbbackgroundcolor, value); }
+        }
+        public int B_b_Width
+        {
+            get { return bbwidth; }
+            set { SetValue(ref bbwidth, value); }
+        }
+        public int B_b_ImageButtonWidth
+        {
+            get { return bbimagebuttonwidth; }
+            set { SetValue(ref bbimagebuttonwidth, value); }
+        }
+        public string B_b_Text
+        {
+            get { return bbtext; }
+            set { SetValue(ref bbtext, value); }
+        }
+        public string B_b_FontColor
+        {
+            get { return bbfontcolor; }
+            set { SetValue(ref bbfontcolor, value); }
+        }
+        public string B_b_Icon
+        {
+            get { return bbicon; }
+            set { SetValue(ref bbicon, value); }
+        }
+        // C
+        public bool C_c_IsActive
+        {
+            get { return ccisactive; }
+            set { SetValue(ref ccisactive, value); }
+        }
+        public string C_c_BackgroundColor
+        {
+            get { return ccbackgroundcolor; }
+            set { SetValue(ref ccbackgroundcolor, value); }
+        }
+        public int C_c_Width
+        {
+            get { return ccwidth; }
+            set { SetValue(ref ccwidth, value); }
+        }
+        public int C_c_ImageButtonWidth
+        {
+            get { return ccimagebuttonwidth; }
+            set { SetValue(ref ccimagebuttonwidth, value); }
+        }
+        public string C_c_Text
+        {
+            get { return cctext; }
+            set { SetValue(ref cctext, value); }
+        }
+        public string C_c_FontColor
+        {
+            get { return ccfontcolor; }
+            set { SetValue(ref ccfontcolor, value); }
+        }
+        public string C_c_Icon
+        {
+            get { return ccicon; }
+            set { SetValue(ref ccicon, value); }
+        }
+        #endregion
+        #region Properties Modules A B C D E
+        // A
+        public string A_Code
+        {
+            get { return acode; }
+            set { SetValue(ref acode, value); }
+        }
+        public bool A_Critical
+        {
+            get { return acritical; }
+            set { SetValue(ref acritical, value); }
+        }
+        public string A_Name
+        {
+            get { return aname; }
+            set { SetValue(ref aname, value); }
+        }
+        public string A_Description
+        {
+            get { return adescription; }
+            set { SetValue(ref adescription, value); }
+        }
+        public string A_Group
+        {
+            get { return agroup; }
+            set { SetValue(ref agroup, value); }
+        }
+        public string A_Type
+        {
+            get { return atype; }
+            set { SetValue(ref atype, value); }
+        }
+        public bool A_ReExecution
+        {
+            get { return areexecution; }
+            set { SetValue(ref areexecution, value); }
+        }
+        // B
+        // C
+        // D
+        // E
+        #endregion
+        #region Properties Modules b c
+        public string B_b_Command
+        {
+            get { return bbcommand; }
+            set { SetValue(ref bbcommand, value); }
+        }
+        public string B_b_DefaultPath
+        {
+            get { return bbdefaultpath; }
+            set { SetValue(ref bbdefaultpath, value); }
+        }
+        public string B_b_CurrentPath
+        {
+            get { return bbcurrentpath; }
+            set { SetValue(ref bbcurrentpath, value); }
+        }
+        public bool B_b_HasSubProcess
+        {
+            get { return bbhassubprocess; }
+            set { SetValue(ref bbhassubprocess, value); }
+        }
+        public string B_b_MonitoringService
+        {
+            get { return bbmonitoringservice; }
+            set { SetValue(ref bbmonitoringservice, value); }
+        }
+        public bool B_b_IsUser
+        {
+            get { return bbisuser; }
+            set { SetValue(ref bbisuser, value); }
+        }
+        public string B_b_User
+        {
+            get { return bbuser; }
+            set { SetValue(ref bbuser, value); }
+        }
+        public bool B_b_IsSubProcess
+        {
+            get { return bbissubprocess; }
+            set { SetValue(ref bbissubprocess, value); }
+        }
+        public string B_b_SubProcess
+        {
+            get { return bbsubprocess; }
+            set { SetValue(ref bbsubprocess, value); }
+        }
+        public string B_b_MonitoringTime
+        {
+            get { return bbmonitoringtime; }
+            set { SetValue(ref bbmonitoringtime, value); }
+        }
+        public bool B_b_WaitEndSubProcess
+        {
+            get { return bbwaitendsubprocess; }
+            set { SetValue(ref bbwaitendsubprocess, value); }
+        }
+        public ObservableCollection<CommandDataProcessItem> ProcessItems
+        {
+            get { return processitems; }
+            set { SetValue(ref processitems, value); }
+        }
+        #endregion
+        #endregion
 
         #region Constructors
         public CommandDataViewModel(bool IsReload)
@@ -288,14 +569,13 @@ namespace AST_ProBatch_Mobile.ViewModels
             if (IsReload)
             {
                 GetToolBar();
-                //this.LogItem = logItem;
-                //GetInitialData();
-                //GetFakeData();
+                GetInitialData();
             }
         }
         #endregion
 
         #region Commands
+        #region Commands ToolBar A B C D E
         public ICommand Module_A_ClickCommand
         {
             get
@@ -359,6 +639,46 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Module_E_Click()
         {
             await Task.Run(() => ActivatePrincipalToolBarButton("E"));
+        }
+        #endregion
+        #region Command ToolBar a b c
+        public ICommand Module_A_a_ClickCommand
+        {
+            get
+            {
+                return new RelayCommand(Module_A_a_Click);
+            }
+        }
+
+        private async void Module_A_a_Click()
+        {
+            await Task.Run(() => ActivateSecondaryToolBarButton("Aa"));
+        }
+
+        public ICommand Module_B_b_ClickCommand
+        {
+            get
+            {
+                return new RelayCommand(Module_B_b_Click);
+            }
+        }
+
+        private async void Module_B_b_Click()
+        {
+            await Task.Run(() => ActivateSecondaryToolBarButton("Bb"));
+        }
+
+        public ICommand Module_C_c_ClickCommand
+        {
+            get
+            {
+                return new RelayCommand(Module_C_c_Click);
+            }
+        }
+
+        private async void Module_C_c_Click()
+        {
+            await Task.Run(() => ActivateSecondaryToolBarButton("Cc"));
         }
         #endregion
 
@@ -565,141 +885,31 @@ namespace AST_ProBatch_Mobile.ViewModels
         //    }
 
         //}
-
-        private void GetToolBar()
-        {
-            this.A_IsActive = true;
-            this.A_BackgroundColor = "#2255AA";
-            this.A_Width = 200;
-            this.A_ImageButtonWidth = 190;
-            this.A_Text = "Información";
-            this.A_FontColor = "White";
-            this.A_Icon = "check";
-
-            this.B_IsActive = false;
-            this.B_BackgroundColor = "#D7D7D7";
-            this.B_Width = 60;
-            this.B_ImageButtonWidth = 35;
-            this.B_Text = "Datos de la Ejecución";
-            this.B_FontColor = "White";
-            this.B_Icon = "uncheck";
-
-            this.C_IsActive = false;
-            this.C_BackgroundColor = "#D7D7D7";
-            this.C_Width = 60;
-            this.C_ImageButtonWidth = 35;
-            this.C_Text = "Interfaces";
-            this.C_FontColor = "White";
-            this.C_Icon = "uncheck";
-
-            this.D_IsActive = false;
-            this.D_BackgroundColor = "#D7D7D7";
-            this.D_Width = 60;
-            this.D_ImageButtonWidth = 35;
-            this.D_Text = "Acciones sobre Resultados";
-            this.D_FontColor = "White";
-            this.D_Icon = "uncheck";
-
-            this.E_IsActive = false;
-            this.E_BackgroundColor = "#D7D7D7";
-            this.E_Width = 60;
-            this.E_ImageButtonWidth = 35;
-            this.E_Text = "Historial de Ejecuciones";
-            this.E_FontColor = "White";
-            this.E_Icon = "uncheck";
-
-            this.SelectedModule = this.A_Text;
-        }
-
-        private void ActivatePrincipalToolBarButton(string Module)
-        {
-            this.A_IsActive = false;
-            this.A_BackgroundColor = "#D7D7D7";
-            this.A_Width = 60;
-            this.A_ImageButtonWidth = 35;
-            this.A_FontColor = "White";
-            this.A_Icon = "uncheck";
-
-            this.B_IsActive = false;
-            this.B_BackgroundColor = "#D7D7D7";
-            this.B_Width = 60;
-            this.B_ImageButtonWidth = 35;
-            this.B_FontColor = "White";
-            this.B_Icon = "uncheck";
-
-            this.C_IsActive = false;
-            this.C_BackgroundColor = "#D7D7D7";
-            this.C_Width = 60;
-            this.C_ImageButtonWidth = 35;
-            this.C_FontColor = "White";
-            this.C_Icon = "uncheck";
-
-            this.D_IsActive = false;
-            this.D_BackgroundColor = "#D7D7D7";
-            this.D_Width = 60;
-            this.D_ImageButtonWidth = 35;
-            this.D_FontColor = "White";
-            this.D_Icon = "uncheck";
-
-            this.E_IsActive = false;
-            this.E_BackgroundColor = "#D7D7D7";
-            this.E_Width = 60;
-            this.E_ImageButtonWidth = 35;
-            this.E_FontColor = "White";
-            this.E_Icon = "uncheck";
-
-            switch (Module)
-            {
-                case "A":
-                    this.A_IsActive = true;
-                    this.A_BackgroundColor = "#2255AA";
-                    this.A_Width = 200;
-                    this.A_ImageButtonWidth = 190;
-                    this.A_FontColor = "White";
-                    this.A_Icon = "check";
-                    this.SelectedModule = this.A_Text;
-                    break;
-                case "B":
-                    this.B_IsActive = true;
-                    this.B_BackgroundColor = "#2255AA";
-                    this.B_Width = 200;
-                    this.B_ImageButtonWidth = 190;
-                    this.B_FontColor = "White";
-                    this.B_Icon = "check";
-                    this.SelectedModule = this.B_Text;
-                    break;
-                case "C":
-                    this.C_IsActive = true;
-                    this.C_BackgroundColor = "#2255AA";
-                    this.C_Width = 200;
-                    this.C_ImageButtonWidth = 190;
-                    this.C_FontColor = "White";
-                    this.C_Icon = "check";
-                    this.SelectedModule = this.C_Text;
-                    break;
-                case "D":
-                    this.D_IsActive = true;
-                    this.D_BackgroundColor = "#2255AA";
-                    this.D_Width = 200;
-                    this.D_ImageButtonWidth = 190;
-                    this.D_FontColor = "White";
-                    this.D_Icon = "check";
-                    this.SelectedModule = this.D_Text;
-                    break;
-                case "E":
-                    this.E_IsActive = true;
-                    this.E_BackgroundColor = "#2255AA";
-                    this.E_Width = 200;
-                    this.E_ImageButtonWidth = 190;
-                    this.E_FontColor = "White";
-                    this.E_Icon = "check";
-                    this.SelectedModule = this.E_Text;
-                    break;
-            }
-        }
         #endregion
 
         #region Helpers
+        private async void GetInitialData()
+        {
+            this.A_Code = "80051";
+            this.A_Critical = false;
+            this.A_Name = "MENSAJE DE HOLD DE BASE DE DATOS";
+            this.A_Description = "MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS";
+            this.A_Group = "PROCESOS GENERALES";
+            this.A_Type = "MENSAJE";
+            this.A_ReExecution = true;
+
+            this.B_b_Command = "SBMJOB";
+            this.B_b_DefaultPath = "/";
+            this.B_b_CurrentPath = "/";
+            this.B_b_HasSubProcess = true;
+            this.B_b_MonitoringService = "AS400";
+            this.B_b_IsUser = false;
+            this.B_b_User = string.Empty;
+            this.B_b_IsSubProcess = true;
+            this.B_b_SubProcess = string.Empty;
+            this.B_b_MonitoringTime = "60";
+            this.B_b_WaitEndSubProcess = true;
+        }
         //private async void GetInitialData()
         //{
         //    try
@@ -832,6 +1042,246 @@ namespace AST_ProBatch_Mobile.ViewModels
         //    }
         //    return result;
         //}
+
+        private void GetToolBar()
+        {
+            #region ToolBar A B C D E
+            // A
+            this.A_IsActive = true;
+            this.A_BackgroundColor = "#2255AA";
+            this.A_Width = 200;
+            this.A_ImageButtonWidth = 190;
+            this.A_Text = "Información";
+            this.A_FontColor = "White";
+            this.A_Icon = "toolbar_selected";
+            // B
+            this.B_IsActive = false;
+            this.B_BackgroundColor = "#D7D7D7";
+            this.B_Width = 60;
+            this.B_ImageButtonWidth = 35;
+            this.B_Text = "Datos de la Ejecución";
+            this.B_FontColor = "White";
+            this.B_Icon = "toolbar_unselected";
+            // C
+            this.C_IsActive = false;
+            this.C_BackgroundColor = "#D7D7D7";
+            this.C_Width = 60;
+            this.C_ImageButtonWidth = 35;
+            this.C_Text = "Interfaces";
+            this.C_FontColor = "White";
+            this.C_Icon = "toolbar_unselected";
+            // D
+            this.D_IsActive = false;
+            this.D_BackgroundColor = "#D7D7D7";
+            this.D_Width = 60;
+            this.D_ImageButtonWidth = 35;
+            this.D_Text = "Acciones sobre Resultados";
+            this.D_FontColor = "White";
+            this.D_Icon = "toolbar_unselected";
+            // E
+            this.E_IsActive = false;
+            this.E_BackgroundColor = "#D7D7D7";
+            this.E_Width = 60;
+            this.E_ImageButtonWidth = 35;
+            this.E_Text = "Historial de Ejecuciones";
+            this.E_FontColor = "White";
+            this.E_Icon = "toolbar_unselected";
+            #endregion
+            #region ToolBar a b c
+            // A
+            this.A_a_IsActive = true;
+            this.A_a_BackgroundColor = "#2255AA";
+            this.A_a_Width = 200;
+            this.A_a_ImageButtonWidth = 190;
+            this.A_a_Text = "General";
+            this.A_a_FontColor = "White";
+            this.A_a_Icon = "toolbar_selected";
+            // B
+            this.B_b_IsActive = false;
+            this.B_b_BackgroundColor = "#D7D7D7";
+            this.B_b_Width = 60;
+            this.B_b_ImageButtonWidth = 35;
+            this.B_b_Text = "Comando";
+            this.B_b_FontColor = "White";
+            this.B_b_Icon = "toolbar_unselected";
+            // C
+            this.C_c_IsActive = false;
+            this.C_c_BackgroundColor = "#D7D7D7";
+            this.C_c_Width = 60;
+            this.C_c_ImageButtonWidth = 35;
+            this.C_c_Text = "Transferencia";
+            this.C_c_FontColor = "White";
+            this.C_c_Icon = "toolbar_unselected";
+
+
+            this.SelectedModule = this.A_Text;
+            this.SelectedModule_Child = this.A_a_Text;
+            this.ToolBar_A_Child = true;
+            #endregion
+        }
+
+        private void ActivatePrincipalToolBarButton(string Module)
+        {
+            #region ToolBar A B C D E
+            // A
+            this.A_IsActive = false;
+            this.A_BackgroundColor = "#D7D7D7";
+            this.A_Width = 60;
+            this.A_ImageButtonWidth = 35;
+            this.A_FontColor = "White";
+            this.A_Icon = "toolbar_unselected";
+            // B
+            this.B_IsActive = false;
+            this.B_BackgroundColor = "#D7D7D7";
+            this.B_Width = 60;
+            this.B_ImageButtonWidth = 35;
+            this.B_FontColor = "White";
+            this.B_Icon = "toolbar_unselected";
+            // C
+            this.C_IsActive = false;
+            this.C_BackgroundColor = "#D7D7D7";
+            this.C_Width = 60;
+            this.C_ImageButtonWidth = 35;
+            this.C_FontColor = "White";
+            this.C_Icon = "toolbar_unselected";
+            // D
+            this.D_IsActive = false;
+            this.D_BackgroundColor = "#D7D7D7";
+            this.D_Width = 60;
+            this.D_ImageButtonWidth = 35;
+            this.D_FontColor = "White";
+            this.D_Icon = "toolbar_unselected";
+            // E
+            this.E_IsActive = false;
+            this.E_BackgroundColor = "#D7D7D7";
+            this.E_Width = 60;
+            this.E_ImageButtonWidth = 35;
+            this.E_FontColor = "White";
+            this.E_Icon = "toolbar_unselected";
+            #endregion
+            #region Activate
+            switch (Module)
+            {
+                case "A":
+                    this.A_IsActive = true;
+                    this.A_BackgroundColor = "#2255AA";
+                    this.A_Width = 200;
+                    this.A_ImageButtonWidth = 190;
+                    this.A_FontColor = "White";
+                    this.A_Icon = "toolbar_selected";
+                    this.SelectedModule = this.A_Text;
+                    this.SelectedModule_Child = string.Empty;
+                    this.ToolBar_A_Child = true;
+                    ActivateSecondaryToolBarButton("Aa");
+                    break;
+                case "B":
+                    this.B_IsActive = true;
+                    this.B_BackgroundColor = "#2255AA";
+                    this.B_Width = 200;
+                    this.B_ImageButtonWidth = 190;
+                    this.B_FontColor = "White";
+                    this.B_Icon = "toolbar_selected";
+                    this.SelectedModule = this.B_Text;
+                    this.SelectedModule_Child = string.Empty;
+                    this.ToolBar_A_Child = false;
+                    break;
+                case "C":
+                    this.C_IsActive = true;
+                    this.C_BackgroundColor = "#2255AA";
+                    this.C_Width = 200;
+                    this.C_ImageButtonWidth = 190;
+                    this.C_FontColor = "White";
+                    this.C_Icon = "toolbar_selected";
+                    this.SelectedModule = this.C_Text;
+                    this.SelectedModule_Child = string.Empty;
+                    this.ToolBar_A_Child = false;
+                    break;
+                case "D":
+                    this.D_IsActive = true;
+                    this.D_BackgroundColor = "#2255AA";
+                    this.D_Width = 200;
+                    this.D_ImageButtonWidth = 190;
+                    this.D_FontColor = "White";
+                    this.D_Icon = "toolbar_selected";
+                    this.SelectedModule = this.D_Text;
+                    this.SelectedModule_Child = string.Empty;
+                    this.ToolBar_A_Child = false;
+                    break;
+                case "E":
+                    this.E_IsActive = true;
+                    this.E_BackgroundColor = "#2255AA";
+                    this.E_Width = 200;
+                    this.E_ImageButtonWidth = 190;
+                    this.E_FontColor = "White";
+                    this.E_Icon = "toolbar_selected";
+                    this.SelectedModule = this.E_Text;
+                    this.SelectedModule_Child = string.Empty;
+                    this.ToolBar_A_Child = false;
+                    break;
+            }
+            #endregion
+        }
+
+        private void ActivateSecondaryToolBarButton(string Module)
+        {
+            #region ToolBar a b c
+            this.A_IsActive = false;
+            // A
+            this.A_a_IsActive = false;
+            this.A_a_BackgroundColor = "#D7D7D7";
+            this.A_a_Width = 60;
+            this.A_a_ImageButtonWidth = 35;
+            this.A_a_FontColor = "White";
+            this.A_a_Icon = "toolbar_unselected";
+            // B
+            this.B_b_IsActive = false;
+            this.B_b_BackgroundColor = "#D7D7D7";
+            this.B_b_Width = 60;
+            this.B_b_ImageButtonWidth = 35;
+            this.B_b_FontColor = "White";
+            this.B_b_Icon = "toolbar_unselected";
+            // C
+            this.C_c_IsActive = false;
+            this.C_c_BackgroundColor = "#D7D7D7";
+            this.C_c_Width = 60;
+            this.C_c_ImageButtonWidth = 35;
+            this.C_c_FontColor = "White";
+            this.C_c_Icon = "toolbar_unselected";
+            #endregion
+            #region Activate
+            switch (Module)
+            {
+                case "Aa":
+                    this.A_IsActive = true;
+                    this.A_a_IsActive = true;
+                    this.A_a_BackgroundColor = "#2255AA";
+                    this.A_a_Width = 200;
+                    this.A_a_ImageButtonWidth = 190;
+                    this.A_a_FontColor = "White";
+                    this.A_a_Icon = "toolbar_selected";
+                    this.SelectedModule_Child = this.A_a_Text;
+                    break;
+                case "Bb":
+                    this.B_b_IsActive = true;
+                    this.B_b_BackgroundColor = "#2255AA";
+                    this.B_b_Width = 200;
+                    this.B_b_ImageButtonWidth = 190;
+                    this.B_b_FontColor = "White";
+                    this.B_b_Icon = "toolbar_selected";
+                    this.SelectedModule_Child = this.B_b_Text;
+                    break;
+                case "Cc":
+                    this.C_c_IsActive = true;
+                    this.C_c_BackgroundColor = "#2255AA";
+                    this.C_c_Width = 200;
+                    this.C_c_ImageButtonWidth = 190;
+                    this.C_c_FontColor = "White";
+                    this.C_c_Icon = "toolbar_selected";
+                    this.SelectedModule_Child = this.C_c_Text;
+                    break;
+            }
+            #endregion
+        }
         #endregion
     }
 }
