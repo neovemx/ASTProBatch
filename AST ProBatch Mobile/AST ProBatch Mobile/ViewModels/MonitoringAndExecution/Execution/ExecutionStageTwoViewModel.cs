@@ -171,18 +171,14 @@ namespace AST_ProBatch_Mobile.ViewModels
                     Alert.Show("No hay datos para realizar operaciones!");
                     return;
                 }
-
                 if (this.InstanceItems.Count == 1)
                 {
                     Alert.Show("Sólo hay una instancia en la vista!");
                     return;
                 }
-
                 if (string.CompareOrdinal(CheckIcon, "check") == 0)
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
-
-                    await Task.Delay(1000);
 
                     await Task.Run(async () =>
                     {
@@ -203,8 +199,6 @@ namespace AST_ProBatch_Mobile.ViewModels
                 else
                 {
                     UserDialogs.Instance.ShowLoading("Cargando...", MaskType.Black);
-
-                    await Task.Delay(1000);
 
                     await Task.Run(async () =>
                     {
