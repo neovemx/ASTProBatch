@@ -909,6 +909,35 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.B_b_SubProcess = string.Empty;
             this.B_b_MonitoringTime = "60";
             this.B_b_WaitEndSubProcess = true;
+
+            this.ProcessItems = new ObservableCollection<CommandDataProcessItem>()
+            {
+                new CommandDataProcessItem()
+                {
+                    PID = 1010,
+                    NameProcess = "DPD540CL"
+                },
+                new CommandDataProcessItem()
+                {
+                    PID = 1011,
+                    NameProcess = "DPD560CL"
+                },
+                new CommandDataProcessItem()
+                {
+                    PID = 1011,
+                    NameProcess = "DPD560CL"
+                },
+                new CommandDataProcessItem()
+                {
+                    PID = 1011,
+                    NameProcess = "DPD560CL"
+                },
+                new CommandDataProcessItem()
+                {
+                    PID = 1011,
+                    NameProcess = "DPD560CL"
+                }
+            };
         }
         //private async void GetInitialData()
         //{
