@@ -28,6 +28,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool fullviewisvisible;
         private bool isvisibleemptyview;
         private InstanceItem instanceitem;
+        private bool isexecution;
+        private bool iseventual;
         #endregion
 
         #region Properties
@@ -83,6 +85,16 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return instanceitem; }
             set { SetValue(ref instanceitem, value); }
         }
+        public bool IsExecution
+        {
+            get { return isexecution; }
+            set { SetValue(ref isexecution, value); }
+        }
+        public bool IsEventual
+        {
+            get { return iseventual; }
+            set { SetValue(ref iseventual, value); }
+        }
         #endregion
 
         #region Constructors
@@ -92,7 +104,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             {
                 ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
                 this.InstanceItem = instanceitem;
-
+                this.IsExecution = instanceitem.LogItem.IsExecution;
+                this.IsEventual = instanceitem.LogItem.IsEventual;
                 this.ToolBarIsVisible = false;
                 this.ActionIcon = "actions";
                 this.CheckIcon = "check";
@@ -119,6 +132,16 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Actions()
         {
+            if (this.IsEventual)
+            {
+                Alert.Show("La bitácora es eventual!");
+                return;
+            }
+            if (!this.IsExecution)
+            {
+                Alert.Show("Modo Monitoreo, ingrese a través de Ejecución!");
+                return;
+            }
             if (this.IsVisibleEmptyView)
             {
                 Alert.Show("No hay datos para realizar operaciones!");
@@ -162,6 +185,16 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
+                if (this.IsEventual)
+                {
+                    Alert.Show("La bitácora es eventual!");
+                    return;
+                }
+                if (!this.IsExecution)
+                {
+                    Alert.Show("Modo Monitoreo, ingrese a través de Ejecución!");
+                    return;
+                }
                 if (this.IsVisibleEmptyView)
                 {
                     Alert.Show("No hay datos para realizar operaciones!");
@@ -347,6 +380,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                             TimeSpan execTime = TimeSpan.FromMinutes(command.ExecutionTime);
                             CommandItems.Add(new CommandItem()
                             {
+                                IsExecution = this.IsExecution,
                                 IdLot = command.IdLot,
                                 NameLot = command.NameLot.Trim(),
                                 IdCommand = command.IdCommand,

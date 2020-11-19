@@ -17,6 +17,7 @@ namespace AST_ProBatch_Mobile.Models
         #endregion
 
         #region Model Extended
+        public bool IsExecution { get; set; }
         public string Duration { get; set; }
         public string ExecutionStart { get; set; }
         public string ExecutionEnd { get; set; }

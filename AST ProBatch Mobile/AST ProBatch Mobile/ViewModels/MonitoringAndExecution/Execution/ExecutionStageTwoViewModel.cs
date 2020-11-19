@@ -26,6 +26,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool fullviewisvisible;
         private bool isvisibleemptyview;
         private LogItem logitem;
+        private bool isexecution;
         #endregion
 
         #region Properties
@@ -81,6 +82,11 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return logitem; }
             set { SetValue(ref logitem, value); }
         }
+        public bool IsExecution
+        {
+            get { return isexecution; }
+            set { SetValue(ref isexecution, value); }
+        }
         #endregion
 
         #region Constructors
@@ -90,7 +96,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             {
                 ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
                 this.LogItem = logitem;
-
+                this.IsExecution = logitem.IsExecution;
                 this.ToolBarIsVisible = false;
                 this.ActionIcon = "actions";
                 this.CheckIcon = "check";
@@ -347,6 +353,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                         {
                             InstanceItems.Add(new InstanceItem()
                             {
+                                IsExecution = this.IsExecution,
                                 IdInstance = instance.IdInstance,
                                 InstanceNumber = instance.InstanceNumber,
                                 NameInstance = instance.NameInstance.Trim(),

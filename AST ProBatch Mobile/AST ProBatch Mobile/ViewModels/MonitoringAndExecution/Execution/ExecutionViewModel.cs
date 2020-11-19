@@ -24,6 +24,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool compactviewisvisible;
         private bool fullviewisvisible;
         private bool isvisibleemptyview;
+        private bool isexecution;
         #endregion
 
         #region Properties
@@ -69,14 +70,20 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return isvisibleemptyview; }
             set { SetValue(ref isvisibleemptyview, value); }
         }
+        public bool IsExecution
+        {
+            get { return isexecution; }
+            set { SetValue(ref isexecution, value); }
+        }
         #endregion
 
         #region Constructors
-        public ExecutionViewModel(bool IsReload)
+        public ExecutionViewModel(bool IsReload, bool IsExecution)
         {
             if (IsReload)
             {
                 ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
+                this.IsExecution = IsExecution;
                 this.ToolBarIsVisible = false;
                 this.ActionIcon = "actions";
                 this.CheckIcon = "check";
@@ -101,6 +108,11 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Actions()
         {
+            if (!this.IsExecution)
+            {
+                Alert.Show("Modo Monitoreo, ingrese a través de Ejecución!");
+                return;
+            }
             if (this.IsVisibleEmptyView)
             {
                 Alert.Show("No hay datos para realizar operaciones!");
@@ -144,6 +156,11 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             try
             {
+                if (!this.IsExecution)
+                {
+                    Alert.Show("Modo Monitoreo, ingrese a través de Ejecución!");
+                    return;
+                }
                 if (this.IsVisibleEmptyView)
                 {
                     Alert.Show("No hay datos para realizar operaciones!");
@@ -320,6 +337,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                         {
                             LogItems.Add(new LogItem()
                             {
+                                IsExecution = this.IsExecution,
                                 IdLog = (Int32)log.IdLog,
                                 NameLog = log.NameLog.Trim(),
                                 IsEventual = (bool)log.IsEventual,

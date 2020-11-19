@@ -11,8 +11,8 @@
              BackgroundColor="White"
              NavigationPage.BackButtonTitle="">
     <ContentPage.ToolbarItems>
-        <!--<ToolbarItem BindingContext="{Binding Execution}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />-->
-        <!--<ToolbarItem BindingContext="{Binding Execution}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />-->
+        <ToolbarItem BindingContext="{Binding Execution}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />
+        <ToolbarItem BindingContext="{Binding Execution}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />
         <ToolbarItem BindingContext="{Binding Execution}" Text="Ver"  Icon="{Binding ViewIcon}" Command="{Binding ViewCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -287,7 +287,7 @@
                                                             HorizontalOptions="Center">
                                                             <StackLayout>
                                                                 <ImageButton
-                                                                    IsVisible="False"
+                                                                    IsVisible="{Binding IsExecution}"
                                                                     BackgroundColor="#F1F2F6"
                                                                     IsEnabled="{Binding IsEnabled}"
                                                                     CommandParameter="{Binding}"
@@ -305,7 +305,7 @@
                                                             </StackLayout>
                                                             <StackLayout>
                                                                 <ImageButton
-                                                                    IsVisible="False"
+                                                                    IsVisible="{Binding IsExecution}"
                                                                     BackgroundColor="#F1F2F6"
                                                                     IsEnabled="{Binding IsEnabled}"
                                                                     CommandParameter="{Binding}"
@@ -323,7 +323,7 @@
                                                             </StackLayout>
                                                             <StackLayout>
                                                                 <ImageButton
-                                                                    IsVisible="False"
+                                                                    IsVisible="{Binding IsExecution}"
                                                                     BackgroundColor="#F1F2F6"
                                                                     IsEnabled="{Binding IsEnabled}"
                                                                     CommandParameter="{Binding}"
@@ -341,7 +341,7 @@
                                                             </StackLayout>
                                                             <StackLayout>
                                                                 <ImageButton
-                                                                    IsVisible="False"
+                                                                    IsVisible="{Binding IsExecution}"
                                                                     BackgroundColor="#F1F2F6"
                                                                     IsEnabled="{Binding IsEnabled}"
                                                                     CommandParameter="{Binding}"
@@ -359,7 +359,7 @@
                                                             </StackLayout>
                                                             <StackLayout>
                                                                 <ImageButton
-                                                                    IsVisible="False"
+                                                                    IsVisible="{Binding IsExecution}"
                                                                     BackgroundColor="#F1F2F6"
                                                                     IsEnabled="{Binding IsEnabled}"
                                                                     CommandParameter="{Binding}"

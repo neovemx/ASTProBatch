@@ -98,7 +98,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.Notifications = new NotificationsViewModel(false, new Models.LogItem());
             this.InstanceNotifications = new InstanceNotificationsViewModel(new Models.InstanceItem());
             this.Monitoring = new MonitoringViewModel();
-            this.Execution = new ExecutionViewModel(false);
+            this.Execution = new ExecutionViewModel(false, false);
             this.ExecutionStageTwo = new ExecutionStageTwoViewModel(false, new Models.LogItem());
             this.ExecutionStageThree = new ExecutionStageThreeViewModel(false, new Models.InstanceItem());
             this.CommandNotifications = new CommandNotificationsViewModel(new Models.CommandItem());

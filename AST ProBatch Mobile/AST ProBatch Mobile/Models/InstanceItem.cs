@@ -19,6 +19,7 @@ namespace AST_ProBatch_Mobile.Models
         #endregion
 
         #region Model Extended
+        public bool IsExecution { get; set; }
         public bool IsChecked { get; set; }
         public bool IsEnabled { get; set; }
         public string NotificationIcon { get; set; }      

@@ -36,7 +36,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             //MainViewModel.GetInstance().Monitoring = new MonitoringViewModel();
             //await Application.Current.MainPage.Navigation.PushAsync(new MonitoringPage());
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().Execution = new ExecutionViewModel(true);
+            MainViewModel.GetInstance().Execution = new ExecutionViewModel(true, false);
             await Application.Current.MainPage.Navigation.PushAsync(new ExecutionPage());
         }
 
@@ -51,7 +51,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Btnsubmg()
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().Execution = new ExecutionViewModel(true);
+            MainViewModel.GetInstance().Execution = new ExecutionViewModel(true, true);
             await Application.Current.MainPage.Navigation.PushAsync(new ExecutionPage());
         }
 
