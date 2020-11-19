@@ -53,7 +53,7 @@
                     <StackLayout
                         Padding="0,30,0,0">
                         <ImageButton
-                            IsEnabled="True"
+                            IsEnabled="False"
                             Padding="10,0,0,4"
                             CornerRadius="38"
                             BorderColor="DarkGray"

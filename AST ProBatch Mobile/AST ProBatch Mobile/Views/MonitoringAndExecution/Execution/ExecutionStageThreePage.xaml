@@ -174,24 +174,27 @@
                                                     </StackLayout>   
                                                 </StackLayout>
                                                 <StackLayout
-                                                    VerticalOptions="Center">
-                                                    <ImageButton
-                                                        IsVisible="False"
-                                                        BackgroundColor="#F1F2F6"
-                                                        IsEnabled="{Binding IsEnabled}"
-                                                        Source="action_ap"
-                                                        CommandParameter="{Binding}"
-                                                        Clicked="ImageButtonPause_Clicked"
-                                                        WidthRequest="35"
-                                                        HeightRequest="35">
-                                                        <ImageButton.CornerRadius>
-                                                            <OnPlatform x:TypeArguments="x:Int32">
-                                                                <On Platform="iOS" Value="17" />
-                                                                <On Platform="Android" Value="50" />
-                                                            </OnPlatform>
-                                                        </ImageButton.CornerRadius>
-                                                    </ImageButton>
+                                                    IsVisible="{Binding IsExecution}">
+                                                    <StackLayout
+                                                        VerticalOptions="Center">
+                                                        <ImageButton
+                                                            BackgroundColor="#F1F2F6"
+                                                            IsEnabled="{Binding IsEnabled}"
+                                                            Source="action_ap"
+                                                            CommandParameter="{Binding}"
+                                                            Clicked="ImageButtonPause_Clicked"
+                                                            WidthRequest="35"
+                                                            HeightRequest="35">
+                                                            <ImageButton.CornerRadius>
+                                                                <OnPlatform x:TypeArguments="x:Int32">
+                                                                    <On Platform="iOS" Value="17" />
+                                                                    <On Platform="Android" Value="50" />
+                                                                </OnPlatform>
+                                                            </ImageButton.CornerRadius>
+                                                        </ImageButton>
+                                                    </StackLayout>
                                                 </StackLayout>
+                                                    
                                                 <StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton
