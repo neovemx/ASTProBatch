@@ -12,6 +12,7 @@
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding CommandData}">
+            <!--ToolBars Principal-->
             <StackLayout
                 MinimumHeightRequest="80">
                 <ScrollView
@@ -31,7 +32,7 @@
                                 WidthRequest="{Binding A_Width}"
                                 Orientation="Vertical">
                                 <ImageButton
-                                    Clicked="Module_Start_Clicked"
+                                    Clicked="ToolBarPrincipal_Start_Clicked"
                                     Command="{Binding Module_A_ClickCommand}"
                                     BackgroundColor="{Binding A_BackgroundColor}"
                                     HorizontalOptions="Center"
@@ -58,7 +59,7 @@
                                 WidthRequest="{Binding B_Width}"
                                 Orientation="Vertical">
                                 <ImageButton
-                                    Clicked="Module_Visible_Clicked"
+                                    Clicked="ToolBarPrincipal_Visible_Clicked"
                                     Command="{Binding Module_B_ClickCommand}"
                                     BackgroundColor="{Binding B_BackgroundColor}"
                                     HorizontalOptions="Center"
@@ -85,7 +86,7 @@
                                 WidthRequest="{Binding C_Width}"
                                 Orientation="Vertical">
                                 <ImageButton
-                                    Clicked="Module_Visible_Clicked"
+                                    Clicked="ToolBarPrincipal_Visible_Clicked"
                                     Command="{Binding Module_C_ClickCommand}"
                                     BackgroundColor="{Binding C_BackgroundColor}"
                                     HorizontalOptions="Center"
@@ -112,7 +113,7 @@
                                 WidthRequest="{Binding D_Width}"
                                 Orientation="Vertical">
                                 <ImageButton
-                                    Clicked="Module_Visible_Clicked"
+                                    Clicked="ToolBarPrincipal_End_Clicked"
                                     Command="{Binding Module_D_ClickCommand}"
                                     BackgroundColor="{Binding D_BackgroundColor}"
                                     HorizontalOptions="Center"
@@ -130,7 +131,7 @@
                                     Text="{Binding D_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
-                        <controls:CustomFrame
+                        <!--<controls:CustomFrame
                             Margin="0,0,-5,0"
                             Padding="0,5,0,5"
                             CornerRadius="1"
@@ -139,7 +140,7 @@
                                 WidthRequest="{Binding E_Width}"
                                 Orientation="Vertical">
                                 <ImageButton
-                                    Clicked="Module_End_Clicked"
+                                    Clicked="ToolBarPrincipal_End_Clicked"
                                     Command="{Binding Module_E_ClickCommand}"
                                     BackgroundColor="{Binding E_BackgroundColor}"
                                     HorizontalOptions="Center"
@@ -156,14 +157,17 @@
                                     FontSize="Small"
                                     Text="{Binding E_Text}"/>
                             </StackLayout>
-                        </controls:CustomFrame>
+                        </controls:CustomFrame>-->
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
+            <!--ToolBars Principal-->
+            <!--Contents-->
             <ScrollView
                 VerticalOptions="FillAndExpand">
                 <StackLayout
                     Padding="10">
+                    <!--Header-->
                     <controls:CustomFrame
                         CornerRadius="10,10,0,0"
                         BackgroundColor="#D7D7D7"
@@ -187,6 +191,8 @@
                                 LineBreakMode="TailTruncation"/>
                         </StackLayout>      
                     </controls:CustomFrame>
+                    <!--Header-->
+                    <!--A B C D-->
                     <controls:CustomFrame
                         IsVisible="{Binding A_IsActive}"
                         Margin="0,-7,0,0"
@@ -324,24 +330,51 @@
                             </StackLayout>
                         </StackLayout>
                     </controls:CustomFrame>
+                    <!--No Necessary-->
                     <controls:CustomFrame
                         IsVisible="{Binding B_IsActive}"
                         Margin="0,-7,0,0"
                         CornerRadius="0,0,10,10"
                         BackgroundColor="DarkGray"
                         Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE B"/>
-                        </StackLayout>
                     </controls:CustomFrame>
+                    <!--No Necessary-->
+                    <!--Header-->
                     <controls:CustomFrame
                         IsVisible="{Binding C_IsActive}"
                         Margin="0,-7,0,0"
                         CornerRadius="0,0,10,10"
                         BackgroundColor="DarkGray"
                         Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE C"/>
+                        <StackLayout
+                            Padding="10">
+                            <StackLayout
+                                HeightRequest="150"
+                                Padding="0,0,0,10">
+                                <ListView
+                                    ItemsSource="{Binding InterfaceItems}"
+                                    BackgroundColor="Transparent"
+                                    SelectionMode="None">
+                                    <ListView.SeparatorVisibility>
+                                        <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                            <On Platform="iOS" Value="None" />
+                                            <On Platform="Android" Value="Default" />
+                                        </OnPlatform>
+                                    </ListView.SeparatorVisibility>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <ViewCell.View>
+                                                    <StackLayout
+                                                        Padding="10">
+                                                        <!--TABLE DATA OBSERVATION-->
+                                                    </StackLayout>
+                                                </ViewCell.View>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
                         </StackLayout>
                     </controls:CustomFrame>
                     <controls:CustomFrame
@@ -350,20 +383,30 @@
                         CornerRadius="0,0,10,10"
                         BackgroundColor="DarkGray"
                         Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE D"/>
+                        <StackLayout
+                            Padding="10">
+                            <StackLayout
+                                Orientation="Vertical">
+                                <RadioButton
+                                    TextColor="#2255AA"
+                                    GroupName="Options"
+                                    Text="Ejecuciones Exitosas"
+                                    IsChecked="{Binding D_Option_a_IsChecked}"/>
+                                <RadioButton
+                                    TextColor="#2255AA"
+                                    GroupName="Options"
+                                    Text="Detalle del Último Error"
+                                    IsChecked="{Binding D_Option_b_IsChecked}"/>
+                                <RadioButton
+                                    TextColor="#2255AA"
+                                    GroupName="Options"
+                                    Text="Detalle del Último Error"
+                                    IsChecked="{Binding D_Option_c_IsChecked}"/>
+                            </StackLayout>
                         </StackLayout>
                     </controls:CustomFrame>
-                    <controls:CustomFrame
-                        IsVisible="{Binding E_IsActive}"
-                        Margin="0,-7,0,0"
-                        CornerRadius="0,0,10,10"
-                        BackgroundColor="DarkGray"
-                        Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE E"/>
-                        </StackLayout>
-                    </controls:CustomFrame>
+                    <!--A B C D-->
+                    <!--b c d e-->
                     <controls:CustomFrame
                         IsVisible="{Binding B_b_IsActive}"
                         Margin="0,-7,0,0"
@@ -596,25 +639,409 @@
                                 </StackLayout>
                             </controls:CustomFrame>
                         </StackLayout>
-                    </controls:CustomFrame>
-                                    
+                    </controls:CustomFrame>                                   
                     <controls:CustomFrame
                         IsVisible="{Binding C_c_IsActive}"
                         Margin="0,-7,0,0"
                         CornerRadius="0,0,10,10"
                         BackgroundColor="DarkGray"
                         Padding="0">
-                        <StackLayout>
-                            <Label Text="MODULE Cc"/>
+                        <StackLayout
+                            Padding="10,0,10,10">
+                            <controls:CustomFrame
+                                Margin="0,20,0,0"
+                                CornerRadius="10,10,0,0"
+                                BackgroundColor="#D7D7D7"
+                                Padding="0">
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Padding="5"
+                                        FontSize="Medium"
+                                        Text="Origen"
+                                        TextColor="#2255AA"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>      
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                Margin="0,-7,0,0"
+                                CornerRadius="0,0,10,10"
+                                BackgroundColor="Gray"
+                                Padding="0">
+                                <StackLayout
+                                    Padding="10"
+                                    Orientation="Vertical">
+                                    <StackLayout
+                                        Orientation="Vertical">
+                                        <Label
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Ambiente:"/>
+                                        <Label 
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding C_c_Environment}"
+                                            LineBreakMode="TailTruncation"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Vertical">
+                                        <Label
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Path:"/>
+                                        <Label 
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding C_c_Patch}"
+                                            LineBreakMode="TailTruncation"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        HorizontalOptions="Center"
+                                        Orientation="Horizontal"
+                                        Padding="5,10,5,0">
+                                        <StackLayout
+                                            VerticalOptions="Center">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                TextColor="#2255AA"
+                                                Text="Acciones en Origen"
+                                                FontSize="Small"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout
+                                        HeightRequest="150"
+                                        Padding="0,0,0,10">
+                                        <ListView
+                                            ItemsSource="{Binding OriginAcctionsItems}"
+                                            BackgroundColor="Transparent"
+                                            SelectionMode="None">
+                                            <ListView.SeparatorVisibility>
+                                                <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                                    <On Platform="iOS" Value="None" />
+                                                    <On Platform="Android" Value="Default" />
+                                                </OnPlatform>
+                                            </ListView.SeparatorVisibility>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <ViewCell.View>
+                                                            <StackLayout
+                                                                Padding="10">
+                                                                <Label 
+                                                                    TextColor="Black"
+                                                                    Text="{Binding OriginAction}"
+                                                                    FontSize="Small"
+                                                                    LineBreakMode="TailTruncation"/>
+                                                            </StackLayout>
+                                                        </ViewCell.View>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </StackLayout>
+                                </StackLayout>
+                            </controls:CustomFrame>       
+                            <controls:CustomFrame
+                                Margin="0,20,0,0"
+                                CornerRadius="10,10,0,0"
+                                BackgroundColor="#D7D7D7"
+                                Padding="0">
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Padding="5"
+                                        FontSize="Medium"
+                                        Text="Destino"
+                                        TextColor="#2255AA"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>      
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                Margin="0,-7,0,0"
+                                CornerRadius="0,0,10,10"
+                                BackgroundColor="Gray"
+                                Padding="0">
+                                <StackLayout
+                                    Padding="10"
+                                    Orientation="Vertical">
+                                    <StackLayout
+                                        HorizontalOptions="Center"
+                                        Orientation="Horizontal"
+                                        Padding="5,10,5,0">
+                                        <StackLayout
+                                            VerticalOptions="Center">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                TextColor="#2255AA"
+                                                Text="Destinos"
+                                                FontSize="Small"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout
+                                        HeightRequest="150"
+                                        Padding="0,0,0,10">
+                                        <ListView
+                                            ItemsSource="{Binding DestinationsItems}"
+                                            BackgroundColor="Transparent"
+                                            SelectionMode="None">
+                                            <ListView.SeparatorVisibility>
+                                                <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                                    <On Platform="iOS" Value="None" />
+                                                    <On Platform="Android" Value="Default" />
+                                                </OnPlatform>
+                                            </ListView.SeparatorVisibility>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <ViewCell.View>
+                                                            <StackLayout
+                                                                Padding="10">
+                                                                <Label 
+                                                                    TextColor="Black"
+                                                                    Text="{Binding Destination}"
+                                                                    FontSize="Small"
+                                                                    LineBreakMode="TailTruncation"/>
+                                                            </StackLayout>
+                                                        </ViewCell.View>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </StackLayout>
+                                    <StackLayout
+                                        HorizontalOptions="Center"
+                                        Orientation="Horizontal"
+                                        Padding="5,10,5,0">
+                                        <StackLayout
+                                            VerticalOptions="Center">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                TextColor="#2255AA"
+                                                Text="Acciones en Destinos"
+                                                FontSize="Small"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout
+                                        HeightRequest="150"
+                                        Padding="0,0,0,10">
+                                        <ListView
+                                            ItemsSource="{Binding ActionsDestinationItems}"
+                                            BackgroundColor="Transparent"
+                                            SelectionMode="None">
+                                            <ListView.SeparatorVisibility>
+                                                <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                                    <On Platform="iOS" Value="None" />
+                                                    <On Platform="Android" Value="Default" />
+                                                </OnPlatform>
+                                            </ListView.SeparatorVisibility>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <ViewCell.View>
+                                                            <StackLayout
+                                                                Padding="10">
+                                                                <Label 
+                                                                    TextColor="Black"
+                                                                    Text="{Binding ActionDestination}"
+                                                                    FontSize="Small"
+                                                                    LineBreakMode="TailTruncation"/>
+                                                            </StackLayout>
+                                                        </ViewCell.View>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </StackLayout>
+                                </StackLayout>
+                            </controls:CustomFrame>
                         </StackLayout>
                     </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding D_d_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout
+                            Padding="10">
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Ambiente:"
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding D_d_Environment}"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Linea de Comando:"
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="{Binding D_d_CommandLine}"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Datos Enviados al Servicio de Ejecución:"
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    TextColor="White"
+                                    FontSize="Small"
+                                    Text="HERE THE TREE"
+                                    LineBreakMode="TailTruncation"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        IsVisible="{Binding E_e_IsActive}"
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <StackLayout
+                            Padding="10">
+                            <controls:CustomFrame
+                                Margin="0,20,0,0"
+                                CornerRadius="10,10,0,0"
+                                BackgroundColor="#D7D7D7"
+                                Padding="0">
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Padding="5"
+                                        FontSize="Medium"
+                                        Text="Listado de Observaciones"
+                                        TextColor="#2255AA"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>      
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                Margin="0,-7,0,0"
+                                CornerRadius="0,0,10,10"
+                                BackgroundColor="Gray"
+                                Padding="0">
+                                <StackLayout
+                                    HeightRequest="150"
+                                    Padding="0,0,0,10">
+                                    <ListView
+                                        ItemsSource="{Binding ObservationItems}"
+                                        BackgroundColor="Transparent"
+                                        SelectionMode="None">
+                                        <ListView.SeparatorVisibility>
+                                            <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                                <On Platform="iOS" Value="None" />
+                                                <On Platform="Android" Value="Default" />
+                                            </OnPlatform>
+                                        </ListView.SeparatorVisibility>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ViewCell.View>
+                                                        <StackLayout
+                                                            Padding="10">
+                                                            <!--TABLE DATA OBSERVATION-->
+                                                        </StackLayout>
+                                                    </ViewCell.View>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                Margin="0,20,0,0"
+                                CornerRadius="10,10,0,0"
+                                BackgroundColor="#D7D7D7"
+                                Padding="0">
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Padding="5"
+                                        FontSize="Medium"
+                                        Text="Detalle"
+                                        TextColor="#2255AA"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>      
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                Margin="0,-7,0,0"
+                                CornerRadius="0,0,10,10"
+                                BackgroundColor="Gray"
+                                Padding="0">
+                                <StackLayout
+                                    HeightRequest="150"
+                                    Padding="0,0,0,10">
+                                    <ListView
+                                        ItemsSource="{Binding ObservationDetailItems}"
+                                        BackgroundColor="Transparent"
+                                        SelectionMode="None">
+                                        <ListView.SeparatorVisibility>
+                                            <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                                <On Platform="iOS" Value="None" />
+                                                <On Platform="Android" Value="Default" />
+                                            </OnPlatform>
+                                        </ListView.SeparatorVisibility>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ViewCell.View>
+                                                        <StackLayout
+                                                            Padding="10">
+                                                            <!--TABLE DATA OBSERVATION-->
+                                                        </StackLayout>
+                                                    </ViewCell.View>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </controls:CustomFrame>
+                        </StackLayout>
+                    </controls:CustomFrame>
+                    <!--b c d e-->
                 </StackLayout>
             </ScrollView>
+            <!--Contents-->
+            <!--ToolBars Secondary-->
             <StackLayout
+                IsVisible="{Binding ToolBar_A_Child}"
                 MinimumHeightRequest="80">
                 <ScrollView
                     x:Name="ToolBar_A_Child"
-                    IsVisible="{Binding ToolBar_A_Child}"
                     HorizontalOptions="FillAndExpand"
                     HorizontalScrollBarVisibility="Never"
                     Orientation="Horizontal">
@@ -702,6 +1129,73 @@
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
+            <StackLayout
+                IsVisible="{Binding ToolBar_D_Child}"
+                MinimumHeightRequest="80">
+                <ScrollView
+                    x:Name="ToolBar_D_Child"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalScrollBarVisibility="Never"
+                    Orientation="Horizontal">
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center">
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding D_d_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding D_d_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Command="{Binding Module_D_d_ClickCommand}"
+                                    BackgroundColor="{Binding D_d_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding D_d_Icon}"
+                                    WidthRequest="{Binding D_d_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding D_d_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding D_d_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                        <controls:CustomFrame
+                            Margin="0,0,-5,0"
+                            Padding="0,5,0,5"
+                            CornerRadius="1"
+                            BackgroundColor="{Binding E_e_BackgroundColor}">
+                            <StackLayout
+                                WidthRequest="{Binding E_e_Width}"
+                                Orientation="Vertical">
+                                <ImageButton
+                                    Command="{Binding Module_E_e_ClickCommand}"
+                                    BackgroundColor="{Binding E_e_BackgroundColor}"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding E_e_Icon}"
+                                    WidthRequest="{Binding E_e_ImageButtonWidth}"
+                                    HeightRequest="35">
+                                </ImageButton>
+                                <Label
+                                    Padding="3,0,3,0"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding E_e_FontColor}"
+                                    HorizontalOptions="Center"
+                                    FontSize="Small"
+                                    Text="{Binding E_e_Text}"/>
+                            </StackLayout>
+                        </controls:CustomFrame>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+            <!--ToolBars Secondary-->
             <StackLayout 
                 VerticalOptions="End">
                 <Label 

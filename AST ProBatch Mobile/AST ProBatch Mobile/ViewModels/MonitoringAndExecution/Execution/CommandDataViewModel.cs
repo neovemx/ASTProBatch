@@ -18,8 +18,9 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string selectedmodule;
         public string selectedmodulechild;
         public bool toolbarachild;
+        public bool toolbardchild;
 
-        #region Atributes ToolBar A B C D E
+        #region Atributes ToolBar A B C D
         // A
         public bool aisactive;
         public string abackgroundcolor;
@@ -52,17 +53,9 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string dtext;
         public string dfontcolor;
         public string dicon;
-        // E
-        public bool eisactive;
-        public string ebackgroundcolor;
-        public int ewidth;
-        public int eimagebuttonwidth;
-        public string etext;
-        public string efontcolor;
-        public string eicon;
         #endregion
         #region Atributes ToolBar a b c
-        // A
+        // a
         public bool aaisactive;
         public string aabackgroundcolor;
         public int aawidth;
@@ -70,7 +63,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string aatext;
         public string aafontcolor;
         public string aaicon;
-        // B
+        // b
         public bool bbisactive;
         public string bbbackgroundcolor;
         public int bbwidth;
@@ -78,7 +71,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string bbtext;
         public string bbfontcolor;
         public string bbicon;
-        // C
+        // c
         public bool ccisactive;
         public string ccbackgroundcolor;
         public int ccwidth;
@@ -87,7 +80,25 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string ccfontcolor;
         public string ccicon;
         #endregion
-        #region Atributes Modules A B C D E F
+        #region Atributes ToolBar d e
+        // d
+        public bool ddisactive;
+        public string ddbackgroundcolor;
+        public int ddwidth;
+        public int ddimagebuttonwidth;
+        public string ddtext;
+        public string ddfontcolor;
+        public string ddicon;
+        // e
+        public bool eeisactive;
+        public string eebackgroundcolor;
+        public int eewidth;
+        public int eeimagebuttonwidth;
+        public string eetext;
+        public string eefontcolor;
+        public string eeicon;
+        #endregion
+        #region Atributes Modules A B C D
         // A
         public string acode;
         public bool acritical;
@@ -98,10 +109,11 @@ namespace AST_ProBatch_Mobile.ViewModels
         public bool areexecution;
         // B
         // C
+        private ObservableCollection<CommandDataInterfaceItem> interfaceitems;
         // D
-        // E
         #endregion
-        #region Atributes Modules b c
+        #region Atributes Modules b c d e
+        // b
         public string bbcommand;
         public string bbdefaultpath;
         public string bbcurrentpath;
@@ -114,6 +126,18 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string bbmonitoringtime;
         public bool bbwaitendsubprocess;
         private ObservableCollection<CommandDataProcessItem> processitems;
+        // c
+        public string ccenvironment;
+        public string ccpatch;
+        private ObservableCollection<CommandDataOriginActionItem> originactionitems;
+        private ObservableCollection<CommandDataDestinationItem> destinationsitems;
+        private ObservableCollection<CommandDataDestinationActionItem> destinationactionitems;
+        // d
+        public string ddenvironment;
+        public string ddcommandline;
+        // e
+        private ObservableCollection<CommandDataObservationItem> observationitems;
+        private ObservableCollection<CommandDataObservationDetailItem> observationdetailitems;
         #endregion
         #endregion
 
@@ -165,7 +189,12 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return toolbarachild; }
             set { SetValue(ref toolbarachild, value); }
         }
-        #region Properties ToolBar A B C D E
+        public bool ToolBar_D_Child
+        {
+            get { return toolbardchild; }
+            set { SetValue(ref toolbardchild, value); }
+        }
+        #region Properties ToolBar A B C D
         // A
         public bool A_IsActive
         {
@@ -310,45 +339,9 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return dicon; }
             set { SetValue(ref dicon, value); }
         }
-        // E
-        public bool E_IsActive
-        {
-            get { return eisactive; }
-            set { SetValue(ref eisactive, value); }
-        }
-        public string E_BackgroundColor
-        {
-            get { return ebackgroundcolor; }
-            set { SetValue(ref ebackgroundcolor, value); }
-        }
-        public int E_Width
-        {
-            get { return ewidth; }
-            set { SetValue(ref ewidth, value); }
-        }
-        public int E_ImageButtonWidth
-        {
-            get { return eimagebuttonwidth; }
-            set { SetValue(ref eimagebuttonwidth, value); }
-        }
-        public string E_Text
-        {
-            get { return etext; }
-            set { SetValue(ref etext, value); }
-        }
-        public string E_FontColor
-        {
-            get { return efontcolor; }
-            set { SetValue(ref efontcolor, value); }
-        }
-        public string E_Icon
-        {
-            get { return eicon; }
-            set { SetValue(ref eicon, value); }
-        }
         #endregion
         #region Properties ToolBar a b c
-        // A
+        // a
         public bool A_a_IsActive
         {
             get { return aaisactive; }
@@ -384,7 +377,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return aaicon; }
             set { SetValue(ref aaicon, value); }
         }
-        // B
+        // b
         public bool B_b_IsActive
         {
             get { return bbisactive; }
@@ -420,7 +413,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return bbicon; }
             set { SetValue(ref bbicon, value); }
         }
-        // C
+        // d
         public bool C_c_IsActive
         {
             get { return ccisactive; }
@@ -457,7 +450,81 @@ namespace AST_ProBatch_Mobile.ViewModels
             set { SetValue(ref ccicon, value); }
         }
         #endregion
-        #region Properties Modules A B C D E
+        #region Properties ToolBar d e
+        // d
+        public bool D_d_IsActive
+        {
+            get { return ddisactive; }
+            set { SetValue(ref ddisactive, value); }
+        }
+        public string D_d_BackgroundColor
+        {
+            get { return ddbackgroundcolor; }
+            set { SetValue(ref ddbackgroundcolor, value); }
+        }
+        public int D_d_Width
+        {
+            get { return ddwidth; }
+            set { SetValue(ref ddwidth, value); }
+        }
+        public int D_d_ImageButtonWidth
+        {
+            get { return ddimagebuttonwidth; }
+            set { SetValue(ref ddimagebuttonwidth, value); }
+        }
+        public string D_d_Text
+        {
+            get { return ddtext; }
+            set { SetValue(ref ddtext, value); }
+        }
+        public string D_d_FontColor
+        {
+            get { return ddfontcolor; }
+            set { SetValue(ref ddfontcolor, value); }
+        }
+        public string D_d_Icon
+        {
+            get { return ddicon; }
+            set { SetValue(ref ddicon, value); }
+        }
+        // e
+        public bool E_e_IsActive
+        {
+            get { return eeisactive; }
+            set { SetValue(ref eeisactive, value); }
+        }
+        public string E_e_BackgroundColor
+        {
+            get { return eebackgroundcolor; }
+            set { SetValue(ref eebackgroundcolor, value); }
+        }
+        public int E_e_Width
+        {
+            get { return eewidth; }
+            set { SetValue(ref eewidth, value); }
+        }
+        public int E_e_ImageButtonWidth
+        {
+            get { return eeimagebuttonwidth; }
+            set { SetValue(ref eeimagebuttonwidth, value); }
+        }
+        public string E_e_Text
+        {
+            get { return eetext; }
+            set { SetValue(ref eetext, value); }
+        }
+        public string E_e_FontColor
+        {
+            get { return eefontcolor; }
+            set { SetValue(ref eefontcolor, value); }
+        }
+        public string E_e_Icon
+        {
+            get { return eeicon; }
+            set { SetValue(ref eeicon, value); }
+        }
+        #endregion
+        #region Properties Modules A B C D
         // A
         public string A_Code
         {
@@ -496,10 +563,15 @@ namespace AST_ProBatch_Mobile.ViewModels
         }
         // B
         // C
+        public ObservableCollection<CommandDataInterfaceItem> InterfaceItems
+        {
+            get { return interfaceitems; }
+            set { SetValue(ref interfaceitems, value); }
+        }
         // D
-        // E
         #endregion
-        #region Properties Modules b c
+        #region Properties Modules b c d e
+        // b
         public string B_b_Command
         {
             get { return bbcommand; }
@@ -560,6 +632,54 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return processitems; }
             set { SetValue(ref processitems, value); }
         }
+        // c
+        public string C_c_Environment
+        {
+            get { return ccenvironment; }
+            set { SetValue(ref ccenvironment, value); }
+        }
+        public string C_c_Patch
+        {
+            get { return ccpatch; }
+            set { SetValue(ref ccpatch, value); }
+        }
+        public ObservableCollection<CommandDataOriginActionItem> OriginAcctionsItems
+        {
+            get { return originactionitems; }
+            set { SetValue(ref originactionitems, value); }
+        }
+        public ObservableCollection<CommandDataDestinationItem> DestinationsItems
+        {
+            get { return destinationsitems; }
+            set { SetValue(ref destinationsitems, value); }
+        }
+        public ObservableCollection<CommandDataDestinationActionItem> ActionsDestinationItems
+        {
+            get { return destinationactionitems; }
+            set { SetValue(ref destinationactionitems, value); }
+        }
+        // d
+        public string D_d_Environment
+        {
+            get { return ddenvironment; }
+            set { SetValue(ref ddenvironment, value); }
+        }
+        public string D_d_CommandLine
+        {
+            get { return ddcommandline; }
+            set { SetValue(ref ddcommandline, value); }
+        }
+        // e
+        public ObservableCollection<CommandDataObservationItem> ObservationItems
+        {
+            get { return observationitems; }
+            set { SetValue(ref observationitems, value); }
+        }
+        public ObservableCollection<CommandDataObservationDetailItem> ObservationDetailItems
+        {
+            get { return observationdetailitems; }
+            set { SetValue(ref observationdetailitems, value); }
+        }
         #endregion
         #endregion
 
@@ -575,7 +695,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Commands
-        #region Commands ToolBar A B C D E
+        #region Commands ToolBar A B C D
+        // A
         public ICommand Module_A_ClickCommand
         {
             get
@@ -588,7 +709,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             await Task.Run(() => ActivatePrincipalToolBarButton("A"));
         }
-
+        // B
         public ICommand Module_B_ClickCommand
         {
             get
@@ -601,7 +722,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             await Task.Run(() => ActivatePrincipalToolBarButton("B"));
         }
-
+        // C
         public ICommand Module_C_ClickCommand
         {
             get
@@ -614,7 +735,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             await Task.Run(() => ActivatePrincipalToolBarButton("C"));
         }
-
+        // D
         public ICommand Module_D_ClickCommand
         {
             get
@@ -627,21 +748,9 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             await Task.Run(() => ActivatePrincipalToolBarButton("D"));
         }
-
-        public ICommand Module_E_ClickCommand
-        {
-            get
-            {
-                return new RelayCommand(Module_E_Click);
-            }
-        }
-
-        private async void Module_E_Click()
-        {
-            await Task.Run(() => ActivatePrincipalToolBarButton("E"));
-        }
         #endregion
-        #region Command ToolBar a b c
+        #region Command ToolBar a b c d e
+        // a
         public ICommand Module_A_a_ClickCommand
         {
             get
@@ -654,7 +763,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             await Task.Run(() => ActivateSecondaryToolBarButton("Aa"));
         }
-
+        // b
         public ICommand Module_B_b_ClickCommand
         {
             get
@@ -667,7 +776,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             await Task.Run(() => ActivateSecondaryToolBarButton("Bb"));
         }
-
+        // c
         public ICommand Module_C_c_ClickCommand
         {
             get
@@ -679,6 +788,32 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Module_C_c_Click()
         {
             await Task.Run(() => ActivateSecondaryToolBarButton("Cc"));
+        }
+        // d
+        public ICommand Module_D_d_ClickCommand
+        {
+            get
+            {
+                return new RelayCommand(Module_D_d_Click);
+            }
+        }
+
+        private async void Module_D_d_Click()
+        {
+            await Task.Run(() => ActivateSecondaryToolBarButton("Dd"));
+        }
+        // e
+        public ICommand Module_E_e_ClickCommand
+        {
+            get
+            {
+                return new RelayCommand(Module_E_e_Click);
+            }
+        }
+
+        private async void Module_E_e_Click()
+        {
+            await Task.Run(() => ActivateSecondaryToolBarButton("Ee"));
         }
         #endregion
 
@@ -1104,20 +1239,12 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.D_BackgroundColor = "#D7D7D7";
             this.D_Width = 60;
             this.D_ImageButtonWidth = 35;
-            this.D_Text = "Acciones sobre Resultados";
+            this.D_Text = "Historial de Ejecuciones";
             this.D_FontColor = "White";
             this.D_Icon = "toolbar_unselected";
-            // E
-            this.E_IsActive = false;
-            this.E_BackgroundColor = "#D7D7D7";
-            this.E_Width = 60;
-            this.E_ImageButtonWidth = 35;
-            this.E_Text = "Historial de Ejecuciones";
-            this.E_FontColor = "White";
-            this.E_Icon = "toolbar_unselected";
             #endregion
             #region ToolBar a b c
-            // A
+            // a
             this.A_a_IsActive = true;
             this.A_a_BackgroundColor = "#2255AA";
             this.A_a_Width = 200;
@@ -1125,7 +1252,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.A_a_Text = "General";
             this.A_a_FontColor = "White";
             this.A_a_Icon = "toolbar_selected";
-            // B
+            // b
             this.B_b_IsActive = false;
             this.B_b_BackgroundColor = "#D7D7D7";
             this.B_b_Width = 60;
@@ -1133,7 +1260,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.B_b_Text = "Comando";
             this.B_b_FontColor = "White";
             this.B_b_Icon = "toolbar_unselected";
-            // C
+            // c
             this.C_c_IsActive = false;
             this.C_c_BackgroundColor = "#D7D7D7";
             this.C_c_Width = 60;
@@ -1141,12 +1268,29 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.C_c_Text = "Transferencia";
             this.C_c_FontColor = "White";
             this.C_c_Icon = "toolbar_unselected";
-
+            #endregion
+            #region ToolBar d e
+            // d
+            this.D_d_IsActive = true;
+            this.D_d_BackgroundColor = "#2255AA";
+            this.D_d_Width = 200;
+            this.D_d_ImageButtonWidth = 190;
+            this.D_d_Text = "Ejecución";
+            this.D_d_FontColor = "White";
+            this.D_d_Icon = "toolbar_selected";
+            // e
+            this.E_e_IsActive = false;
+            this.E_e_BackgroundColor = "#D7D7D7";
+            this.E_e_Width = 60;
+            this.E_e_ImageButtonWidth = 35;
+            this.E_e_Text = "Observaciones del Operador";
+            this.E_e_FontColor = "White";
+            this.E_e_Icon = "toolbar_unselected";
+            #endregion
 
             this.SelectedModule = this.A_Text;
             this.SelectedModule_Child = this.A_a_Text;
             this.ToolBar_A_Child = true;
-            #endregion
         }
 
         private void ActivatePrincipalToolBarButton(string Module)
@@ -1166,6 +1310,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.B_ImageButtonWidth = 35;
             this.B_FontColor = "White";
             this.B_Icon = "toolbar_unselected";
+            this.B_b_IsActive = false;
             // C
             this.C_IsActive = false;
             this.C_BackgroundColor = "#D7D7D7";
@@ -1173,6 +1318,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.C_ImageButtonWidth = 35;
             this.C_FontColor = "White";
             this.C_Icon = "toolbar_unselected";
+            this.C_c_IsActive = false;
             // D
             this.D_IsActive = false;
             this.D_BackgroundColor = "#D7D7D7";
@@ -1180,13 +1326,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.D_ImageButtonWidth = 35;
             this.D_FontColor = "White";
             this.D_Icon = "toolbar_unselected";
-            // E
-            this.E_IsActive = false;
-            this.E_BackgroundColor = "#D7D7D7";
-            this.E_Width = 60;
-            this.E_ImageButtonWidth = 35;
-            this.E_FontColor = "White";
-            this.E_Icon = "toolbar_unselected";
+            this.D_d_IsActive = false;
             #endregion
             #region Activate
             switch (Module)
@@ -1201,6 +1341,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     this.SelectedModule = this.A_Text;
                     this.SelectedModule_Child = string.Empty;
                     this.ToolBar_A_Child = true;
+                    this.ToolBar_D_Child = false;
                     ActivateSecondaryToolBarButton("Aa");
                     break;
                 case "B":
@@ -1213,6 +1354,8 @@ namespace AST_ProBatch_Mobile.ViewModels
                     this.SelectedModule = this.B_Text;
                     this.SelectedModule_Child = string.Empty;
                     this.ToolBar_A_Child = false;
+                    this.ToolBar_D_Child = true;
+                    ActivateSecondaryToolBarButton("Dd");
                     break;
                 case "C":
                     this.C_IsActive = true;
@@ -1224,6 +1367,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     this.SelectedModule = this.C_Text;
                     this.SelectedModule_Child = string.Empty;
                     this.ToolBar_A_Child = false;
+                    this.ToolBar_D_Child = false;
                     break;
                 case "D":
                     this.D_IsActive = true;
@@ -1235,17 +1379,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     this.SelectedModule = this.D_Text;
                     this.SelectedModule_Child = string.Empty;
                     this.ToolBar_A_Child = false;
-                    break;
-                case "E":
-                    this.E_IsActive = true;
-                    this.E_BackgroundColor = "#2255AA";
-                    this.E_Width = 200;
-                    this.E_ImageButtonWidth = 190;
-                    this.E_FontColor = "White";
-                    this.E_Icon = "toolbar_selected";
-                    this.SelectedModule = this.E_Text;
-                    this.SelectedModule_Child = string.Empty;
-                    this.ToolBar_A_Child = false;
+                    this.ToolBar_D_Child = false;
                     break;
             }
             #endregion
@@ -1253,29 +1387,43 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private void ActivateSecondaryToolBarButton(string Module)
         {
-            #region ToolBar a b c
+            #region ToolBar a b c d e
             this.A_IsActive = false;
-            // A
+            // a
             this.A_a_IsActive = false;
             this.A_a_BackgroundColor = "#D7D7D7";
             this.A_a_Width = 60;
             this.A_a_ImageButtonWidth = 35;
             this.A_a_FontColor = "White";
             this.A_a_Icon = "toolbar_unselected";
-            // B
+            // b
             this.B_b_IsActive = false;
             this.B_b_BackgroundColor = "#D7D7D7";
             this.B_b_Width = 60;
             this.B_b_ImageButtonWidth = 35;
             this.B_b_FontColor = "White";
             this.B_b_Icon = "toolbar_unselected";
-            // C
+            // c
             this.C_c_IsActive = false;
             this.C_c_BackgroundColor = "#D7D7D7";
             this.C_c_Width = 60;
             this.C_c_ImageButtonWidth = 35;
             this.C_c_FontColor = "White";
             this.C_c_Icon = "toolbar_unselected";
+            // d
+            this.D_d_IsActive = false;
+            this.D_d_BackgroundColor = "#D7D7D7";
+            this.D_d_Width = 60;
+            this.D_d_ImageButtonWidth = 35;
+            this.D_d_FontColor = "White";
+            this.D_d_Icon = "toolbar_unselected";
+            // e
+            this.E_e_IsActive = false;
+            this.E_e_BackgroundColor = "#D7D7D7";
+            this.E_e_Width = 60;
+            this.E_e_ImageButtonWidth = 35;
+            this.E_e_FontColor = "White";
+            this.E_e_Icon = "toolbar_unselected";
             #endregion
             #region Activate
             switch (Module)
@@ -1307,6 +1455,24 @@ namespace AST_ProBatch_Mobile.ViewModels
                     this.C_c_FontColor = "White";
                     this.C_c_Icon = "toolbar_selected";
                     this.SelectedModule_Child = this.C_c_Text;
+                    break;
+                case "Dd":
+                    this.D_d_IsActive = true;
+                    this.D_d_BackgroundColor = "#2255AA";
+                    this.D_d_Width = 200;
+                    this.D_d_ImageButtonWidth = 190;
+                    this.D_d_FontColor = "White";
+                    this.D_d_Icon = "toolbar_selected";
+                    this.SelectedModule_Child = this.D_d_Text;
+                    break;
+                case "Ee":
+                    this.E_e_IsActive = true;
+                    this.E_e_BackgroundColor = "#2255AA";
+                    this.E_e_Width = 200;
+                    this.E_e_ImageButtonWidth = 190;
+                    this.E_e_FontColor = "White";
+                    this.E_e_Icon = "toolbar_selected";
+                    this.SelectedModule_Child = this.E_e_Text;
                     break;
             }
             #endregion
