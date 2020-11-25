@@ -12,7 +12,7 @@ namespace AST_ProBatch_Mobile
         {
             InitializeComponent();
             //MainPage = new NavigationPage(new LoginPage());
-            Device.SetFlags(new string[] { "RadioButton_Experimental" });
+            //Device.SetFlags(new string[] { "RadioButton_Experimental" });
             MainPage = new LoginPage();
         }
 

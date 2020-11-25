@@ -386,23 +386,170 @@
                         <StackLayout
                             Padding="10">
                             <StackLayout
-                                Orientation="Vertical">
-                                <RadioButton
+                                Margin="0,20,0,0"
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumWidthRequest="95"
+                                    WidthRequest="95"
+                                    HorizontalOptions="Center"
                                     TextColor="#2255AA"
-                                    GroupName="Options"
-                                    Text="Ejecuciones Exitosas"
-                                    IsChecked="{Binding D_Option_a_IsChecked}"/>
-                                <RadioButton
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Búsqueda:"
+                                    VerticalOptions="Center"/>
+                                <controls:StandardPicker
+                                    Title="Seleccione..."
+                                    ItemsSource="{Binding OptionItems}"
+                                    ItemDisplayBinding="{Binding OptionName}"
+                                    SelectedItem="{Binding OptionSelected}"
+                                    HorizontalOptions="FillAndExpand"
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    BorderColor="#2255AA"
+                                    BorderThickness="1"
+                                    CornerRadius="7"
                                     TextColor="#2255AA"
-                                    GroupName="Options"
-                                    Text="Detalle del Último Error"
-                                    IsChecked="{Binding D_Option_b_IsChecked}"/>
-                                <RadioButton
-                                    TextColor="#2255AA"
-                                    GroupName="Options"
-                                    Text="Detalle del Último Error"
-                                    IsChecked="{Binding D_Option_c_IsChecked}"/>
+                                    HeightRequest="30"
+                                    FontSize="Small"/>
                             </StackLayout>
+                            <StackLayout
+                                Margin="0,20,0,0"
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumWidthRequest="95"
+                                    WidthRequest="95"
+                                    HorizontalOptions="Center"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Fecha Desde:"
+                                    VerticalOptions="Center"/>
+                                <Button
+                                    Padding="0"
+                                    FontSize="Small"
+                                    HorizontalOptions="FillAndExpand"
+                                    HeightRequest="30"
+                                    BackgroundColor="White"
+                                    TextColor="#2255AA"
+                                    BorderColor="#2255AA"
+                                    BorderWidth="1"
+                                    CornerRadius="7"
+                                    Text="{Binding StartDateString}"
+                                    Command="{Binding StartDateCommand}"/>
+                            </StackLayout>
+                            <StackLayout
+                                Margin="0,20,0,20"
+                                Orientation="Horizontal">
+                                <Label
+                                    MinimumWidthRequest="95"
+                                    WidthRequest="95"
+                                    HorizontalOptions="Center"
+                                    TextColor="#2255AA"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="Fecha Hasta:"
+                                    VerticalOptions="Center"/>
+                                <Button
+                                    Padding="0"
+                                    FontSize="Small"
+                                    HorizontalOptions="FillAndExpand"
+                                    HeightRequest="30"
+                                    BackgroundColor="White"
+                                    TextColor="#2255AA"
+                                    BorderColor="#2255AA"
+                                    BorderWidth="1"
+                                    CornerRadius="7"
+                                    Text="{Binding EndDateString}"
+                                    Command="{Binding EndDateCommand}"/>
+                            </StackLayout>
+                            <StackLayout
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="Center"
+                                Orientation="Horizontal">
+                                <StackLayout
+                                    Margin="10,0,10,0">
+                                    <ImageButton
+                                        WidthRequest="35"
+                                        HeightRequest="35"
+                                        BackgroundColor="#F1F2F6"
+                                        Source="clean"
+                                        Command="{Binding ClearCommand}">
+                                        <ImageButton.CornerRadius>
+                                            <OnPlatform x:TypeArguments="x:Int32">
+                                                <On Platform="iOS" Value="17" />
+                                                <On Platform="Android" Value="50" />
+                                            </OnPlatform>
+                                        </ImageButton.CornerRadius>
+                                    </ImageButton>
+                                </StackLayout>
+                                <StackLayout
+                                    Margin="10,0,10,0">
+                                    <ImageButton
+                                        WidthRequest="35"
+                                        HeightRequest="35"
+                                        BackgroundColor="#F1F2F6"
+                                        Source="action_cn"
+                                        Command="{Binding SearchCommand}">
+                                        <ImageButton.CornerRadius>
+                                            <OnPlatform x:TypeArguments="x:Int32">
+                                                <On Platform="iOS" Value="17" />
+                                                <On Platform="Android" Value="50" />
+                                            </OnPlatform>
+                                        </ImageButton.CornerRadius>
+                                    </ImageButton>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <controls:CustomFrame
+                                Margin="0,20,0,0"
+                                CornerRadius="10,10,0,0"
+                                BackgroundColor="#D7D7D7"
+                                Padding="0">
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Padding="5"
+                                        FontSize="Medium"
+                                        Text="Resultado de la Búsqueda"
+                                        TextColor="#2255AA"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>      
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                Margin="0,-7,0,0"
+                                CornerRadius="0,0,10,10"
+                                BackgroundColor="Gray"
+                                Padding="0">
+                                <StackLayout
+                                    Padding="0,0,0,10">
+                                    <ListView
+                                        HeightRequest="150"
+                                        ItemsSource="{Binding ExecutionHistoryItems}"
+                                        BackgroundColor="Transparent"
+                                        SelectionMode="None">
+                                        <ListView.SeparatorVisibility>
+                                            <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                                <On Platform="iOS" Value="None" />
+                                                <On Platform="Android" Value="Default" />
+                                            </OnPlatform>
+                                        </ListView.SeparatorVisibility>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ViewCell.View>
+                                                        <StackLayout
+                                                            Padding="10">
+                                                            <!--TABLE HERE-->
+                                                        </StackLayout>
+                                                    </ViewCell.View>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </controls:CustomFrame>
                         </StackLayout>
                     </controls:CustomFrame>
                     <!--A B C D-->

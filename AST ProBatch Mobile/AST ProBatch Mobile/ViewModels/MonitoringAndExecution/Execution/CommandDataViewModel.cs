@@ -2,7 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using Xamarin.Forms;
 
@@ -111,6 +113,14 @@ namespace AST_ProBatch_Mobile.ViewModels
         // C
         private ObservableCollection<CommandDataInterfaceItem> interfaceitems;
         // D
+        //private bool doptionaischecked;
+        //private bool doptionbischecked;
+        //private bool doptioncischecked;
+        private ObservableCollection<CommandDataOptionItem> optionitems;
+        private DatePromptResult startdatevalue;
+        private DatePromptResult enddatevalue;
+        private string startdatestring;
+        private string enddatestring;
         #endregion
         #region Atributes Modules b c d e
         // b
@@ -569,6 +579,46 @@ namespace AST_ProBatch_Mobile.ViewModels
             set { SetValue(ref interfaceitems, value); }
         }
         // D
+        //public bool D_Option_a_IsChecked
+        //{
+        //    get { return doptionaischecked; }
+        //    set { SetValue(ref doptionaischecked, value); }
+        //}
+        //public bool D_Option_b_IsChecked
+        //{
+        //    get { return doptionbischecked; }
+        //    set { SetValue(ref doptionbischecked, value); }
+        //}
+        //public bool D_Option_c_IsChecked
+        //{
+        //    get { return doptioncischecked; }
+        //    set { SetValue(ref doptioncischecked, value); }
+        //}
+        public ObservableCollection<CommandDataOptionItem> OptionItems
+        {
+            get { return optionitems; }
+            set { SetValue(ref optionitems, value); }
+        }
+        public DatePromptResult StartDateValue
+        {
+            get { return startdatevalue; }
+            set { SetValue(ref startdatevalue, value); }
+        }
+        public DatePromptResult EndDateValue
+        {
+            get { return enddatevalue; }
+            set { SetValue(ref enddatevalue, value); }
+        }
+        public string StartDateString
+        {
+            get { return startdatestring; }
+            set { SetValue(ref startdatestring, value); }
+        }
+        public string EndDateString
+        {
+            get { return enddatestring; }
+            set { SetValue(ref enddatestring, value); }
+        }
         #endregion
         #region Properties Modules b c d e
         // b
@@ -817,6 +867,69 @@ namespace AST_ProBatch_Mobile.ViewModels
         }
         #endregion
 
+        #region Module D
+        public ICommand ClearCommand
+        {
+            get
+            {
+                return new RelayCommand(Clear);
+            }
+        }
+
+        private async void Clear()
+        {
+            Alert.Show("LIMPIAR");
+        }
+
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return new RelayCommand(Search);
+            }
+        }
+
+        private async void Search()
+        {
+            Alert.Show("BUSCAR");
+        }
+
+        public ICommand StartDateCommand
+        {
+            get
+            {
+                return new RelayCommand(StartDate);
+            }
+        }
+
+        private async void StartDate()
+        {
+            DatePromptConfig datePromptConfig = new DatePromptConfig();
+            datePromptConfig.MaximumDate = DateTime.Now;
+            datePromptConfig.CancelText = "Cancelar";
+            datePromptConfig.OkText = "Aceptar";
+            this.StartDateValue = await UserDialogs.Instance.DatePromptAsync(datePromptConfig);
+            this.StartDateString = this.StartDateValue.SelectedDate.ToString(DateTimeFormatString.LatinDate);
+        }
+
+        public ICommand EndDateCommand
+        {
+            get
+            {
+                return new RelayCommand(EndDate);
+            }
+        }
+
+        private async void EndDate()
+        {
+            DatePromptConfig datePromptConfig = new DatePromptConfig();
+            datePromptConfig.MaximumDate = DateTime.Now;
+            datePromptConfig.CancelText = "Cancelar";
+            datePromptConfig.OkText = "Aceptar";
+            this.EndDateValue = await UserDialogs.Instance.DatePromptAsync(datePromptConfig);
+            this.EndDateString = this.EndDateValue.SelectedDate.ToString(DateTimeFormatString.LatinDate);
+        }
+        #endregion
         //public ICommand SaveCommand
         //{
         //    get
@@ -1025,6 +1138,25 @@ namespace AST_ProBatch_Mobile.ViewModels
         #region Helpers
         private async void GetInitialData()
         {
+            this.OptionItems = new ObservableCollection<CommandDataOptionItem>()
+            {
+                new CommandDataOptionItem()
+                {
+                    IdOption = 1,
+                    OptionName = "Ejecuciones Exitosas"
+                },
+                new CommandDataOptionItem()
+                {
+                    IdOption = 2,
+                    OptionName = "Detalle del Último Error"
+                },
+                new CommandDataOptionItem()
+                {
+                    IdOption = 3,
+                    OptionName = "Detalle del Último Error"
+                }
+            };
+
             this.A_Code = "80051";
             this.A_Critical = false;
             this.A_Name = "MENSAJE DE HOLD DE BASE DE DATOS";
@@ -1271,7 +1403,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             #endregion
             #region ToolBar d e
             // d
-            this.D_d_IsActive = true;
+            this.D_d_IsActive = false;
             this.D_d_BackgroundColor = "#2255AA";
             this.D_d_Width = 200;
             this.D_d_ImageButtonWidth = 190;
