@@ -672,14 +672,14 @@
                                                 TextColor="#2255AA"
                                                 FontAttributes="Bold"
                                                 FontSize="Small"
-                                                Text="Usuario:"/>
+                                                Text="Usuario"/>
                                         </StackLayout>
-                                        <Label 
+                                        <!--<Label 
                                             TextColor="White"
                                             FontSize="Small"
                                             Text="{Binding B_b_User}"
                                             LineBreakMode="TailTruncation"
-                                            HorizontalOptions="FillAndExpand"/>
+                                            HorizontalOptions="FillAndExpand"/>-->
                                     </StackLayout>
                                     <StackLayout
                                         Orientation="Vertical">
@@ -695,14 +695,14 @@
                                                 TextColor="#2255AA"
                                                 FontAttributes="Bold"
                                                 FontSize="Small"
-                                                Text="SubProcesos:"/>
+                                                Text="SubProcesos"/>
                                         </StackLayout>
-                                        <Label 
+                                        <!--<Label 
                                             TextColor="White"
                                             FontSize="Small"
                                             Text="{Binding B_b_SubProcess}"
                                             LineBreakMode="TailTruncation"
-                                            HorizontalOptions="FillAndExpand"/>
+                                            HorizontalOptions="FillAndExpand"/>-->
                                     </StackLayout>
                                     <StackLayout
                                         Orientation="Vertical">
@@ -938,7 +938,7 @@
                                         <ListView
                                             ItemsSource="{Binding DestinationsItems}"
                                             BackgroundColor="Transparent"
-                                            SelectionMode="None">
+                                            SelectedItem="{Binding SelectedDestination, Mode=TwoWay}">
                                             <ListView.SeparatorVisibility>
                                                 <OnPlatform x:TypeArguments="SeparatorVisibility">
                                                     <On Platform="iOS" Value="None" />
@@ -950,10 +950,19 @@
                                                     <ViewCell>
                                                         <ViewCell.View>
                                                             <StackLayout
-                                                                Padding="10">
-                                                                <Label 
-                                                                    TextColor="Black"
-                                                                    Text="{Binding Destination}"
+                                                                VerticalOptions="Center"
+                                                                Orientation="Vertical"
+                                                                Padding="5,0,0,0">
+                                                                <Label
+                                                                    Margin="0,0,0,-4"
+                                                                    TextColor="DarkGray"
+                                                                    Text="{Binding Environment}"
+                                                                    FontSize="Small"
+                                                                    LineBreakMode="TailTruncation"/>
+                                                                <Label
+                                                                    Margin="0,-4,0,0"
+                                                                    TextColor="White"
+                                                                    Text="{Binding Path}"
                                                                     FontSize="Small"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>

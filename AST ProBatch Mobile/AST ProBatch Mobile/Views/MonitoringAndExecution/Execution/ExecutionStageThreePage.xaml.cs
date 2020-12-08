@@ -112,13 +112,13 @@ namespace AST_ProBatch_Mobile.Views
             var commandItem = imageButton.CommandParameter as CommandItem;
             if (commandItem != null)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del comando: " + commandItem.NameCommand + "?", "Sí", "No");
-                    Toast.ShowMessage("Procesando...");
-                });
-                //MainViewModel.GetInstance().CommandData = new CommandDataViewModel(true);
-                //Application.Current.MainPage.Navigation.PushAsync(new CommandDataPage());
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    var result = await this.DisplayAlert("AST●ProBatch®", "Datos del comando: " + commandItem.NameCommand + "?", "Sí", "No");
+                //    Toast.ShowMessage("Procesando...");
+                //});
+                MainViewModel.GetInstance().CommandData = new CommandDataViewModel(true, commandItem);
+                Application.Current.MainPage.Navigation.PushAsync(new CommandDataPage());
             }
         }
 

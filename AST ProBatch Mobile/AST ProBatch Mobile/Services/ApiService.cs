@@ -432,6 +432,41 @@ namespace AST_ProBatch_Mobile.Services
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.PlannerMonitorsGetData, QueryValues);
         }
+
+        public async Task<Response> CommandDataGetGeneral(string accessToken, CommandDataIdCommandQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetGeneral, QueryValues);
+        }
+
+        public async Task<Response> CommandDataGetCommand(string accessToken, CommandDataIdCommandQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetCommand, QueryValues);
+        }
+
+        public async Task<Response> CommandDataGetCommandProcess(string accessToken, CommandDataIdCommandQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetCommandProcess, QueryValues);
+        }
+
+        public async Task<Response> CommandDataGetTransfer(string accessToken, CommandDataIdCommandQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetTransfer, QueryValues);
+        }
+
+        public async Task<Response> CommandDataGetTransferOriginActions(string accessToken, CommandDataIdCommandQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetTransferOriginActions, QueryValues);
+        }
+
+        public async Task<Response> CommandDataGetTransferDestination(string accessToken, CommandDataIdCommandQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetTransferDestination, QueryValues);
+        }
+
+        public async Task<Response> CommandDataGetTransferDestinationActions(string accessToken, CommandDataIdDestinationQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetTransferDestinationActions, QueryValues);
+        }
         #endregion
 
         #region Helpers

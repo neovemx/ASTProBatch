@@ -121,7 +121,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.LogExecutionDelayReport = new LogExecutionDelayReportViewModel(false, new ObservableCollection<LogExecutionDelayReportItem>());
             this.LogExecutionDelayChart = new LogExecutionDelayChartViewModel(false, new List<LogExecutionDelayResult>());
             this.OperationsLogReport = new OperationsLogReportViewModel(false, new ObservableCollection<OperationsLogReportItem>());
-            this.CommandData = new CommandDataViewModel(false);
+            this.CommandData = new CommandDataViewModel(false, new Models.CommandItem());
         }
         #endregion
 

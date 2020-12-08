@@ -247,4 +247,14 @@ namespace AST_ProBatch_Mobile.Models.Service
         public Int32 IdLot { get; set; }
         public Int32 IdCommand { get; set; }
     }
+
+    public class CommandDataIdCommandQueryValues
+    {
+        public Int32 IdCommand { get; set; }
+    }
+
+    public class CommandDataIdDestinationQueryValues
+    {
+        public Int32 IdDestination { get; set; }
+    }
 }

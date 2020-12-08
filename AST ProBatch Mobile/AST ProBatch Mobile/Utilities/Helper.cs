@@ -254,6 +254,13 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string DependenciesGetDependentLotDetail = "/dependenciesgetdependentlotdetail";
         public const string DependenciesGetCommandsThatDepends = "/dependenciesgetcommandsthatdepends";
         public const string DependenciesGetDependentCommandDetail = "/dependenciesgetdependentcommanddetail";
+        public const string CommandDataGetGeneral = "/commanddatagetgeneral";
+        public const string CommandDataGetCommand = "/commanddatagetcommand";
+        public const string CommandDataGetCommandProcess = "/commanddatagetcommandprocess";
+        public const string CommandDataGetTransfer = "/commanddatagettransfer";
+        public const string CommandDataGetTransferOriginActions = "/commanddatagettransferoriginactions";
+        public const string CommandDataGetTransferDestination = "/commanddatagettransferdestination";
+        public const string CommandDataGetTransferDestinationActions = "/commanddatagettransferdestinationactions";
         public const string BatchQueryGetLots = "/batchquerygetlots";
         public const string BatchQueryGetParameters = "/batchquerygetparameters";
         public const string BatchQueryGetCommands = "/batchquerygetcommands";

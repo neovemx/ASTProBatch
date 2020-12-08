@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Models.Service;
+using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
@@ -21,6 +25,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string selectedmodulechild;
         public bool toolbarachild;
         public bool toolbardchild;
+        public CommandItem commanditem;
 
         #region Atributes ToolBar A B C D
         // A
@@ -130,9 +135,9 @@ namespace AST_ProBatch_Mobile.ViewModels
         public bool bbhassubprocess;
         public string bbmonitoringservice;
         public bool bbisuser;
-        public string bbuser;
+        //public string bbuser;
         public bool bbissubprocess;
-        public string bbsubprocess;
+        //public string bbsubprocess;
         public string bbmonitoringtime;
         public bool bbwaitendsubprocess;
         private ObservableCollection<CommandDataProcessItem> processitems;
@@ -141,6 +146,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public string ccpatch;
         private ObservableCollection<CommandDataOriginActionItem> originactionitems;
         private ObservableCollection<CommandDataDestinationItem> destinationsitems;
+        private CommandDataDestinationItem selecteddestination;
         private ObservableCollection<CommandDataDestinationActionItem> destinationactionitems;
         // d
         public string ddenvironment;
@@ -152,14 +158,17 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Properties
-        //private List<OperatorChangeUser> Users { get; set; }
-        //private List<OperatorChangeInstance> Instances { get; set; }
-        //private List<OperatorChangeUserIsInAllInstances> UserInInstances { get; set; }
-        //private List<OperatorChange> OperatorChanges { get; set; }
-        //private Token TokenGet { get; set; }
+        private List<CommandDataGeneral> GeneralData { get; set; }
+        private List<CommandDataCommand> CommandData { get; set; }
+        private List<CommandDataCommandProcess> CommandProcess { get; set; }
+        private List<CommandDataTransfer> Transfer { get; set; }
+        private List<CommandDataTransferOriginAction> TransferOriginActions { get; set; }
+        private List<CommandDataTransferDestination> TransferDestinations { get; set; }
+        private List<CommandDataTransferDestinationAction> TransferDestinationActions { get; set; }
+        private Token TokenGet { get; set; }
         //private Token TokenPbAuth { get; set; }
         //private Token TokenMenuB { get; set; }
-        //private Response ApiResponse { get; set; }
+        private Response ApiResponse { get; set; }
 
         //public PickerOperatorItem SelectedOperator
         //{
@@ -203,6 +212,11 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             get { return toolbardchild; }
             set { SetValue(ref toolbardchild, value); }
+        }
+        public CommandItem CommandItem
+        {
+            get { return commanditem; }
+            set { SetValue(ref commanditem, value); }
         }
         #region Properties ToolBar A B C D
         // A
@@ -652,21 +666,21 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return bbisuser; }
             set { SetValue(ref bbisuser, value); }
         }
-        public string B_b_User
-        {
-            get { return bbuser; }
-            set { SetValue(ref bbuser, value); }
-        }
+        //public string B_b_User
+        //{
+        //    get { return bbuser; }
+        //    set { SetValue(ref bbuser, value); }
+        //}
         public bool B_b_IsSubProcess
         {
             get { return bbissubprocess; }
             set { SetValue(ref bbissubprocess, value); }
         }
-        public string B_b_SubProcess
-        {
-            get { return bbsubprocess; }
-            set { SetValue(ref bbsubprocess, value); }
-        }
+        //public string B_b_SubProcess
+        //{
+        //    get { return bbsubprocess; }
+        //    set { SetValue(ref bbsubprocess, value); }
+        //}
         public string B_b_MonitoringTime
         {
             get { return bbmonitoringtime; }
@@ -703,6 +717,15 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return destinationsitems; }
             set { SetValue(ref destinationsitems, value); }
         }
+        public CommandDataDestinationItem SelectedDestination
+        {
+            get { return selecteddestination; }
+            set
+            {
+                SetValue(ref selecteddestination, value);
+                HandleSelectedDestination();
+            }
+        }
         public ObservableCollection<CommandDataDestinationActionItem> ActionsDestinationItems
         {
             get { return destinationactionitems; }
@@ -734,10 +757,13 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public CommandDataViewModel(bool IsReload)
+        public CommandDataViewModel(bool IsReload, CommandItem commandItem)
         {
             if (IsReload)
             {
+                ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
+                this.CommandItem = commandItem;
+
                 GetToolBar();
                 GetInitialData();
             }
@@ -866,7 +892,6 @@ namespace AST_ProBatch_Mobile.ViewModels
             await Task.Run(() => ActivateSecondaryToolBarButton("Ee"));
         }
         #endregion
-
         #region Module D
         public ICommand ClearCommand
         {
@@ -930,393 +955,382 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.EndDateString = this.EndDateValue.SelectedDate.ToString(DateTimeFormatString.LatinDate);
         }
         #endregion
-        //public ICommand SaveCommand
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(Save);
-        //    }
-        //}
-
-        //private async void Save()
-        //{
-        //    try
-        //    {
-        //        if (SelectedOperator == null)
-        //        {
-        //            Alert.Show("Debe seleccionar un operador", "Aceptar");
-        //            return;
-        //        }
-        //        if (string.IsNullOrWhiteSpace(OperatorPassword))
-        //        {
-        //            Alert.Show("Debe ingresar el password del operador", "Aceptar");
-        //            return;
-        //        }
-        //        UserDialogs.Instance.ShowLoading("Validando operador...", MaskType.Black);
-        //        ApiSrv = new Services.ApiService(ApiConsult.ApiAuth);
-        //        if (!await ApiIsOnline())
-        //        {
-        //            UserDialogs.Instance.HideLoading();
-        //            Toast.ShowError(AlertMessages.Error);
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            if (!await GetTokenSuccess())
-        //            {
-        //                UserDialogs.Instance.HideLoading();
-        //                Toast.ShowError(AlertMessages.Error);
-        //                return;
-        //            }
-        //            else
-        //            {
-        //                TokenPbAuth = TokenGet;
-        //                LoginPb loginPb = new LoginPb { Username = this.SelectedOperator.IdUser, Password = this.OperatorPassword };
-        //                Response resultValidateOperator = await ApiSrv.AuthenticateProbath(TokenPbAuth.Key, loginPb);
-        //                if (!resultValidateOperator.IsSuccess)
-        //                {
-        //                    UserDialogs.Instance.HideLoading();
-        //                    Toast.ShowError(resultValidateOperator.Message);
-        //                    return;
-        //                }
-        //                else
-        //                {
-        //                    OperatorObject operatorObject = JsonConvert.DeserializeObject<OperatorObject>(Crypto.DecodeString(resultValidateOperator.Data));
-        //                    if (!operatorObject.IsValid)
-        //                    {
-        //                        UserDialogs.Instance.HideLoading();
-        //                        Alert.Show(AlertMessages.UserInvalid);
-        //                        return;
-        //                    }
-        //                    else
-        //                    {
-        //                        UserDialogs.Instance.HideLoading();
-        //                        UserDialogs.Instance.ShowLoading("Validando instancias...", MaskType.Black);
-        //                        ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
-        //                        if (!TokenValidator.IsValid(TokenMenuB))
-        //                        {
-        //                            if (!await ApiIsOnline())
-        //                            {
-        //                                UserDialogs.Instance.HideLoading();
-        //                                Toast.ShowError(AlertMessages.Error);
-        //                                return;
-        //                            }
-        //                            else
-        //                            {
-        //                                if (!await GetTokenSuccess())
-        //                                {
-        //                                    UserDialogs.Instance.HideLoading();
-        //                                    Toast.ShowError(AlertMessages.Error);
-        //                                    return;
-        //                                }
-        //                                else
-        //                                {
-        //                                    TokenMenuB = TokenGet;
-        //                                }
-        //                            }
-        //                        }
-        //                        StringBuilder Instances = new StringBuilder();
-        //                        StringBuilder InstancesRunning = new StringBuilder();
-        //                        foreach (InstanceRunningItem instanceRunningItem in InstanceRunningItems)
-        //                        {
-        //                            Instances.Append(instanceRunningItem.IdInstance);
-        //                            Instances.Append(",");
-        //                            if (string.Compare(instanceRunningItem.RunningDisplay, "SI") == 0)
-        //                            {
-        //                                InstancesRunning.Append(instanceRunningItem.IdInstance);
-        //                                InstancesRunning.Append(",");
-
-        //                            }
-        //                        }
-        //                        if (!AppHelper.UserIsSupervisor(operatorObject))
-        //                        {
-        //                            OperatorChangeUserIsInAllInstancesQueryValues operatorChangeUserIsInAllInstancesQueryValues = new OperatorChangeUserIsInAllInstancesQueryValues()
-        //                            {
-        //                                IdLog = this.LogItem.IdLog,
-        //                                IdUser = PbUser.IdUser,
-        //                                Instances = Instances.ToString()
-        //                            };
-        //                            Response resultOperatorChangeUserIsInAllInstances = await ApiSrv.GetOperatorChangeUserIsInAllInstances(TokenMenuB.Key, operatorChangeUserIsInAllInstancesQueryValues);
-        //                            if (!resultOperatorChangeUserIsInAllInstances.IsSuccess)
-        //                            {
-        //                                UserDialogs.Instance.HideLoading();
-        //                                Toast.ShowError(AlertMessages.Error);
-        //                                return;
-        //                            }
-        //                            else
-        //                            {
-        //                                UserInInstances = JsonConvert.DeserializeObject<List<OperatorChangeUserIsInAllInstances>>(Crypto.DecodeString(resultOperatorChangeUserIsInAllInstances.Data));
-        //                                if (!UserInInstances[0].UserIsInAllInstances)
-        //                                {
-        //                                    UserDialogs.Instance.HideLoading();
-        //                                    Alert.Show(string.Format("Usted no tiene permisos para ejecutar en todas las instancias que tiene asignada el operador: {0}", PbUser.IdUser), "Aceptar");
-        //                                    return;
-        //                                }
-        //                            }
-        //                        }
-        //                        if (InstancesRunning.Length > 0)
-        //                        {
-        //                            UserDialogs.Instance.HideLoading();
-        //                            UserDialogs.Instance.ShowLoading("Cambiando al operador seleccionado...", MaskType.Black);
-        //                            ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
-        //                            if (!TokenValidator.IsValid(TokenMenuB))
-        //                            {
-        //                                if (!await ApiIsOnline())
-        //                                {
-        //                                    UserDialogs.Instance.HideLoading();
-        //                                    Toast.ShowError(AlertMessages.Error);
-        //                                    return;
-        //                                }
-        //                                else
-        //                                {
-        //                                    if (!await GetTokenSuccess())
-        //                                    {
-        //                                        UserDialogs.Instance.HideLoading();
-        //                                        Toast.ShowError(AlertMessages.Error);
-        //                                        return;
-        //                                    }
-        //                                    else
-        //                                    {
-        //                                        TokenMenuB = TokenGet;
-        //                                    }
-        //                                }
-        //                            }
-        //                            //string MyIp;
-        //                            //foreach (IPAddress iPAddress in Dns.GetHostAddresses(Dns.GetHostName()))
-        //                            //{
-        //                            //    MyIp = iPAddress.ToString();
-        //                            //}
-        //                            OperatorChangeQueryValues operatorChangeQueryValues = new OperatorChangeQueryValues()
-        //                            {
-        //                                IdLog = this.LogItem.IdLog,
-        //                                NewIdUser = operatorObject.IdUser,
-        //                                Instances = Instances.ToString(),
-        //                                OldIdUser = PbUser.IdUser,
-        //                                StartDate = ConvertStartDateToSp(this.LogItem.ExecutionDateTime),
-        //                                ClientIp = "127.0.0.1"
-        //                            };
-        //                            Response resultOperatorChange = await ApiSrv.GetOperatorChange(TokenMenuB.Key, operatorChangeQueryValues);
-        //                            if (!resultOperatorChange.IsSuccess)
-        //                            {
-        //                                UserDialogs.Instance.HideLoading();
-        //                                Toast.ShowError(AlertMessages.Error);
-        //                                return;
-        //                            }
-        //                            else
-        //                            {
-        //                                OperatorChanges = JsonConvert.DeserializeObject<List<OperatorChange>>(Crypto.DecodeString(resultOperatorChange.Data));
-        //                                if (!OperatorChanges[0].IsSuccess)
-        //                                {
-        //                                    UserDialogs.Instance.HideLoading();
-        //                                    Alert.Show(string.Format("Ocurrió un error al intentar cambiar el operador actual por: {0}", operatorObject.IdUser), "Aceptar");
-        //                                    return;
-        //                                }
-        //                                this.SelectedOperator = null;
-        //                                this.OperatorPassword = string.Empty;
-        //                                UserDialogs.Instance.HideLoading();
-        //                                Alert.Show(string.Format("Cambio de operador satisfactorio!"), "Aceptar");
-        //                            }
-        //                        }
-        //                        else
-        //                        {
-        //                            UserDialogs.Instance.HideLoading();
-        //                            Alert.Show(string.Format("No hay instancias en ejecución!"), "Aceptar");
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch //(Exception ex)
-        //    {
-        //        Toast.ShowError(AlertMessages.Error);
-        //    }
-
-        //}
         #endregion
 
         #region Helpers
-        private async void GetInitialData()
-        {
-            this.OptionItems = new ObservableCollection<CommandDataOptionItem>()
-            {
-                new CommandDataOptionItem()
-                {
-                    IdOption = 1,
-                    OptionName = "Ejecuciones Exitosas"
-                },
-                new CommandDataOptionItem()
-                {
-                    IdOption = 2,
-                    OptionName = "Detalle del Último Error"
-                },
-                new CommandDataOptionItem()
-                {
-                    IdOption = 3,
-                    OptionName = "Detalle del Último Error"
-                }
-            };
-
-            this.A_Code = "80051";
-            this.A_Critical = false;
-            this.A_Name = "MENSAJE DE HOLD DE BASE DE DATOS";
-            this.A_Description = "MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS";
-            this.A_Group = "PROCESOS GENERALES";
-            this.A_Type = "MENSAJE";
-            this.A_ReExecution = true;
-
-            this.B_b_Command = "SBMJOB";
-            this.B_b_DefaultPath = "/";
-            this.B_b_CurrentPath = "/";
-            this.B_b_HasSubProcess = true;
-            this.B_b_MonitoringService = "AS400";
-            this.B_b_IsUser = false;
-            this.B_b_User = string.Empty;
-            this.B_b_IsSubProcess = true;
-            this.B_b_SubProcess = string.Empty;
-            this.B_b_MonitoringTime = "60";
-            this.B_b_WaitEndSubProcess = true;
-
-            this.ProcessItems = new ObservableCollection<CommandDataProcessItem>()
-            {
-                new CommandDataProcessItem()
-                {
-                    PID = 1010,
-                    NameProcess = "DPD540CL"
-                },
-                new CommandDataProcessItem()
-                {
-                    PID = 1011,
-                    NameProcess = "DPD560CL"
-                },
-                new CommandDataProcessItem()
-                {
-                    PID = 1011,
-                    NameProcess = "DPD560CL"
-                },
-                new CommandDataProcessItem()
-                {
-                    PID = 1011,
-                    NameProcess = "DPD560CL"
-                },
-                new CommandDataProcessItem()
-                {
-                    PID = 1011,
-                    NameProcess = "DPD560CL"
-                }
-            };
-        }
         //private async void GetInitialData()
         //{
-        //    try
+        //    this.OptionItems = new ObservableCollection<CommandDataOptionItem>()
         //    {
-        //        UserDialogs.Instance.ShowLoading("Obteniendo operadores...", MaskType.Black);
-        //        ApiSrv = new Services.ApiService(ApiConsult.ApiMenuB);
-        //        if (!await ApiIsOnline())
+        //        new CommandDataOptionItem()
         //        {
-        //            UserDialogs.Instance.HideLoading();
-        //            Toast.ShowError(AlertMessages.Error);
-        //            return;
-        //        }
-        //        else
+        //            IdOption = 1,
+        //            OptionName = "Ejecuciones Exitosas"
+        //        },
+        //        new CommandDataOptionItem()
         //        {
-        //            if (!await GetTokenSuccess())
-        //            {
-        //                UserDialogs.Instance.HideLoading();
-        //                Toast.ShowError(AlertMessages.Error);
-        //                return;
-        //            }
-        //            else
-        //            {
-        //                TokenMenuB = TokenGet;
-        //                OperatorChangeUserQueryValues operatorChangeUserQueryValues = new OperatorChangeUserQueryValues()
-        //                {
-        //                    CurrentIdUser = PbUser.IdUser
-        //                };
-        //                Response resultOperatorChangeGetUsers = await ApiSrv.GetOperatorChangeUsers(TokenMenuB.Key, operatorChangeUserQueryValues);
-        //                if (!resultOperatorChangeGetUsers.IsSuccess)
-        //                {
-        //                    UserDialogs.Instance.HideLoading();
-        //                    Toast.ShowError(AlertMessages.Error);
-        //                    return;
-        //                }
-        //                else
-        //                {
-        //                    Users = JsonConvert.DeserializeObject<List<OperatorChangeUser>>(Crypto.DecodeString(resultOperatorChangeGetUsers.Data));
-        //                    OperatorsItems = new ObservableCollection<PickerOperatorItem>();
-        //                    foreach (OperatorChangeUser operatorChangeUser in Users)
-        //                    {
-        //                        OperatorsItems.Add(new PickerOperatorItem()
-        //                        {
-        //                            IdUser = operatorChangeUser.IdUser,
-        //                            FullNameUser = string.Format("{0}", operatorChangeUser.IdUser)
-        //                            //string.Format("{0} ({1}, {2})", operatorChangeUser.IdUser, operatorChangeUser.FirstNameUser.Trim(), operatorChangeUser.LastNameUser.Trim())
-        //                        });
-        //                    }
-        //                }
-        //                UserDialogs.Instance.HideLoading();
-        //                UserDialogs.Instance.ShowLoading("Obteniendo instancias...", MaskType.Black);
-        //                OperatorChangeInstanceQueryValues operatorChangeInstanceQueryValues = new OperatorChangeInstanceQueryValues()
-        //                {
-        //                    IdLog = this.LogItem.IdLog,
-        //                    IdUser = PbUser.IdUser,
-        //                    IsSupervisor = AppHelper.UserIsSupervisor(PbUser)
-        //                };
-        //                Response resultOperatorChangeGetInstances = await ApiSrv.GetOperatorChangeInstances(TokenMenuB.Key, operatorChangeInstanceQueryValues);
-        //                if (!resultOperatorChangeGetInstances.IsSuccess)
-        //                {
-        //                    UserDialogs.Instance.HideLoading();
-        //                    Toast.ShowError(resultOperatorChangeGetInstances.Message);
-        //                    return;
-        //                }
-        //                else
-        //                {
-        //                    Instances = JsonConvert.DeserializeObject<List<OperatorChangeInstance>>(Crypto.DecodeString(resultOperatorChangeGetInstances.Data));
-        //                    InstanceRunningItems = new ObservableCollection<InstanceRunningItem>();
-        //                    foreach (OperatorChangeInstance operatorChangeInstance in Instances)
-        //                    {
-        //                        InstanceRunningItems.Add(new InstanceRunningItem()
-        //                        {
-        //                            IdInstance = operatorChangeInstance.IdInstance,
-        //                            NameInstance = operatorChangeInstance.NameInstance,
-        //                            Running = operatorChangeInstance.Running,
-        //                            RunningDisplay = (operatorChangeInstance.Running) ? Answers.Yes : Answers.No
-        //                        });
-        //                    }
-        //                }
-        //                UserDialogs.Instance.HideLoading();
-        //            }
+        //            IdOption = 2,
+        //            OptionName = "Detalle del Último Error"
+        //        },
+        //        new CommandDataOptionItem()
+        //        {
+        //            IdOption = 3,
+        //            OptionName = "Detalle del Último Error"
         //        }
-        //    }
-        //    catch //(Exception ex)
-        //    {
-        //        UserDialogs.Instance.HideLoading();
-        //        Toast.ShowError(AlertMessages.Error);
-        //    }
-        //}
+        //    };
 
-        //private async Task<bool> ApiIsOnline()
-        //{
-        //    bool result = false;
-        //    Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
-        //    if (resultApiIsAvailable.IsSuccess)
-        //    {
-        //        result = true;
-        //    }
-        //    return result;
-        //}
+        //    this.A_Code = "80051";
+        //    this.A_Critical = false;
+        //    this.A_Name = "MENSAJE DE HOLD DE BASE DE DATOS";
+        //    this.A_Description = "MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS MENSAJE DE HOLD DE BASE DE DATOS";
+        //    this.A_Group = "PROCESOS GENERALES";
+        //    this.A_Type = "MENSAJE";
+        //    this.A_ReExecution = true;
 
-        //private async Task<bool> GetTokenSuccess()
-        //{
-        //    bool result = false;
-        //    Response resultToken = await ApiSrv.GetToken();
-        //    if (resultToken.IsSuccess)
+        //    this.B_b_Command = "SBMJOB";
+        //    this.B_b_DefaultPath = "/";
+        //    this.B_b_CurrentPath = "/";
+        //    this.B_b_HasSubProcess = true;
+        //    this.B_b_MonitoringService = "AS400";
+        //    this.B_b_IsUser = false;
+        //    this.B_b_User = string.Empty;
+        //    this.B_b_IsSubProcess = true;
+        //    this.B_b_SubProcess = string.Empty;
+        //    this.B_b_MonitoringTime = "60";
+        //    this.B_b_WaitEndSubProcess = true;
+
+        //    this.ProcessItems = new ObservableCollection<CommandDataProcessItem>()
         //    {
-        //        TokenGet = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
-        //        result = true;
-        //    }
-        //    return result;
+        //        new CommandDataProcessItem()
+        //        {
+        //            PID = 1010,
+        //            NameProcess = "DPD540CL"
+        //        },
+        //        new CommandDataProcessItem()
+        //        {
+        //            PID = 1011,
+        //            NameProcess = "DPD560CL"
+        //        },
+        //        new CommandDataProcessItem()
+        //        {
+        //            PID = 1011,
+        //            NameProcess = "DPD560CL"
+        //        },
+        //        new CommandDataProcessItem()
+        //        {
+        //            PID = 1011,
+        //            NameProcess = "DPD560CL"
+        //        },
+        //        new CommandDataProcessItem()
+        //        {
+        //            PID = 1011,
+        //            NameProcess = "DPD560CL"
+        //        }
+        //    };
         //}
+        private async void GetInitialData()
+        {
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Obteniendo datos...", MaskType.Black);
+                if (!await ApiIsOnline())
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(AlertMessages.Error);
+                    return;
+                }
+                else
+                {
+                    if (!await GetTokenSuccess())
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    CommandDataIdCommandQueryValues commandDataIdCommandQueryValues = new CommandDataIdCommandQueryValues()
+                    {
+                        IdCommand = this.CommandItem.IdCommand
+                    };
+                    Response resultCommandDataGetGeneral = await ApiSrv.CommandDataGetGeneral(TokenGet.Key, commandDataIdCommandQueryValues);
+                    if (!resultCommandDataGetGeneral.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        GeneralData = JsonConvert.DeserializeObject<List<CommandDataGeneral>>(Crypto.DecodeString(resultCommandDataGetGeneral.Data));
+                        if (GeneralData.Count > 0)
+                        {
+                            CommandDataGeneral commandDataGeneral = GeneralData[0];
+                            this.A_Code = commandDataGeneral.Code;
+                            this.A_Critical = commandDataGeneral.CriticalBusiness;
+                            this.A_Name = commandDataGeneral.Name;
+                            this.A_Description = commandDataGeneral.Description;
+                            this.A_Group = commandDataGeneral.Group;
+                            this.A_Type = commandDataGeneral.CommandType;
+                            this.A_ReExecution = commandDataGeneral.ReExecution;
+                        }
+                    }
+                    if (!TokenValidator.IsValid(TokenGet))
+                    {
+                        if (!await ApiIsOnline())
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                        else
+                        {
+                            if (!await GetTokenSuccess())
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(AlertMessages.Error);
+                                return;
+                            }
+                        }
+                    }
+                    Response resultCommandDataGetCommand = await ApiSrv.CommandDataGetCommand(TokenGet.Key, commandDataIdCommandQueryValues);
+                    if (!resultCommandDataGetCommand.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        CommandData = JsonConvert.DeserializeObject<List<CommandDataCommand>>(Crypto.DecodeString(resultCommandDataGetCommand.Data));
+                        if (GeneralData.Count > 0)
+                        {
+                            CommandDataCommand commandDataCommand = CommandData[0];
+                            this.B_b_Command = commandDataCommand.Command;
+                            this.B_b_DefaultPath = commandDataCommand.DefaultPath;
+                            this.B_b_CurrentPath = commandDataCommand.CurrentPath;
+                            this.B_b_HasSubProcess = commandDataCommand.HasSubProcess;
+                            this.B_b_MonitoringService = commandDataCommand.ServiceMonitoring;
+                            this.B_b_IsUser = commandDataCommand.IsUser;
+                            this.B_b_IsSubProcess = commandDataCommand.IsProcess;
+                            this.B_b_MonitoringTime = commandDataCommand.MonitoringTime.ToString();
+                            this.B_b_WaitEndSubProcess = commandDataCommand.EndSubProcess;
+                        }
+                    }
+                    if (!TokenValidator.IsValid(TokenGet))
+                    {
+                        if (!await ApiIsOnline())
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                        else
+                        {
+                            if (!await GetTokenSuccess())
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(AlertMessages.Error);
+                                return;
+                            }
+                        }
+                    }
+                    Response resultCommandDataGetCommandProcess = await ApiSrv.CommandDataGetCommandProcess(TokenGet.Key, commandDataIdCommandQueryValues);
+                    if (!resultCommandDataGetCommandProcess.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        CommandProcess = JsonConvert.DeserializeObject<List<CommandDataCommandProcess>>(Crypto.DecodeString(resultCommandDataGetCommandProcess.Data));
+                        if (CommandProcess.Count > 0)
+                        {
+                            ProcessItems = new ObservableCollection<CommandDataProcessItem>();
+                            CommandDataProcessItem commandDataProcessItem;
+                            foreach (CommandDataCommandProcess item in CommandProcess)
+                            {
+                                commandDataProcessItem = new CommandDataProcessItem()
+                                {
+                                    PID = item.IdProcess,
+                                    NameProcess = item.NameProcess
+                                };
+                                ProcessItems.Add(commandDataProcessItem);
+                            }
+                        }
+                    }
+                    if (!TokenValidator.IsValid(TokenGet))
+                    {
+                        if (!await ApiIsOnline())
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                        else
+                        {
+                            if (!await GetTokenSuccess())
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(AlertMessages.Error);
+                                return;
+                            }
+                        }
+                    }
+                    Response resultCommandDataGetTransfer = await ApiSrv.CommandDataGetTransfer(TokenGet.Key, commandDataIdCommandQueryValues);
+                    if (!resultCommandDataGetTransfer.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        Transfer = JsonConvert.DeserializeObject<List<CommandDataTransfer>>(Crypto.DecodeString(resultCommandDataGetTransfer.Data));
+                        if (Transfer.Count > 0)
+                        {
+                            CommandDataTransfer commandDataTransfer = Transfer[0];
+                            this.C_c_Environment = commandDataTransfer.Environment;
+                            this.C_c_Patch = commandDataTransfer.OriginPath;
+                        }
+                    }
+                    if (!TokenValidator.IsValid(TokenGet))
+                    {
+                        if (!await ApiIsOnline())
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                        else
+                        {
+                            if (!await GetTokenSuccess())
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(AlertMessages.Error);
+                                return;
+                            }
+                        }
+                    }
+                    Response resultCommandDataGetTransferOriginActions = await ApiSrv.CommandDataGetTransferOriginActions(TokenGet.Key, commandDataIdCommandQueryValues);
+                    if (!resultCommandDataGetTransferOriginActions.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        TransferOriginActions = JsonConvert.DeserializeObject<List<CommandDataTransferOriginAction>>(Crypto.DecodeString(resultCommandDataGetTransferOriginActions.Data));
+                        if (TransferOriginActions.Count > 0)
+                        {
+                            OriginAcctionsItems = new ObservableCollection<CommandDataOriginActionItem>();
+                            CommandDataOriginActionItem commandDataOriginActionItem;
+                            foreach (CommandDataTransferOriginAction item in TransferOriginActions)
+                            {
+                                commandDataOriginActionItem = new CommandDataOriginActionItem()
+                                {
+                                    IdOriginAction = item.Order,
+                                    OriginAction = item.OriginAction
+                                };
+                                OriginAcctionsItems.Add(commandDataOriginActionItem);
+                            }
+                        }
+                    }
+                    if (!TokenValidator.IsValid(TokenGet))
+                    {
+                        if (!await ApiIsOnline())
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                        else
+                        {
+                            if (!await GetTokenSuccess())
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(AlertMessages.Error);
+                                return;
+                            }
+                        }
+                    }
+                    Response resultCommandDataGetTransferDestinations = await ApiSrv.CommandDataGetTransferDestination(TokenGet.Key, commandDataIdCommandQueryValues);
+                    if (!resultCommandDataGetTransferOriginActions.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        TransferDestinations = JsonConvert.DeserializeObject<List<CommandDataTransferDestination>>(Crypto.DecodeString(resultCommandDataGetTransferDestinations.Data));
+                        if (TransferDestinations.Count > 0)
+                        {
+                            DestinationsItems = new ObservableCollection<CommandDataDestinationItem>();
+                            CommandDataDestinationItem commandDataDestinationItem;
+                            foreach (CommandDataTransferDestination item in TransferDestinations)
+                            {
+                                commandDataDestinationItem = new CommandDataDestinationItem()
+                                {
+                                    IdDestination = item.IdDestination,
+                                    Environment = item.Environment,
+                                    Path = item.Path
+                                };
+                                DestinationsItems.Add(commandDataDestinationItem);
+                            }
+                        }
+                        //else
+                        //{
+                        //    DestinationsItems = new ObservableCollection<CommandDataDestinationItem>();
+                        //    CommandDataDestinationItem commandDataDestinationItem;
+                        //    commandDataDestinationItem = new CommandDataDestinationItem()
+                        //    {
+                        //        IdDestination = 1,
+                        //        Environment = "AMBIENTE",
+                        //        Path = "PATH"
+                        //    };
+                        //    DestinationsItems.Add(commandDataDestinationItem);
+                        //    commandDataDestinationItem = new CommandDataDestinationItem()
+                        //    {
+                        //        IdDestination = 2,
+                        //        Environment = "AMBIENTE 2",
+                        //        Path = "PATH 2"
+                        //    };
+                        //    DestinationsItems.Add(commandDataDestinationItem);
+                        //}
+                    }
+                    UserDialogs.Instance.HideLoading();
+                }
+            }
+            catch //(Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                Toast.ShowError(AlertMessages.Error);
+            }
+        }
+
+        private async Task<bool> ApiIsOnline()
+        {
+            bool result = false;
+            Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
+            if (resultApiIsAvailable.IsSuccess)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        private async Task<bool> GetTokenSuccess()
+        {
+            bool result = false;
+            Response resultToken = await ApiSrv.GetToken();
+            if (resultToken.IsSuccess)
+            {
+                TokenGet = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                result = true;
+            }
+            return result;
+        }
 
         //private string ConvertStartDateToSp(DateTime startDate)
         //{
@@ -1608,6 +1622,68 @@ namespace AST_ProBatch_Mobile.ViewModels
                     break;
             }
             #endregion
+        }
+
+        private async void HandleSelectedDestination()
+        {
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Obteniendo acciones en destinos...", MaskType.Black);
+                if (!await ApiIsOnline())
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(AlertMessages.Error);
+                    return;
+                }
+                if (!TokenValidator.IsValid(TokenGet))
+                {
+                    if (!await GetTokenSuccess())
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                }
+                CommandDataIdDestinationQueryValues commandDataIdDestinationQueryValues = new CommandDataIdDestinationQueryValues()
+                {
+                    IdDestination = this.SelectedDestination.IdDestination
+                };
+                Response resultCommandDataGetTransferDestinationActions = await ApiSrv.CommandDataGetTransferDestinationActions(TokenGet.Key, commandDataIdDestinationQueryValues);
+                if (!resultCommandDataGetTransferDestinationActions.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(AlertMessages.Error);
+                    return;
+                }
+                else
+                {
+                    TransferDestinationActions = JsonConvert.DeserializeObject<List<CommandDataTransferDestinationAction>>(Crypto.DecodeString(resultCommandDataGetTransferDestinationActions.Data));
+                    if (TransferDestinationActions.Count > 0)
+                    {
+                        ActionsDestinationItems = new ObservableCollection<CommandDataDestinationActionItem>();
+                        CommandDataDestinationActionItem commandDataDestinationActionItem;
+                        foreach (CommandDataTransferDestinationAction item in TransferDestinationActions)
+                        {
+                            commandDataDestinationActionItem = new CommandDataDestinationActionItem()
+                            {
+                                IdDestinationAction = item.Order,
+                                DestinationAction = item.DestinationAction
+                            };
+                            ActionsDestinationItems.Add(commandDataDestinationActionItem);
+                        }
+                    }
+                    else
+                    {
+                        this.SelectedDestination = new CommandDataDestinationItem();
+                    }
+                }
+                UserDialogs.Instance.HideLoading();
+            }
+            catch //(Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                Toast.ShowError(AlertMessages.Error);
+            }
         }
         #endregion
     }

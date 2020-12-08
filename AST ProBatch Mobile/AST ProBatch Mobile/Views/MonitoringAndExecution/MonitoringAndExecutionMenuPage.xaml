@@ -58,7 +58,7 @@
                             CornerRadius="38"
                             BorderColor="DarkGray"
                             BorderWidth="1"
-                            Command="{Binding BtnsubmgCommand}"
+                            Command="{Binding Btnsubmg-Command}"
                             BackgroundColor="DarkGray"
                             HorizontalOptions="Center"
                             Source="btnsubmg"/>

@@ -1,6 +1,6 @@
-﻿namespace AST_ProBatch_Mobile.Models
+﻿namespace AST_ProBatch_Mobile.Models.Service
 {
-    public class CommandDataDestinationItem
+    public class CommandDataTransferDestination
     {
         public int IdDestination { get; set; }
         public string Environment { get; set; }
