@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace AST_ProBatch_Mobile.Models
+namespace AST_ProBatch_Mobile.Models.Service
 {
-    public class CommandDataObservationItem
+    public class CommandDataObservation
     {
         public Int32 IdObservation { get; set; }
         public string Name { get; set; }

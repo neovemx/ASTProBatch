@@ -1068,13 +1068,12 @@
                                     FontSize="Small"
                                     Text="Datos Enviados al Servicio de Ejecución:"
                                     VerticalOptions="Center"/>
-                                <Label 
-                                    TextColor="White"
+                                <controls:CustomLabel
                                     FontSize="Small"
-                                    Text="HERE THE TREE"
-                                    LineBreakMode="TailTruncation"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="FillAndExpand"/>
+                                    Text="{Binding D_d_XmlCommand}"
+                                    TextColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="CenterAndExpand"/>
                             </StackLayout>
                         </StackLayout>
                     </controls:CustomFrame>
@@ -1114,7 +1113,7 @@
                                     <ListView
                                         ItemsSource="{Binding ObservationItems}"
                                         BackgroundColor="Transparent"
-                                        SelectionMode="None">
+                                        SelectedItem="{Binding ObservationSelected, Mode=TwoWay}">
                                         <ListView.SeparatorVisibility>
                                             <OnPlatform x:TypeArguments="SeparatorVisibility">
                                                 <On Platform="iOS" Value="None" />
@@ -1126,8 +1125,13 @@
                                                 <ViewCell>
                                                     <ViewCell.View>
                                                         <StackLayout
+                                                            VerticalOptions="Center"
                                                             Padding="10">
-                                                            <!--TABLE DATA OBSERVATION-->
+                                                            <Label 
+                                                                TextColor="Black"
+                                                                Text="{Binding Name}"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
                                                         </StackLayout>
                                                     </ViewCell.View>
                                                 </ViewCell>
@@ -1159,9 +1163,14 @@
                                 BackgroundColor="Gray"
                                 Padding="0">
                                 <StackLayout
-                                    HeightRequest="150"
-                                    Padding="0,0,0,10">
-                                    <ListView
+                                    Padding="10">
+                                    <controls:CustomLabel
+                                        FontSize="Small"
+                                        Text="{Binding E_e_ObservationDetail}"
+                                        TextColor="White"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="CenterAndExpand"/>
+                                    <!--<ListView
                                         ItemsSource="{Binding ObservationDetailItems}"
                                         BackgroundColor="Transparent"
                                         SelectionMode="None">
@@ -1177,13 +1186,13 @@
                                                     <ViewCell.View>
                                                         <StackLayout
                                                             Padding="10">
-                                                            <!--TABLE DATA OBSERVATION-->
+                                                            TABLE DATA OBSERVATION
                                                         </StackLayout>
                                                     </ViewCell.View>
                                                 </ViewCell>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
-                                    </ListView>
+                                    </ListView>-->
                                 </StackLayout>
                             </controls:CustomFrame>
                         </StackLayout>

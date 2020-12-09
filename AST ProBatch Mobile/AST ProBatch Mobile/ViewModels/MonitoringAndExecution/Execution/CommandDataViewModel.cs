@@ -151,9 +151,12 @@ namespace AST_ProBatch_Mobile.ViewModels
         // d
         public string ddenvironment;
         public string ddcommandline;
+        public string ddxmlcommand;
         // e
         private ObservableCollection<CommandDataObservationItem> observationitems;
-        private ObservableCollection<CommandDataObservationDetailItem> observationdetailitems;
+        private CommandDataObservationItem observationselected;
+        private string eeobservationdetail;
+        //private ObservableCollection<CommandDataObservationDetailItem> observationdetailitems;
         #endregion
         #endregion
 
@@ -165,6 +168,8 @@ namespace AST_ProBatch_Mobile.ViewModels
         private List<CommandDataTransferOriginAction> TransferOriginActions { get; set; }
         private List<CommandDataTransferDestination> TransferDestinations { get; set; }
         private List<CommandDataTransferDestinationAction> TransferDestinationActions { get; set; }
+        private List<CommandDataExecutionResult> ExecutionResults { get; set; }
+        private List<CommandDataObservation> Observations { get; set; }
         private Token TokenGet { get; set; }
         //private Token TokenPbAuth { get; set; }
         //private Token TokenMenuB { get; set; }
@@ -742,17 +747,36 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return ddcommandline; }
             set { SetValue(ref ddcommandline, value); }
         }
+        public string D_d_XmlCommand
+        {
+            get { return ddxmlcommand; }
+            set { SetValue(ref ddxmlcommand, value); }
+        }
         // e
         public ObservableCollection<CommandDataObservationItem> ObservationItems
         {
             get { return observationitems; }
             set { SetValue(ref observationitems, value); }
         }
-        public ObservableCollection<CommandDataObservationDetailItem> ObservationDetailItems
+        public CommandDataObservationItem ObservationSelected
         {
-            get { return observationdetailitems; }
-            set { SetValue(ref observationdetailitems, value); }
+            get { return observationselected; }
+            set
+            {
+                SetValue(ref observationselected, value);
+                HandleObservationSelected();
+            }
         }
+        public string E_e_ObservationDetail
+        {
+            get { return eeobservationdetail; }
+            set { SetValue(ref eeobservationdetail, value); }
+        }
+        //public ObservableCollection<CommandDataObservationDetailItem> ObservationDetailItems
+        //{
+        //    get { return observationdetailitems; }
+        //    set { SetValue(ref observationdetailitems, value); }
+        //}
         #endregion
         #endregion
 
@@ -1299,6 +1323,100 @@ namespace AST_ProBatch_Mobile.ViewModels
                         //    DestinationsItems.Add(commandDataDestinationItem);
                         //}
                     }
+                    if (!TokenValidator.IsValid(TokenGet))
+                    {
+                        if (!await ApiIsOnline())
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                        else
+                        {
+                            if (!await GetTokenSuccess())
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(AlertMessages.Error);
+                                return;
+                            }
+                        }
+                    }
+                    CommandDataExecutionQueryValues commandDataExecutionQueryValues = new CommandDataExecutionQueryValues()
+                    {
+                        IdInstance = this.CommandItem.InstanceItem.IdInstance,
+                        IdLot = this.CommandItem.IdLot,
+                        IdCommand = this.CommandItem.IdCommand
+                    };
+                    Response resultCommandDataGetExecution = await ApiSrv.CommandDataGetExecution(TokenGet.Key, commandDataExecutionQueryValues);
+                    if (!resultCommandDataGetExecution.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        ExecutionResults = JsonConvert.DeserializeObject<List<CommandDataExecutionResult>>(Crypto.DecodeString(resultCommandDataGetExecution.Data));
+                        if (Transfer.Count > 0)
+                        {
+                            CommandDataExecutionResult commandDataExecutionResult = ExecutionResults[0];
+                            this.D_d_Environment = commandDataExecutionResult.Environment;
+                            this.D_d_CommandLine = commandDataExecutionResult.ExecutionCommand;
+                            this.D_d_XmlCommand = commandDataExecutionResult.XmlExecutionCommand;
+                        }
+                    }
+                    if (!TokenValidator.IsValid(TokenGet))
+                    {
+                        if (!await ApiIsOnline())
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                        else
+                        {
+                            if (!await GetTokenSuccess())
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(AlertMessages.Error);
+                                return;
+                            }
+                        }
+                    }
+                    CommandDataObservationQueryValues commandDataObservationQueryValues = new CommandDataObservationQueryValues()
+                    {
+                        IdLog = this.CommandItem.InstanceItem.LogItem.IdLog,
+                        IdInstance = this.CommandItem.InstanceItem.IdInstance,
+                        IdLot = this.CommandItem.IdLot,
+                        IdCommand = this.CommandItem.IdCommand
+                    };
+                    Response resultCommandDataGetObservation = await ApiSrv.CommandDataGetObservation(TokenGet.Key, commandDataObservationQueryValues);
+                    if (!resultCommandDataGetObservation.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        Observations = JsonConvert.DeserializeObject<List<CommandDataObservation>>(Crypto.DecodeString(resultCommandDataGetObservation.Data));
+                        if (Transfer.Count > 0)
+                        {
+                            ObservationItems = new ObservableCollection<CommandDataObservationItem>();
+                            CommandDataObservationItem commandDataObservationItem;
+                            foreach (CommandDataObservation item in Observations)
+                            {
+                                commandDataObservationItem = new CommandDataObservationItem()
+                                {
+                                    IdObservation = item.IdObservation,
+                                    Name = item.Name,
+                                    Detail = item.Detail
+                                };
+                                ObservationItems.Add(commandDataObservationItem);
+                            }
+                        }
+                    }
+
                     UserDialogs.Instance.HideLoading();
                 }
             }
@@ -1514,6 +1632,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     this.SelectedModule_Child = string.Empty;
                     this.ToolBar_A_Child = false;
                     this.ToolBar_D_Child = false;
+                    ActivateSecondaryToolBarButton("");
                     break;
                 case "D":
                     this.D_IsActive = true;
@@ -1526,6 +1645,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     this.SelectedModule_Child = string.Empty;
                     this.ToolBar_A_Child = false;
                     this.ToolBar_D_Child = false;
+                    ActivateSecondaryToolBarButton("");
                     break;
             }
             #endregion
@@ -1678,6 +1798,19 @@ namespace AST_ProBatch_Mobile.ViewModels
                     }
                 }
                 UserDialogs.Instance.HideLoading();
+            }
+            catch //(Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                Toast.ShowError(AlertMessages.Error);
+            }
+        }
+
+        private async void HandleObservationSelected()
+        {
+            try
+            {
+                this.E_e_ObservationDetail = this.ObservationSelected.Detail;
             }
             catch //(Exception ex)
             {
