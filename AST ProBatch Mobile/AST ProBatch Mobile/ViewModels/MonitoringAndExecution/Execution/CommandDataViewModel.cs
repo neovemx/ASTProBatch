@@ -170,6 +170,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private List<CommandDataTransferDestinationAction> TransferDestinationActions { get; set; }
         private List<CommandDataExecutionResult> ExecutionResults { get; set; }
         private List<CommandDataObservation> Observations { get; set; }
+        private List<CommandDataInterface> Interfaces { get; set; }
         private Token TokenGet { get; set; }
         //private Token TokenPbAuth { get; set; }
         //private Token TokenMenuB { get; set; }
@@ -1414,6 +1415,83 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 };
                                 ObservationItems.Add(commandDataObservationItem);
                             }
+                        }
+                    }
+
+                    if (!TokenValidator.IsValid(TokenGet))
+                    {
+                        if (!await ApiIsOnline())
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                        else
+                        {
+                            if (!await GetTokenSuccess())
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(AlertMessages.Error);
+                                return;
+                            }
+                        }
+                    }
+                    CommandDataInterfacesQueryValues commandDataInterfacesQueryValues = new CommandDataInterfacesQueryValues()
+                    {
+                        IdInstance = this.CommandItem.InstanceItem.IdInstance,
+                        IdLot = this.CommandItem.IdLot,
+                        IdCommand = this.CommandItem.IdCommand,
+                        IsEventual = this.CommandItem.InstanceItem.LogItem.IsEventual
+                    };
+                    Response resultCommandDataGetInterfaces = await ApiSrv.CommandDataGetInterface(TokenGet.Key, commandDataInterfacesQueryValues);
+                    if (!resultCommandDataGetInterfaces.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        Interfaces = JsonConvert.DeserializeObject<List<CommandDataInterface>>(Crypto.DecodeString(resultCommandDataGetInterfaces.Data));
+                        if (Interfaces.Count > 0)
+                        {
+                            InterfaceItems = new ObservableCollection<CommandDataInterfaceItem>();
+                            CommandDataInterfaceItem commandDataInterfaceItem;
+                            foreach (CommandDataInterface item in Interfaces)
+                            {
+                                commandDataInterfaceItem = new CommandDataInterfaceItem()
+                                {
+                                    IdInterface = item.IdInterface,
+                                    Interface = item.Interface,
+                                    Type = item.Type,
+                                    ExpirationTime = item.ExpirationTime,
+                                    RetryTime = item.RetryTime
+                                };
+                                InterfaceItems.Add(commandDataInterfaceItem);
+                            }
+                        }
+                        else
+                        {
+                            InterfaceItems = new ObservableCollection<CommandDataInterfaceItem>();
+                            CommandDataInterfaceItem commandDataInterfaceItem;
+                            commandDataInterfaceItem = new CommandDataInterfaceItem()
+                            {
+                                IdInterface = 1,
+                                Interface = "Interfaz 1",
+                                Type = "X",
+                                ExpirationTime = "0",
+                                RetryTime = "0"
+                            };
+                            InterfaceItems.Add(commandDataInterfaceItem);
+                            commandDataInterfaceItem = new CommandDataInterfaceItem()
+                            {
+                                IdInterface = 2,
+                                Interface = "Interfaz 2",
+                                Type = "E",
+                                ExpirationTime = "0",
+                                RetryTime = "0"
+                            };
+                            InterfaceItems.Add(commandDataInterfaceItem);
                         }
                     }
 

@@ -349,12 +349,13 @@
                         <StackLayout
                             Padding="10">
                             <StackLayout
-                                HeightRequest="150"
+                                HeightRequest="300"
                                 Padding="0,0,0,10">
                                 <ListView
                                     ItemsSource="{Binding InterfaceItems}"
                                     BackgroundColor="Transparent"
-                                    SelectionMode="None">
+                                    SelectionMode="None"
+                                    RowHeight="100">
                                     <ListView.SeparatorVisibility>
                                         <OnPlatform x:TypeArguments="SeparatorVisibility">
                                             <On Platform="iOS" Value="None" />
@@ -366,8 +367,69 @@
                                             <ViewCell>
                                                 <ViewCell.View>
                                                     <StackLayout
-                                                        Padding="10">
-                                                        <!--TABLE DATA OBSERVATION-->
+                                                        VerticalOptions="Center"
+                                                        Orientation="Vertical"
+                                                        Padding="5,0,0,0">
+                                                        <StackLayout
+                                                            Orientation="Horizontal">
+                                                            <Label
+                                                                MinimumWidthRequest="75"
+                                                                WidthRequest="75"
+                                                                TextColor="#2255AA"
+                                                                Text="Interfaz:"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
+                                                            <Label
+                                                                TextColor="Black"
+                                                                Text="{Binding Interface}"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Orientation="Horizontal">
+                                                            <Label
+                                                                MinimumWidthRequest="75"
+                                                                WidthRequest="75"
+                                                                TextColor="#2255AA"
+                                                                Text="Tipo:"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
+                                                            <Label
+                                                                TextColor="Black"
+                                                                Text="{Binding Type}"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Orientation="Horizontal">
+                                                            <Label
+                                                                MinimumWidthRequest="75"
+                                                                WidthRequest="75"
+                                                                TextColor="#2255AA"
+                                                                Text="Expiración:"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
+                                                            <Label
+                                                                TextColor="Black"
+                                                                Text="{Binding ExpirationTime}"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Orientation="Horizontal">
+                                                            <Label
+                                                                MinimumWidthRequest="75"
+                                                                WidthRequest="75"
+                                                                TextColor="#2255AA"
+                                                                Text="Reintento:"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
+                                                            <Label
+                                                                TextColor="Black"
+                                                                Text="{Binding RetryTime}"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                 </ViewCell.View>
                                             </ViewCell>
@@ -1069,9 +1131,11 @@
                                     Text="Datos Enviados al Servicio de Ejecución:"
                                     VerticalOptions="Center"/>
                                 <controls:CustomLabel
-                                    FontSize="Small"
+                                    Padding="4"
+                                    BackgroundColor="Black"
+                                    FontSize="9"
                                     Text="{Binding D_d_XmlCommand}"
-                                    TextColor="White"
+                                    TextColor="YellowGreen"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="CenterAndExpand"/>
                             </StackLayout>

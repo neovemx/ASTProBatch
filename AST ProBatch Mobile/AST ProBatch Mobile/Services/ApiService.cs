@@ -477,6 +477,11 @@ namespace AST_ProBatch_Mobile.Services
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetObservation, QueryValues);
         }
+
+        public async Task<Response> CommandDataGetInterface(string accessToken, CommandDataInterfacesQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetInterface, QueryValues);
+        }
         #endregion
 
         #region Helpers

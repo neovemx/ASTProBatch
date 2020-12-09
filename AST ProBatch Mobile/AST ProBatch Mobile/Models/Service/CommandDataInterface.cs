@@ -1,6 +1,6 @@
-﻿namespace AST_ProBatch_Mobile.Models
+﻿namespace AST_ProBatch_Mobile.Models.Service
 {
-    public class CommandDataInterfaceItem
+    public class CommandDataInterface
     {
         public int IdInterface { get; set; }
         public string Interface { get; set; }
