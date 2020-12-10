@@ -122,10 +122,21 @@ namespace AST_ProBatch_Mobile.ViewModels
         //private bool doptionbischecked;
         //private bool doptioncischecked;
         private ObservableCollection<CommandDataOptionItem> optionitems;
+        private ObservableCollection<CommandDataExecutionHistoryItem> executionhistoryitems;
+        private CommandDataExecutionHistoryItem executionitemselected;
+        private CommandDataOptionItem optionselected;
         private DatePromptResult startdatevalue;
         private DatePromptResult enddatevalue;
         private string startdatestring;
         private string enddatestring;
+        private string startdatedetail;
+        private string enddatedetail;
+        private string executiontimedetail;
+        private string namedetail;
+        private bool iseventualdetail;
+        private bool isautomaticdetail;
+        private string descriptiopndetail;
+        private string resultdetail;
         #endregion
         #region Atributes Modules b c d e
         // b
@@ -171,6 +182,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private List<CommandDataExecutionResult> ExecutionResults { get; set; }
         private List<CommandDataObservation> Observations { get; set; }
         private List<CommandDataInterface> Interfaces { get; set; }
+        private List<CommandDataExecutionHistory> ExecutionHistory { get; set; }
         private Token TokenGet { get; set; }
         //private Token TokenPbAuth { get; set; }
         //private Token TokenMenuB { get; set; }
@@ -619,6 +631,20 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return optionitems; }
             set { SetValue(ref optionitems, value); }
         }
+        public CommandDataExecutionHistoryItem ExecutionItemSelected
+        {
+            get { return executionitemselected; }
+            set
+            {
+                SetValue(ref executionitemselected, value);
+                HandleExecutionSelected();
+            }
+        }
+        public CommandDataOptionItem OptionSelected
+        {
+            get { return optionselected; }
+            set { SetValue(ref optionselected, value); }
+        }
         public DatePromptResult StartDateValue
         {
             get { return startdatevalue; }
@@ -638,6 +664,51 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             get { return enddatestring; }
             set { SetValue(ref enddatestring, value); }
+        }
+        public ObservableCollection<CommandDataExecutionHistoryItem> ExecutionHistoryItems
+        {
+            get { return executionhistoryitems; }
+            set { SetValue(ref executionhistoryitems, value); }
+        }
+        public string StartDateDetail
+        {
+            get { return startdatedetail; }
+            set { SetValue(ref startdatedetail, value); }
+        }
+        public string EndDateDetail
+        {
+            get { return enddatedetail; }
+            set { SetValue(ref enddatedetail, value); }
+        }
+        public string ExecutionTimeDetail
+        {
+            get { return executiontimedetail; }
+            set { SetValue(ref executiontimedetail, value); }
+        }
+        public string NameDetail
+        {
+            get { return namedetail; }
+            set { SetValue(ref namedetail, value); }
+        }
+        public bool IsEventualDetail
+        {
+            get { return iseventualdetail; }
+            set { SetValue(ref iseventualdetail, value); }
+        }
+        public bool IsAutomaticDetail
+        {
+            get { return isautomaticdetail; }
+            set { SetValue(ref isautomaticdetail, value); }
+        }
+        public string DescriptionDetail
+        {
+            get { return descriptiopndetail; }
+            set { SetValue(ref descriptiopndetail, value); }
+        }
+        public string ResultDetail
+        {
+            get { return resultdetail; }
+            set { SetValue(ref resultdetail, value); }
         }
         #endregion
         #region Properties Modules b c d e
@@ -928,7 +999,11 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Clear()
         {
-            Alert.Show("LIMPIAR");
+            this.OptionSelected = new CommandDataOptionItem();
+            this.StartDateString = string.Empty;
+            this.EndDateString = string.Empty;
+            this.ExecutionHistoryItems.Clear();
+            ClearExecutionHistoryDetail();
         }
 
         public ICommand SearchCommand
@@ -941,7 +1016,91 @@ namespace AST_ProBatch_Mobile.ViewModels
 
         private async void Search()
         {
-            Alert.Show("BUSCAR");
+            try
+            {
+                if (this.OptionSelected == null || string.IsNullOrEmpty(this.OptionSelected.IdOption))
+                {
+                    Alert.Show("Debe seleccionar una opción para la consulta!");
+                    return;
+                }
+                if (string.IsNullOrEmpty(this.StartDateString))
+                {
+                    Alert.Show("Debe seleccionar una fecha desde!");
+                    return;
+                }
+                if (string.IsNullOrEmpty(this.EndDateString))
+                {
+                    Alert.Show("Debe seleccionar una fecha hasta!");
+                    return;
+                }
+                UserDialogs.Instance.ShowLoading("Obteniendo datos...", MaskType.Black);
+                ClearExecutionHistoryDetail();
+                if (!TokenValidator.IsValid(TokenGet))
+                {
+                    if (!await ApiIsOnline())
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(AlertMessages.Error);
+                        return;
+                    }
+                    else
+                    {
+                        if (!await GetTokenSuccess())
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                    }
+                }
+                CommandDataExecutionHistoryQueryValues commandDataExecutionHistoryQueryValues = new CommandDataExecutionHistoryQueryValues()
+                {
+                    IdCommand = this.CommandItem.IdCommand,
+                    IdStatus = this.OptionSelected.IdOption,
+                    StartDate = this.StartDateValue.SelectedDate,
+                    EndDate = this.EndDateValue.SelectedDate
+                };
+                Response resultCommandDataGetExecutionHistory = await ApiSrv.CommandDataGetExecutionHistory(TokenGet.Key, commandDataExecutionHistoryQueryValues);
+                if (!resultCommandDataGetExecutionHistory.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(AlertMessages.Error);
+                    return;
+                }
+                else
+                {
+                    ExecutionHistory = JsonConvert.DeserializeObject<List<CommandDataExecutionHistory>>(Crypto.DecodeString(resultCommandDataGetExecutionHistory.Data));
+                    if (ExecutionHistory.Count > 0)
+                    {
+                        ExecutionHistoryItems = new ObservableCollection<CommandDataExecutionHistoryItem>();
+                        CommandDataExecutionHistoryItem commandDataExecutionHistoryItem;
+                        foreach (CommandDataExecutionHistory item in ExecutionHistory)
+                        {
+                            commandDataExecutionHistoryItem = new CommandDataExecutionHistoryItem()
+                            {
+                                Id = item.Id,
+                                StartDate = item.StartDate,
+                                EndDate = item.EndDate,
+                                ExecutionTime = item.ExecutionTime,
+                                Name = item.Name,
+                                IsEventual = item.IsEventual,
+                                IsAutomatic = item.IsAutomatic,
+                                Description = item.Description,
+                                Result = item.Result,
+                                StartDateString = item.StartDate.ToString(DateTimeFormatString.AmericanDate24Hours),
+                                EndDateString = item.EndDate.ToString(DateTimeFormatString.AmericanDate24Hours)
+                            };
+                            ExecutionHistoryItems.Add(commandDataExecutionHistoryItem);
+                        }
+                    }
+                    UserDialogs.Instance.HideLoading();
+                }
+            }
+            catch //(Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                Toast.ShowError(AlertMessages.Error);
+            }
         }
 
         public ICommand StartDateCommand
@@ -1058,6 +1217,24 @@ namespace AST_ProBatch_Mobile.ViewModels
             try
             {
                 UserDialogs.Instance.ShowLoading("Obteniendo datos...", MaskType.Black);
+                this.OptionItems = new ObservableCollection<CommandDataOptionItem>()
+                {
+                    new CommandDataOptionItem()
+                    {
+                        IdOption = "S",
+                        OptionName = "Ejecuciones Exitosas"
+                    },
+                    new CommandDataOptionItem()
+                    {
+                        IdOption = "E",
+                        OptionName = "Ejecuciones con Error"
+                    },
+                    new CommandDataOptionItem()
+                    {
+                        IdOption = "U",
+                        OptionName = "Detalle del Último Error"
+                    }
+                };
                 if (!await ApiIsOnline())
                 {
                     UserDialogs.Instance.HideLoading();
@@ -1417,7 +1594,6 @@ namespace AST_ProBatch_Mobile.ViewModels
                             }
                         }
                     }
-
                     if (!TokenValidator.IsValid(TokenGet))
                     {
                         if (!await ApiIsOnline())
@@ -1470,31 +1646,30 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 InterfaceItems.Add(commandDataInterfaceItem);
                             }
                         }
-                        else
-                        {
-                            InterfaceItems = new ObservableCollection<CommandDataInterfaceItem>();
-                            CommandDataInterfaceItem commandDataInterfaceItem;
-                            commandDataInterfaceItem = new CommandDataInterfaceItem()
-                            {
-                                IdInterface = 1,
-                                Interface = "Interfaz 1",
-                                Type = "X",
-                                ExpirationTime = "0",
-                                RetryTime = "0"
-                            };
-                            InterfaceItems.Add(commandDataInterfaceItem);
-                            commandDataInterfaceItem = new CommandDataInterfaceItem()
-                            {
-                                IdInterface = 2,
-                                Interface = "Interfaz 2",
-                                Type = "E",
-                                ExpirationTime = "0",
-                                RetryTime = "0"
-                            };
-                            InterfaceItems.Add(commandDataInterfaceItem);
-                        }
+                        //else
+                        //{
+                        //    InterfaceItems = new ObservableCollection<CommandDataInterfaceItem>();
+                        //    CommandDataInterfaceItem commandDataInterfaceItem;
+                        //    commandDataInterfaceItem = new CommandDataInterfaceItem()
+                        //    {
+                        //        IdInterface = 1,
+                        //        Interface = "Interfaz 1",
+                        //        Type = "X",
+                        //        ExpirationTime = "0",
+                        //        RetryTime = "0"
+                        //    };
+                        //    InterfaceItems.Add(commandDataInterfaceItem);
+                        //    commandDataInterfaceItem = new CommandDataInterfaceItem()
+                        //    {
+                        //        IdInterface = 2,
+                        //        Interface = "Interfaz 2",
+                        //        Type = "E",
+                        //        ExpirationTime = "0",
+                        //        RetryTime = "0"
+                        //    };
+                        //    InterfaceItems.Add(commandDataInterfaceItem);
+                        //}
                     }
-
                     UserDialogs.Instance.HideLoading();
                 }
             }
@@ -1895,6 +2070,38 @@ namespace AST_ProBatch_Mobile.ViewModels
                 UserDialogs.Instance.HideLoading();
                 Toast.ShowError(AlertMessages.Error);
             }
+        }
+
+        private async void HandleExecutionSelected()
+        {
+            try
+            {
+                this.StartDateDetail = this.ExecutionItemSelected.StartDateString;
+                this.EndDateDetail = this.ExecutionItemSelected.EndDateString;
+                this.ExecutionTimeDetail = this.ExecutionItemSelected.ExecutionTime;
+                this.NameDetail = this.ExecutionItemSelected.Name;
+                this.IsEventualDetail = this.ExecutionItemSelected.IsEventual;
+                this.IsAutomaticDetail = this.ExecutionItemSelected.IsAutomatic;
+                this.DescriptionDetail = this.ExecutionItemSelected.Description;
+                this.ResultDetail = this.ExecutionItemSelected.Result;
+            }
+            catch //(Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                Toast.ShowError(AlertMessages.Error);
+            }
+        }
+
+        private void ClearExecutionHistoryDetail()
+        {
+            this.StartDateDetail = string.Empty;
+            this.EndDateDetail = string.Empty;
+            this.ExecutionTimeDetail = string.Empty;
+            this.NameDetail = string.Empty;
+            this.IsEventualDetail = false;
+            this.IsAutomaticDetail = false;
+            this.DescriptionDetail = string.Empty;
+            this.ResultDetail = string.Empty;
         }
         #endregion
     }

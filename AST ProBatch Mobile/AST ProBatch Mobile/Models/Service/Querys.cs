@@ -280,4 +280,12 @@ namespace AST_ProBatch_Mobile.Models.Service
         public Int32 IdCommand { get; set; }
         public bool IsEventual { get; set; }
     }
+
+    public class CommandDataExecutionHistoryQueryValues
+    {
+        public Int32 IdCommand { get; set; }
+        public string IdStatus { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+    }
 }

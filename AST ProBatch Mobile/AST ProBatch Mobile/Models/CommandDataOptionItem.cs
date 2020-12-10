@@ -2,7 +2,7 @@
 {
     public class CommandDataOptionItem
     {
-        public int IdOption { get; set; }
+        public string IdOption { get; set; }
         public string OptionName { get; set; }
     }
 }

@@ -561,7 +561,6 @@
                                     </ImageButton>
                                 </StackLayout>
                             </StackLayout>
-
                             <controls:CustomFrame
                                 Margin="0,20,0,0"
                                 CornerRadius="10,10,0,0"
@@ -590,7 +589,7 @@
                                         HeightRequest="150"
                                         ItemsSource="{Binding ExecutionHistoryItems}"
                                         BackgroundColor="Transparent"
-                                        SelectionMode="None">
+                                        SelectedItem="{Binding ExecutionItemSelected, Mode=TwoWay}">
                                         <ListView.SeparatorVisibility>
                                             <OnPlatform x:TypeArguments="SeparatorVisibility">
                                                 <On Platform="iOS" Value="None" />
@@ -603,13 +602,170 @@
                                                     <ViewCell.View>
                                                         <StackLayout
                                                             Padding="10">
-                                                            <!--TABLE HERE-->
+                                                            <Label 
+                                                                TextColor="Black"
+                                                                Text="{Binding Name}"
+                                                                FontSize="Small"
+                                                                LineBreakMode="TailTruncation"/>
                                                         </StackLayout>
                                                     </ViewCell.View>
                                                 </ViewCell>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
+                                </StackLayout>
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                Margin="0,20,0,0"
+                                CornerRadius="10,10,0,0"
+                                BackgroundColor="#D7D7D7"
+                                Padding="0">
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Padding="5"
+                                        FontSize="Medium"
+                                        Text="Detalle de la Selección"
+                                        TextColor="#2255AA"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation"/>
+                                </StackLayout>      
+                            </controls:CustomFrame>
+                            <controls:CustomFrame
+                                Margin="0,-7,0,0"
+                                CornerRadius="0,0,10,10"
+                                BackgroundColor="Gray"
+                                Padding="0">
+                                <StackLayout
+                                    Padding="10">
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label
+                                            MinimumHeightRequest="100"
+                                            WidthRequest="100"
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Inicio:"
+                                            VerticalOptions="Center"/>
+                                        <Label 
+                                            WidthRequest="120"
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding StartDateDetail}"
+                                            LineBreakMode="TailTruncation"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label
+                                            MinimumHeightRequest="100"
+                                            WidthRequest="100"
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Fin:"
+                                            VerticalOptions="Center"/>
+                                        <Label 
+                                            WidthRequest="120"
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding EndDateDetail}"
+                                            LineBreakMode="TailTruncation"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label
+                                            MinimumHeightRequest="100"
+                                            WidthRequest="100"
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="T.Ejecución:"
+                                            VerticalOptions="Center"/>
+                                        <Label 
+                                            WidthRequest="120"
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding ExecutionTimeDetail}"
+                                            LineBreakMode="TailTruncation"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label
+                                            MinimumHeightRequest="100"
+                                            WidthRequest="100"
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Bitácora:"
+                                            VerticalOptions="Center"/>
+                                        <Label 
+                                            WidthRequest="120"
+                                            TextColor="White"
+                                            FontSize="Small"
+                                            Text="{Binding NameDetail}"
+                                            LineBreakMode="TailTruncation"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label
+                                            MinimumHeightRequest="100"
+                                            WidthRequest="100"
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Eventual:"
+                                            VerticalOptions="Center"/>
+                                        <CheckBox
+                                            HeightRequest="10"
+                                            HorizontalOptions="Center"
+                                            IsChecked="{Binding IsEventualDetail}"
+                                            Color="#2255AA"
+                                            IsEnabled="False"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label
+                                            MinimumHeightRequest="100"
+                                            WidthRequest="100"
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Automática:"
+                                            VerticalOptions="Center"/>
+                                        <CheckBox
+                                            HeightRequest="10"
+                                            HorizontalOptions="Center"
+                                            IsChecked="{Binding IsAutomaticDetail}"
+                                            Color="#2255AA"
+                                            IsEnabled="False"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Vertical">
+                                        <Label
+                                            MinimumHeightRequest="100"
+                                            WidthRequest="100"
+                                            TextColor="#2255AA"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="Resultado:"
+                                            VerticalOptions="Center"/>
+                                        <controls:CustomLabel
+                                            FontSize="Small"
+                                            Text="{Binding ResultDetail}"
+                                            TextColor="White"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
                                 </StackLayout>
                             </controls:CustomFrame>
                         </StackLayout>

@@ -264,6 +264,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string CommandDataGetExecution = "/commanddatagetexecution";
         public const string CommandDataGetObservation = "/commanddatagetobservation";
         public const string CommandDataGetInterface = "/commanddatagetinterface";
+        public const string CommandDataGetExecutionHistory = "/commanddatagetexecutionhistory";
         public const string BatchQueryGetLots = "/batchquerygetlots";
         public const string BatchQueryGetParameters = "/batchquerygetparameters";
         public const string BatchQueryGetCommands = "/batchquerygetcommands";
