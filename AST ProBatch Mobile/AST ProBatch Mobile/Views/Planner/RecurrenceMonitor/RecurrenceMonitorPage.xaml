@@ -129,15 +129,15 @@
                                                         FontAttributes="Bold"
                                                         FontSize="Medium"
                                                         TextColor="#2255AA"
-                                                        Text="{Binding Title}" 
+                                                        Text="{Binding NameCommand}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton
                                                         CornerRadius="5"
-                                                        BackgroundColor="{Binding StateColor}"
-                                                        Source="{Binding State}"
+                                                        BackgroundColor="{Binding Status.StateColor}"
+                                                        Source="{Binding Status.State}"
                                                         Clicked="btnState_Clicked"
                                                         WidthRequest="35"
                                                         HeightRequest="35">
@@ -166,6 +166,7 @@
                                                         TextColor="#2255AA"
                                                         Text="PID:" 
                                                         WidthRequest="150"
+                                                        MinimumWidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
                                                         FontSize="Small"
@@ -181,11 +182,12 @@
                                                         TextColor="#2255AA"
                                                         Text="Lote:" 
                                                         WidthRequest="150"
+                                                        MinimumWidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
                                                         FontSize="Small"
                                                         TextColor="White"
-                                                        Text="{Binding Lot}" 
+                                                        Text="{Binding NameLot}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -196,11 +198,12 @@
                                                         TextColor="#2255AA"
                                                         Text="Comando:" 
                                                         WidthRequest="150"
+                                                        MinimumWidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
                                                         FontSize="Small"
                                                         TextColor="White"
-                                                        Text="{Binding Command}" 
+                                                        Text="{Binding NameCommand}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -211,11 +214,12 @@
                                                         TextColor="#2255AA"
                                                         Text="Ambiente:" 
                                                         WidthRequest="150"
+                                                        MinimumWidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
                                                         FontSize="Small"
                                                         TextColor="White"
-                                                        Text="{Binding Environment}" 
+                                                        Text="{Binding NameEnvironment}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -226,11 +230,12 @@
                                                         TextColor="#2255AA"
                                                         Text="Servicio:" 
                                                         WidthRequest="150"
+                                                        MinimumWidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
                                                         FontSize="Small"
                                                         TextColor="White"
-                                                        Text="{Binding Service}" 
+                                                        Text="{Binding NameService}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -241,11 +246,12 @@
                                                         TextColor="#2255AA"
                                                         Text="Recurrencia:" 
                                                         WidthRequest="150"
+                                                        MinimumWidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
                                                         FontSize="Small"
                                                         TextColor="White"
-                                                        Text="{Binding Recurrence}" 
+                                                        Text="{Binding RecurrenceTimeString}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -256,11 +262,12 @@
                                                         TextColor="#2255AA"
                                                         Text="Hora Inicio:" 
                                                         WidthRequest="150"
+                                                        MinimumWidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
                                                         FontSize="Small"
                                                         TextColor="White"
-                                                        Text="{Binding StartTime}" 
+                                                        Text="{Binding StartHourString}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -271,11 +278,12 @@
                                                         TextColor="#2255AA"
                                                         Text="Hora Fin:" 
                                                         WidthRequest="150"
+                                                        MinimumWidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
                                                         FontSize="Small"
                                                         TextColor="White"
-                                                        Text="{Binding EndTime}" 
+                                                        Text="{Binding EndHourString}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                                 <StackLayout
@@ -286,11 +294,12 @@
                                                         TextColor="#2255AA"
                                                         Text="Fecha de Ejecución:" 
                                                         WidthRequest="150"
+                                                        MinimumWidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
                                                         FontSize="Small"
                                                         TextColor="White"
-                                                        Text="{Binding Execution}" 
+                                                        Text="{Binding ExecutionStartString}" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                             </StackLayout>

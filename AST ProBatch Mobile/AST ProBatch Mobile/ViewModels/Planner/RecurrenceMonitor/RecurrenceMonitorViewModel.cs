@@ -1,8 +1,12 @@
 ﻿using Acr.UserDialogs;
 using AST_ProBatch_Mobile.Models;
+using AST_ProBatch_Mobile.Models.Service;
+using AST_ProBatch_Mobile.Security;
 using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,6 +23,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Properties
+        public List<Monitor> MonitorData { get; set; }
         public ObservableCollection<RecurrenceItem> RecurrenceItems
         {
             get { return recurrenceitems; }
@@ -37,11 +42,18 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Constructors
-        public RecurrenceMonitorViewModel()
+        public RecurrenceMonitorViewModel(bool IsReload)
         {
-            ToolBarIsVisible = false;
-            CheckIcon = "check";
-            GetFakeData();
+            if (IsReload)
+            {
+                ApiSrv = new Services.ApiService(ApiConsult.ApiMenuD);
+
+                ToolBarIsVisible = false;
+                CheckIcon = "check";
+
+                GetInitialData();
+            }
+            
         }
         #endregion
 
@@ -143,82 +155,104 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Helpers
-        private void GetFakeData()
+        private async void GetInitialData()
         {
-            RecurrenceItems = new ObservableCollection<RecurrenceItem>();
-            RecurrenceItem recurrenceItem;
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Obteniendo datos del monitor de procesos...", MaskType.Black);
 
-            recurrenceItem = new RecurrenceItem();
-            recurrenceItem.Id = 1;
-            recurrenceItem.IsChecked = false;
-            recurrenceItem.IsEnabled = true;
-            recurrenceItem.PID = 2756321;
-            recurrenceItem.Title = "8-PRUEBA BAT";
-            recurrenceItem.Lot = "-";
-            recurrenceItem.Command = "8-Prueba BAT";
-            recurrenceItem.Environment = "WKS0396";
-            recurrenceItem.Service = "Windows";
-            recurrenceItem.Recurrence = "00:02:00";
-            recurrenceItem.State = "state_pause";
-            recurrenceItem.StateColor = StatusColor.White;
-            recurrenceItem.StartTime = "10:45:00";
-            recurrenceItem.EndTime = "11:25:00";
-            recurrenceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            RecurrenceItems.Add(recurrenceItem);
+                Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
 
-            recurrenceItem = new RecurrenceItem();
-            recurrenceItem.Id = 2;
-            recurrenceItem.IsChecked = false;
-            recurrenceItem.IsEnabled = true;
-            recurrenceItem.PID = 2756322;
-            recurrenceItem.Title = "8-PRUEBA BAT";
-            recurrenceItem.Lot = "-";
-            recurrenceItem.Command = "8-Prueba BAT";
-            recurrenceItem.Environment = "WKS0396";
-            recurrenceItem.Service = "Windows";
-            recurrenceItem.Recurrence = "00:02:00";
-            recurrenceItem.State = "state_ed";
-            recurrenceItem.StateColor = StatusColor.Orange;
-            recurrenceItem.StartTime = "10:45:00";
-            recurrenceItem.EndTime = "11:25:00";
-            recurrenceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            RecurrenceItems.Add(recurrenceItem);
+                if (!resultApiIsAvailable.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(resultApiIsAvailable.Message);
+                    return;
+                }
 
-            recurrenceItem = new RecurrenceItem();
-            recurrenceItem.Id = 3;
-            recurrenceItem.IsChecked = false;
-            recurrenceItem.IsEnabled = true;
-            recurrenceItem.PID = 2756323;
-            recurrenceItem.Title = "8-PRUEBA BAT";
-            recurrenceItem.Lot = "-";
-            recurrenceItem.Command = "8-Prueba BAT";
-            recurrenceItem.Environment = "WKS0396";
-            recurrenceItem.Service = "Windows";
-            recurrenceItem.Recurrence = "00:02:00";
-            recurrenceItem.State = "state_om";
-            recurrenceItem.StateColor = StatusColor.White;
-            recurrenceItem.StartTime = "10:45:00";
-            recurrenceItem.EndTime = "11:25:00";
-            recurrenceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            RecurrenceItems.Add(recurrenceItem);
+                Response resultToken = await ApiSrv.GetToken();
 
-            recurrenceItem = new RecurrenceItem();
-            recurrenceItem.Id = 4;
-            recurrenceItem.IsChecked = false;
-            recurrenceItem.IsEnabled = true;
-            recurrenceItem.PID = 2756324;
-            recurrenceItem.Title = "8-PRUEBA BAT";
-            recurrenceItem.Lot = "-";
-            recurrenceItem.Command = "8-Prueba BAT";
-            recurrenceItem.Environment = "WKS0396";
-            recurrenceItem.Service = "Windows";
-            recurrenceItem.Recurrence = "00:02:00";
-            recurrenceItem.State = "state_f";
-            recurrenceItem.StateColor = StatusColor.Blue;
-            recurrenceItem.StartTime = "10:45:00";
-            recurrenceItem.EndTime = "11:25:00";
-            recurrenceItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            RecurrenceItems.Add(recurrenceItem);
+                if (!resultToken.IsSuccess)
+                {
+                    UserDialogs.Instance.HideLoading();
+                    Toast.ShowError(resultToken.Message);
+                    return;
+                }
+                else
+                {
+                    Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                    MonitorDataQueryValues query = new MonitorDataQueryValues()
+                    {
+                        CurrentDate = DateTime.Now,
+                        IsRecurrent = 1
+                    };
+                    Response resultGetMonitorData = await ApiSrv.MonitorGetData(token.Key, query);
+                    if (!resultGetMonitorData.IsSuccess)
+                    {
+                        UserDialogs.Instance.HideLoading();
+                        Toast.ShowError(resultGetMonitorData.Message);
+                        return;
+                    }
+                    else
+                    {
+                        MonitorData = JsonConvert.DeserializeObject<List<Monitor>>(Crypto.DecodeString(resultGetMonitorData.Data));
+                        RecurrenceItems = new ObservableCollection<RecurrenceItem>();
+                        foreach (Monitor item in MonitorData)
+                        {
+                            RecurrenceItems.Add(new RecurrenceItem()
+                            {
+                                IdCalendar = item.IdCalendar,
+                                PID = item.PID,
+                                IdLot = (item.IdLot != null) ? (Int32)item.IdLot : 0,
+                                NameLot = item.NameLot,
+                                IdCommand = (item.IdCommand != null) ? (Int32)item.IdCommand : 0,
+                                NameCommand = item.NameCommand,
+                                IdEnvironment = (item.IdEnvironment) != null ? (short)item.IdEnvironment : new short(),
+                                NameEnvironment = item.NameEnvironment,
+                                IPAddress = item.IPAddress,
+                                IdService = (item.IdService != null) ? (short)item.IdService : new short(),
+                                NameService = item.NameService,
+                                IsServicePD = (item.IsServicePD != null) ? (bool)item.IsServicePD : false,
+                                StartHour = (item.StartHour != null) ? (TimeSpan)item.StartHour : new TimeSpan(),
+                                IdStatus = (item.IdStatus != null) ? (string)item.IdStatus : "",
+                                Ommited = (item.Ommited != null) ? (string)item.Ommited : "",
+                                ExecutionStart = (item.ExecutionStart != null) ? (DateTime)item.ExecutionStart : new DateTime(),
+                                ExecutionEnd = (item.ExecutionEnd != null) ? (DateTime)item.ExecutionEnd : new DateTime(),
+                                ReExecution = (item.ReExecution != null) ? (bool)item.ReExecution : false,
+                                RecurrenceTime = (item.RecurrenceTime != null) ? (TimeSpan)item.RecurrenceTime : new TimeSpan(),
+                                EndHour = (item.EndHour != null) ? (TimeSpan)item.EndHour : new TimeSpan(),
+                                Order = (item.Order) != null ? (short)item.Order : new short(),
+                                StartHourString = (item.StartHour != null) ? ((TimeSpan)item.StartHour).ToString() : "",
+                                ExecutionStartString = (item.ExecutionStart != null) ? ((DateTime)item.ExecutionStart).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                ExecutionEndString = (item.ExecutionEnd != null) ? ((DateTime)item.ExecutionEnd).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                RecurrenceTimeString = (item.RecurrenceTime != null) ? ((TimeSpan)item.RecurrenceTime).ToString() : "",
+                                EndHourString = (item.EndHour != null) ? ((TimeSpan)item.EndHour).ToString() : "",
+                                IsChecked = false,
+                                IsEnabled = true,
+                                Status = GetExecutionStatus.ByIdStatus((item.IdStatus != null) ? (string)item.IdStatus.Trim() : "")
+                            });
+                        }
+                        //if (LogItems.Count == 0)
+                        //{
+                        //    this.FullViewIsVisible = false;
+                        //    this.CompactViewIsVisible = false;
+                        //    this.IsVisibleEmptyView = true;
+                        //}
+                        //else
+                        //{
+                        //    this.FullViewIsVisible = true;
+                        //    this.CompactViewIsVisible = false;
+                        //    this.IsVisibleEmptyView = false;
+                        //}
+                    }
+                }
+                UserDialogs.Instance.HideLoading();
+            }
+            catch //(Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                Toast.ShowError("Ocurrió un error.");
+            }
         }
         #endregion
     }

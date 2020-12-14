@@ -229,7 +229,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 EndHourString = (item.EndHour != null) ? ((TimeSpan)item.EndHour).ToString() : "",
                                 IsChecked = false,
                                 IsEnabled = true,
-                                Status = GetExecutionStatus.ByIdStatus((item.IdStatus != null) ? (string)item.IdStatus : "")
+                                Status = GetExecutionStatus.ByIdStatus((item.IdStatus != null) ? (string)item.IdStatus.Trim() : "")
                             });
                         }
                         //if (LogItems.Count == 0)
@@ -248,98 +248,12 @@ namespace AST_ProBatch_Mobile.ViewModels
                 }
                 UserDialogs.Instance.HideLoading();
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 UserDialogs.Instance.HideLoading();
                 Toast.ShowError("Ocurrió un error.");
             }
         }
-
-        //private void GetFakeData()
-        //{
-        //    ProcessItems = new ObservableCollection<ProcessItem>();
-        //    ProcessItem processItem;
-
-        //    processItem = new ProcessItem();
-        //    processItem.Id = 1;
-        //    processItem.IsChecked = false;
-        //    processItem.IsEnabled = true;
-        //    processItem.PID = 2756321;
-        //    processItem.Title = "8-PRUEBA BAT";
-        //    processItem.Lot = "-";
-        //    processItem.Command = "8-Prueba BAT";
-        //    processItem.Environment = "WKS0396";
-        //    processItem.Service = "Windows";
-        //    processItem.State = "state_e";
-        //    processItem.StateColor = StatusColor.Green;
-        //    processItem.StartHour = "10:45";
-        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-        //    ProcessItems.Add(processItem);
-
-        //    processItem = new ProcessItem();
-        //    processItem.Id = 2;
-        //    processItem.IsChecked = false;
-        //    processItem.IsEnabled = true;
-        //    processItem.PID = 2756322;
-        //    processItem.Title = "8-PRUEBA BAT";
-        //    processItem.Lot = "-";
-        //    processItem.Command = "8-Prueba BAT";
-        //    processItem.Environment = "WKS0396";
-        //    processItem.Service = "Windows";
-        //    processItem.State = "state_pause";
-        //    processItem.StateColor = StatusColor.White;
-        //    processItem.StartHour = "10:45";
-        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-        //    ProcessItems.Add(processItem);
-
-        //    processItem = new ProcessItem();
-        //    processItem.Id = 3;
-        //    processItem.IsChecked = false;
-        //    processItem.IsEnabled = true;
-        //    processItem.PID = 2756323;
-        //    processItem.Title = "8-PRUEBA BAT";
-        //    processItem.Lot = "-";
-        //    processItem.Command = "8-Prueba BAT";
-        //    processItem.Environment = "WKS0396";
-        //    processItem.Service = "Windows";
-        //    processItem.State = "state_ed";
-        //    processItem.StateColor = StatusColor.Orange;
-        //    processItem.StartHour = "10:45";
-        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-        //    ProcessItems.Add(processItem);
-
-        //    processItem = new ProcessItem();
-        //    processItem.Id = 4;
-        //    processItem.IsChecked = false;
-        //    processItem.IsEnabled = true;
-        //    processItem.PID = 2756324;
-        //    processItem.Title = "8-PRUEBA BAT";
-        //    processItem.Lot = "-";
-        //    processItem.Command = "8-Prueba BAT";
-        //    processItem.Environment = "WKS0396";
-        //    processItem.Service = "Windows";
-        //    processItem.State = "state_om";
-        //    processItem.StateColor = StatusColor.White;
-        //    processItem.StartHour = "10:45";
-        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-        //    ProcessItems.Add(processItem);
-
-        //    processItem = new ProcessItem();
-        //    processItem.Id = 5;
-        //    processItem.IsChecked = false;
-        //    processItem.IsEnabled = true;
-        //    processItem.PID = 2756325;
-        //    processItem.Title = "8-PRUEBA BAT";
-        //    processItem.Lot = "-";
-        //    processItem.Command = "8-Prueba BAT";
-        //    processItem.Environment = "WKS0396";
-        //    processItem.Service = "Windows";
-        //    processItem.State = "state_f";
-        //    processItem.StateColor = StatusColor.Blue;
-        //    processItem.StartHour = "10:45";
-        //    processItem.Execution = DateTime.Now.ToString("dd/MM/yyyy");
-        //    ProcessItems.Add(processItem);
-        //}
         #endregion
     }
 }

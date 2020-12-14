@@ -94,7 +94,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.MonitoringAndExecutionMenu = new MonitoringAndExecutionMenuViewModel();
             this.OperationsLog = new OperationsLogViewModel(false);
             this.ProcessMonitor = new ProcessMonitorViewModel(false);
-            this.RecurrenceMonitor = new RecurrenceMonitorViewModel();
+            this.RecurrenceMonitor = new RecurrenceMonitorViewModel(false);
             this.StatusInfoPlanner = new StatusInfoPlannerViewModel();
             this.Notifications = new NotificationsViewModel(false, new Models.LogItem());
             this.InstanceNotifications = new InstanceNotificationsViewModel(new Models.InstanceItem());
@@ -123,7 +123,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             this.LogExecutionDelayChart = new LogExecutionDelayChartViewModel(false, new List<LogExecutionDelayResult>());
             this.OperationsLogReport = new OperationsLogReportViewModel(false, new ObservableCollection<OperationsLogReportItem>());
             this.CommandData = new CommandDataViewModel(false, new Models.CommandItem());
-            this.Result = new ResultViewModel(false);
+            this.Result = new ResultViewModel(false, new Models.CommandItem());
         }
         #endregion
 

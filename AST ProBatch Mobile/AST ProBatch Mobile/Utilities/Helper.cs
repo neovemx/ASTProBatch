@@ -153,6 +153,10 @@ namespace AST_ProBatch_Mobile.Utilities
                     resultStatusObject.State = "state_om";
                     resultStatusObject.StateColor = StatusColor.White;
                     break;
+                case Status.SUCCESS:
+                    resultStatusObject.State = "state_f";
+                    resultStatusObject.StateColor = StatusColor.Blue;
+                    break;
                 default:
                     resultStatusObject.State = "";
                     resultStatusObject.StateColor = StatusColor.Black;
@@ -246,6 +250,8 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string ModObservation = "/modobservations";
         public const string DelObservation = "/delobservations";
         public const string ControlSchedulesExecution = "/getControlschedulesexecution";
+        public const string ExecutionResultGet = "/executionresultget";
+        public const string ExecutionResultErrorLogGet = "/executionresulterrorlogget";
         public const string LogInquirieGetLots = "/loginquiriesgetlots";
         public const string LogInquirieGetCommands = "/loginquiriesgetcommands";
         public const string LogInquirieGetOperators = "/loginquiriesgetoperators";

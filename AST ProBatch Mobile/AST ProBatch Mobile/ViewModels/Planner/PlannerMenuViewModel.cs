@@ -51,7 +51,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private async void Btnsubme()
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
-            MainViewModel.GetInstance().RecurrenceMonitor = new RecurrenceMonitorViewModel();
+            MainViewModel.GetInstance().RecurrenceMonitor = new RecurrenceMonitorViewModel(true);
             await Application.Current.MainPage.Navigation.PushAsync(new RecurrenceMonitorPage());
         }
 

@@ -433,6 +433,16 @@ namespace AST_ProBatch_Mobile.Services
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.PlannerMonitorsGetData, QueryValues);
         }
 
+        public async Task<Response> ExecutionResultGet(string accessToken, ExecutionResultQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.ExecutionResultGet, QueryValues);
+        }
+
+        public async Task<Response> ExecutionResultErrorLogGet(string accessToken, ExecutionResultQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.ExecutionResultErrorLogGet, QueryValues);
+        }
+
         public async Task<Response> CommandDataGetGeneral(string accessToken, CommandDataIdCommandQueryValues QueryValues)
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.CommandDataGetGeneral, QueryValues);
