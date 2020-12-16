@@ -10,7 +10,7 @@
              Title="Demora Ejecución Bitácora"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
-        <ToolbarItem BindingContext="{Binding LogExecutionDelay}" Text="Limpiar"  Icon="clear" Command="{Binding ClearCommand}" />
+        <!--<ToolbarItem BindingContext="{Binding LogExecutionDelay}" Text="Limpiar"  Icon="clear" Command="{Binding ClearCommand}" />-->
         <ToolbarItem BindingContext="{Binding LogExecutionDelay}" Text="Reporte"  Icon="report" Command="{Binding ReportCommand}" />
         <ToolbarItem BindingContext="{Binding LogExecutionDelay}" Text="Gráfico"  Icon="graph" Command="{Binding GraphCommand}" />
     </ContentPage.ToolbarItems>

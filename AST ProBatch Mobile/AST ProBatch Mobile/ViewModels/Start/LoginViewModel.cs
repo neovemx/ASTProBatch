@@ -8,6 +8,7 @@ using AST_ProBatch_Mobile.Views;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
 using Xamarin.Forms;
 
 namespace AST_ProBatch_Mobile.ViewModels
@@ -185,7 +186,8 @@ namespace AST_ProBatch_Mobile.ViewModels
                 }
                 else
                 {
-                    var result = await CrossFingerprint.Current.AuthenticateAsync("Toque el sensor");
+                    var request = new AuthenticationRequestConfiguration("Autenticación Biométrica", "ProBatch Mobile 2.0");
+                    var result = await CrossFingerprint.Current.AuthenticateAsync(request);
                     if (!result.Authenticated)
                     {
                         this.Username = string.Empty;
@@ -302,8 +304,8 @@ namespace AST_ProBatch_Mobile.ViewModels
             {
                 ApiSrv = new Services.ApiService(ApiConsult.ApiAuth);
                 RefreshAppConfig();
-
-                var result = await CrossFingerprint.Current.AuthenticateAsync("Toque el sensor");
+                var request = new AuthenticationRequestConfiguration("Autenticación Biométrica", "ProBatch Mobile 2.0");
+                var result = await CrossFingerprint.Current.AuthenticateAsync(request);
                 if (!result.Authenticated)
                 {
                     return;

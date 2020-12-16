@@ -14,7 +14,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid
+            BindingContext="{Binding About}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -34,7 +35,9 @@
                                 <FormattedString.Spans>
                                     <Span Text="AST●ProBatch® Mobile" ForegroundColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="22" />
                                     <Span Text=" " />
-                                    <Span Text="2.0" ForegroundColor="{StaticResource LightTextColor}" />
+                                    <Span Text="{Binding AppVersion}" ForegroundColor="{StaticResource LightTextColor}" />
+                                    <Span Text=" " />
+                                    <Span Text="{Binding AppBuild}" ForegroundColor="{StaticResource LightTextColor}" FontSize="14" />
                                 </FormattedString.Spans>
                             </FormattedString>
                         </Label.FormattedText>
@@ -69,7 +72,6 @@
                         <Button
                             BorderColor="#2255AA"
                             BorderWidth="1"
-                            BindingContext="{Binding About}"
                             VerticalOptions="EndAndExpand"
                             Command="{Binding CloseCommand}"
                             CornerRadius="23"

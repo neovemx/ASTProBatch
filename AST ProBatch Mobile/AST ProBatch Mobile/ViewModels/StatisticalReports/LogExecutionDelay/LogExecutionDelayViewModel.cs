@@ -147,18 +147,18 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Commands
-        public ICommand ClearCommand
-        {
-            get
-            {
-                return new RelayCommand(Clear);
-            }
-        }
+        //public ICommand ClearCommand
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(Clear);
+        //    }
+        //}
 
-        private async void Clear()
-        {
-            this.EventSelected = new PickerEventItem();
-        }
+        //private async void Clear()
+        //{
+        //    this.EventSelected = new PickerEventItem();
+        //}
 
         public ICommand ReportCommand
         {
@@ -549,6 +549,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                 }
 
                 UserDialogs.Instance.ShowLoading("Obteniendo lotes...", MaskType.Black);
+                this.EventSelected = new PickerEventItem();
                 if (!await ApiIsOnline())
                 {
                     UserDialogs.Instance.HideLoading();
