@@ -326,7 +326,6 @@
                 </ListView>
             </StackLayout>
             <StackLayout
-                IsVisible="False"
                 Padding="5"
                 BackgroundColor="DarkGray"
                 VerticalOptions="End"
