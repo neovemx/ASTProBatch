@@ -260,6 +260,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string DependenciesGetDependentLotDetail = "/dependenciesgetdependentlotdetail";
         public const string DependenciesGetCommandsThatDepends = "/dependenciesgetcommandsthatdepends";
         public const string DependenciesGetDependentCommandDetail = "/dependenciesgetdependentcommanddetail";
+        public const string DependenciesGetResource = "/dependenciesgetresource";
         public const string CommandDataGetGeneral = "/commanddatagetgeneral";
         public const string CommandDataGetCommand = "/commanddatagetcommand";
         public const string CommandDataGetCommandProcess = "/commanddatagetcommandprocess";

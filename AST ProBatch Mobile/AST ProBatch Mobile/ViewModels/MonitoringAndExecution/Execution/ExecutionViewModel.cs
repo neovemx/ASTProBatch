@@ -25,6 +25,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool fullviewisvisible;
         private bool isvisibleemptyview;
         private bool isexecution;
+        private bool isrefreshing = false;
         #endregion
 
         #region Properties
@@ -75,6 +76,11 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return isexecution; }
             set { SetValue(ref isexecution, value); }
         }
+        public bool IsRefreshing
+        {
+            get { return isrefreshing; }
+            set { SetValue(ref isrefreshing, value); }
+        }
         #endregion
 
         #region Constructors
@@ -92,12 +98,98 @@ namespace AST_ProBatch_Mobile.ViewModels
                 this.CompactViewIsVisible = false;
                 this.IsVisibleEmptyView = false;
                 GetLogs();
-                //GetFakeData();
             }
         }
         #endregion
 
         #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Xamarin.Forms.Command(async() =>
+                {
+                    try
+                    {
+                        this.IsRefreshing = true;
+                        Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
+                        if (!resultApiIsAvailable.IsSuccess)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(resultApiIsAvailable.Message);
+                            return;
+                        }
+                        Response resultToken = await ApiSrv.GetToken();
+                        if (!resultToken.IsSuccess)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(resultToken.Message);
+                            return;
+                        }
+                        else
+                        {
+                            Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                            Response resultGetLogs = await ApiSrv.GetLogs(token.Key);
+                            if (!resultGetLogs.IsSuccess)
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(resultGetLogs.Message);
+                                return;
+                            }
+                            else
+                            {
+                                Logs = JsonConvert.DeserializeObject<List<Log>>(Crypto.DecodeString(resultGetLogs.Data));
+                                LogItems.Clear();
+                                foreach (Log log in Logs)
+                                {
+                                    LogItems.Add(new LogItem()
+                                    {
+                                        IsExecution = this.IsExecution,
+                                        IdLog = (Int32)log.IdLog,
+                                        NameLog = log.NameLog.Trim(),
+                                        IsEventual = (bool)log.IsEventual,
+                                        NotIsEventual = !(bool)log.IsEventual,
+                                        BarItemColor = ((bool)log.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base,
+                                        IdEnvironment = (Int16)log.IdEnvironment,
+                                        NameEnvironment = log.NameEnvironment.Trim(),
+                                        ExecutionDateTime = (log.ExecutionDateTime != null) ? (DateTime)log.ExecutionDateTime : new DateTime(),
+                                        EndingDateTime = (log.EndingDateTime != null) ? (DateTime)log.EndingDateTime : new DateTime(),
+                                        ExecutionDateTimeString = (log.ExecutionDateTime != null) ? ((DateTime)log.ExecutionDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                        EndingDateTimeString = (log.EndingDateTime != null) ? ((DateTime)log.EndingDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                        TotalCommands = (Int32)log.TotalCommands,
+                                        ErrorCommands = (Int32)log.ErrorCommands,
+                                        IsChecked = false,
+                                        IsEnabled = true,
+                                        IdUser = PbUser.IdUser,
+                                        Operator = string.Format("{0} ({1}, {2})", PbUser.IdUser, PbUser.FisrtName.Trim(), PbUser.LastName.Trim()),
+                                        NotificationIcon = IconSet.Notification
+                                    });
+                                }
+                                if (LogItems.Count == 0)
+                                {
+                                    this.FullViewIsVisible = false;
+                                    this.CompactViewIsVisible = false;
+                                    this.IsVisibleEmptyView = true;
+                                }
+                                else
+                                {
+                                    this.FullViewIsVisible = true;
+                                    this.CompactViewIsVisible = false;
+                                    this.IsVisibleEmptyView = false;
+                                }
+                            }
+                        }
+                        this.IsRefreshing = false;
+                    }
+                    catch //(Exception ex)
+                    {
+                        Alert.Show("Ocurrió un error", "Aceptar");
+                        this.IsRefreshing = false;
+                    }
+                });
+            }
+        }
+
         public ICommand ActionsCommand
         {
             get
@@ -213,7 +305,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     });
                 }
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
                 Alert.Show("Ocurrió un error", "Aceptar");
                 UserDialogs.Instance.HideLoading();
@@ -381,99 +473,6 @@ namespace AST_ProBatch_Mobile.ViewModels
                 //return;
             }
         }
-        #endregion
-
-        #region FakeData
-        //private void GetFakeData()
-        //{
-        //    LogItems = new ObservableCollection<LogItem>();
-        //    LogItem logItem;
-
-        //    logItem = new LogItem();
-        //    logItem.Id = 1;
-        //    logItem.IsChecked = false;
-        //    logItem.IsEnabled = true;
-        //    logItem.Title = "BITACORA 1";
-        //    logItem.Notifications = "notification";
-        //    logItem.Status = "";
-        //    logItem.StatusColor = StatusColor.Green;
-        //    logItem.Environment = "WINDOWS";
-        //    logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
-        //    logItem.CommandsNumber = "400";
-        //    logItem.CommandsFail = "4";
-        //    logItem.Eventual = true;
-        //    LogItems.Add(logItem);
-
-        //    logItem = new LogItem();
-        //    logItem.Id = 2;
-        //    logItem.IsChecked = false;
-        //    logItem.IsEnabled = true;
-        //    logItem.Title = "BITACORA 2";
-        //    logItem.Notifications = "notification";
-        //    logItem.Status = "";
-        //    logItem.StatusColor = StatusColor.Orange;
-        //    logItem.Environment = "WINDOWS";
-        //    logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
-        //    logItem.CommandsNumber = "400";
-        //    logItem.CommandsFail = "4";
-        //    logItem.Eventual = false;
-        //    LogItems.Add(logItem);
-
-        //    logItem = new LogItem();
-        //    logItem.Id = 3;
-        //    logItem.IsChecked = false;
-        //    logItem.IsEnabled = true;
-        //    logItem.Title = "BITACORA 3";
-        //    logItem.Notifications = "notification_n";
-        //    logItem.Status = "";
-        //    logItem.StatusColor = StatusColor.Green;
-        //    logItem.Environment = "WINDOWS";
-        //    logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
-        //    logItem.CommandsNumber = "400";
-        //    logItem.CommandsFail = "4";
-        //    logItem.Eventual = true;
-        //    LogItems.Add(logItem);
-
-        //    logItem = new LogItem();
-        //    logItem.Id = 4;
-        //    logItem.IsChecked = false;
-        //    logItem.IsEnabled = true;
-        //    logItem.Title = "BITACORA 4";
-        //    logItem.Notifications = "notification_n";
-        //    logItem.Status = "";
-        //    logItem.StatusColor = StatusColor.White;
-        //    logItem.Environment = "WINDOWS";
-        //    logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
-        //    logItem.CommandsNumber = "400";
-        //    logItem.CommandsFail = "4";
-        //    logItem.Eventual = true;
-        //    LogItems.Add(logItem);
-
-        //    logItem = new LogItem();
-        //    logItem.Id = 5;
-        //    logItem.IsChecked = false;
-        //    logItem.IsEnabled = true;
-        //    logItem.Title = "BITACORA 5";
-        //    logItem.Notifications = "notification";
-        //    logItem.Status = "";
-        //    logItem.StatusColor = StatusColor.White;
-        //    logItem.Environment = "WINDOWS";
-        //    logItem.Execution = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.End = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        //    logItem.Operator = "ADMINISTRADOR (FIRST NAME, LAST NAME)";
-        //    logItem.CommandsNumber = "400";
-        //    logItem.CommandsFail = "4";
-        //    logItem.Eventual = false;
-        //    LogItems.Add(logItem);
-        //}
         #endregion
     }
 }

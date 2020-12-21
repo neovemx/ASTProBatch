@@ -16,6 +16,7 @@ namespace AST_ProBatch_Mobile.Models
 
         #region Model Extended
         public string Instance { get; set; }
+        public string StatusColor { get; set; }
         #endregion
     }
 }

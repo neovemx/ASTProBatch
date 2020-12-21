@@ -93,6 +93,10 @@
                     x:Name="LogsItemsListView"
                     ItemsSource="{Binding LogItems}"
                     ItemSelected="LogsItemsListView_ItemSelected"
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    RefreshControlColor="#2255AA"
                     BackgroundColor="Transparent">
                     <ListView.SeparatorVisibility>
                         <OnPlatform x:TypeArguments="SeparatorVisibility">
@@ -167,7 +171,7 @@
                                                         </ImageButton.CornerRadius>
                                                     </ImageButton>
                                                 </StackLayout>
-                                                <!--<StackLayout
+                                                <StackLayout
                                                     VerticalOptions="Center">
                                                     <ImageButton
                                                         BackgroundColor="{Binding StatusColor}"
@@ -182,7 +186,7 @@
                                                             </OnPlatform>
                                                         </ImageButton.CornerRadius>
                                                     </ImageButton>
-                                                </StackLayout>-->
+                                                </StackLayout>
                                             </StackLayout>
                                         </controls:CustomFrame>
                                         <controls:CustomFrame
@@ -444,7 +448,10 @@
                 <ListView
                     x:Name="CompactLogsItemsListView"
                     ItemsSource="{Binding LogItems}"
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsRefreshing}"
+                    RefreshControlColor="#2255AA"
                     ItemSelected="CompactLogsItemsListView_ItemSelected"
                     BackgroundColor="Transparent">
                     <ListView.SeparatorVisibility>

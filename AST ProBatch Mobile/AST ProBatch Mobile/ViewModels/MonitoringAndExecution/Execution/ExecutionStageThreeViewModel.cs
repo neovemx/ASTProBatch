@@ -122,6 +122,94 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Xamarin.Forms.Command(async () =>
+                {
+                    try
+                    {
+                        this.IsRefreshing = true;
+                        Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
+                        if (!resultApiIsAvailable.IsSuccess)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(resultApiIsAvailable.Message);
+                            return;
+                        }
+                        Response resultToken = await ApiSrv.GetToken();
+                        if (!resultToken.IsSuccess)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(resultToken.Message);
+                            return;
+                        }
+                        else
+                        {
+                            Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                            CommandQueryValues commandQueryValues = new CommandQueryValues()
+                            {
+                                IdInstance = this.InstanceItem.IdInstance
+                            };
+                            Response resultGetCommandsByInstance = await ApiSrv.GetCommandsByInstance(token.Key, commandQueryValues);
+                            if (!resultGetCommandsByInstance.IsSuccess)
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(resultGetCommandsByInstance.Message);
+                                return;
+                            }
+                            else
+                            {
+                                Commands = JsonConvert.DeserializeObject<List<Cmd>>(Crypto.DecodeString(resultGetCommandsByInstance.Data));
+                                CommandItems.Clear();
+                                foreach (Cmd command in Commands)
+                                {
+                                    TimeSpan execTime = TimeSpan.FromMinutes(command.ExecutionTime);
+                                    CommandItems.Add(new CommandItem()
+                                    {
+                                        IsExecution = this.IsExecution,
+                                        IdLot = command.IdLot,
+                                        NameLot = command.NameLot.Trim(),
+                                        IdCommand = command.IdCommand,
+                                        NameCommand = command.NameCommand.Trim(),
+                                        Order = command.Order,
+                                        IdStatus = command.IdStatus,
+                                        Duration = string.Format("{0:00} hora(s) {1:00} minuto(s)", (int)execTime.TotalHours, execTime.Minutes),
+                                        ExecutionStart = (command.ExecutionDateTime != null) ? ((DateTime)command.ExecutionDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                        ExecutionEnd = (command.EndDateTime != null) ? ((DateTime)command.EndDateTime).ToString(DateTimeFormatString.LatinDate24Hours) : "",
+                                        IsChecked = false,
+                                        IsEnabled = true,
+                                        StatusColor = GetStatusColor.ByIdStatus(command.IdStatus.Trim()),
+                                        InstanceItem = this.InstanceItem,
+                                        BarItemColor = (this.InstanceItem.LogItem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base
+                                    });
+                                }
+                                if (CommandItems.Count == 0)
+                                {
+                                    this.FullViewIsVisible = false;
+                                    this.CompactViewIsVisible = false;
+                                    this.IsVisibleEmptyView = true;
+                                }
+                                else
+                                {
+                                    this.FullViewIsVisible = true;
+                                    this.CompactViewIsVisible = false;
+                                    this.IsVisibleEmptyView = false;
+                                }
+                            }
+                        }
+                        this.IsRefreshing = false;
+                    }
+                    catch //(Exception ex)
+                    {
+                        Alert.Show("Ocurrió un error", "Aceptar");
+                        this.IsRefreshing = false;
+                    }
+                });
+            }
+        }
+
         public ICommand ActionsCommand
         {
             get
@@ -393,7 +481,8 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 IsChecked = false,
                                 IsEnabled = true,
                                 StatusColor = GetStatusColor.ByIdStatus(command.IdStatus.Trim()),
-                                InstanceItem = this.InstanceItem
+                                InstanceItem = this.InstanceItem,
+                                BarItemColor = (this.InstanceItem.LogItem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base
                             });
                         }
                         if (CommandItems.Count == 0)

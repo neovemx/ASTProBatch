@@ -88,7 +88,10 @@
                 <ListView
                     x:Name="InstanceItemsListView"
                     ItemsSource="{Binding InstanceItems}"
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsRefreshing}"
+                    RefreshControlColor="#2255AA"
                     ItemSelected="InstanceItemsListView_ItemSelected"
                     BackgroundColor="Transparent">
                     <ListView.SeparatorVisibility>
@@ -112,7 +115,7 @@
                                         <controls:CustomFrame 
                                             Padding="6"
                                             CornerRadius="10,10,0,0"
-                                            BackgroundColor="#D7D7D7"
+                                            BackgroundColor="{Binding BarItemColor}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center"
                                             HeightRequest="35">
@@ -474,7 +477,7 @@
                                                                 </ImageButton>
                                                             </StackLayout>
                                                         </StackLayout>
-                                                        <StackLayout
+                                                        <!--<StackLayout
                                                             IsVisible="{Binding IsExecution}">
                                                             <StackLayout>
                                                                 <ImageButton
@@ -494,7 +497,7 @@
                                                                     </ImageButton.CornerRadius>
                                                                 </ImageButton>
                                                             </StackLayout>
-                                                        </StackLayout>
+                                                        </StackLayout>-->
                                                         <!--
                                                             ELIMININAR
                                                             <StackLayout>
@@ -550,7 +553,10 @@
                 <ListView
                     x:Name="CompactInstanceItemsListView"
                     ItemsSource="{Binding InstanceItems}"
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsRefreshing}"
+                    RefreshControlColor="#2255AA"
                     ItemSelected="CompactInstanceItemsListView_ItemSelected"
                     BackgroundColor="Transparent">
                     <ListView.SeparatorVisibility>
@@ -573,7 +579,7 @@
                                         Padding="10,5,10,5">
                                         <controls:CustomFrame
                                             CornerRadius="10"
-                                            BackgroundColor="#D7D7D7"
+                                            BackgroundColor="{Binding BarItemColor}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="Center">
                                             <StackLayout>

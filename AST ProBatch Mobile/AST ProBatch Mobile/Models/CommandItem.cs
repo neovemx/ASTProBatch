@@ -26,7 +26,7 @@ namespace AST_ProBatch_Mobile.Models
         public string StatusColor { get; set; }
         public InstanceItem InstanceItem { get; set; }
         public bool Critical { get; set; }
-
+        public string BarItemColor { get; set; }
         //public int Id { get; set; }
         //public int IdLot { get; set; }
         //public string TitleLot { get; set; }

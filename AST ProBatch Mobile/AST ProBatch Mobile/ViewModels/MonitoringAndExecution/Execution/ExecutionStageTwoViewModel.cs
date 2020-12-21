@@ -113,6 +113,98 @@ namespace AST_ProBatch_Mobile.ViewModels
         #endregion
 
         #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Xamarin.Forms.Command(async () =>
+                {
+                    try
+                    {
+                        this.IsRefreshing = true;
+                        Response resultApiIsAvailable = await ApiSrv.ApiIsAvailable();
+                        if (!resultApiIsAvailable.IsSuccess)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(resultApiIsAvailable.Message);
+                            return;
+                        }
+                        Response resultToken = await ApiSrv.GetToken();
+                        if (!resultToken.IsSuccess)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(resultToken.Message);
+                            return;
+                        }
+                        else
+                        {
+                            Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
+                            InstanceQueryValues instanceQueryValues = new InstanceQueryValues()
+                            {
+                                IdLog = this.LogItem.IdLog,
+                                IdUser = this.LogItem.IdUser,
+                                IsEventual = this.LogItem.IsEventual
+                            };
+                            Response resultGetInstancesByLogAndUser = await ApiSrv.GetInstancesByLogAndUser(token.Key, instanceQueryValues);
+                            if (!resultGetInstancesByLogAndUser.IsSuccess)
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                Toast.ShowError(resultGetInstancesByLogAndUser.Message);
+                                return;
+                            }
+                            else
+                            {
+                                Instances = JsonConvert.DeserializeObject<List<Instance>>(Crypto.DecodeString(resultGetInstancesByLogAndUser.Data));
+                                InstanceItems.Clear();
+                                foreach (Instance instance in Instances)
+                                {
+                                    InstanceItems.Add(new InstanceItem()
+                                    {
+                                        IsExecution = this.IsExecution,
+                                        IdInstance = instance.IdInstance,
+                                        InstanceNumber = instance.InstanceNumber,
+                                        NameInstance = instance.NameInstance.Trim(),
+                                        IdStatusInstance = instance.IdStatusInstance,
+                                        IdStatusLastCommand = instance.IdStatusLastCommand,
+                                        TotalCommands = instance.TotalCommands,
+                                        PendingCommands = instance.PendingCommands,
+                                        OkCommands = instance.OkCommands,
+                                        ErrorCommands = instance.ErrorCommands,
+                                        OmittedCommands = instance.OmittedCommands,
+                                        IsChecked = false,
+                                        IsEnabled = true,
+                                        NotificationIcon = IconSet.Notification,
+                                        StatusInstanceColor = GetStatusColor.ByIdStatus(instance.IdStatusInstance.Trim()),
+                                        StatusLastProcessColor = GetStatusColor.ByIdStatus(instance.IdStatusLastCommand.Trim()),
+                                        LogItem = this.LogItem,
+                                        BarItemColor = (this.logitem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base
+                                    });
+                                }
+                                if (InstanceItems.Count == 0)
+                                {
+                                    this.FullViewIsVisible = false;
+                                    this.CompactViewIsVisible = false;
+                                    this.IsVisibleEmptyView = true;
+                                }
+                                else
+                                {
+                                    this.FullViewIsVisible = true;
+                                    this.CompactViewIsVisible = false;
+                                    this.IsVisibleEmptyView = false;
+                                }
+                            }
+                        }
+                        this.IsRefreshing = false;
+                    }
+                    catch //(Exception ex)
+                    {
+                        Alert.Show("Ocurrió un error", "Aceptar");
+                        this.IsRefreshing = false;
+                    }
+                });
+            }
+        }
+
         public ICommand ActionsCommand
         {
             get
@@ -363,7 +455,8 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 NotificationIcon = IconSet.Notification,
                                 StatusInstanceColor = GetStatusColor.ByIdStatus(instance.IdStatusInstance.Trim()),
                                 StatusLastProcessColor = GetStatusColor.ByIdStatus(instance.IdStatusLastCommand.Trim()),
-                                LogItem = this.LogItem
+                                LogItem = this.LogItem,
+                                BarItemColor = (this.logitem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base
                             });
                         }
                         if (InstanceItems.Count == 0)

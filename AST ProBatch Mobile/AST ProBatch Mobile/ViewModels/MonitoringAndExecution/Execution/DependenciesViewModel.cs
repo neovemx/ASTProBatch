@@ -27,6 +27,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private ObservableCollection<DependenciesLotItem> dependencieslotdetailitems;
         private ObservableCollection<DependenciesCommandItem> dependenciescommanditems;
         private ObservableCollection<DependenciesCommandDetailItem> dependenciescommanddetailitems;
+        private ObservableCollection<DependenciesResourceItem> dependenciesresourceitems;
         #endregion
 
         #region Properties
@@ -35,6 +36,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private List<DependenciesLot> DependenciesDetailLots { get; set; }
         private List<DependenciesCommand> DependenciesCommands { get; set; }
         private List<DependenciesCommandDetail> DependenciesDetailCommands { get; set; }
+        private List<DependenciesResource> DependenciesResources { get; set; }
 
         public CommandItem CommandItem
         {
@@ -80,6 +82,11 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             get { return dependenciescommanddetailitems; }
             set { SetValue(ref dependenciescommanddetailitems, value); }
+        }
+        public ObservableCollection<DependenciesResourceItem> DependenciesResourceItems
+        {
+            get { return dependenciesresourceitems; }
+            set { SetValue(ref dependenciesresourceitems, value); }
         }
         #endregion
 
@@ -168,7 +175,8 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     Status = dependenciesLot.Status,
                                     AddedDate = (dependenciesLot.AddedDate != null) ? (DateTime)dependenciesLot.AddedDate : new DateTime(),
                                     Number = dependenciesLot.Number,
-                                    Instance = this.CommandItem.InstanceItem.NameInstance
+                                    Instance = this.CommandItem.InstanceItem.NameInstance,
+                                    StatusColor = GetStatusColor.ByIdStatus(dependenciesLot.IdStatus.Trim())
                                 });
                             }
                         }
@@ -202,7 +210,8 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     Status = dependenciesLot.Status,
                                     AddedDate = (dependenciesLot.AddedDate != null) ? (DateTime)dependenciesLot.AddedDate : new DateTime(),
                                     Number = dependenciesLot.Number,
-                                    Instance = this.CommandItem.InstanceItem.NameInstance
+                                    Instance = this.CommandItem.InstanceItem.NameInstance,
+                                    StatusColor = GetStatusColor.ByIdStatus(dependenciesLot.IdStatus.Trim())
                                 });
                             }
                         }
@@ -280,6 +289,32 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     CriticalBusiness = dependenciesCommandDetail.CriticalBusiness,
                                     StatusColor = GetStatusColor.ByIdStatus(dependenciesCommandDetail.IdStatus.Trim()),
                                     Instance = this.CommandItem.InstanceItem.NameInstance
+                                });
+                            }
+                        }
+                        UserDialogs.Instance.HideLoading();
+                        UserDialogs.Instance.ShowLoading("Obteniendo recursos de dependencias...", MaskType.Black);
+                        DependenciesGetResourceQueryValues dependenciesGetResourceQueryValues = new DependenciesGetResourceQueryValues()
+                        {
+                            IdCommand = this.CommandItem.IdCommand
+                        };
+                        Response resultGetDependenciesResources = await ApiSrv.DependenciesGetResource(TokenGet.Key, dependenciesGetResourceQueryValues);
+                        if (!resultGetDependenciesResources.IsSuccess)
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            Toast.ShowError(AlertMessages.Error);
+                            return;
+                        }
+                        else
+                        {
+                            DependenciesResources = JsonConvert.DeserializeObject<List<DependenciesResource>>(Crypto.DecodeString(resultGetDependenciesResources.Data));
+                            DependenciesResourceItems = new ObservableCollection<DependenciesResourceItem>();
+                            foreach (DependenciesResource dependenciesResource in DependenciesResources)
+                            {
+                                DependenciesResourceItems.Add(new DependenciesResourceItem()
+                                {
+                                    IdResource = dependenciesResource.IdResource,
+                                    ResourceName = dependenciesResource.ResourceName
                                 });
                             }
                         }

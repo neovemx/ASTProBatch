@@ -308,6 +308,11 @@ namespace AST_ProBatch_Mobile.Services
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.DependenciesGetDependentCommandDetail, QueryValues);
         }
 
+        public async Task<Response> DependenciesGetResource(string accessToken, DependenciesGetResourceQueryValues QueryValues)
+        {
+            return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.DependenciesGetResource, QueryValues);
+        }
+
         public async Task<Response> BatchQueryGetLots(string accessToken, BatchAllQueryValues QueryValues)
         {
             return await HttpPost(accessToken, this.ApiControllerSet, ApiMethod.BatchQueryGetLots, QueryValues);

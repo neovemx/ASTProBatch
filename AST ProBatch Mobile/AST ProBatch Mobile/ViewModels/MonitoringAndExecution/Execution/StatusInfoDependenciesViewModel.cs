@@ -50,9 +50,45 @@ namespace AST_ProBatch_Mobile.ViewModels
             StatusItem statusItemProcess;
 
             statusItemProcess = new StatusItem();
-            statusItemProcess.Title = "Comandos Omitidos";
+            statusItemProcess.Title = "No Ejecutado";
             statusItemProcess.State = "";
-            statusItemProcess.StateColor = StatusColor.DarkBlue;
+            statusItemProcess.StateColor = StatusColor.White;
+            StatusItemsProcess.Add(statusItemProcess);
+
+            statusItemProcess = new StatusItem();
+            statusItemProcess.Title = "Ejecutando";
+            statusItemProcess.State = "";
+            statusItemProcess.StateColor = StatusColor.Green;
+            StatusItemsProcess.Add(statusItemProcess);
+
+            statusItemProcess = new StatusItem();
+            statusItemProcess.Title = "Finalizado Correctamente";
+            statusItemProcess.State = "";
+            statusItemProcess.StateColor = StatusColor.Blue;
+            StatusItemsProcess.Add(statusItemProcess);
+
+            statusItemProcess = new StatusItem();
+            statusItemProcess.Title = "Esperando Dependencia";
+            statusItemProcess.State = "";
+            statusItemProcess.StateColor = StatusColor.Yellow;
+            StatusItemsProcess.Add(statusItemProcess);
+
+            statusItemProcess = new StatusItem();
+            statusItemProcess.Title = "Error de Dependencia";
+            statusItemProcess.State = "";
+            statusItemProcess.StateColor = StatusColor.Orange;
+            StatusItemsProcess.Add(statusItemProcess);
+
+            statusItemProcess = new StatusItem();
+            statusItemProcess.Title = "Finalizado con Errores";
+            statusItemProcess.State = "";
+            statusItemProcess.StateColor = StatusColor.Red;
+            StatusItemsProcess.Add(statusItemProcess);
+
+            statusItemProcess = new StatusItem();
+            statusItemProcess.Title = "Abortado por el Usuario";
+            statusItemProcess.State = "";
+            statusItemProcess.StateColor = StatusColor.Purple;
             StatusItemsProcess.Add(statusItemProcess);
         }
         #endregion

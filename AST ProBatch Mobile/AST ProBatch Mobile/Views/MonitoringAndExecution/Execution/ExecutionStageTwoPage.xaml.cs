@@ -88,19 +88,19 @@ namespace AST_ProBatch_Mobile.Views
         //    }
         //}
 
-        private void ImageButtonLogAction_4_Clicked(object sender, EventArgs e)
-        {
-            var imageButton = (ImageButton)sender;
-            var instanceItem = imageButton.CommandParameter as InstanceItem;
-            if (instanceItem != null)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("AST●ProBatch®", "Deseas agregar comando para: " + instanceItem.NameInstance + "?", "Sí", "No");
-                    if (result) DependencyService.Get<Toast>().Show("Procesando...");
-                });
-            }
-        }
+        //private void ImageButtonLogAction_4_Clicked(object sender, EventArgs e)
+        //{
+        //    var imageButton = (ImageButton)sender;
+        //    var instanceItem = imageButton.CommandParameter as InstanceItem;
+        //    if (instanceItem != null)
+        //    {
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            var result = await this.DisplayAlert("AST●ProBatch®", "Deseas agregar comando para: " + instanceItem.NameInstance + "?", "Sí", "No");
+        //            if (result) DependencyService.Get<Toast>().Show("Procesando...");
+        //        });
+        //    }
+        //}
 
         //ELIMINAR
         //private void ImageButtonLogAction_5_Clicked(object sender, EventArgs e)

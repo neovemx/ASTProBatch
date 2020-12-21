@@ -118,6 +118,7 @@
                                         <ColumnDefinition />
                                         <ColumnDefinition />
                                         <ColumnDefinition />
+                                        <ColumnDefinition Width="25" />
                                     </Grid.ColumnDefinitions>
                                     <BoxView 
                                         Grid.Row="0"
@@ -165,7 +166,19 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text="Instancias"
+                                        Text="Inst."
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="4"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="4"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text=""
                                         LineBreakMode="TailTruncation"/>
                                 </Grid>
                             </ListView.Header>
@@ -186,6 +199,7 @@
                                                     <ColumnDefinition />
                                                     <ColumnDefinition />
                                                     <ColumnDefinition />
+                                                    <ColumnDefinition Width="25" />
                                                 </Grid.ColumnDefinitions>
                                                 <BoxView 
                                                     Grid.Row="0"
@@ -231,6 +245,14 @@
                                                     VerticalOptions="CenterAndExpand"
                                                     Text="{Binding Instance}"
                                                     LineBreakMode="TailTruncation"/>
+                                                <BoxView
+                                                    Grid.Row="0"
+                                                    Grid.Column="4"/>
+                                                <controls:CustomFrame
+                                                    Grid.Row="0"
+                                                    Grid.Column="4"
+                                                    CornerRadius="17"
+                                                    BackgroundColor="{Binding StatusColor}"/>
                                             </Grid>
                                         </ViewCell.View>
                                     </ViewCell>
@@ -281,6 +303,7 @@
                                         <ColumnDefinition />
                                         <ColumnDefinition />
                                         <ColumnDefinition />
+                                        <ColumnDefinition Width="25" />
                                     </Grid.ColumnDefinitions>
                                     <BoxView 
                                         Grid.Row="0"
@@ -328,7 +351,19 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text="Instancias"
+                                        Text="Inst."
+                                        LineBreakMode="TailTruncation"/>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="4"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="4"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text=""
                                         LineBreakMode="TailTruncation"/>
                                 </Grid>
                             </ListView.Header>
@@ -349,6 +384,7 @@
                                                     <ColumnDefinition />
                                                     <ColumnDefinition />
                                                     <ColumnDefinition />
+                                                    <ColumnDefinition Width="25" />
                                                 </Grid.ColumnDefinitions>
                                                 <BoxView 
                                                     Grid.Row="0"
@@ -394,6 +430,14 @@
                                                     VerticalOptions="CenterAndExpand"
                                                     Text="{Binding Instance}"
                                                     LineBreakMode="TailTruncation"/>
+                                                <BoxView
+                                                    Grid.Row="0"
+                                                    Grid.Column="4"/>
+                                                <controls:CustomFrame
+                                                    Grid.Row="0"
+                                                    Grid.Column="4"
+                                                    CornerRadius="17"
+                                                    BackgroundColor="{Binding StatusColor}"/>
                                             </Grid>
                                         </ViewCell.View>
                                     </ViewCell>
@@ -440,12 +484,11 @@
                                         <RowDefinition Height="25" />   
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
                                         <ColumnDefinition Width="25" />
-                                        <ColumnDefinition Width="10" />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <BoxView 
                                         Grid.Row="0"
@@ -457,7 +500,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text=""
+                                        Text="Tipo"
                                         LineBreakMode="TailTruncation"/>
                                     <BoxView 
                                         Grid.Row="0"
@@ -469,7 +512,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text=""
+                                        Text="Lote"
                                         LineBreakMode="TailTruncation"/>
                                     <BoxView 
                                         Grid.Row="0"
@@ -481,7 +524,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text="Lote"
+                                        Text="Comando"
                                         LineBreakMode="TailTruncation"/>
                                     <BoxView 
                                         Grid.Row="0"
@@ -493,7 +536,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text="Comando"
+                                        Text="Inst."
                                         LineBreakMode="TailTruncation"/>
                                     <BoxView 
                                         Grid.Row="0"
@@ -505,19 +548,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text="Tipo"
-                                        LineBreakMode="TailTruncation"/>
-                                    <BoxView 
-                                        Grid.Row="0"
-                                        Grid.Column="5"/>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="5"
-                                        TextColor="#2255AA"
-                                        FontSize="Small"
-                                        FontAttributes="Bold"
-                                        VerticalOptions="CenterAndExpand"
-                                        Text="Instancia"
+                                        Text=""
                                         LineBreakMode="TailTruncation"/>
                                 </Grid>
                             </ListView.Header>
@@ -534,21 +565,23 @@
                                                     <RowDefinition Height="25" />
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
                                                     <ColumnDefinition Width="25" />
-                                                    <ColumnDefinition Width="10" />
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
                                                 </Grid.ColumnDefinitions>
                                                 <BoxView 
                                                     Grid.Row="0"
                                                     Grid.Column="0"/>
-                                                <controls:CustomFrame
+                                                <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
-                                                    CornerRadius="17"
-                                                    BackgroundColor="{Binding StatusColor}"/>
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Type}"
+                                                    LineBreakMode="TailTruncation"/>
                                                 <BoxView 
                                                     Grid.Row="0"
                                                     Grid.Column="1"/>
@@ -558,7 +591,7 @@
                                                     TextColor="Black"
                                                     FontSize="Small"
                                                     VerticalOptions="CenterAndExpand"
-                                                    Text=""
+                                                    Text="{Binding IdLot}"
                                                     LineBreakMode="TailTruncation"/>
                                                 <BoxView 
                                                     Grid.Row="0"
@@ -569,7 +602,7 @@
                                                     TextColor="Black"
                                                     FontSize="Small"
                                                     VerticalOptions="CenterAndExpand"
-                                                    Text="{Binding IdLot}"
+                                                    Text="{Binding Command}"
                                                     LineBreakMode="TailTruncation"/>
                                                 <BoxView 
                                                     Grid.Row="0"
@@ -580,30 +613,16 @@
                                                     TextColor="Black"
                                                     FontSize="Small"
                                                     VerticalOptions="CenterAndExpand"
-                                                    Text="{Binding Command}"
+                                                    Text="{Binding Instance}"
                                                     LineBreakMode="TailTruncation"/>
                                                 <BoxView 
                                                     Grid.Row="0"
                                                     Grid.Column="4"/>
-                                                <Label
+                                                <controls:CustomFrame
                                                     Grid.Row="0"
                                                     Grid.Column="4"
-                                                    TextColor="Black"
-                                                    FontSize="Small"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Text="{Binding Type}"
-                                                    LineBreakMode="TailTruncation"/>
-                                                <BoxView 
-                                                    Grid.Row="0"
-                                                    Grid.Column="5"/>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="5"
-                                                    TextColor="Black"
-                                                    FontSize="Small"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Text="{Binding Instance}"
-                                                    LineBreakMode="TailTruncation"/>
+                                                    CornerRadius="17"
+                                                    BackgroundColor="{Binding StatusColor}"/>
                                             </Grid>
                                         </ViewCell.View>
                                     </ViewCell>
@@ -650,12 +669,11 @@
                                         <RowDefinition Height="25" />   
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
                                         <ColumnDefinition Width="25" />
-                                        <ColumnDefinition Width="10" />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <BoxView 
                                         Grid.Row="0"
@@ -667,7 +685,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text=""
+                                        Text="Tipo"
                                         LineBreakMode="TailTruncation"/>
                                     <BoxView 
                                         Grid.Row="0"
@@ -679,7 +697,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text=""
+                                        Text="Lote"
                                         LineBreakMode="TailTruncation"/>
                                     <BoxView 
                                         Grid.Row="0"
@@ -691,7 +709,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text="Lote"
+                                        Text="Comando"
                                         LineBreakMode="TailTruncation"/>
                                     <BoxView 
                                         Grid.Row="0"
@@ -703,7 +721,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text="Comando"
+                                        Text="Inst."
                                         LineBreakMode="TailTruncation"/>
                                     <BoxView 
                                         Grid.Row="0"
@@ -715,19 +733,7 @@
                                         FontSize="Small"
                                         FontAttributes="Bold"
                                         VerticalOptions="CenterAndExpand"
-                                        Text="Tipo"
-                                        LineBreakMode="TailTruncation"/>
-                                    <BoxView 
-                                        Grid.Row="0"
-                                        Grid.Column="5"/>
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="5"
-                                        TextColor="#2255AA"
-                                        FontSize="Small"
-                                        FontAttributes="Bold"
-                                        VerticalOptions="CenterAndExpand"
-                                        Text="Instancia"
+                                        Text=""
                                         LineBreakMode="TailTruncation"/>
                                 </Grid>
                             </ListView.Header>
@@ -744,21 +750,23 @@
                                                     <RowDefinition Height="25" />
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
                                                     <ColumnDefinition Width="25" />
-                                                    <ColumnDefinition Width="10" />
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
                                                 </Grid.ColumnDefinitions>
                                                 <BoxView 
                                                     Grid.Row="0"
                                                     Grid.Column="0"/>
-                                                <controls:CustomFrame
+                                                <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
-                                                    CornerRadius="17"
-                                                    BackgroundColor="{Binding StatusColor}"/>
+                                                    TextColor="Black"
+                                                    FontSize="Small"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Text="{Binding Type}"
+                                                    LineBreakMode="TailTruncation"/>
                                                 <BoxView 
                                                     Grid.Row="0"
                                                     Grid.Column="1"/>
@@ -768,7 +776,7 @@
                                                     TextColor="Black"
                                                     FontSize="Small"
                                                     VerticalOptions="CenterAndExpand"
-                                                    Text=""
+                                                    Text="{Binding IdLot}"
                                                     LineBreakMode="TailTruncation"/>
                                                 <BoxView 
                                                     Grid.Row="0"
@@ -779,7 +787,7 @@
                                                     TextColor="Black"
                                                     FontSize="Small"
                                                     VerticalOptions="CenterAndExpand"
-                                                    Text="{Binding IdLot}"
+                                                    Text="{Binding Command}"
                                                     LineBreakMode="TailTruncation"/>
                                                 <BoxView 
                                                     Grid.Row="0"
@@ -790,29 +798,103 @@
                                                     TextColor="Black"
                                                     FontSize="Small"
                                                     VerticalOptions="CenterAndExpand"
-                                                    Text="{Binding Command}"
+                                                    Text="{Binding Instance}"
                                                     LineBreakMode="TailTruncation"/>
                                                 <BoxView 
                                                     Grid.Row="0"
                                                     Grid.Column="4"/>
-                                                <Label
+                                                <controls:CustomFrame
                                                     Grid.Row="0"
                                                     Grid.Column="4"
-                                                    TextColor="Black"
-                                                    FontSize="Small"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Text="{Binding Type}"
-                                                    LineBreakMode="TailTruncation"/>
+                                                    CornerRadius="17"
+                                                    BackgroundColor="{Binding StatusColor}"/>
+                                            </Grid>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView> 
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#D7D7D7"
+                        Padding="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Padding="5"
+                            Text="Dependencias de Recursos"
+                            TextColor="#2255AA"
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            LineBreakMode="TailTruncation"/>
+                    </controls:CustomFrame>
+                    <controls:CustomFrame
+                        Margin="0,-7,0,0"
+                        CornerRadius="0,0,10,10"
+                        BackgroundColor="DarkGray"
+                        Padding="0">
+                        <ListView
+                            ItemsSource="{Binding DependenciesResourceItems}"
+                            SelectionMode="None"
+                            BackgroundColor="Transparent"
+                            HeightRequest="150">
+                            <ListView.SeparatorVisibility>
+                                <OnPlatform x:TypeArguments="SeparatorVisibility">
+                                    <On Platform="iOS" Value="None" />
+                                    <On Platform="Android" Value="Default" />
+                                </OnPlatform>
+                            </ListView.SeparatorVisibility>
+                            <ListView.Header>
+                                <Grid
+                                    Padding="10"
+                                    ColumnSpacing="0"
+                                    RowSpacing="0"
+                                    VerticalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25" />   
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView 
+                                        Grid.Row="0"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        TextColor="#2255AA"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="Recurso"
+                                        LineBreakMode="TailTruncation"/>
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <Grid
+                                                Padding="10"
+                                                ColumnSpacing="0"
+                                                RowSpacing="0"
+                                                VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="25" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
                                                 <BoxView 
                                                     Grid.Row="0"
-                                                    Grid.Column="5"/>
+                                                    Grid.Column="0"/>
                                                 <Label
                                                     Grid.Row="0"
-                                                    Grid.Column="5"
+                                                    Grid.Column="0"
                                                     TextColor="Black"
                                                     FontSize="Small"
                                                     VerticalOptions="CenterAndExpand"
-                                                    Text="{Binding Instance}"
+                                                    Text="{Binding ResourceName}"
                                                     LineBreakMode="TailTruncation"/>
                                             </Grid>
                                         </ViewCell.View>

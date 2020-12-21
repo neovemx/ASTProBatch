@@ -26,7 +26,7 @@ namespace AST_ProBatch_Mobile.Models
         public string StatusInstanceColor { get; set; }      
         public string StatusLastProcessColor { get; set; }
         public LogItem LogItem { get; set; }
-
+        public string BarItemColor { get; set; }
         //public string StatusInstance { get; set; }
         //public string StatusLastProcess { get; set; }
         //public int Id { get; set; }
