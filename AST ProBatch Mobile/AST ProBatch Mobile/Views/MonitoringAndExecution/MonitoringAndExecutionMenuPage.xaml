@@ -55,10 +55,10 @@
                         <ImageButton
                             Padding="10,0,0,4"
                             CornerRadius="38"
-                            BorderColor="DarkGray"
+                            BorderColor="#DD8833"
                             BorderWidth="1"
                             Command="{Binding BtnsubmgCommand}"
-                            BackgroundColor="DarkGray"
+                            BackgroundColor="#DD8833"
                             HorizontalOptions="Center"
                             Source="btnsubmg"/>
                     </StackLayout>
