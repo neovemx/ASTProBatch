@@ -7,7 +7,7 @@ namespace AST_ProBatch_Mobile.ViewModels
     public class MonitoringViewModel : BaseViewModel
     {
         #region Atributes
-
+        //Test Of Git
         #endregion
 
         #region Properties
