@@ -249,11 +249,13 @@ namespace AST_ProBatch_Mobile.ViewModels
                                             }
                                         }
                                     }
+
                                     //string MyIp;
                                     //foreach (IPAddress iPAddress in Dns.GetHostAddresses(Dns.GetHostName()))
                                     //{
                                     //    MyIp = iPAddress.ToString();
                                     //}
+
                                     OperatorChangeQueryValues operatorChangeQueryValues = new OperatorChangeQueryValues()
                                     {
                                         IdLog = this.LogItem.IdLog,
