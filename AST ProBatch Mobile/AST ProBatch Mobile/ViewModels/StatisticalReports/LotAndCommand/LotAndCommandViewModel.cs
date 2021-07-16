@@ -12,6 +12,7 @@ using AST_ProBatch_Mobile.Views;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
@@ -177,6 +178,13 @@ namespace AST_ProBatch_Mobile.ViewModels
                 Alert.Show("Debe seleccionar una bitácora!");
                 return;
             }
+            DateTime _startDate = (this.StartDateValue == null ? DateTime.Now : this.StartDateValue.SelectedDate);
+            DateTime _endDate = (this.EndDateValue == null ? DateTime.Now : this.EndDateValue.SelectedDate);
+            if (_endDate < _startDate)
+            {
+                Alert.Show("La fecha fin no puede ser menor a la fecha inicio!");
+                return;
+            }
 
             try
             {
@@ -309,6 +317,13 @@ namespace AST_ProBatch_Mobile.ViewModels
                 Alert.Show("Debe seleccionar una bitácora!");
                 return;
             }
+            DateTime _startDate = (this.StartDateValue == null ? DateTime.Now : this.StartDateValue.SelectedDate);
+            DateTime _endDate = (this.EndDateValue == null ? DateTime.Now : this.EndDateValue.SelectedDate);
+            if (_endDate < _startDate)
+            {
+                Alert.Show("La fecha fin no puede ser menor a la fecha inicio!");
+                return;
+            }
 
             try
             {
@@ -372,9 +387,22 @@ namespace AST_ProBatch_Mobile.ViewModels
                             Alert.Show("No hay datos para mostrar!");
                             return;
                         }
-                        UserDialogs.Instance.HideLoading();
-                        MainViewModel.GetInstance().LotAndCommandChart = new LotAndCommandChartViewModel(true, LotAndCommandResults);
-                        await Application.Current.MainPage.Navigation.PushModalAsync(new LotAndCommandChartPage());
+                        else
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            if (LotAndCommandResults.Count > 100)
+                            {
+                                List<LotAndCommandResult> lotAndCommandResultsFiltred = LotAndCommandResults.Take(100).ToList();
+                                MainViewModel.GetInstance().LotAndCommandChart = new LotAndCommandChartViewModel(true, lotAndCommandResultsFiltred);
+                                await Application.Current.MainPage.Navigation.PushModalAsync(new LotAndCommandChartPage());
+                                Alert.Show("Consulta supera los 100 registros sólo se mostraran los 100 primeros!");
+                            }
+                            else
+                            {
+                                MainViewModel.GetInstance().LotAndCommandChart = new LotAndCommandChartViewModel(true, LotAndCommandResults);
+                                await Application.Current.MainPage.Navigation.PushModalAsync(new LotAndCommandChartPage());
+                            }
+                        }
                     }
                 }
             }

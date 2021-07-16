@@ -53,14 +53,15 @@
                 Orientation="Both"
                 HorizontalScrollBarVisibility="Never"
                 VerticalScrollBarVisibility="Never"
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand">
+                VerticalOptions="StartAndExpand"
+                HorizontalOptions="StartAndExpand">
                 <StackLayout
                     Padding="15">
                     <StackLayout
                         IsVisible="{Binding IsVisibleBarChart}"
                         VerticalOptions="CenterAndExpand">
                         <forms:ChartView
+                            Scale="{Binding Scale}"
                             WidthRequest="{Binding Zoom}"
                             HeightRequest="{Binding Zoom}"
                             Chart="{Binding BarChart}"/>
@@ -69,6 +70,7 @@
                         IsVisible="{Binding IsVisibleLineChart}"
                         VerticalOptions="CenterAndExpand">
                         <forms:ChartView
+                            Scale="{Binding Scale}"
                             WidthRequest="{Binding Zoom}"
                             HeightRequest="{Binding Zoom}"
                             Chart="{Binding LineChart}"/>
@@ -77,6 +79,7 @@
                         IsVisible="{Binding IsVisiblePointChart}"
                         VerticalOptions="CenterAndExpand">
                         <forms:ChartView
+                            Scale="{Binding Scale}"
                             WidthRequest="{Binding Zoom}"
                             HeightRequest="{Binding Zoom}"
                             Chart="{Binding PointChart}"/>
@@ -85,6 +88,7 @@
                         IsVisible="{Binding IsVisibleRadialGaugeChart}"
                         VerticalOptions="CenterAndExpand">
                         <forms:ChartView
+                            Scale="{Binding Scale}"
                             WidthRequest="{Binding Zoom}"
                             HeightRequest="{Binding Zoom}"
                             Chart="{Binding RadialGaugeChart}"/>
@@ -93,6 +97,7 @@
                         IsVisible="{Binding IsVisibleDonutChart}"
                         VerticalOptions="CenterAndExpand">
                         <forms:ChartView
+                            Scale="{Binding Scale}"
                             WidthRequest="{Binding Zoom}"
                             HeightRequest="{Binding Zoom}"
                             Chart="{Binding DonutChart}"/>
@@ -101,6 +106,7 @@
                         IsVisible="{Binding IsVisibleRadarChart}"
                         VerticalOptions="CenterAndExpand">
                         <forms:ChartView
+                            Scale="{Binding Scale}"
                             WidthRequest="{Binding Zoom}"
                             HeightRequest="{Binding Zoom}"
                             Chart="{Binding RadarChart}"/>
@@ -112,14 +118,26 @@
                 VerticalOptions="End"
                 Orientation="Horizontal"
                 Padding="30,0,30,0">
-                <Slider
-                    MinimumTrackColor="#2255AA"
-                    MaximumTrackColor="DarkGray"
-                    ThumbColor="#2255AA"
-                    WidthRequest="250"
-                    Maximum="1500"
-                    Minimum="300"
-                    Value="{Binding Zoom}" />
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Vertical">
+                    <Slider
+                        MinimumTrackColor="#2255AA"
+                        MaximumTrackColor="DarkGray"
+                        ThumbColor="#2255AA"
+                        WidthRequest="250"
+                        Maximum="2"
+                        Minimum="0"
+                        Value="{Binding Scale}" />
+                    <Slider
+                        MinimumTrackColor="#2255AA"
+                        MaximumTrackColor="DarkGray"
+                        ThumbColor="#2255AA"
+                        WidthRequest="250"
+                        Maximum="2500"
+                        Minimum="0"
+                        Value="{Binding Zoom}" />
+                </StackLayout>
                 <ImageButton
                     Margin="10,0,0,0"
                     HeightRequest="50"

@@ -12,6 +12,7 @@ using AST_ProBatch_Mobile.Views;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace AST_ProBatch_Mobile.ViewModels
 {
@@ -294,9 +295,22 @@ namespace AST_ProBatch_Mobile.ViewModels
                             Alert.Show("No hay datos para mostrar!");
                             return;
                         }
-                        UserDialogs.Instance.HideLoading();
-                        MainViewModel.GetInstance().LogExecutionChart = new LogExecutionChartViewModel(true, LogExecutionResults);
-                        await Application.Current.MainPage.Navigation.PushModalAsync(new LogExecutionChartPage());
+                        else
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            if (LogExecutionResults.Count > 100)
+                            {
+                                List<LogExecutionResult> logExecutionResultsFiltred = LogExecutionResults.Take(100).ToList();
+                                MainViewModel.GetInstance().LogExecutionChart = new LogExecutionChartViewModel(true, logExecutionResultsFiltred);
+                                await Application.Current.MainPage.Navigation.PushModalAsync(new LogExecutionChartPage());
+                                Alert.Show("Consulta supera los 100 registros sólo se mostraran los 100 primeros!");
+                            }
+                            else
+                            {
+                                MainViewModel.GetInstance().LogExecutionChart = new LogExecutionChartViewModel(true, LogExecutionResults);
+                                await Application.Current.MainPage.Navigation.PushModalAsync(new LogExecutionChartPage());
+                            }
+                        }
                     }
                 }
             }

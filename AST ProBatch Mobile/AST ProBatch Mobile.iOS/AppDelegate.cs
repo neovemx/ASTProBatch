@@ -26,9 +26,12 @@ namespace AST_ProBatch_Mobile.iOS
             //attribute.TextColor = UIColor.Clear;
             //UIBarButtonItem.Appearance.SetTitleTextAttributes(attribute, UIControlState.Normal);
             //UIBarButtonItem.Appearance.SetTitleTextAttributes(attribute, UIControlState.Highlighted);
-            UINavigationBar.Appearance.TintColor = UIColor.White;
-            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(34, 85, 170);
-            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes { TextColor = UIColor.White });
+            //UINavigationBar.Appearance.TintColor = UIColor.White;
+            //UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(34, 85, 170);
+            //UINavigationBar.Appearance.BackgroundColor = UIColor.FromRGB(34, 85, 170);
+            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes { TextColor = UIColor.FromRGB(34, 85, 170) });
+            //UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes { TextColor = UIColor.White });
+            UINavigationBar.Appearance.TintColor = UIColor.FromRGB(34, 85, 170);
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

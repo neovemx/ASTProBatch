@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using AST_ProBatch_Mobile.Models.Service;
+using AST_ProBatch_Mobile.Utilities;
 using GalaSoft.MvvmLight.Command;
 using Microcharts;
 using SkiaSharp;
@@ -25,6 +26,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         private bool isvisibledonutchart;
         private bool isvisibleradarchart;
         private int zoom;
+        private double scale;
         #endregion
 
         #region Properties
@@ -93,6 +95,11 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return zoom; }
             set { SetValue(ref zoom, value); }
         }
+        public double Scale
+        {
+            get { return scale; }
+            set { SetValue(ref scale, value); }
+        }
         #endregion
 
         #region Constructor
@@ -100,7 +107,16 @@ namespace AST_ProBatch_Mobile.ViewModels
         {
             if (IsReload)
             {
-                this.Zoom = 230;
+                if (LogExecutionDelayResult.Count > 50)
+                {
+                    this.Scale = 1;
+                    this.Zoom = 2000;
+                }
+                else
+                {
+                    this.Scale = 0.5;
+                    this.Zoom = 500;
+                }
                 int colorPos = 1;
                 List<ChartEntry> entries = new List<ChartEntry>();
                 foreach (LogExecutionDelayResult logExecutionDelayResults in LogExecutionDelayResult)
