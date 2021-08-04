@@ -25,6 +25,7 @@
                         BackgroundColor="#D7D7D7"
                         Padding="0">
                         <Label
+                            FontSize="14"
                             Padding="5"
                             HorizontalOptions="Center"
                             Text="{Binding LogItem.NameLog}"
@@ -45,14 +46,14 @@
                                     WidthRequest="85"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Operador:"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"/>
                                 <Label 
                                     WidthRequest="120"
                                     TextColor="White"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding LogItem.Operator}"
                                     LineBreakMode="TailTruncation"
                                     VerticalOptions="Center"
@@ -66,7 +67,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Operador:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -82,7 +83,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Margin="0,0,0,5"
@@ -92,7 +93,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Clave:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardEntry
@@ -111,7 +112,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     IsSpellCheckEnabled="False"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                         </StackLayout>
                     </controls:CustomFrame>
@@ -120,6 +121,7 @@
                         BackgroundColor="#D7D7D7"
                         Padding="0">
                         <Label
+                            FontSize="14"
                             HorizontalOptions="Center"
                             Padding="5"
                             Text="INSTANCIAS ASOCIADAS AL OPERADOR"
@@ -142,7 +144,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="Center">
                                     <Label
-                                        FontSize="Small"
+                                        FontSize="13"
                                         FontAttributes="Bold"
                                         TextColor="#2255AA"
                                         Text="INSTANCIA"/>
@@ -151,7 +153,7 @@
                                     HorizontalOptions="End"
                                     VerticalOptions="Center">
                                     <Label
-                                        FontSize="Small"
+                                        FontSize="13"
                                         FontAttributes="Bold"
                                         TextColor="#2255AA"
                                         Text="EJECUTANDO"
@@ -182,7 +184,7 @@
                                                             HorizontalOptions="FillAndExpand"
                                                             VerticalOptions="Center">
                                                             <Label
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 TextColor="Black"
                                                                 Text="{Binding NameInstance}"
                                                                 LineBreakMode="TailTruncation"/>
@@ -191,7 +193,7 @@
                                                             HorizontalOptions="End"
                                                             VerticalOptions="Center">
                                                             <Label
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 WidthRequest="65"
                                                                 LineBreakMode="TailTruncation"
                                                                 TextColor="Black"

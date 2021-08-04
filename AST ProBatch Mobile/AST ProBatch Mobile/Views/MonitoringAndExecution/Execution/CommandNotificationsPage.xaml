@@ -16,7 +16,7 @@
                 Padding="10"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="19"
                     TextColor="White"
                     Text="{Binding CommandTitle}"
                     HorizontalOptions="FillAndExpand"
@@ -47,14 +47,14 @@
                                                 <StackLayout
                                                     HorizontalOptions="FillAndExpand">
                                                     <Label 
-                                                        FontSize="Medium"
+                                                        FontSize="14"
                                                         FontAttributes="Bold"
                                                         Text="{Binding NotificationTitle}"
                                                         TextColor="White"
                                                         VerticalOptions="Center"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         Text="{Binding DateTime}"
                                                         TextColor="Black"
                                                         VerticalOptions="Center"
@@ -67,7 +67,7 @@
                                                 Padding="5">
                                                 <ScrollView>
                                                     <controls:CustomLabel 
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         Text="{Binding NotificationText}"
                                                         TextColor="Black"
                                                         HorizontalOptions="FillAndExpand"
@@ -87,7 +87,7 @@
                 <Label 
                     Text="AST●ProBatch® Workload Automation © 2020"
                     HorizontalTextAlignment="Center"
-                    FontSize="Small"
+                    FontSize="13"
                     FontAttributes="Bold"
                     TextColor="Gray"/>
             </StackLayout>

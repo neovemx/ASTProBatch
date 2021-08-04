@@ -15,7 +15,7 @@
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="19"
                     TextColor="White"
                     Text="{Binding LogItem.NameLog}"
                     HorizontalOptions="FillAndExpand"
@@ -47,7 +47,7 @@
                             HorizontalOptions="FillAndExpand">
                             <Label
                                 VerticalOptions="Center"
-                                FontSize="Small"
+                                FontSize="13"
                                 WidthRequest="120"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
@@ -78,13 +78,13 @@
                         <StackLayout
                             Orientation="Horizontal">
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 WidthRequest="120"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Instancia:"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding CommandToControl.InstanceName}"/>
                         </StackLayout>
@@ -93,13 +93,13 @@
                         <StackLayout
                             Orientation="Horizontal">
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 WidthRequest="120"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Lote:"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding CommandToControl.Lot}"/>
                         </StackLayout>
@@ -108,13 +108,13 @@
                         <StackLayout
                             Orientation="Horizontal">
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 WidthRequest="120"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Comando:"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding CommandToControl.Command}"/>
                         </StackLayout>
@@ -123,13 +123,13 @@
                         <StackLayout
                             Orientation="Horizontal">
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 WidthRequest="120"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Inicio:"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding CommandToControl.StartDateString}"/>
                         </StackLayout>
@@ -138,13 +138,13 @@
                         <StackLayout
                             Orientation="Horizontal">
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 WidthRequest="120"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Fin:"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding CommandToControl.EndDateString}"/>
                         </StackLayout>
@@ -153,13 +153,13 @@
                         <StackLayout
                             Orientation="Horizontal">
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 WidthRequest="120"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Control Inicio:"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding CommandToControl.TimeFromString}"/>
                         </StackLayout>
@@ -167,13 +167,13 @@
                             <StackLayout
                             Orientation="Horizontal">
                                 <Label
-                                    FontSize="Small"
+                                    FontSize="13"
                                     WidthRequest="120"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
                                     Text="Control Fin:"/>
                                 <Label
-                                    FontSize="Small"
+                                    FontSize="13"
                                     TextColor="White"
                                     Text="{Binding CommandToControl.TimeUntilString}"/>
                             </StackLayout>
@@ -183,7 +183,7 @@
                             Orientation="Horizontal">
                                 <Label
                                     VerticalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     WidthRequest="120"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"

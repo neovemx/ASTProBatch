@@ -45,7 +45,7 @@
                             Text="Aplicación bloqueada"
                             HorizontalOptions="Center"
                             TextColor="White"
-                            FontSize="Large"
+                            FontSize="20"
                             FontAttributes="Bold">
                         </Label>
                     </StackLayout>
@@ -53,7 +53,7 @@
                         IsVisible="{Binding IsVisibleLogin}"
                         WidthRequest="300">
                         <controls:StandardEntry
-                            FontSize="Small"
+                            FontSize="13"
                             Text="{Binding Username, Mode=TwoWay}"
                             Padding="5"
                             BackgroundColor="#2255AA"
@@ -65,7 +65,7 @@
                             Placeholder="Usuario..."
                             HeightRequest="30"/>
                         <controls:StandardEntry
-                            FontSize="Small"
+                            FontSize="13"
                             Text="{Binding Password, Mode=TwoWay}"
                             Padding="5"
                             BackgroundColor="#2255AA"
@@ -98,7 +98,7 @@
                             VerticalOptions="Center"
                             IsChecked="{Binding IsChecked, Mode=TwoWay}"/>
                         <Label
-                            FontSize="Medium"
+                            FontSize="14"
                             TextColor="White"
                             VerticalOptions="Center"
                             Text="Autenticación Biométrica"/>
@@ -107,7 +107,7 @@
                         IsVisible="{Binding IsVisibleLogin}"
                         HorizontalOptions="Center">
                         <Button
-                            FontSize="Small"
+                            FontSize="13"
                             Command="{Binding LoginCommand}"
                             CornerRadius="23"
                             HeightRequest="46"
@@ -137,7 +137,7 @@
                 HorizontalOptions="Center">
                 <Label 
                     TextColor="White"
-                    FontSize="Large"
+                    FontSize="20"
                     Text="APPLICATION DATA ERROR!"/>
             </StackLayout>
             <StackLayout 

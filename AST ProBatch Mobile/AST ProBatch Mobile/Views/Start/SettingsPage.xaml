@@ -16,7 +16,7 @@
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="19"
                     TextColor="White"
                     Text=""
                     HorizontalOptions="FillAndExpand"
@@ -51,14 +51,14 @@
                             Text="Configuración"
                             HorizontalOptions="Center"
                             TextColor="#2255AA"
-                            FontSize="Large"
+                            FontSize="20"
                             FontAttributes="Bold">
                         </Label>
                     </StackLayout>
                     <StackLayout
                         WidthRequest="300">
                         <controls:StandardEntry
-                            FontSize="Small"
+                            FontSize="13"
                             Text="{Binding UrlDomain, Mode=TwoWay}"
                             Padding="5"
                             BackgroundColor="White"
@@ -70,7 +70,7 @@
                             Placeholder="http://172.16.1.150:83..."
                             HeightRequest="30"/>
                         <controls:StandardEntry
-                            FontSize="Small"
+                            FontSize="13"
                             Text="{Binding UrlPrefix, Mode=TwoWay}"
                             Padding="5"
                             BackgroundColor="White"
@@ -83,7 +83,7 @@
                             HeightRequest="30"/>
                         <Label
                             FontAttributes="None"
-                            FontSize="Small"
+                            FontSize="13"
                             HorizontalTextAlignment="Center"
                             TextColor="#2255AA"
                             Text="Ingrese el dominio y el prefijo de la API">
@@ -94,7 +94,7 @@
                         <RelativeLayout
                             HorizontalOptions="Center">
                             <Button
-                                FontSize="Small"
+                                FontSize="13"
                                 Command="{Binding SaveCommand}"
                                 IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                                 CornerRadius="23"

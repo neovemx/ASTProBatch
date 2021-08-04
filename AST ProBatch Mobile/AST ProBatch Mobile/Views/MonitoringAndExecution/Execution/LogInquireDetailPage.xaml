@@ -15,7 +15,7 @@
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="19"
                     TextColor="White"
                     Text="{Binding ResultLogInquirieItem.NameLog}"
                     HorizontalOptions="FillAndExpand"
@@ -50,9 +50,9 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Instancia:"
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding ResultLogInquirieItem.NameInstance}"/>
                         </StackLayout>
@@ -66,9 +66,9 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Inicio:"
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding ResultLogInquirieItem.StartHour}"
                                 LineBreakMode="TailTruncation"/>
@@ -83,9 +83,9 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Pausa:"
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding ResultLogInquirieItem.Pause}"
                                 LineBreakMode="TailTruncation"/>
@@ -100,9 +100,9 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Lote:"
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding ResultLogInquirieItem.NameLot}"
                                 LineBreakMode="TailTruncation"/>
@@ -117,9 +117,9 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Comando:"
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding ResultLogInquirieItem.NameCommand}"
                                 LineBreakMode="TailTruncation"/>
@@ -134,9 +134,9 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Estado:"
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding ResultLogInquirieItem.Status}"
                                 LineBreakMode="TailTruncation"/>
@@ -151,9 +151,9 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Resultado:"
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding ResultLogInquirieItem.StatusResult}"
                                 LineBreakMode="TailTruncation"/>
@@ -168,9 +168,9 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Inicio:"
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding ResultLogInquirieItem.StartDateTime}"
                                 LineBreakMode="TailTruncation"/>
@@ -185,9 +185,9 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text="Fin:"
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <Label
-                                FontSize="Small"
+                                FontSize="13"
                                 TextColor="White"
                                 Text="{Binding ResultLogInquirieItem.EndDateTime}"
                                 LineBreakMode="TailTruncation"/>
@@ -202,7 +202,7 @@
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 Text=""
-                                FontSize="Small"/>
+                                FontSize="13"/>
                             <controls:CustomFrame
                                 CornerRadius="17"
                                 BackgroundColor="{Binding ResultLogInquirieItem.StatusColor}" >

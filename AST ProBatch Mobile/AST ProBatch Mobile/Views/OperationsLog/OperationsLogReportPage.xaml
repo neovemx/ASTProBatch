@@ -16,7 +16,7 @@
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="19"
                     TextColor="White"
                     Text="LOG DE OPERACIONES REPORTE"
                     HorizontalOptions="FillAndExpand"
@@ -78,7 +78,7 @@
                                                     HorizontalOptions="FillAndExpand">
                                                     <Label 
                                                         FontAttributes="Bold"
-                                                        FontSize="Medium"
+                                                        FontSize="14"
                                                         TextColor="#2255AA"
                                                         Text="{Binding NameLog}" 
                                                         LineBreakMode="TailTruncation"/>
@@ -102,7 +102,7 @@
                                                     Margin="0,-5,0,0"
                                                     Orientation="Horizontal">
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         FontAttributes="Bold"
                                                         TextColor="#2255AA"
                                                         Text="Lote:"
@@ -110,7 +110,7 @@
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         TextColor="White"
                                                         Text="{Binding CodeLot}" 
                                                         LineBreakMode="TailTruncation"/>
@@ -118,7 +118,7 @@
                                                 <StackLayout
                                                     Orientation="Horizontal">
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         FontAttributes="Bold"
                                                         TextColor="#2255AA"
                                                         Text="Comando:"
@@ -126,7 +126,7 @@
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         TextColor="White"
                                                         Text="{Binding CodeCommand}" 
                                                         LineBreakMode="TailTruncation"/>
@@ -134,7 +134,7 @@
                                                 <StackLayout
                                                     Orientation="Horizontal">
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         FontAttributes="Bold"
                                                         TextColor="#2255AA"
                                                         Text="Fecha Hora Inicio:"
@@ -142,7 +142,7 @@
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         TextColor="White"
                                                         Text="{Binding StartDateString}" 
                                                         LineBreakMode="TailTruncation"/>
@@ -150,7 +150,7 @@
                                                 <StackLayout
                                                     Orientation="Horizontal">
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         FontAttributes="Bold"
                                                         TextColor="#2255AA"
                                                         Text="Fecha Hora Fin:"
@@ -158,7 +158,7 @@
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         TextColor="White"
                                                         Text="{Binding EndDateString}" 
                                                         LineBreakMode="TailTruncation"/>
@@ -166,7 +166,7 @@
                                                 <StackLayout
                                                     Orientation="Horizontal">
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         FontAttributes="Bold"
                                                         TextColor="#2255AA"
                                                         Text="Estado:"
@@ -174,7 +174,7 @@
                                                         WidthRequest="150"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         TextColor="White"
                                                         Text="{Binding Status}" 
                                                         LineBreakMode="TailTruncation"/>

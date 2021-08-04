@@ -25,6 +25,7 @@
                         BackgroundColor="#D7D7D7"
                         Padding="0">
                         <Label
+                            FontSize="13"
                             HorizontalOptions="Center"
                             Padding="5"
                             Text="Criterios de Búsqueda"
@@ -46,7 +47,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Ver Bitácoras Finalizadas:"
                                     VerticalOptions="Center"/>
                                 <CheckBox
@@ -62,7 +63,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Bitácora:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -78,7 +79,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Orientation="Vertical">
@@ -86,7 +87,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Usuario:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -102,7 +103,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Orientation="Vertical">
@@ -110,7 +111,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Estado:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -126,7 +127,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Orientation="Vertical">
@@ -134,7 +135,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Ambiente:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -150,7 +151,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Orientation="Vertical">
@@ -158,7 +159,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Servicio:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -174,7 +175,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Orientation="Vertical">
@@ -182,7 +183,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Lote:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -198,7 +199,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Orientation="Vertical">
@@ -206,7 +207,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Comando:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -222,7 +223,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Margin="0,20,0,0"
@@ -231,7 +232,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Fecha Inicio:"
                                     VerticalOptions="Center"/>
                             </StackLayout>
@@ -243,12 +244,12 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Desde:"
                                     VerticalOptions="Center"/>
                                 <Button
                                     Padding="0"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
                                     BackgroundColor="White"
@@ -267,12 +268,12 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Hasta:"
                                     VerticalOptions="Center"/>
                                 <Button
                                     Padding="0"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
                                     BackgroundColor="White"
@@ -290,7 +291,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Fecha Fin:"
                                     VerticalOptions="Center"/>
                             </StackLayout>
@@ -302,12 +303,12 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Desde:"
                                     VerticalOptions="Center"/>
                                 <Button
                                     Padding="0"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
                                     BackgroundColor="White"
@@ -326,12 +327,12 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Hasta:"
                                     VerticalOptions="Center"/>
                                 <Button
                                     Padding="0"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
                                     BackgroundColor="White"

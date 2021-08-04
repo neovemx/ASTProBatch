@@ -15,7 +15,7 @@
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="19"
                     TextColor="White"
                     Text="REFERENCIAS"
                     HorizontalOptions="FillAndExpand"
@@ -62,7 +62,7 @@
                                     <StackLayout
                                         Orientation="Horizontal">
                                         <Label 
-                                            FontSize="Medium"
+                                            FontSize="14"
                                             Text="{Binding Title}"
                                             TextColor="Black"
                                             HorizontalOptions="FillAndExpand"

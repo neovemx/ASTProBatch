@@ -35,7 +35,7 @@
                                 <FormattedString.Spans>
                                     <Span Text="AST●ProBatch® Mobile" ForegroundColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="22" />
                                     <Span Text=" " />
-                                    <Span Text="{Binding AppVersion}" ForegroundColor="{StaticResource LightTextColor}" />
+                                    <Span Text="{Binding AppVersion}" ForegroundColor="{StaticResource LightTextColor}" FontSize="20" />
                                     <Span Text=" " />
                                     <Span Text="{Binding AppBuild}" ForegroundColor="{StaticResource LightTextColor}" FontSize="14" />
                                 </FormattedString.Spans>
@@ -46,9 +46,9 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
-                                    <Span Text="Aplicación desarrollada por: " ForegroundColor="{StaticResource Accent}" />
+                                    <Span Text="Aplicación desarrollada por: " ForegroundColor="{StaticResource Accent}" FontSize="14"/>
                                     <Span Text=" " />
-                                    <Span Text="MGI Accusys" ForegroundColor="{StaticResource Accent}" FontAttributes="Bold" />
+                                    <Span Text="MGI Accusys" ForegroundColor="{StaticResource Accent}" FontAttributes="Bold" FontSize="14"/>
                                     <Span Text="." />
                                 </FormattedString.Spans>
                             </FormattedString>
@@ -58,9 +58,9 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
-                                    <Span Text="Todos los derechos reservados" ForegroundColor="{StaticResource Accent}" />
+                                    <Span Text="Todos los derechos reservados" ForegroundColor="{StaticResource Accent}" FontSize="14"/>
                                     <Span Text=" " />
-                                    <Span Text="© 2020" ForegroundColor="{StaticResource Accent}" FontAttributes="Bold" />
+                                    <Span Text="© 2020" ForegroundColor="{StaticResource Accent}" FontAttributes="Bold" FontSize="14"/>
                                     <Span Text="." />
                                 </FormattedString.Spans>
                             </FormattedString>
@@ -80,7 +80,7 @@
                             Text="CERRAR"
                             TextColor="White"
                             FontAttributes="Bold"
-                            FontSize="Small"
+                            FontSize="13"
                             WidthRequest="150">
                         </Button>
                     </RelativeLayout>

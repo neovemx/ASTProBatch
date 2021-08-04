@@ -25,6 +25,7 @@
                         BackgroundColor="#D7D7D7"
                         Padding="0">
                         <Label
+                            FontSize="13"
                             HorizontalOptions="Center"
                             Padding="5"
                             Text="Criterios de Búsqueda"
@@ -46,7 +47,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Plantilla:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -62,7 +63,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Margin="0,20,0,0"
@@ -73,12 +74,12 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Fecha Inicio:"
                                     VerticalOptions="Center"/>
                                 <Button
                                     Padding="0"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
                                     BackgroundColor="White"
@@ -97,12 +98,12 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Fecha Fin:"
                                     VerticalOptions="Center"/>
                                 <Button
                                     Padding="0"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
                                     BackgroundColor="White"
@@ -122,7 +123,7 @@
                                     <Label
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="White"
                                         Text="L"/>
                                     <CheckBox
@@ -137,7 +138,7 @@
                                     <Label
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="White"
                                         Text="M"/>
                                     <CheckBox
@@ -152,7 +153,7 @@
                                     <Label
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="White"
                                         Text="M"/>
                                     <CheckBox
@@ -167,7 +168,7 @@
                                     <Label
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="White"
                                         Text="J"/>
                                     <CheckBox
@@ -182,7 +183,7 @@
                                     <Label
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="White"
                                         Text="V"/>
                                     <CheckBox
@@ -197,7 +198,7 @@
                                     <Label
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="White"
                                         Text="S"/>
                                     <CheckBox
@@ -212,7 +213,7 @@
                                     <Label
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="White"
                                         Text="D"/>
                                     <CheckBox
@@ -230,7 +231,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Ejecuciones:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardEntry
@@ -246,7 +247,7 @@
                                     MaxLength="250"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Keyboard="Numeric"
                                     ClearButtonVisibility="WhileEditing"/>
                             </StackLayout>

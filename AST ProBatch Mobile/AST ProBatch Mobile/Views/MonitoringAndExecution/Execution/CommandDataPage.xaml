@@ -46,7 +46,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding A_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding A_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
@@ -73,7 +73,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding B_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding B_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
@@ -100,7 +100,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding C_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding C_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
@@ -127,7 +127,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding D_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding D_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
@@ -154,7 +154,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding E_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding E_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>-->
@@ -177,14 +177,14 @@
                             Orientation="Horizontal">
                             <Label
                                 Padding="5"
-                                FontSize="Medium"
+                                FontSize="14"
                                 Text="{Binding SelectedModule}"
                                 TextColor="#2255AA"
                                 FontAttributes="Bold"
                                 LineBreakMode="TailTruncation"/>
                             <Label
                                 Padding="0,5,5,5"
-                                FontSize="Medium"
+                                FontSize="14"
                                 Text="{Binding SelectedModule_Child}"
                                 TextColor="White"
                                 FontAttributes="Bold"
@@ -208,13 +208,13 @@
                                     WidthRequest="100"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Código:"
                                     VerticalOptions="Center"/>
                                 <Label 
                                     WidthRequest="120"
                                     TextColor="White"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding A_Code}"
                                     LineBreakMode="TailTruncation"
                                     VerticalOptions="Center"
@@ -227,7 +227,7 @@
                                     WidthRequest="100"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Crítico Neg.:"
                                     VerticalOptions="Center"/>
                                 <CheckBox
@@ -244,13 +244,13 @@
                                     WidthRequest="100"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Nombre:"
                                     VerticalOptions="Center"/>
                                 <Label 
                                     WidthRequest="120"
                                     TextColor="White"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding A_Name}"
                                     LineBreakMode="TailTruncation"
                                     VerticalOptions="Center"
@@ -263,11 +263,11 @@
                                     WidthRequest="100"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Descripción:"
                                     VerticalOptions="Center"/>
                                 <controls:CustomLabel
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding A_Description}"
                                     TextColor="White"
                                     HorizontalOptions="FillAndExpand"
@@ -280,13 +280,13 @@
                                     WidthRequest="100"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Grupo:"
                                     VerticalOptions="Center"/>
                                 <Label 
                                     WidthRequest="120"
                                     TextColor="White"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding A_Group}"
                                     LineBreakMode="TailTruncation"
                                     VerticalOptions="Center"
@@ -299,13 +299,13 @@
                                     WidthRequest="100"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Tipo:"
                                     VerticalOptions="Center"/>
                                 <Label 
                                     WidthRequest="120"
                                     TextColor="White"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding A_Type}"
                                     LineBreakMode="TailTruncation"
                                     VerticalOptions="Center"
@@ -318,7 +318,7 @@
                                     WidthRequest="100"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Reejecución:"
                                     VerticalOptions="Center"/>
                                 <CheckBox
@@ -377,12 +377,12 @@
                                                                 WidthRequest="75"
                                                                 TextColor="#2255AA"
                                                                 Text="Interfaz:"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                             <Label
                                                                 TextColor="Black"
                                                                 Text="{Binding Interface}"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                         </StackLayout>
                                                         <StackLayout
@@ -392,12 +392,12 @@
                                                                 WidthRequest="75"
                                                                 TextColor="#2255AA"
                                                                 Text="Tipo:"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                             <Label
                                                                 TextColor="Black"
                                                                 Text="{Binding Type}"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                         </StackLayout>
                                                         <StackLayout
@@ -407,12 +407,12 @@
                                                                 WidthRequest="75"
                                                                 TextColor="#2255AA"
                                                                 Text="Expiración:"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                             <Label
                                                                 TextColor="Black"
                                                                 Text="{Binding ExpirationTime}"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                         </StackLayout>
                                                         <StackLayout
@@ -422,12 +422,12 @@
                                                                 WidthRequest="75"
                                                                 TextColor="#2255AA"
                                                                 Text="Reintento:"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                             <Label
                                                                 TextColor="Black"
                                                                 Text="{Binding RetryTime}"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -456,7 +456,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Búsqueda:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -472,7 +472,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout
                                 Margin="0,20,0,0"
@@ -483,12 +483,12 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Fecha Desde:"
                                     VerticalOptions="Center"/>
                                 <Button
                                     Padding="0"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
                                     BackgroundColor="White"
@@ -508,12 +508,12 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Fecha Hasta:"
                                     VerticalOptions="Center"/>
                                 <Button
                                     Padding="0"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
                                     BackgroundColor="White"
@@ -571,7 +571,7 @@
                                     Orientation="Horizontal">
                                     <Label
                                         Padding="5"
-                                        FontSize="Medium"
+                                        FontSize="14"
                                         Text="Resultado de la Búsqueda"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
@@ -605,7 +605,7 @@
                                                             <Label 
                                                                 TextColor="Black"
                                                                 Text="{Binding Name}"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                         </StackLayout>
                                                     </ViewCell.View>
@@ -625,7 +625,7 @@
                                     Orientation="Horizontal">
                                     <Label
                                         Padding="5"
-                                        FontSize="Medium"
+                                        FontSize="14"
                                         Text="Detalle de la Selección"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
@@ -646,13 +646,13 @@
                                             WidthRequest="100"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Inicio:"
                                             VerticalOptions="Center"/>
                                         <Label 
                                             WidthRequest="120"
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding StartDateDetail}"
                                             LineBreakMode="TailTruncation"
                                             VerticalOptions="Center"
@@ -665,13 +665,13 @@
                                             WidthRequest="100"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Fin:"
                                             VerticalOptions="Center"/>
                                         <Label 
                                             WidthRequest="120"
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding EndDateDetail}"
                                             LineBreakMode="TailTruncation"
                                             VerticalOptions="Center"
@@ -684,13 +684,13 @@
                                             WidthRequest="100"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="T.Ejecución:"
                                             VerticalOptions="Center"/>
                                         <Label 
                                             WidthRequest="120"
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding ExecutionTimeDetail}"
                                             LineBreakMode="TailTruncation"
                                             VerticalOptions="Center"
@@ -703,13 +703,13 @@
                                             WidthRequest="100"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Bitácora:"
                                             VerticalOptions="Center"/>
                                         <Label 
                                             WidthRequest="120"
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding NameDetail}"
                                             LineBreakMode="TailTruncation"
                                             VerticalOptions="Center"
@@ -722,7 +722,7 @@
                                             WidthRequest="100"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Eventual:"
                                             VerticalOptions="Center"/>
                                         <CheckBox
@@ -739,7 +739,7 @@
                                             WidthRequest="100"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Automática:"
                                             VerticalOptions="Center"/>
                                         <CheckBox
@@ -756,11 +756,11 @@
                                             WidthRequest="100"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Resultado:"
                                             VerticalOptions="Center"/>
                                         <controls:CustomLabel
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding ResultDetail}"
                                             TextColor="White"
                                             HorizontalOptions="FillAndExpand"
@@ -787,11 +787,11 @@
                                     WidthRequest="100"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Comando:"
                                     VerticalOptions="Center"/>
                                 <controls:CustomLabel
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding B_b_Command}"
                                     TextColor="White"
                                     HorizontalOptions="FillAndExpand"
@@ -802,11 +802,11 @@
                                 <Label
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Directorio por Defecto:"/>
                                 <Label 
                                     TextColor="White"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding B_b_DefaultPath}"
                                     LineBreakMode="TailTruncation"
                                     HorizontalOptions="FillAndExpand"/>
@@ -816,11 +816,11 @@
                                 <Label
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Directorio Actual:"/>
                                 <Label 
                                     TextColor="White"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding B_b_CurrentPath}"
                                     LineBreakMode="TailTruncation"
                                     HorizontalOptions="FillAndExpand"/>
@@ -830,7 +830,7 @@
                                 <Label
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Posee SubProcesos:"/>
                                 <CheckBox
                                     HeightRequest="10"
@@ -848,7 +848,7 @@
                                     Orientation="Horizontal">
                                     <Label
                                         Padding="5"
-                                        FontSize="Medium"
+                                        FontSize="14"
                                         Text="Sub-Procesos"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
@@ -867,11 +867,11 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Servicio de Monitoreo:"/>
                                         <Label 
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding B_b_MonitoringService}"
                                             LineBreakMode="TailTruncation"
                                             HorizontalOptions="FillAndExpand"/>
@@ -889,12 +889,12 @@
                                             <Label
                                                 TextColor="#2255AA"
                                                 FontAttributes="Bold"
-                                                FontSize="Small"
+                                                FontSize="13"
                                                 Text="Usuario"/>
                                         </StackLayout>
                                         <!--<Label 
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding B_b_User}"
                                             LineBreakMode="TailTruncation"
                                             HorizontalOptions="FillAndExpand"/>-->
@@ -912,12 +912,12 @@
                                             <Label
                                                 TextColor="#2255AA"
                                                 FontAttributes="Bold"
-                                                FontSize="Small"
+                                                FontSize="13"
                                                 Text="SubProcesos"/>
                                         </StackLayout>
                                         <!--<Label 
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding B_b_SubProcess}"
                                             LineBreakMode="TailTruncation"
                                             HorizontalOptions="FillAndExpand"/>-->
@@ -927,11 +927,11 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Tiempo Monitoreo (Seg):"/>
                                         <Label 
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding B_b_MonitoringTime}"
                                             LineBreakMode="TailTruncation"
                                             HorizontalOptions="FillAndExpand"/>
@@ -941,7 +941,7 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Espera fin SubProcesos:"/>
                                         <CheckBox
                                             HeightRequest="10"
@@ -966,7 +966,7 @@
                                                         FontAttributes="Bold"
                                                         TextColor="#2255AA"
                                                         Text="Nombre del Proceso"
-                                                        FontSize="Small"/>
+                                                        FontSize="13"/>
                                                 </StackLayout>
                                             </StackLayout>
                                             <StackLayout
@@ -990,7 +990,7 @@
                                                                         <Label 
                                                                             TextColor="Black"
                                                                             Text="{Binding NameProcess}"
-                                                                            FontSize="Small"
+                                                                            FontSize="13"
                                                                             LineBreakMode="TailTruncation"/>
                                                                     </StackLayout>
                                                                 </ViewCell.View>
@@ -1023,7 +1023,7 @@
                                     Orientation="Horizontal">
                                     <Label
                                         Padding="5"
-                                        FontSize="Medium"
+                                        FontSize="14"
                                         Text="Origen"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
@@ -1043,11 +1043,11 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Ambiente:"/>
                                         <Label 
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding C_c_Environment}"
                                             LineBreakMode="TailTruncation"
                                             HorizontalOptions="FillAndExpand"/>
@@ -1057,11 +1057,11 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Path:"/>
                                         <Label 
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding C_c_Patch}"
                                             LineBreakMode="TailTruncation"
                                             HorizontalOptions="FillAndExpand"/>
@@ -1076,7 +1076,7 @@
                                                 FontAttributes="Bold"
                                                 TextColor="#2255AA"
                                                 Text="Acciones en Origen"
-                                                FontSize="Small"/>
+                                                FontSize="13"/>
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout
@@ -1101,7 +1101,7 @@
                                                                 <Label 
                                                                     TextColor="Black"
                                                                     Text="{Binding OriginAction}"
-                                                                    FontSize="Small"
+                                                                    FontSize="13"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
                                                         </ViewCell.View>
@@ -1122,7 +1122,7 @@
                                     Orientation="Horizontal">
                                     <Label
                                         Padding="5"
-                                        FontSize="Medium"
+                                        FontSize="14"
                                         Text="Destino"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
@@ -1147,7 +1147,7 @@
                                                 FontAttributes="Bold"
                                                 TextColor="#2255AA"
                                                 Text="Destinos"
-                                                FontSize="Small"/>
+                                                FontSize="13"/>
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout
@@ -1175,13 +1175,13 @@
                                                                     Margin="0,0,0,-4"
                                                                     TextColor="DarkGray"
                                                                     Text="{Binding Environment}"
-                                                                    FontSize="Small"
+                                                                    FontSize="13"
                                                                     LineBreakMode="TailTruncation"/>
                                                                 <Label
                                                                     Margin="0,-4,0,0"
                                                                     TextColor="White"
                                                                     Text="{Binding Path}"
-                                                                    FontSize="Small"
+                                                                    FontSize="13"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
                                                         </ViewCell.View>
@@ -1200,7 +1200,7 @@
                                                 FontAttributes="Bold"
                                                 TextColor="#2255AA"
                                                 Text="Acciones en Destinos"
-                                                FontSize="Small"/>
+                                                FontSize="13"/>
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout
@@ -1225,7 +1225,7 @@
                                                                 <Label 
                                                                     TextColor="Black"
                                                                     Text="{Binding ActionDestination}"
-                                                                    FontSize="Small"
+                                                                    FontSize="13"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
                                                         </ViewCell.View>
@@ -1251,12 +1251,12 @@
                                 <Label
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Ambiente:"
                                     VerticalOptions="Center"/>
                                 <Label 
                                     TextColor="White"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding D_d_Environment}"
                                     LineBreakMode="TailTruncation"
                                     VerticalOptions="Center"
@@ -1267,12 +1267,12 @@
                                 <Label
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Linea de Comando:"
                                     VerticalOptions="Center"/>
                                 <Label 
                                     TextColor="White"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding D_d_CommandLine}"
                                     LineBreakMode="TailTruncation"
                                     VerticalOptions="Center"
@@ -1283,7 +1283,7 @@
                                 <Label
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Datos Enviados al Servicio de Ejecución:"
                                     VerticalOptions="Center"/>
                                 <controls:CustomLabel
@@ -1315,7 +1315,7 @@
                                     Orientation="Horizontal">
                                     <Label
                                         Padding="5"
-                                        FontSize="Medium"
+                                        FontSize="14"
                                         Text="Listado de Observaciones"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
@@ -1350,7 +1350,7 @@
                                                             <Label 
                                                                 TextColor="Black"
                                                                 Text="{Binding Name}"
-                                                                FontSize="Small"
+                                                                FontSize="13"
                                                                 LineBreakMode="TailTruncation"/>
                                                         </StackLayout>
                                                     </ViewCell.View>
@@ -1370,7 +1370,7 @@
                                     Orientation="Horizontal">
                                     <Label
                                         Padding="5"
-                                        FontSize="Medium"
+                                        FontSize="14"
                                         Text="Detalle"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
@@ -1385,7 +1385,7 @@
                                 <StackLayout
                                     Padding="10">
                                     <controls:CustomLabel
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding E_e_ObservationDetail}"
                                         TextColor="White"
                                         HorizontalOptions="FillAndExpand"
@@ -1455,7 +1455,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding A_a_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding A_a_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
@@ -1481,7 +1481,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding B_b_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding B_b_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
@@ -1507,7 +1507,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding C_c_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding C_c_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
@@ -1547,7 +1547,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding D_d_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding D_d_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>
@@ -1573,7 +1573,7 @@
                                     LineBreakMode="TailTruncation"
                                     TextColor="{Binding E_e_FontColor}"
                                     HorizontalOptions="Center"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="{Binding E_e_Text}"/>
                             </StackLayout>
                         </controls:CustomFrame>

@@ -144,7 +144,7 @@
                                                         VerticalOptions="CenterAndExpand">
                                                         <Label 
                                                             FontAttributes="Bold"
-                                                            FontSize="Small"
+                                                            FontSize="13"
                                                             TextColor="White"
                                                             HorizontalOptions="FillAndExpand"
                                                             Text="{Binding LogItem.NameLog}" 
@@ -158,7 +158,7 @@
                                                         </Label>
                                                         <Label
                                                             FontAttributes="Bold"
-                                                            FontSize="Medium"
+                                                            FontSize="14"
                                                             TextColor="#2255AA"
                                                             HorizontalOptions="FillAndExpand"
                                                             Text="{Binding NameInstance}" 
@@ -231,7 +231,7 @@
                                                         TextColor="#2255AA"
                                                         Text="Estado último proceso:" 
                                                         WidthRequest="150"
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         LineBreakMode="TailTruncation"/>
                                                     <ImageButton
                                                         BackgroundColor="{Binding StatusLastProcessColor}"
@@ -252,7 +252,7 @@
                                                         HorizontalOptions="Center"
                                                         FontAttributes="Bold"
                                                         TextColor="#2255AA"
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         Text="COMANDOS" 
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
@@ -286,7 +286,7 @@
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
                                                             Text="Total"
-                                                            FontSize="Small"
+                                                            FontSize="13"
                                                             LineBreakMode="TailTruncation"/>
                                                         <BoxView 
                                                             Grid.Row="0"
@@ -300,7 +300,7 @@
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
                                                             Text="Pendiente"
-                                                            FontSize="Small"
+                                                            FontSize="13"
                                                             LineBreakMode="TailTruncation"/>
                                                         <BoxView 
                                                             Grid.Row="0"
@@ -314,7 +314,7 @@
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
                                                             Text="Ok"
-                                                            FontSize="Small"
+                                                            FontSize="13"
                                                             LineBreakMode="TailTruncation"/>
                                                         <BoxView 
                                                             Grid.Row="0"
@@ -328,7 +328,7 @@
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
                                                             Text="Error"
-                                                            FontSize="Small"
+                                                            FontSize="13"
                                                             LineBreakMode="TailTruncation"/>
                                                         <BoxView 
                                                             Grid.Row="0"
@@ -342,7 +342,7 @@
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
                                                             Text="Omitido"
-                                                            FontSize="Small"
+                                                            FontSize="13"
                                                             LineBreakMode="TailTruncation"/>
                                                         <BoxView 
                                                             Grid.Row="1"
@@ -354,7 +354,7 @@
                                                             TextColor="Black"
                                                             HorizontalOptions="Center"
                                                             Text="{Binding TotalCommands}"
-                                                            FontSize="Small"/>
+                                                            FontSize="13"/>
                                                         <BoxView 
                                                             Grid.Row="1"
                                                             Grid.Column="1"
@@ -366,7 +366,7 @@
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
                                                             Text="{Binding PendingCommands}"
-                                                            FontSize="Small"/>
+                                                            FontSize="13"/>
                                                         <BoxView 
                                                             Grid.Row="1"
                                                             Grid.Column="2"
@@ -378,7 +378,7 @@
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
                                                             Text="{Binding OkCommands}"
-                                                            FontSize="Small"/>
+                                                            FontSize="13"/>
                                                         <BoxView 
                                                             Grid.Row="1"
                                                             Grid.Column="3"
@@ -390,7 +390,7 @@
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
                                                             Text="{Binding ErrorCommands}"
-                                                            FontSize="Small"/>
+                                                            FontSize="13"/>
                                                         <BoxView 
                                                             Grid.Row="1"
                                                             Grid.Column="4"
@@ -402,7 +402,7 @@
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
                                                             Text="{Binding OmittedCommands}"
-                                                            FontSize="Small"/>
+                                                            FontSize="13"/>
                                                     </Grid>
                                                 </StackLayout>
                                                 <ScrollView
@@ -597,7 +597,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="CenterAndExpand">
                                                         <Label
-                                                            FontSize="Micro"
+                                                            FontSize="11"
                                                             TextColor="White"
                                                             Text="{Binding LogItem.NameLog}" 
                                                             FontAttributes="Bold"
@@ -612,7 +612,7 @@
                                                             </Label.Margin>
                                                         </Label>
                                                         <Label
-                                                            FontSize="Small"
+                                                            FontSize="13"
                                                             TextColor="#2255AA"
                                                             Text="{Binding NameInstance}" 
                                                             FontAttributes="Bold"
@@ -680,7 +680,7 @@
                         Source="warning"/>
                     <Label
                         HorizontalOptions="Center"
-                        FontSize="Medium"
+                        FontSize="14"
                         TextColor="#D7D7D7"
                         Text="Sin datos para mostrar..." />
                 </StackLayout>

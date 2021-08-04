@@ -16,7 +16,7 @@
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="19"
                     TextColor="White"
                     Text="{Binding InstanceTitle}"
                     HorizontalOptions="FillAndExpand"
@@ -69,14 +69,14 @@
                                                 <StackLayout
                                                     HorizontalOptions="FillAndExpand">
                                                     <Label 
-                                                        FontSize="Medium"
+                                                        FontSize="14"
                                                         FontAttributes="Bold"
                                                         Text="{Binding NotificationTitle}"
                                                         TextColor="#2255AA"
                                                         VerticalOptions="Center"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         Text="{Binding DateTime}"
                                                         TextColor="White"
                                                         VerticalOptions="Center"
@@ -100,7 +100,7 @@
                                                 Padding="5">
                                                 <ScrollView>
                                                     <controls:CustomLabel 
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         Text="{Binding NotificationText}"
                                                         TextColor="DarkGray"
                                                         HorizontalOptions="FillAndExpand"

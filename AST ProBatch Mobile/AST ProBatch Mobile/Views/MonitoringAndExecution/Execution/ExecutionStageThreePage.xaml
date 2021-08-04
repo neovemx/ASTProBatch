@@ -149,7 +149,7 @@
                                                         VerticalOptions="CenterAndExpand">
                                                         <Label 
                                                             FontAttributes="Bold"
-                                                            FontSize="Small"
+                                                            FontSize="13"
                                                             TextColor="White"
                                                             HorizontalOptions="FillAndExpand"
                                                             Text="{Binding NameLot}" 
@@ -163,7 +163,7 @@
                                                         </Label>
                                                         <Label
                                                             FontAttributes="Bold"
-                                                            FontSize="Medium"
+                                                            FontSize="14"
                                                             TextColor="#2255AA"
                                                             HorizontalOptions="FillAndExpand"
                                                             Text="{Binding NameCommand}" 
@@ -238,13 +238,13 @@
                                                         TextColor="#2255AA"
                                                         Text="Fecha de Ejecución:" 
                                                         WidthRequest="150"
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
                                                         TextColor="White"
                                                         Text="{Binding ExecutionStart}" 
                                                         LineBreakMode="TailTruncation"
-                                                        FontSize="Small"/>
+                                                        FontSize="13"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal">
@@ -253,13 +253,13 @@
                                                         TextColor="#2255AA"
                                                         Text="Fecha de Finalización:" 
                                                         WidthRequest="150"
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
                                                         TextColor="White"
                                                         Text="{Binding ExecutionEnd}" 
                                                         LineBreakMode="TailTruncation"
-                                                        FontSize="Small"/>
+                                                        FontSize="13"/>
                                                 </StackLayout>
                                                 <StackLayout
                                                     Orientation="Horizontal"
@@ -269,13 +269,13 @@
                                                         TextColor="#2255AA"
                                                         Text="Duración estimada:" 
                                                         WidthRequest="150"
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         LineBreakMode="TailTruncation"/>
                                                     <Label 
                                                         TextColor="White"
                                                         Text="{Binding Duration}" 
                                                         LineBreakMode="TailTruncation"
-                                                        FontSize="Small"/>
+                                                        FontSize="13"/>
                                                 </StackLayout>
                                                 <ScrollView
                                                     HorizontalScrollBarVisibility="Never"
@@ -533,7 +533,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="CenterAndExpand">
                                                         <Label
-                                                            FontSize="Micro"
+                                                            FontSize="11"
                                                             TextColor="White"
                                                             Text="{Binding NameLot}" 
                                                             FontAttributes="Bold"
@@ -548,7 +548,7 @@
                                                             </Label.Margin>
                                                         </Label>
                                                         <Label
-                                                            FontSize="Small"
+                                                            FontSize="13"
                                                             TextColor="#2255AA"
                                                             Text="{Binding NameCommand}" 
                                                             FontAttributes="Bold"
@@ -616,7 +616,7 @@
                         Source="warning"/>
                     <Label
                         HorizontalOptions="Center"
-                        FontSize="Medium"
+                        FontSize="14"
                         TextColor="#D7D7D7"
                         Text="Sin datos para mostrar..." />
                 </StackLayout>

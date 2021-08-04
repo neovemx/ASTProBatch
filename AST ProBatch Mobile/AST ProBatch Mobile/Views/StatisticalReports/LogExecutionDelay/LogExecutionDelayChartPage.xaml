@@ -16,7 +16,7 @@
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="19"
                     TextColor="White"
                     Text="DEMORA EJECUCIÓN BITÁCORA GRÁFICO"
                     HorizontalOptions="FillAndExpand"

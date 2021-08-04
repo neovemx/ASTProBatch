@@ -23,6 +23,7 @@
                     BackgroundColor="#D7D7D7"
                     Padding="0">
                     <Label
+                        FontSize="13"
                         HorizontalOptions="Center"
                         Padding="5"
                         Text="{Binding LogItem.NameLog}"
@@ -73,7 +74,7 @@
                                         FontAttributes="Bold"
                                         HorizontalOptions="Center"
                                         Text="EE"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                     <BoxView 
                                         Grid.Row="0"
                                         Grid.Column="1"/>
@@ -85,7 +86,7 @@
                                         FontAttributes="Bold"
                                         Text="Comando"
                                         LineBreakMode="TailTruncation"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                     <BoxView 
                                         Grid.Row="0"
                                         Grid.Column="2"/>
@@ -97,7 +98,7 @@
                                         HorizontalOptions="Center"
                                         Text="Inicio"
                                         LineBreakMode="TailTruncation"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                     <BoxView 
                                         Grid.Row="0"
                                         Grid.Column="3"/>
@@ -109,7 +110,7 @@
                                         HorizontalOptions="Center"
                                         Text="Fin"
                                         LineBreakMode="TailTruncation"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                     <BoxView 
                                         Grid.Row="0"
                                         Grid.Column="4"/>
@@ -120,7 +121,7 @@
                                         FontAttributes="Bold"
                                         HorizontalOptions="Center"
                                         Text="EC"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                 </Grid>
                             </ListView.Header>
                             <ListView.ItemTemplate>
@@ -163,7 +164,7 @@
                                                     VerticalOptions="Center"
                                                     Text="{Binding Command}"
                                                     LineBreakMode="TailTruncation"
-                                                    FontSize="Small"/>
+                                                    FontSize="13"/>
                                                 <BoxView 
                                                     Grid.Row="0"
                                                     Grid.Column="2"/>
@@ -175,7 +176,7 @@
                                                     HorizontalOptions="Center"
                                                     Text="{Binding StartDateString}"
                                                     LineBreakMode="TailTruncation"
-                                                    FontSize="Small"/>
+                                                    FontSize="13"/>
                                                 <BoxView 
                                                     Grid.Row="0"
                                                     Grid.Column="3"/>
@@ -187,7 +188,7 @@
                                                     HorizontalOptions="Center"
                                                     Text="{Binding EndDateString}"
                                                     LineBreakMode="TailTruncation"
-                                                    FontSize="Small"/>
+                                                    FontSize="13"/>
                                                 <BoxView 
                                                     Grid.Row="0"
                                                     Grid.Column="4"/>

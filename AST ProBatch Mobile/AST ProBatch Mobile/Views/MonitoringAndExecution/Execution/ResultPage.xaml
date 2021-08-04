@@ -22,7 +22,7 @@
                         Padding="0">
                         <Label
                             Padding="5"
-                            FontSize="Medium"
+                            FontSize="14"
                             Text="Resultados"
                             TextColor="#2255AA"
                             FontAttributes="Bold"
@@ -55,7 +55,7 @@
                                                     <Label 
                                                         TextColor="Black"
                                                         Text="{Binding ResultName}"
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                             </ViewCell.View>
@@ -71,7 +71,7 @@
                         Padding="0">
                         <Label
                             Padding="5"
-                            FontSize="Medium"
+                            FontSize="14"
                             Text="Detalle Resultado"
                             TextColor="#2255AA"
                             FontAttributes="Bold"
@@ -85,7 +85,7 @@
                         <StackLayout
                             Padding="10">
                             <controls:CustomLabel
-                                FontSize="Small"
+                                FontSize="13"
                                 Text="{Binding ResultDetail}"
                                 TextColor="White"
                                 HorizontalOptions="FillAndExpand"
@@ -98,7 +98,7 @@
                         Padding="0">
                         <Label
                             Padding="5"
-                            FontSize="Medium"
+                            FontSize="14"
                             Text="Log de Errores"
                             TextColor="#2255AA"
                             FontAttributes="Bold"
@@ -131,7 +131,7 @@
                                                     <Label 
                                                         TextColor="Black"
                                                         Text="{Binding ErrorName}"
-                                                        FontSize="Small"
+                                                        FontSize="13"
                                                         LineBreakMode="TailTruncation"/>
                                                 </StackLayout>
                                             </ViewCell.View>
@@ -147,7 +147,7 @@
                         Padding="0">
                         <Label
                             Padding="5"
-                            FontSize="Medium"
+                            FontSize="14"
                             Text="Detalle Error"
                             TextColor="#2255AA"
                             FontAttributes="Bold"
@@ -161,7 +161,7 @@
                         <StackLayout
                             Padding="10">
                             <controls:CustomLabel
-                                FontSize="Small"
+                                FontSize="13"
                                 Text="{Binding ErrorDetail}"
                                 TextColor="White"
                                 HorizontalOptions="FillAndExpand"

@@ -26,10 +26,10 @@
                         BackgroundColor="#D7D7D7"
                         Padding="0">
                         <Label
-                            FontSize="Medium"
+                            FontSize="14"
                             HorizontalOptions="Center"
                             Padding="5"
-                            Text="{Binding CommandItem.Title}"
+                            Text="{Binding CommandItem.NameCommand}"
                             TextColor="#2255AA"
                             FontAttributes="Bold"/>
                     </controls:CustomFrame>
@@ -48,7 +48,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Plantilla:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardPicker
@@ -64,7 +64,7 @@
                                     CornerRadius="7"
                                     TextColor="#2255AA"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                         </StackLayout>
                     </controls:CustomFrame>
@@ -73,7 +73,7 @@
                         BackgroundColor="#D7D7D7"
                         Padding="0">
                         <Label
-                            FontSize="Medium"
+                            FontSize="14"
                             HorizontalOptions="Center"
                             Padding="5"
                             Text="PARÁMETROS"
@@ -96,7 +96,7 @@
                                         FontAttributes="Bold"
                                         TextColor="#2255AA"
                                         Text="NOMBRE"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                 </StackLayout>
                                 <StackLayout
                                     WidthRequest="100"
@@ -107,7 +107,7 @@
                                         FontAttributes="Bold"
                                         TextColor="#2255AA"
                                         Text="VALOR"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout
@@ -136,7 +136,7 @@
                                                             <Label 
                                                                 TextColor="Black"
                                                                 Text="{Binding Title}"
-                                                                FontSize="Small"/>
+                                                                FontSize="13"/>
                                                         </StackLayout>
                                                         <StackLayout
                                                             WidthRequest="100"
@@ -147,7 +147,7 @@
                                                                 LineBreakMode="TailTruncation"
                                                                 TextColor="Black"
                                                                 Text="{Binding Value}"
-                                                                FontSize="Small"/>
+                                                                FontSize="13"/>
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </ViewCell.View>
@@ -163,7 +163,7 @@
                         BackgroundColor="#D7D7D7"
                         Padding="0">
                         <Label
-                            FontSize="Medium"
+                            FontSize="14"
                             HorizontalOptions="Center"
                             Padding="5"
                             Text="PARÁMETRO SELECCIONADO"
@@ -184,12 +184,12 @@
                                     TextColor="#2255AA"
                                     Text="Ambiente:" 
                                     WidthRequest="75"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     LineBreakMode="TailTruncation"/>
                                 <Label 
                                     TextColor="White"
                                     Text="{Binding ParameterSelectedTitleEnvironment}"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     LineBreakMode="TailTruncation"/>
                             </StackLayout>
                             <StackLayout
@@ -199,12 +199,12 @@
                                     TextColor="#2255AA"
                                     Text="Usuario:" 
                                     WidthRequest="75"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     LineBreakMode="TailTruncation"/>
                                 <Label 
                                     TextColor="White"
                                     Text="{Binding ParameterSelectedTitleUser}"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     LineBreakMode="TailTruncation"/>
                             </StackLayout>
                             <BoxView
@@ -220,7 +220,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Parámetro:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardEntry
@@ -237,7 +237,7 @@
                                     IsSpellCheckEnabled="False"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     IsEnabled="False"/>
                             </StackLayout>
                             <StackLayout
@@ -247,7 +247,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Valor:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardEntry
@@ -264,7 +264,7 @@
                                     IsSpellCheckEnabled="False"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     IsEnabled="{Binding IsEnabled}"/>
                             </StackLayout>
                         </StackLayout>

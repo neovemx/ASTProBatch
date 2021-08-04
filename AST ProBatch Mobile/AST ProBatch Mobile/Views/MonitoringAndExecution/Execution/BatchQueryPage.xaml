@@ -36,6 +36,7 @@
                             BackgroundColor="#D7D7D7"
                             Padding="0">
                             <Label
+                                FontSize="14"
                                 HorizontalOptions="Center"
                                 Padding="5"
                                 Text="{Binding CommandItem.InstanceItem.NameInstance}"
@@ -54,13 +55,13 @@
                                         WidthRequest="130"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Código:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label 
                                         WidthRequest="120"
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding LotItem.Code}"
                                         LineBreakMode="TailTruncation"
                                         VerticalOptions="Center"
@@ -71,13 +72,13 @@
                                         WidthRequest="130"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Nombre:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label 
                                         WidthRequest="120"
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding LotItem.NameLot}"
                                         LineBreakMode="TailTruncation"
                                         VerticalOptions="Center"
@@ -88,13 +89,13 @@
                                         WidthRequest="130"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Descripción:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label 
                                         WidthRequest="120"
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding LotItem.Description}"
                                         LineBreakMode="TailTruncation"
                                         VerticalOptions="Center"
@@ -105,13 +106,13 @@
                                         WidthRequest="130"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Fecha de Creación:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label 
                                         WidthRequest="120"
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding LotItem.CreationDateString}"
                                         LineBreakMode="TailTruncation"
                                         VerticalOptions="Center"
@@ -122,13 +123,13 @@
                                         WidthRequest="130"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Path de Entrada:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label 
                                         WidthRequest="120"
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding LotItem.PathIn}"
                                         LineBreakMode="TailTruncation"
                                         VerticalOptions="Center"
@@ -139,13 +140,13 @@
                                         WidthRequest="130"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Path de Salida:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label 
                                         WidthRequest="120"
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding LotItem.PathOut}"
                                         LineBreakMode="TailTruncation"
                                         VerticalOptions="Center"
@@ -156,13 +157,13 @@
                                         WidthRequest="130"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Estado:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label 
                                         WidthRequest="120"
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding LotItem.Status}"
                                         LineBreakMode="TailTruncation"
                                         VerticalOptions="Center"
@@ -183,7 +184,7 @@
                                         <Label
                                             FontAttributes="Bold"
                                             TextColor="#2255AA"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="PARAMÉTRO"
                                             LineBreakMode="TailTruncation"/>
                                     </StackLayout>
@@ -192,7 +193,7 @@
                                         <Label
                                             FontAttributes="Bold"
                                             TextColor="#2255AA"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="VALOR"
                                             LineBreakMode="TailTruncation"/>
                                     </StackLayout>
@@ -219,7 +220,7 @@
                                                                 VerticalOptions="Center">
                                                                 <Label
                                                                     TextColor="Black"
-                                                                    FontSize="Small"
+                                                                    FontSize="13"
                                                                     Text="{Binding NameParameter}"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
@@ -228,7 +229,7 @@
                                                                 HorizontalOptions="EndAndExpand">
                                                                 <Label
                                                                     TextColor="Black"
-                                                                    FontSize="Small"
+                                                                    FontSize="13"
                                                                     Text="{Binding Value}"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
@@ -304,7 +305,7 @@
                                         <Label
                                             FontAttributes="Bold"
                                             TextColor="#2255AA"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="COMANDO"
                                             LineBreakMode="TailTruncation"/>
                                     </StackLayout>
@@ -315,7 +316,7 @@
                                             HorizontalOptions="Center"
                                             FontAttributes="Bold"
                                             TextColor="#2255AA"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="CRÍTICO"
                                             LineBreakMode="TailTruncation"/>
                                     </StackLayout>
@@ -326,7 +327,7 @@
                                             HorizontalOptions="Center"
                                             FontAttributes="Bold"
                                             TextColor="#2255AA"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="ESTADO"
                                             LineBreakMode="TailTruncation"/>
                                     </StackLayout>
@@ -354,7 +355,7 @@
                                                                 VerticalOptions="Center">
                                                                 <Label
                                                                     TextColor="Black"
-                                                                    FontSize="Small"
+                                                                    FontSize="13"
                                                                     Text="{Binding NameCommand}"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
@@ -375,7 +376,7 @@
                                                                 <Label
                                                                     HorizontalOptions="Center"
                                                                     TextColor="Black"
-                                                                    FontSize="Small"
+                                                                    FontSize="13"
                                                                     Text="{Binding IdStatus}"
                                                                     LineBreakMode="TailTruncation"/>
                                                             </StackLayout>
@@ -450,19 +451,19 @@
                                     HorizontalOptions="FillAndExpand">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="#2255AA"
                                         Text="DIARIA"
                                         IsVisible="{Binding BatchCalendarItem.Daily}"/>
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="#2255AA"
                                         Text="SEMANAL"
                                         IsVisible="{Binding BatchCalendarItem.Weekly}"/>
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         TextColor="#2255AA"
                                         Text="MENSUAL"
                                         IsVisible="{Binding BatchCalendarItem.Monthly}"/>
@@ -480,12 +481,12 @@
                                     <Label
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Cada:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding BatchCalendarItem.RangeFrecuency}"
                                         VerticalOptions="CenterAndExpand"/>
                                     <!--<controls:StandardPicker
@@ -502,12 +503,12 @@
                                         TextColor="#2255AA"
                                         WidthRequest="50"
                                         HeightRequest="30"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         IsEnabled="False"/>-->
                                     <Label
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Día(s)"
                                         VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
@@ -524,7 +525,7 @@
                                             WidthRequest="130"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Días específicos:"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
@@ -535,49 +536,49 @@
                                         <Label
                                             HorizontalTextAlignment="Center"
                                             Text="L"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             WidthRequest="30"
                                             TextColor="#2255AA"/>
                                         <Label
                                             HorizontalTextAlignment="Center"
                                             Text="M"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             WidthRequest="30"
                                             TextColor="#2255AA"/>
                                         <Label
                                             HorizontalTextAlignment="Center"
                                             Text="M"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             WidthRequest="30"
                                             TextColor="#2255AA"/>
                                         <Label
                                             HorizontalTextAlignment="Center"
                                             Text="J"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             WidthRequest="30"
                                             TextColor="#2255AA"/>
                                         <Label
                                             HorizontalTextAlignment="Center"
                                             Text="V"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             WidthRequest="30"
                                             TextColor="#2255AA"/>
                                         <Label
                                             HorizontalTextAlignment="Center"
                                             Text="S"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             WidthRequest="30"
                                             TextColor="#2255AA"/>
                                         <Label
                                             HorizontalTextAlignment="Center"
                                             Text="D"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             WidthRequest="30"
                                             TextColor="#2255AA"/>
                                         <Label
                                             HorizontalTextAlignment="Center"
                                             Text="Hábiles"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             WidthRequest="50"
                                             TextColor="#2255AA"/>
                                     </StackLayout>
@@ -651,7 +652,7 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="El día hábil:"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
@@ -659,7 +660,7 @@
                                         IsVisible="{Binding BatchCalendarItem.BusinessDay}">
                                         <Label
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding BatchCalendarItem.WeeklyBusinessDay}"
                                             VerticalOptions="CenterAndExpand"/>
                                         <!--<controls:StandardPicker
@@ -676,7 +677,7 @@
                                             CornerRadius="7"
                                             TextColor="#2255AA"
                                             HeightRequest="30"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             IsEnabled="False"/>-->
                                     </StackLayout>
                                     <BoxView
@@ -692,12 +693,12 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="De cada:"
                                             VerticalOptions="CenterAndExpand"/>
                                         <Label
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding BatchCalendarItem.RangeFrecuency}"
                                             VerticalOptions="CenterAndExpand"/>
                                         <!--<controls:StandardPicker
@@ -714,12 +715,12 @@
                                             CornerRadius="7"
                                             TextColor="#2255AA"
                                             HeightRequest="30"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             IsEnabled="False"/>-->
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="semana(s)"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
@@ -737,18 +738,18 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="El:"
                                             VerticalOptions="CenterAndExpand"/>
                                         <Label
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding BatchCalendarItem.Day}"
                                             VerticalOptions="CenterAndExpand"/>
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="día"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
@@ -768,12 +769,12 @@
                                             CornerRadius="7"
                                             TextColor="#2255AA"
                                             HeightRequest="30"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             IsEnabled="False"/>
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="dia y los subsiguientes"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>-->
@@ -793,12 +794,12 @@
                                             CornerRadius="7"
                                             TextColor="#2255AA"
                                             HeightRequest="30"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             IsEnabled="False"/>
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="día(s)"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>-->
@@ -819,23 +820,23 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="El:"
                                             VerticalOptions="CenterAndExpand"/>
                                         <Label
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding BatchCalendarItem.MonthlyRangeDay}"
                                             VerticalOptions="CenterAndExpand"/>
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text=" / "
                                             VerticalOptions="CenterAndExpand"/>
                                         <Label
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding BatchCalendarItem.MonthlyDayWeek}"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
@@ -854,7 +855,7 @@
                                             CornerRadius="7"
                                             TextColor="#2255AA"
                                             HeightRequest="30"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             IsEnabled="False"/>
                                         <controls:StandardPicker
                                             Title="..."
@@ -870,7 +871,7 @@
                                             CornerRadius="7"
                                             TextColor="#2255AA"
                                             HeightRequest="30"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             IsEnabled="False"/>
                                     </StackLayout>-->
                                     <BoxView
@@ -891,7 +892,7 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="Hábil:"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
@@ -908,12 +909,12 @@
                                         <Label
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="De cada:"
                                             VerticalOptions="CenterAndExpand"/>
                                         <Label
                                             TextColor="White"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="{Binding BatchCalendarItem.RangeFrecuency}"
                                             VerticalOptions="CenterAndExpand"/>
                                         <!--<controls:StandardPicker
@@ -930,13 +931,13 @@
                                             CornerRadius="7"
                                             TextColor="#2255AA"
                                             HeightRequest="30"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             IsEnabled="False"/>-->
                                         <Label
                                             WidthRequest="70"
                                             TextColor="#2255AA"
                                             FontAttributes="Bold"
-                                            FontSize="Small"
+                                            FontSize="13"
                                             Text="mes(es)"
                                             VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
@@ -973,7 +974,7 @@
                                     <Label
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Incluirlo siempre el día:"
                                         VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
@@ -993,12 +994,12 @@
                                         CornerRadius="7"
                                         TextColor="#2255AA"
                                         HeightRequest="30"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         IsEnabled="False"/>
                                     <Label
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="al día feriado"
                                         VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
@@ -1012,7 +1013,7 @@
                                     <Label
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Día previo/posterior hábil"
                                         VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
@@ -1042,13 +1043,13 @@
                                         WidthRequest="80"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Inicia el:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label
                                         WidthRequest="80"
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding BatchCalendarItem.StartDateString}"
                                         VerticalOptions="CenterAndExpand"/>
                                     <!--<controls:StandardEntry
@@ -1060,7 +1061,7 @@
                                         CornerRadius="7"
                                         HeightRequest="30"
                                         TextColor="#2255AA"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         IsEnabled="False"
                                         HorizontalOptions="FillAndExpand"/>-->
                                     <CheckBox
@@ -1074,13 +1075,13 @@
                                         WidthRequest="80"
                                         TextColor="#2255AA"
                                         FontAttributes="Bold"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="Termina el:"
                                         VerticalOptions="CenterAndExpand"/>
                                     <Label
                                         WidthRequest="80"
                                         TextColor="White"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         Text="{Binding BatchCalendarItem.EndDateString}"
                                         VerticalOptions="CenterAndExpand"/>
                                     <!--<controls:StandardEntry
@@ -1092,7 +1093,7 @@
                                         CornerRadius="7"
                                         HeightRequest="30"
                                         TextColor="#2255AA"
-                                        FontSize="Small"
+                                        FontSize="13"
                                         IsEnabled="False"
                                         HorizontalOptions="FillAndExpand"/>-->
                                     <CheckBox

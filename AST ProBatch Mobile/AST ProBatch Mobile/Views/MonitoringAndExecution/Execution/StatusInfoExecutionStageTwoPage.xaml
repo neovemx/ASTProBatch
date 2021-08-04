@@ -16,7 +16,7 @@
                 Padding="5"
                 Orientation="Horizontal">
                 <Label 
-                    FontSize="Large"
+                    FontSize="19"
                     TextColor="White"
                     Text="REFERENCIAS"
                     HorizontalOptions="FillAndExpand"
@@ -44,6 +44,7 @@
                     BackgroundColor="DarkGray"
                     CornerRadius="10">
                     <Label
+                        FontSize="14"
                         HorizontalOptions="Center"
                         FontAttributes="Bold"
                         TextColor="#2255AA"
@@ -73,7 +74,7 @@
                                     <StackLayout
                                         Orientation="Horizontal">
                                         <Label 
-                                            FontSize="Medium"
+                                            FontSize="14"
                                             Text="{Binding Title}"
                                             TextColor="Black"
                                             HorizontalOptions="FillAndExpand"
@@ -107,6 +108,7 @@
                     BackgroundColor="DarkGray"
                     CornerRadius="10">
                     <Label
+                        FontSize="14"
                         HorizontalOptions="Center"
                         FontAttributes="Bold"
                         TextColor="#2255AA"
@@ -136,7 +138,7 @@
                                     <StackLayout
                                         Orientation="Horizontal">
                                         <Label 
-                                            FontSize="Medium"
+                                            FontSize="14"
                                             Text="{Binding Title}"
                                             TextColor="Black"
                                             HorizontalOptions="FillAndExpand"

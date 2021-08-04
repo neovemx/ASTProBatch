@@ -26,6 +26,7 @@
                         BackgroundColor="#D7D7D7"
                         Padding="0">
                         <Label
+                            FontSize="14"
                             HorizontalOptions="Center"
                             Padding="5"
                             Text="{Binding LogItem.NameLog}"
@@ -47,7 +48,7 @@
                                     HorizontalOptions="Center"
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Nombre:"
                                     VerticalOptions="Center"/>
                                 <controls:StandardEntry
@@ -64,13 +65,13 @@
                                     IsSpellCheckEnabled="False"
                                     HorizontalOptions="FillAndExpand"
                                     HeightRequest="30"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
                             <StackLayout>
                                 <Label 
                                     TextColor="#2255AA"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="13"
                                     Text="Detalle:" />
                                 <controls:StandardEditor
                                     Text="{Binding Details, Mode=TwoWay}"
@@ -84,7 +85,7 @@
                                     Keyboard="Plain"
                                     IsSpellCheckEnabled="False"
                                     HeightRequest="180"
-                                    FontSize="Small"/>
+                                    FontSize="13"/>
                             </StackLayout>
 
                         </StackLayout>
@@ -106,7 +107,7 @@
                                         FontAttributes="Bold"
                                         TextColor="#2255AA"
                                         Text="FECHA"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                 </StackLayout>
                                 <StackLayout
                                     HorizontalOptions="FillAndExpand"
@@ -115,7 +116,7 @@
                                         FontAttributes="Bold"
                                         TextColor="#2255AA"
                                         Text="TITULO"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                 </StackLayout>
                                 <StackLayout
                                     HorizontalOptions="End"
@@ -125,7 +126,7 @@
                                         WidthRequest="110"
                                         TextColor="#2255AA"
                                         Text="OPERADOR"
-                                        FontSize="Small"/>
+                                        FontSize="13"/>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout
@@ -154,7 +155,7 @@
                                                             <Label 
                                                                 TextColor="Black"
                                                                 Text="{Binding DateObsvString}"
-                                                                FontSize="Small"/>
+                                                                FontSize="13"/>
                                                         </StackLayout>
                                                         <StackLayout
                                                             HorizontalOptions="FillAndExpand"
@@ -164,7 +165,7 @@
                                                                 LineBreakMode="TailTruncation"
                                                                 TextColor="Black"
                                                                 Text="{Binding NameObsv}"
-                                                                FontSize="Small"/>
+                                                                FontSize="13"/>
                                                         </StackLayout>
                                                         <StackLayout
                                                             HorizontalOptions="End"
@@ -174,7 +175,7 @@
                                                                 LineBreakMode="TailTruncation"
                                                                 TextColor="Black"
                                                                 Text="{Binding IdUser}"
-                                                                FontSize="Small"/>
+                                                                FontSize="13"/>
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </ViewCell.View>
