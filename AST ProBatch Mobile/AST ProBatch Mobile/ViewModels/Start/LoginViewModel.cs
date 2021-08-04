@@ -28,6 +28,7 @@ namespace AST_ProBatch_Mobile.ViewModels
         public bool uiisvisible;
         public bool uierrorisvisible;
         public bool isenabled;
+        public string bordercolor;
         #endregion
 
         #region Properties
@@ -93,6 +94,11 @@ namespace AST_ProBatch_Mobile.ViewModels
             get { return isenabled; }
             set { SetValue(ref isenabled, value); }
         }
+        public string BoderColor
+        {
+            get { return bordercolor; }
+            set { SetValue(ref bordercolor, value); }
+        }
         #endregion
 
         #region Constructors
@@ -113,6 +119,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                     this.UrlDomain = table_Config.UrlDomain;
                     this.UrlPrefix = table_Config.UrlPrefix;
                     this.IsEnabled = true;
+                    this.BoderColor = "White";
                     #endregion
 
                     if (IsChecked)
@@ -242,6 +249,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                             //Alert.Show("Usuario y/o Password incorrectos");
                             this.IsEnabled = false;
                             this.IsEnabled = true;
+                            this.BoderColor = "Red";
                             return;
                         }
                         else
@@ -273,6 +281,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                             }
 
                             UserDialogs.Instance.HideLoading();
+                            this.BoderColor = "White";
                             this.Username = string.Empty;
                             this.Password = string.Empty;
                             MainViewModel.GetInstance().Home = new HomeViewModel();
