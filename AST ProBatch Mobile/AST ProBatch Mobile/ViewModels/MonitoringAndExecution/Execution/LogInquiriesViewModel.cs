@@ -216,39 +216,47 @@ namespace AST_ProBatch_Mobile.ViewModels
                     else
                     {
                         Logs = JsonConvert.DeserializeObject<List<LogInquiriesResult>>(Crypto.DecodeString(resultGetLogs.Data));
-                        if (ResultLogInquirieItems == null)
+                        if (Logs == null || Logs.Count == 0)
                         {
-                            ResultLogInquirieItems = new ObservableCollection<ResultLogInquirieItem>();
+                            this.ResultIsVisible = false;
+                            Alert.Show("La consulta no arrojó ningún resultado!");
                         }
                         else
                         {
-                            ResultLogInquirieItems.Clear();
-                        }
-                        foreach (LogInquiriesResult logInquiriesResult in Logs)
-                        {
-                            ResultLogInquirieItems.Add(new ResultLogInquirieItem()
+                            if (ResultLogInquirieItems == null)
                             {
-                                IdLog = this.LogItem.IdLog,
-                                NameLog = this.LogItem.NameLog,
-                                NameInstance = logInquiriesResult.NameInstance,
-                                StartHour = (logInquiriesResult.StartTime != null) ? ((DateTime)logInquiriesResult.StartTime).ToString(DateTimeFormatString.Time24Hour) : "",
-                                Pause = (logInquiriesResult.Pause) ? "SI" : "NO",
-                                IdLot = logInquiriesResult.IdLot,
-                                NameLot = logInquiriesResult.Lot,
-                                IdCommand = logInquiriesResult.IdCommand,
-                                NameCommand = logInquiriesResult.Command,
-                                Status = logInquiriesResult.Status,
-                                StatusColor = GetStatusColor.ByIdStatus(logInquiriesResult.IdStatus),
-                                StatusResult = logInquiriesResult.Result,
-                                StartDateTime = (logInquiriesResult.DateStart != null) ? ((DateTime)logInquiriesResult.DateStart).ToString(DateTimeFormatString.Time24Hour) : "",
-                                EndDateTime = (logInquiriesResult.DateEnd != null) ? ((DateTime)logInquiriesResult.StartTime).ToString(DateTimeFormatString.Time24Hour) : ""
-                            });
+                                ResultLogInquirieItems = new ObservableCollection<ResultLogInquirieItem>();
+                            }
+                            else
+                            {
+                                ResultLogInquirieItems.Clear();
+                            }
+                            foreach (LogInquiriesResult logInquiriesResult in Logs)
+                            {
+                                ResultLogInquirieItems.Add(new ResultLogInquirieItem()
+                                {
+                                    IdLog = this.LogItem.IdLog,
+                                    NameLog = this.LogItem.NameLog,
+                                    NameInstance = logInquiriesResult.NameInstance,
+                                    StartHour = (logInquiriesResult.StartTime != null) ? ((DateTime)logInquiriesResult.StartTime).ToString(DateTimeFormatString.Time24Hour) : "",
+                                    Pause = (logInquiriesResult.Pause) ? "SI" : "NO",
+                                    IdLot = logInquiriesResult.IdLot,
+                                    NameLot = logInquiriesResult.Lot,
+                                    IdCommand = logInquiriesResult.IdCommand,
+                                    NameCommand = logInquiriesResult.Command,
+                                    Status = logInquiriesResult.Status,
+                                    StatusColor = GetStatusColor.ByIdStatus(logInquiriesResult.IdStatus),
+                                    StatusResult = logInquiriesResult.Result,
+                                    StartDateTime = (logInquiriesResult.DateStart != null) ? ((DateTime)logInquiriesResult.DateStart).ToString(DateTimeFormatString.Time24Hour) : "",
+                                    EndDateTime = (logInquiriesResult.DateEnd != null) ? ((DateTime)logInquiriesResult.StartTime).ToString(DateTimeFormatString.Time24Hour) : ""
+                                });
+                            }
+                            this.ResultIsVisible = true;
                         }
                         UserDialogs.Instance.HideLoading();
                     }
                 }
 
-                this.ResultIsVisible = true;
                 UserDialogs.Instance.HideLoading();
             }
             catch //(Exception ex)
