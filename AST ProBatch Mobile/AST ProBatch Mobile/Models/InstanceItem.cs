@@ -16,6 +16,10 @@ namespace AST_ProBatch_Mobile.Models
         public Int32 OkCommands { get; set; }
         public Int32 ErrorCommands { get; set; }
         public Int32 OmittedCommands { get; set; }
+        public bool ActionExecute { get; set; }
+        public bool ActionKill { get; set; }
+        public bool ActionStop { get; set; }
+        public bool ActionOpen { get; set; }
         #endregion
 
         #region Model Extended

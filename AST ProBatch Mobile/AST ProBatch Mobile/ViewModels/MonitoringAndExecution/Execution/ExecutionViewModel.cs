@@ -162,7 +162,13 @@ namespace AST_ProBatch_Mobile.ViewModels
                                         IsEnabled = true,
                                         IdUser = PbUser.IdUser,
                                         Operator = string.Format("{0} ({1}, {2})", PbUser.IdUser, PbUser.FisrtName.Trim(), PbUser.LastName.Trim()),
-                                        NotificationIcon = IconSet.Notification
+                                        TotalExecuted = log.TotalExecuted,
+                                        NotificationIcon = IconSet.Notification,
+                                        ActionBlock = log.ActionBlock,
+                                        ActionExecute = log.ActionExecute,
+                                        ActionRelease = log.ActionRelease,
+                                        AccionOpen = log.AccionOpen,
+                                        AccionSelection = log.AccionSelection
                                     });
                                 }
                                 if (LogItems.Count == 0)
@@ -447,7 +453,13 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 IsEnabled = true,
                                 IdUser = PbUser.IdUser,
                                 Operator = string.Format("{0} ({1}, {2})", PbUser.IdUser, PbUser.FisrtName.Trim(), PbUser.LastName.Trim()),
-                                NotificationIcon = IconSet.Notification
+                                NotificationIcon = IconSet.Notification,
+                                TotalExecuted = log.TotalExecuted,
+                                ActionBlock = log.ActionBlock,
+                                ActionExecute = log.ActionExecute,
+                                ActionRelease = log.ActionRelease,
+                                AccionOpen = log.AccionOpen,
+                                AccionSelection = log.AccionSelection
                             });
                         }
                         if (LogItems.Count == 0)

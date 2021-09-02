@@ -182,7 +182,15 @@ namespace AST_ProBatch_Mobile.ViewModels
                                         IsEnabled = true,
                                         StatusColor = GetStatusColor.ByIdStatus(command.IdStatus.Trim()),
                                         InstanceItem = this.InstanceItem,
-                                        BarItemColor = (this.InstanceItem.LogItem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base
+                                        BarItemColor = (this.InstanceItem.LogItem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base,
+                                        ActionRun = command.ActionRun,
+                                        ActionSkip = command.ActionSkip,
+                                        ActionPause = command.ActionPause,
+                                        ActionReRunOnlyThis = command.ActionReRunOnlyThis,
+                                        ActionReRunThisMoreAllNext = command.ActionReRunThisMoreAllNext,
+                                        ActionReRunThisMoreNotExecutedNext = command.ActionReRunThisMoreNotExecutedNext,
+                                        ActionKill = command.ActionKill,
+                                        ActionGetItBack = command.ActionGetItBack
                                     });
                                 }
                                 if (CommandItems.Count == 0)
@@ -482,7 +490,15 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 IsEnabled = true,
                                 StatusColor = GetStatusColor.ByIdStatus(command.IdStatus.Trim()),
                                 InstanceItem = this.InstanceItem,
-                                BarItemColor = (this.InstanceItem.LogItem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base
+                                BarItemColor = (this.InstanceItem.LogItem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base,
+                                ActionRun = command.ActionRun,
+                                ActionSkip = command.ActionSkip,
+                                ActionPause = command.ActionPause,
+                                ActionReRunOnlyThis = command.ActionReRunOnlyThis,
+                                ActionReRunThisMoreAllNext = command.ActionReRunThisMoreAllNext,
+                                ActionReRunThisMoreNotExecutedNext = command.ActionReRunThisMoreNotExecutedNext,
+                                ActionKill = command.ActionKill,
+                                ActionGetItBack = command.ActionGetItBack
                             });
                         }
                         if (CommandItems.Count == 0)

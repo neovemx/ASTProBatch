@@ -177,7 +177,11 @@ namespace AST_ProBatch_Mobile.ViewModels
                                         StatusInstanceColor = GetStatusColor.ByIdStatus(instance.IdStatusInstance.Trim()),
                                         StatusLastProcessColor = GetStatusColor.ByIdStatus(instance.IdStatusLastCommand.Trim()),
                                         LogItem = this.LogItem,
-                                        BarItemColor = (this.logitem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base
+                                        BarItemColor = (this.logitem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base,
+                                        ActionExecute = instance.ActionExecute,
+                                        ActionKill = instance.ActionKill,
+                                        ActionStop = instance.ActionStop,
+                                        ActionOpen = instance.ActionOpen
                                     });
                                 }
                                 if (InstanceItems.Count == 0)
@@ -456,7 +460,11 @@ namespace AST_ProBatch_Mobile.ViewModels
                                 StatusInstanceColor = GetStatusColor.ByIdStatus(instance.IdStatusInstance.Trim()),
                                 StatusLastProcessColor = GetStatusColor.ByIdStatus(instance.IdStatusLastCommand.Trim()),
                                 LogItem = this.LogItem,
-                                BarItemColor = (this.logitem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base
+                                BarItemColor = (this.logitem.IsEventual) ? BarItemColor.HighLight : BarItemColor.Base,
+                                ActionExecute = instance.ActionExecute,
+                                ActionKill = instance.ActionKill,
+                                ActionStop = instance.ActionStop,
+                                ActionOpen = instance.ActionOpen
                             });
                         }
                         if (InstanceItems.Count == 0)
