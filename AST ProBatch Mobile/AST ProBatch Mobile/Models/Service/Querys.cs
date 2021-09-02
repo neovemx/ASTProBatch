@@ -12,6 +12,7 @@ namespace AST_ProBatch_Mobile.Models.Service
     public class CommandQueryValues
     {
         public Int32 IdInstance { get; set; }
+        public bool IsEventual { get; set; }
     }
 
     public class OperatorChangeUserQueryValues

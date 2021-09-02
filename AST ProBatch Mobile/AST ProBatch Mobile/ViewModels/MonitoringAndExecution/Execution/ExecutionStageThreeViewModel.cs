@@ -150,7 +150,8 @@ namespace AST_ProBatch_Mobile.ViewModels
                             Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
                             CommandQueryValues commandQueryValues = new CommandQueryValues()
                             {
-                                IdInstance = this.InstanceItem.IdInstance
+                                IdInstance = this.InstanceItem.IdInstance,
+                                IsEventual = this.instanceitem.LogItem.IsEventual
                             };
                             Response resultGetCommandsByInstance = await ApiSrv.GetCommandsByInstance(token.Key, commandQueryValues);
                             if (!resultGetCommandsByInstance.IsSuccess)
@@ -458,7 +459,8 @@ namespace AST_ProBatch_Mobile.ViewModels
                     Token token = JsonConvert.DeserializeObject<Token>(Crypto.DecodeString(resultToken.Data));
                     CommandQueryValues commandQueryValues = new CommandQueryValues()
                     {
-                        IdInstance = this.InstanceItem.IdInstance
+                        IdInstance = this.InstanceItem.IdInstance,
+                        IsEventual = this.InstanceItem.LogItem.IsEventual
                     };
                     Response resultGetCommandsByInstance = await ApiSrv.GetCommandsByInstance(token.Key, commandQueryValues);
                     if (!resultGetCommandsByInstance.IsSuccess)
