@@ -14,7 +14,7 @@
         <ToolbarItem BindingContext="{Binding Execution}" Text="Acciones"  Icon="{Binding ActionIcon}" Command="{Binding ActionsCommand}" />
         <ToolbarItem BindingContext="{Binding Execution}" Text="Seleccionar"  Icon="{Binding CheckIcon}" Command="{Binding CheckCommand}" />
         <ToolbarItem BindingContext="{Binding Execution}" Text="Ver"  Icon="{Binding ViewIcon}" Command="{Binding ViewCommand}" />
-        <ToolbarItem BindingContext="{Binding Execution}" Text="Bitácoras Eventuales" Command="{Binding ViewCommand}" Order="Secondary" />
+        <!--<ToolbarItem BindingContext="{Binding Execution}" Text="Bitácoras Eventuales" Command="{Binding ViewCommand}" Order="Secondary" />-->
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
