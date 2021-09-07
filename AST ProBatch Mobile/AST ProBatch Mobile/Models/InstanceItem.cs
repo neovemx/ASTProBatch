@@ -11,6 +11,7 @@ namespace AST_ProBatch_Mobile.Models
         public string NameInstance { get; set; }
         public string IdStatusInstance { get; set; }
         public string IdStatusLastCommand { get; set; }
+        public string NameLastCommand { get; set; }
         public Int32 TotalCommands { get; set; }
         public Int32 PendingCommands { get; set; }
         public Int32 OkCommands { get; set; }

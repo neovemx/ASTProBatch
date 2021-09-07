@@ -13,6 +13,9 @@ namespace AST_ProBatch_Mobile.Models.Service
         public DateTime? EndingDateTime { get; set; }
         public Int32? TotalCommands { get; set; }
         public Int32? ErrorCommands { get; set; }
+        public Int32 TotalPending { get; set; }
+        public Int32 TotalOk { get; set; }
+        public Int32 TotalOmitt { get; set; }
         public Int32 TotalExecuted { get; set; }
         public bool ActionBlock { get; set; }
         public bool ActionExecute { get; set; }
