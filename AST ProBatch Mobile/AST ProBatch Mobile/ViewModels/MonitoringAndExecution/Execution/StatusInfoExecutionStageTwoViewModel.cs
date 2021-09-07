@@ -57,7 +57,7 @@ namespace AST_ProBatch_Mobile.ViewModels
             StatusItem statusItem;
 
             statusItem = new StatusItem();
-            statusItem.Title = "No Ininiciada";
+            statusItem.Title = "No Iniciada";
             statusItem.State = "";
             statusItem.StateColor = StatusColor.White;
             StatusItemsInstance.Add(statusItem);
