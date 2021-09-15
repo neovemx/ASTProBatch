@@ -249,7 +249,7 @@ namespace AST_ProBatch_Mobile.Utilities
         public const string AddObservation = "/addobservations";
         public const string ModObservation = "/modobservations";
         public const string DelObservation = "/delobservations";
-        public const string ControlSchedulesExecution = "/getControlschedulesexecution";
+        public const string ControlSchedulesExecution = "/getcontrolschedulesexecution";
         public const string ExecutionResultGet = "/executionresultget";
         public const string ExecutionResultErrorLogGet = "/executionresulterrorlogget";
         public const string LogInquirieGetLots = "/loginquiriesgetlots";

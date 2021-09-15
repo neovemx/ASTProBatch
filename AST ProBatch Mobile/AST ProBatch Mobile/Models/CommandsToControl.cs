@@ -13,7 +13,7 @@ namespace AST_ProBatch_Mobile.Models
         public DateTime? EndDate { get; set; }
         public DateTime? TimeFrom { get; set; }
         public DateTime? TimeUntil { get; set; }
-        public DateTime? OutOfSchedule { get; set; }
+        public bool OutOfSchedule { get; set; }
         public bool CriticalBusiness { get; set; }
         #endregion
 

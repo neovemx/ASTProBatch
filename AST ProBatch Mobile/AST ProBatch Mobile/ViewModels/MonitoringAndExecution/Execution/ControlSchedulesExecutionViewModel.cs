@@ -125,7 +125,7 @@ namespace AST_ProBatch_Mobile.ViewModels
                                     TimeFromString = (controlSchedulesExecution.TimeFrom != null) ? ((DateTime)controlSchedulesExecution.TimeFrom).ToString(DateTimeFormatString.Time24Hour) : "",
                                     TimeUntilString = (controlSchedulesExecution.TimeUntil != null) ? ((DateTime)controlSchedulesExecution.TimeUntil).ToString(DateTimeFormatString.Time24Hour) : "",
                                     StatusColorEE = GetStatusColor.ByIdStatus(controlSchedulesExecution.IdStatus.Trim()),
-                                    StatusColorEC = (controlSchedulesExecution.OutOfSchedule != null) ? StatusColor.Red : StatusColor.White,
+                                    StatusColorEC = (controlSchedulesExecution.OutOfSchedule) ? StatusColor.Red : StatusColor.White,
                                 });
                             }
                             UserDialogs.Instance.HideLoading();
