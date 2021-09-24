@@ -14,6 +14,7 @@ namespace AST_ProBatch_Mobile.Models
         public Int32 ExecutionTime { get; set; }
         public DateTime? ExecutionDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }
+        public bool RequestParameters { get; set; }
         public bool ActionRun { get; set; }
         public bool ActionSkip { get; set; }
         public bool ActionPause { get; set; }
